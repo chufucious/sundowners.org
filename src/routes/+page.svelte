@@ -26,12 +26,8 @@
 <div class="text-white container mx-auto mt-8">
   <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
     <div class="fixed top-10 left-10 flex">
-      <img
-        class="h-auto mr-4 mix-blend-difference"
-        alt="sundowners lion logo"
-        src={logoLion}
-      />
-      <img class="h-auto w-64 object-contain" alt="sundowners" src={logo} />
+      <img class="h-auto mr-4" alt="sundowners lion logo" src={logoLion} />
+      <img class="h-auto w-48 object-contain" alt="sundowners" src={logo} />
     </div>
 
     <section class="mt-24 mb-24 mx-auto text-center">
