@@ -5,26 +5,109 @@
   import gutterLeft from "$lib/assets/images/Gutter/Left.png";
   import gutterTop from "$lib/assets/images/Gutter/Top.png";
   import gutterRight from "$lib/assets/images/Gutter/Right.png";
+  import katiesunset from "$lib/assets/images/Photos/katiesunset.jpg";
+  import devofisheye from "$lib/assets/images/Photos/devofisheye.jpg";
+  import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg";
+  import runninglion from "$lib/assets/images/Photos/runninglion.jpg";
+  import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg";
+  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg";
 </script>
 
 <div class="fixed top-0 h-3"><img src={gutterTop} /></div>
 <div class="fixed bottom-0 h-3"><img src={gutterBottom} /></div>
 <div class="fixed top-0 right-0 w-3"><img src={gutterRight} /></div>
 <div class="fixed top-0 left-0 w-3"><img src={gutterLeft} /></div>
+<img
+  src={sundownerswalking}
+  alt="Image Description"
+  class="w-full object-cover"
+/>
+
 <div class="text-white container mx-auto mt-8">
   <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
-    <div class="flex">
-      <img class="h-auto mr-4" alt="sundowners lion logo" src={logoLion} />
+    <div class="fixed top-10 left-10 flex">
+      <img
+        class="h-auto mr-4 mix-blend-difference"
+        alt="sundowners lion logo"
+        src={logoLion}
+      />
       <img class="h-auto w-64 object-contain" alt="sundowners" src={logo} />
     </div>
 
-    <p class="mt-24 mb-24 max-w-prose mx-auto text-center">
-      In 2017, a passionate crew of longtime Burning Man vets from South Africa
-      and Brooklyn traveled to South Africa and went on a life-changing wildlife
-      safari. On the Savannah, we would end each day with "Sundowners", a
-      fantastic regional tradition of sharing sunset stories, laughter, and
-      drinks with friends old and new.
-    </p>
+    <section class="mt-24 mb-24 mx-auto text-center">
+      <h3 class="mb-8">HISTORY</h3>
+      <p class="max-w-prose">
+        In 2017, a passionate crew of longtime Burning Man vets from South
+        Africa and Brooklyn traveled to South Africa and went on a life-changing
+        wildlife safari. On the Savannah, we would end each day with
+        "Sundowners", a fantastic regional tradition of sharing sunset stories,
+        laughter, and drinks with friends old and new.
+      </p>
+    </section>
+
+    <section class="flex">
+      <div class="w-1/2 md:w-1/4 mr-1">
+        <img
+          src={katiesunset}
+          alt="Image Description 1"
+          class="w-full h-auto"
+        />
+      </div>
+      <div class="w-1/2 md:w-1/4 mr-1">
+        <img
+          src={gregonrexan}
+          alt="Image Description 2"
+          class="w-full h-auto"
+        />
+      </div>
+      <div class="w-1/2 md:w-1/4 mr-1">
+        <img
+          src={runninglion}
+          alt="Image Description 3"
+          class="w-full h-auto"
+        />
+      </div>
+      <div class="w-1/2 md:w-1/4">
+        <img
+          src={devofisheye}
+          alt="Image Description 4"
+          r
+          class="w-full h-auto"
+        />
+      </div>
+    </section>
+
+    <section class="mt-24 mb-24 mx-auto text-center">
+      <h3 class="mb-8">MISSION</h3>
+      <p class="max-w-prose">
+        At the highest level, we aim to directly challenge nationalism through
+        our exploration of diversity. We believe we can capture a growing
+        zeitgeist of globalist curiosity and positivity through our theme camp.
+        We strive for a holistic offering, however, the deep artistry, meaning,
+        and humanity of African-based music is our creative North Star. Beyond
+        Black Rock City, our goal is to continue to spread the Sundowners'
+        vision through our flavor of African diaspora events, creative projects,
+        and community involvement.
+      </p>
+    </section>
+
+    <section class="flex">
+      <img src={rexanjump} alt="Image Description 1" class="w-full h-auto" />
+    </section>
+
+    <section class="mt-24 mb-24 mx-auto text-center">
+      <h3 class="mb-8">MISSION</h3>
+      <p class="max-w-prose">
+        At the highest level, we aim to directly challenge nationalism through
+        our exploration of diversity. We believe we can capture a growing
+        zeitgeist of globalist curiosity and positivity through our theme camp.
+        We strive for a holistic offering, however, the deep artistry, meaning,
+        and humanity of African-based music is our creative North Star. Beyond
+        Black Rock City, our goal is to continue to spread the Sundowners'
+        vision through our flavor of African diaspora events, creative projects,
+        and community involvement.
+      </p>
+    </section>
   </div>
 </div>
 
