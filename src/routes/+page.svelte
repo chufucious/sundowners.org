@@ -1,6 +1,6 @@
 <script>
   import logo from "$lib/assets/images/logo/sundowners/words.png?w=400;900;1200&as=srcset";
-  import logoLion from "$lib/assets/images/logo/sundowners/lion.svg";
+  import logoLion from "$lib/assets/images/logo/sundowners/lion.svg?w=400;900;1200&as=srcset";
   import gutterBottom from "$lib/assets/images/Gutter/Bottom.png";
   import gutterLeft from "$lib/assets/images/Gutter/Left.png";
   import gutterTop from "$lib/assets/images/Gutter/Top.png";
@@ -26,7 +26,7 @@
 <div class="text-white container mx-auto mt-8">
   <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
     <div class="fixed top-10 left-10 flex">
-      <img class="h-auto mr-4" alt="sundowners lion logo" src={logoLion} />
+      <img class="h-auto mr-4" alt="sundowners lion logo" srcset={logoLion} />
       <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
     </div>
 
@@ -43,33 +43,16 @@
 
     <section class="flex">
       <div class="w-1/2 md:w-1/4 mr-1">
-        <img
-          src={katiesunset}
-          alt="Image Description 1"
-          class="w-full h-auto"
-        />
+        <img src={katiesunset} alt="k viewing sunset" class="w-full h-auto" />
       </div>
       <div class="w-1/2 md:w-1/4 mr-1">
-        <img
-          src={gregonrexan}
-          alt="Image Description 2"
-          class="w-full h-auto"
-        />
+        <img src={gregonrexan} alt="on rexan" class="w-full h-auto" />
       </div>
       <div class="w-1/2 md:w-1/4 mr-1">
-        <img
-          src={runninglion}
-          alt="Image Description 3"
-          class="w-full h-auto"
-        />
+        <img src={runninglion} alt="a running lion" class="w-full h-auto" />
       </div>
       <div class="w-1/2 md:w-1/4">
-        <img
-          src={devofisheye}
-          alt="Image Description 4"
-          r
-          class="w-full h-auto"
-        />
+        <img src={devofisheye} alt="fisheye lens" r class="w-full h-auto" />
       </div>
     </section>
 
