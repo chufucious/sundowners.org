@@ -1,5 +1,5 @@
 <script>
-  import logo from "$lib/assets/images/logo/sundowners/words.png";
+  import logo from "$lib/assets/images/logo/sundowners/words.png?w=400;900;1200&as=srcset";
   import logoLion from "$lib/assets/images/logo/sundowners/lion.svg";
   import gutterBottom from "$lib/assets/images/Gutter/Bottom.png";
   import gutterLeft from "$lib/assets/images/Gutter/Left.png";
@@ -27,7 +27,7 @@
   <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
     <div class="fixed top-10 left-10 flex">
       <img class="h-auto mr-4" alt="sundowners lion logo" src={logoLion} />
-      <img class="h-auto w-48 object-contain" alt="sundowners" src={logo} />
+      <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
     </div>
 
     <section class="mt-24 mb-24 mx-auto text-center">
