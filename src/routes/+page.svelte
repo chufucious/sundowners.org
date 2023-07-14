@@ -9,17 +9,26 @@
   import devofisheye from "$lib/assets/images/Photos/devofisheye.jpg";
   import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg";
   import runninglion from "$lib/assets/images/Photos/runninglion.jpg";
-  import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg";
-  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg";
+  import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
+  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg?w=400;900;1200&as=srcset";
 </script>
 
-<div class="fixed top-0 h-3"><img src={gutterTop} /></div>
-<div class="fixed bottom-0 h-3"><img src={gutterBottom} /></div>
-<div class="fixed top-0 right-0 w-3"><img src={gutterRight} /></div>
-<div class="fixed top-0 left-0 w-3"><img src={gutterLeft} /></div>
+<div class="fixed top-0 h-3">
+  <img src={gutterTop} alt="top gutter wax fabric pattern" />
+</div>
+<div class="fixed bottom-0 h-3">
+  <img src={gutterBottom} alt="bottom gutter wax fabric pattern" />
+</div>
+<div class="fixed top-0 right-0 w-3">
+  <img src={gutterRight} alt="right gutter wax fabric pattern" />
+</div>
+<div class="fixed top-0 left-0 w-3">
+  <img src={gutterLeft} alt="left gutter wax fabric pattern" />
+</div>
+
 <img
-  src={sundownerswalking}
-  alt="Image Description"
+  srcset={sundownerswalking}
+  alt="walking into sunset"
   class="w-full object-cover"
 />
 
@@ -71,7 +80,7 @@
     </section>
 
     <section class="flex">
-      <img src={rexanjump} alt="Image Description 1" class="w-full h-auto" />
+      <img srcset={rexanjump} alt="rexan crew jumping" class="w-full h-auto" />
     </section>
 
     <section class="mt-24 mb-24 mx-auto text-center">
