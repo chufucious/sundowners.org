@@ -5,12 +5,12 @@
   import gutterLeft from "$lib/assets/images/Gutter/Left.png";
   import gutterTop from "$lib/assets/images/Gutter/Top.png";
   import gutterRight from "$lib/assets/images/Gutter/Right.png";
-  import katiesunset from "$lib/assets/images/Photos/katiesunset.jpg";
-  import devofisheye from "$lib/assets/images/Photos/devofisheye.jpg";
-  import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg";
-  import runninglion from "$lib/assets/images/Photos/runninglion.jpg";
+  import katiesunset from "$lib/assets/images/Photos/katiesunset.jpg?w=400;900;1200&as=srcset";
+  import devofisheye from "$lib/assets/images/Photos/devofisheye.jpg?w=400;900;1200&as=srcset";
+  import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
+  import runninglion from "$lib/assets/images/Photos/runninglion.jpg?w=400;900;1200&as=srcset";
   import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
-  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg?w=400;900;1200&as=srcset";
+  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg?w=640;1024;1280&as=srcset";
 </script>
 
 <div class="fixed top-0 h-3">
@@ -28,12 +28,13 @@
 
 <img
   srcset={sundownerswalking}
-  alt="walking into sunset"
-  class="w-full object-cover"
+  sizes="(max-width: 640px) 400px, (max-width: 1024px) 900px, 1200px"
+  alt="Sundowners walking"
+  class="w-full h-32 sm:h-48 lg:h-64 xl:h-full object-cover"
 />
 
 <div class="text-white container mx-auto mt-8">
-  <div class="shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+  <div class="px-8 pt-6 pb-8 mb-4 flex flex-col">
     <div class="fixed top-10 left-10 flex">
       <img class="h-auto mr-4" alt="sundowners lion logo" srcset={logoLion} />
       <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
@@ -50,19 +51,31 @@
       </p>
     </section>
 
-    <section class="flex">
-      <div class="w-1/2 md:w-1/4 mr-1">
-        <img src={katiesunset} alt="k viewing sunset" class="w-full h-auto" />
-      </div>
-      <div class="w-1/2 md:w-1/4 mr-1">
-        <img src={gregonrexan} alt="on rexan" class="w-full h-auto" />
-      </div>
-      <div class="w-1/2 md:w-1/4 mr-1">
-        <img src={runninglion} alt="a running lion" class="w-full h-auto" />
-      </div>
-      <div class="w-1/2 md:w-1/4">
-        <img src={devofisheye} alt="fisheye lens" r class="w-full h-auto" />
-      </div>
+    <section class="flex overflow-x-auto">
+      <img
+        srcset={katiesunset}
+        sizes="100vw"
+        alt="viewing sunset"
+        class="lg:max-w-md h-auto"
+      />
+      <img
+        srcset={gregonrexan}
+        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        alt="on rexan"
+        class="object-cover"
+      />
+      <img
+        srcset={runninglion}
+        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        alt="a running lion"
+        class="object-cover"
+      />
+      <img
+        srcset={devofisheye}
+        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        alt="fisheye lens"
+        class="object-cover"
+      />
     </section>
 
     <section class="mt-24 mb-24 mx-auto text-center">
