@@ -55,16 +55,16 @@
 
   <section class="flex space-x-0.5 overflow-x-auto no-scrollbar">
     <img
-      srcset={katiesunset}
-      sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
-      alt="viewing sunset"
-      class="max-h-64"
-    />
-    <img
       srcset={gregonrexan}
       sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
       alt="on rexan"
       class="max-h-96"
+    />
+    <img
+      srcset={katiesunset}
+      sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+      alt="viewing sunset"
+      class="max-h-64"
     />
     <img
       srcset={runninglion}
