@@ -28,7 +28,7 @@
 </div>
 
 <div class="text-white container mx-auto">
-  <header class="fixed top-10 left-10 flex">
+  <header class="fixed top-10 left-10 flex mix-blend-difference">
     <img class="h-auto mr-4" alt="sundowners lion logo" srcset={logoLion} />
     <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
   </header>
@@ -39,9 +39,9 @@
     class="min-h-[40vh] object-fill"
   />
   <section class="mt-24 mb-24 mx-auto text-center p-8">
-    <h3 class="tracking-widest mb-8">MISSION</h3>
+    <h3 class="text-orange-600 mb-4">MISSION</h3>
     <p
-      class="font-mono text-sm text-slate-300 leading-loose max-w-prose mx-auto"
+      class="font-mono text-md text-stone-900 leading-relaxed max-w-prose mx-auto"
     >
       We are an African-diaspora inspired art collective named after
       'Sundowners' - a wonderful South African tradition of sharing stories,
@@ -81,9 +81,9 @@
   </section>
 
   <section class="mt-24 mb-24 mx-auto text-center p-8">
-    <h3 class="tracking-widest mb-8">OFFERING</h3>
+    <h3 class="text-orange-600 mb-4">OFFERING</h3>
     <p
-      class="font-mono text-sm text-slate-300 leading-loose max-w-prose mx-auto"
+      class="font-mono text-md text-stone-900 leading-relaxed max-w-prose mx-auto"
     >
       Our camp is centered on creating special liminal spaces to celebrate the
       multicultural art, music, dance, and hospitality that African traditions
@@ -106,9 +106,9 @@
   </section>
 
   <section class="mt-24 mb-24 mx-auto text-center p-8">
-    <h3 class="tracking-widest mb-8">CREW</h3>
+    <h3 class="text-orange-600 mb-4">CREW</h3>
     <p
-      class="font-mono text-sm text-slate-300 leading-loose max-w-prose mx-auto"
+      class="font-mono text-md text-stone-900 leading-relaxed max-w-prose mx-auto"
     >
       Our veteran multi-continental crew offers an experience, interactivity,
       and vibe that is distinct from anything in Black Rock. At every step, we
@@ -118,9 +118,9 @@
   </section>
 
   <section class="mt-24 mb-24 mx-auto text-center p-8">
-    <h3 class="tracking-widest mb-8">HISTORY</h3>
+    <h3 class="text-orange-600 mb-4">HISTORY</h3>
     <p
-      class="font-mono text-sm text-slate-300 leading-loose max-w-prose mx-auto"
+      class="font-mono text-md text-stone-900 leading-relaxed max-w-prose mx-auto"
     >
       In 2017, a passionate crew of longtime Burning Man vets from across the
       globe traveled to South Africa and went on a life-changing wildlife
@@ -132,9 +132,9 @@
   </section>
 
   <section class="mt-24 mb-24 mx-auto text-center p-8">
-    <h3 class="tracking-widest mb-8">COLLABORATE</h3>
+    <h3 class="text-orange-600 mb-4">COLLABORATE</h3>
     <p
-      class="font-mono text-sm text-slate-300 leading-loose max-w-prose mx-auto"
+      class="font-mono text-md text-stone-900 leading-relaxed max-w-prose mx-auto"
     >
       At Black Rock City and year-round, our goal is to spread the Sundowners'
       vision through our flavor of African diaspora events, creative projects,
@@ -144,9 +144,3 @@
     </p>
   </section>
 </div>
-
-<style lang="postcss">
-  :global(html) {
-    background-color: theme(colors.black);
-  }
-</style>
