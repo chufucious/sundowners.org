@@ -15,29 +15,41 @@
 </script>
 
 <div class="fixed top-0 h-3">
-  <img src={gutterTop} alt="top gutter wax fabric pattern" />
+  <img
+    src={gutterTop}
+    alt="top gutter wax fabric pattern"
+    class="h-full object-cover"
+  />
 </div>
 <div class="fixed bottom-0 h-3">
-  <img src={gutterBottom} alt="bottom gutter wax fabric pattern" />
+  <img
+    src={gutterBottom}
+    alt="bottom gutter wax fabric pattern"
+    class="h-full object-cover"
+  />
 </div>
 <div class="fixed top-0 right-0 w-3">
-  <img src={gutterRight} alt="right gutter wax fabric pattern" />
+  <img
+    src={gutterRight}
+    alt="right gutter wax fabric pattern"
+    class="h-full object-cover"
+  />
 </div>
 <div class="fixed top-0 left-0 w-3">
-  <img src={gutterLeft} alt="left gutter wax fabric pattern" />
+  <img
+    src={gutterLeft}
+    alt="left gutter wax fabric pattern"
+    class="h-full object-cover"
+  />
 </div>
 
+<header class="fixed top-8 left-8 flex mix-blend-difference">
+  <img class="h-auto mr-4" alt="sundowners lion logo" srcset={logoLion} />
+  <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
+</header>
+<img srcset={sundownerswalking} sizes="" alt="Sundowners walking" class="" />
+
 <div class="text-white container mx-auto">
-  <header class="fixed top-10 left-10 flex mix-blend-difference">
-    <img class="h-auto mr-4" alt="sundowners lion logo" srcset={logoLion} />
-    <img class="h-auto w-48 object-contain" alt="sundowners" srcset={logo} />
-  </header>
-  <img
-    srcset={sundownerswalking}
-    sizes=""
-    alt="Sundowners walking"
-    class="min-h-[40vh] object-fill"
-  />
   <section class="mt-24 mb-24 mx-auto text-center p-8">
     <h3 class="text-orange-600 mb-4">MISSION</h3>
     <p
