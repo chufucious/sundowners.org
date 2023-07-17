@@ -22,7 +22,7 @@
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
 </script>
 
-<article class="grid grid-cols-12 gap-4 font-mono leading-relaxed">
+<article class="grid grid-cols-12 gap-4 font-mono">
   <header class="col-span-12 h-52">
     <img
       class="w-48 absolute m-auto left-0 right-0 top-8"
@@ -53,15 +53,24 @@
     <picture class="">
       <img srcset={rexanjump} sizes="" alt="jump!" class="" />
     </picture>
-    <div class="h-4 w-full bg-background-sunrise">
-      not working please ignore me
-    </div>
+    <div class="h-4 w-full bg-background-sunrise" />
   </div>
 
-  <section id="intro" class="col-span-12 mt-32">
+  <section id="intro" class="col-span-12 mt-4">
     <div class="grid grid-cols-12 gap-4">
+      <h1
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-7xl font-bold font-sans text-orange-500 tracking-tighter"
+      >
+        HOWZIT!
+      </h1>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-md mb-16 text-orange-950"
+      >
+        Grab a drink and dance with us! We'll be at the Burn 2023 at 4:45 &
+        Grootslang.
+      </p>
+      <p
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">OUR CAMP</span> is centered on
         creating liminal spaces to celebrate the multicultural art, music,
@@ -81,7 +90,7 @@
   <section id="history" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 mb-8 text-orange-950"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 mb-8 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
         crew of longtime Burning Man vets from across the globe traveled to
@@ -128,7 +137,7 @@
   >
     <div class="grid grid-cols-12 gap-4 text-white">
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
       >
         <span class="font-bold">OUR MISSION</span> is to directly challenge nationalism
         through our unique expression of diversity. We are an African-diaspora inspired
@@ -141,7 +150,7 @@
         </picture>
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32 leading-relaxed"
       >
         We feel Burning Man, as the world’s largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
@@ -153,7 +162,7 @@
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950 mb-8"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950 mb-8 leading-relaxed"
       >
         <span class="text-orange-500 font-bold"
           >OUR VETERAN, MULTI-CONTINENTAL CREW</span
@@ -170,7 +179,7 @@
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
         you would like to participate as a musician, DJ, dancer, artist or in
