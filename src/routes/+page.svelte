@@ -10,7 +10,7 @@
   import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
   import runninglion from "$lib/assets/images/Photos/runninglion.jpg?w=400;900;1200&as=srcset";
   import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
-  import logoMosaic from "$lib/assets/images/logo/mosaic.png?w=400;900;1200&as=srcset";
+  import logoMosaic from "$lib/assets/images/logo/Mosaic.png?w=400;900;1200&as=srcset";
   import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg?w=400;1080&as=srcset";
   import rexanFire from "$lib/assets/images/Photos/rexan-fire.jpg?w=400;1080&as=srcset";
   import rexanDancer from "$lib/assets/images/Photos/rexan-dancer.jpg?w=400;1080&as=srcset";
