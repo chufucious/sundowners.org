@@ -45,7 +45,7 @@
 
   <section id="intro" class="col-span-12 mt-32">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mb-8 text-orange-950">
+      <p class="col-start-3 col-span-6 text-sm mb-8 text-orange-950">
         <span class="text-orange-500 font-bold">OUR CAMP</span> is centered on
         creating liminal spaces to celebrate the multicultural art, music,
         dance, and hospitality that African traditions and speakeasies bring to
@@ -63,7 +63,7 @@
   </section>
   <section id="history" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48 mb-8 text-orange-950">
+      <p class="col-start-3 col-span-6 text-sm mt-48 mb-8 text-orange-950">
         <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
         crew of longtime Burning Man vets from across the globe traveled to
         South Africa and went on a life-changing wildlife safari. On the
@@ -106,7 +106,7 @@
     class="col-span-12 bg-gradient-to-b from-indigo-400 to-orange-300 mt-48"
   >
     <div class="grid grid-cols-12 gap-4 text-white">
-      <p class="col-start-7 col-span-4 mt-48 mb-8">
+      <p class="col-start-7 col-span-4 text-sm mt-48 mb-8">
         <span class="font-bold">OUR MISSION</span> is to directly challenge nationalism
         through our unique expression of diversity. We are an African-diaspora inspired
         art collective named after 'Sundowners' - a wonderful South African tradition
@@ -117,7 +117,7 @@
           <img srcset={katiesunset} sizes="" alt="jump!" class="" />
         </picture>
       </div>
-      <p class="col-start-7 col-span-4 mt-8 mb-32">
+      <p class="col-start-7 col-span-4 text-sm mt-8 mb-32">
         We feel Burning Man, as the world’s largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
         itself across Africa, America, South America, and the Caribbean.
@@ -127,7 +127,7 @@
 
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48 text-orange-950 mb-8">
+      <p class="col-start-3 col-span-6 text-sm mt-48 text-orange-950 mb-8">
         <span class="text-orange-500 font-bold"
           >OUR VETERAN, MULTI-CONTINENTAL CREW</span
         > offers an experience, interactivity, and vibe that is distinct from anything
@@ -142,7 +142,7 @@
 
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48 text-orange-950">
+      <p class="col-start-3 col-span-6 text-sm mt-48 text-orange-950">
         <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
         you would like to participate as a musician, DJ, dancer, artist or in
         any creative capacity. At Black Rock City and year-round, our goal is to
