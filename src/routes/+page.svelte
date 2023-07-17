@@ -18,6 +18,7 @@
   import group2022 from "$lib/assets/images/Photos/2022-group.jpg?w=400;1080&as=srcset";
   import danSign from "$lib/assets/images/Photos/dan-sign.jpg?w=400;1080&as=srcset";
   import gregFlying from "$lib/assets/images/Photos/greg-flying.jpg?w=400;1080&as=srcset";
+  import footerImage from "$lib/assets/images/Footer.png?w=400;1080&as=srcset";
 </script>
 
 <article class="grid grid-cols-12 gap-4 font-mono leading-relaxed">
@@ -44,16 +45,16 @@
 
   <section id="intro" class="col-span-12 mt-32">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mb-8">
-        <span class="font-bold">OUR CAMP</span> is centered on creating liminal
-        spaces to celebrate the multicultural art, music, dance, and hospitality
-        that African traditions and speakeasies bring to the world.<br /><br
-        />We strive for a holistic offering through our shebeen speakeasy and
-        safari-theme art car. However, the deep artistry, meaning, and humanity
-        of African-based music is our creative North Star.<br /><br />We flavor
-        our experience through Afrofuturism, imagining a positive, inclusive
-        future through speculative art and technology, representing the diverse
-        background and skills of our community.
+      <p class="col-start-3 col-span-6 mb-8 text-orange-950">
+        <span class="text-orange-500 font-bold">OUR CAMP</span> is centered on
+        creating liminal spaces to celebrate the multicultural art, music,
+        dance, and hospitality that African traditions and speakeasies bring to
+        the world.<br /><br />We strive for a holistic offering through our
+        shebeen speakeasy and safari-theme art car. However, the deep artistry,
+        meaning, and humanity of African-based music is our creative North Star.<br
+        /><br />We flavor our experience through Afrofuturism, imagining a
+        positive, inclusive future through speculative art and technology,
+        representing the diverse background and skills of our community.
       </p>
     </div>
     <div class="col-span-12 flex overflow-x-auto no-scrollbar">
@@ -62,11 +63,12 @@
   </section>
   <section id="history" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48 mb-8">
-        <span class="font-bold">IN 2017</span>, a passionate crew of longtime
-        Burning Man vets from across the globe traveled to South Africa and went
-        on a life-changing wildlife safari. On the Savannah, we would end each
-        day with the country's lovely sunset social ceremony.<br /><br />
+      <p class="col-start-3 col-span-6 mt-48 mb-8 text-orange-950">
+        <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
+        crew of longtime Burning Man vets from across the globe traveled to
+        South Africa and went on a life-changing wildlife safari. On the
+        Savannah, we would end each day with the country's lovely sunset social
+        ceremony.<br /><br />
         That same year, we dubbed ourselves Sundowners and created Rexan, a psychedelic
         safari-themed art car to bring this special cultural ritual to the Burning
         Man community and beyond.
@@ -115,7 +117,7 @@
           <img srcset={katiesunset} sizes="" alt="jump!" class="" />
         </picture>
       </div>
-      <p class="col-start-7 col-span-4 mt-8 mb-24">
+      <p class="col-start-7 col-span-4 mt-8 mb-32">
         We feel Burning Man, as the world’s largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
         itself across Africa, America, South America, and the Caribbean.
@@ -125,10 +127,11 @@
 
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48">
-        <span class="font-bold">OUR VETERAN, MULTI-CONTINENTAL CREW</span> offers
-        an experience, interactivity, and vibe that is distinct from anything in
-        Black Rock. At every step, we strive to share the wonder and appreciation
+      <p class="col-start-3 col-span-6 mt-48 text-orange-950 mb-8">
+        <span class="text-orange-500 font-bold"
+          >OUR VETERAN, MULTI-CONTINENTAL CREW</span
+        > offers an experience, interactivity, and vibe that is distinct from anything
+        in Black Rock. At every step, we strive to share the wonder and appreciation
         for one of the most special places on the planet, much like Burning Man itself.
       </p>
       <div class="col-start-3 col-span-8 flex overflow-x-auto no-scrollbar">
@@ -139,13 +142,13 @@
 
   <section id="collaborate" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
-      <p class="col-start-3 col-span-6 mt-48">
-        <span class="font-bold">COLLABORATE WITH US</span> if you would like to
-        participate as a musician, DJ, dancer, artist or in any creative
-        capacity. At Black Rock City and year-round, our goal is to spread the
-        Sundowners' vision through our flavor of African diaspora events,
-        creative projects, and community involvement.<br /><br />We would love
-        to hear from you.<br /><br />
+      <p class="col-start-3 col-span-6 mt-48 text-orange-950">
+        <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
+        you would like to participate as a musician, DJ, dancer, artist or in
+        any creative capacity. At Black Rock City and year-round, our goal is to
+        spread the Sundowners' vision through our flavor of African diaspora
+        events, creative projects, and community involvement.<br /><br />We
+        would love to hear from you.<br /><br />
 
         <button
           class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-none"
@@ -154,5 +157,7 @@
       </p>
     </div>
   </section>
-  <footer class="h-96">end</footer>
+  <footer class="col-span-12 mt-32">
+    <img srcset={footerImage} sizes="" alt="footer" class="" />
+  </footer>
 </article>
