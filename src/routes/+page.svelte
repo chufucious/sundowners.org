@@ -73,7 +73,7 @@
         safari-themed art car to bring this special cultural ritual to the Burning
         Man community and beyond.
       </p>
-      <div class="col-span-12 flex overflow-x-auto no-scrollbar">
+      <div class="col-start-2 col-span-10 flex overflow-x-auto no-scrollbar">
         <img
           srcset={gregonrexan}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
