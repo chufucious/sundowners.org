@@ -19,6 +19,7 @@
   import danSign from "$lib/assets/images/Photos/dan-sign.jpg?w=400;1080&as=srcset";
   import gregFlying from "$lib/assets/images/Photos/greg-flying.jpg?w=400;1080&as=srcset";
   import footerImage from "$lib/assets/images/Footer.png?w=400;1080&as=srcset";
+  import fabricSunrise from "$lib/assets/images/wax-fabric/sunrise.jpeg?w=400";
 </script>
 
 <article class="grid grid-cols-12 gap-4 font-mono leading-relaxed">
@@ -39,9 +40,14 @@
     </picture>
   </header>
 
-  <picture class="col-start-3 col-span-8">
-    <img srcset={rexanjump} sizes="" alt="jump!" class="" />
-  </picture>
+  <div class="col-start-3 col-span-8">
+    <picture class="">
+      <img srcset={rexanjump} sizes="" alt="jump!" class="" />
+    </picture>
+    <div class="h-4 w-full bg-background-sunrise">
+      not working please ignore me
+    </div>
+  </div>
 
   <section id="intro" class="col-span-12 mt-32">
     <div class="grid grid-cols-12 gap-4">
