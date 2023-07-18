@@ -27,7 +27,7 @@
   <title>Sundowners – Black Rock City</title>
   <meta
     name="description"
-    content="Sundowners is centered on creating liminal spaces to celebrate the
+    content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the
     multicultural art, music, dance, and hospitality that African traditions and
     speakeasies bring to the world."
   />
