@@ -23,6 +23,16 @@
   import rexanEvolution from "$lib/assets/rexan-evolution.png?w=1600";
 </script>
 
+<svelte:head>
+  <title>Sundowners – Black Rock City</title>
+  <meta
+    name="description"
+    content="Sundowners is centered on creating liminal spaces to celebrate the
+    multicultural art, music, dance, and hospitality that African traditions and
+    speakeasies bring to the world."
+  />
+</svelte:head>
+
 <article class="grid grid-cols-12 gap-4 font-mono">
   <header class="col-span-12 h-52">
     <div
