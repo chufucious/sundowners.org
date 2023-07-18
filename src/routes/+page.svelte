@@ -35,7 +35,7 @@
       style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
     />
     <img
-      class="w-48 absolute m-auto left-0 right-0 top-16"
+      class="w-48 absolute m-auto left-0 right-0 top-12 md:top-16"
       srcset={logoMosaic}
       alt="sundowners mosaic logo"
     />
