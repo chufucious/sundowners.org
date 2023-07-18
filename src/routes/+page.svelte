@@ -20,12 +20,19 @@
   import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;1080&as=srcset";
   import footerImage from "$lib/assets/Footer.png?w=400;1080&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
+  import patternDazzle from "$lib/assets/dazzle.jpeg?w=400";
+  import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
+  import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800";
 </script>
 
 <article class="grid grid-cols-12 gap-4 font-mono">
   <header class="col-span-12 h-52">
+    <div
+      class="h-4 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
     <img
-      class="w-48 absolute m-auto left-0 right-0 top-8"
+      class="w-48 absolute m-auto left-0 right-0 top-16"
       srcset={logoMosaic}
       alt="sundowners mosaic logo"
     />
@@ -38,13 +45,16 @@
         class=""
       />
     </picture>
+    <div
+      class="h-2 w-full"
+      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat-x;"
+    />
   </header>
 
   <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8">
     <picture>
       <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
     </picture>
-    <div class="h-4 w-full bg-background-sunrise">hello</div>
   </div>
 
   <section id="intro" class="col-span-12 mt-4">
@@ -75,9 +85,17 @@
         representing the diverse background and skills of our community.
       </p>
     </div>
+    <div
+      class="h-8 w-full"
+      style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
+    />
     <div class="col-span-12 flex overflow-x-auto no-scrollbar">
       <img srcset={rexanDancer} alt="dancer on rexan" />
     </div>
+    <div
+      class="h-8 w-full"
+      style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
+    />
   </section>
   <section id="history" class="col-span-12">
     <div class="grid grid-cols-12 gap-4">
@@ -127,6 +145,10 @@
     id="mission"
     class="col-span-12 bg-gradient-to-b from-indigo-400 to-orange-300 mt-48"
   >
+    <div
+      class="h-4 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
     <div class="grid grid-cols-12 gap-4 text-white">
       <p
         class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
@@ -149,11 +171,18 @@
         itself across Africa, America, South America, and the Caribbean.
       </p>
     </div>
+    <div
+      class="h-4 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
   </section>
 
   <section id="collaborate" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8">
+      <div
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-4"
+        style="background-image: url('{patternFans}') ; background-repeat: repeat-x;"
+      >
         <img srcset={gregFlying} alt="dan with sign" />
       </div>
       <p
@@ -188,6 +217,9 @@
     </div>
   </section>
   <footer class="col-span-12 mt-32">
-    <img srcset={footerImage} sizes="" alt="footer" class="" />
+    <div
+      class="h-32 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
   </footer>
 </article>
