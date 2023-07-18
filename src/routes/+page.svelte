@@ -23,6 +23,9 @@
   import patternDazzle from "$lib/assets/dazzle.jpeg?w=400";
   import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
   import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800";
+  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
+  import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800";
+  import rexanEvolution from "$lib/assets/rexan-evolution.png?w=1600";
 </script>
 
 <article class="grid grid-cols-12 gap-4 font-mono">
@@ -51,10 +54,11 @@
     />
   </header>
 
-  <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8">
-    <picture>
-      <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
-    </picture>
+  <div
+    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2"
+    style="background-image: url('{patternSunflower}') ; background-repeat: repeat-x; background-position: center;"
+  >
+    <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
   </div>
 
   <section id="intro" class="col-span-12 mt-4">
@@ -86,21 +90,78 @@
       </p>
     </div>
     <div
-      class="h-8 w-full"
+      class="h-2 md:h-4 w-full"
       style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
     />
     <div class="col-span-12 flex overflow-x-auto no-scrollbar">
       <img srcset={rexanDancer} alt="dancer on rexan" />
     </div>
     <div
-      class="h-8 w-full"
+      class="h-2 md:h-4 w-full"
       style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
     />
   </section>
-  <section id="history" class="col-span-12">
+
+  <section id="crew" class="col-span-12 mt-48">
+    <div class="grid grid-cols-12 gap-4">
+      <div
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 md:p-4 mb-8"
+        style="background-image: url('{patternFans}') ; background-repeat: repeat-x;"
+      >
+        <img srcset={gregFlying} alt="supagreg" />
+      </div>
+      <p
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm text-orange-950 leading-relaxed"
+      >
+        <span class="text-orange-500 font-bold"
+          >OUR VETERAN, MULTI-CONTINENTAL CREW</span
+        > offers an experience, interactivity, and vibe that is distinct from anything
+        in Black Rock. At every step, we strive to share the wonder and appreciation
+        for one of the most special places on the planet, much like Burning Man itself.
+      </p>
+    </div>
+  </section>
+
+  <section
+    id="mission"
+    class="col-span-12 bg-gradient-to-b from-sky-900 bg-amber-800 mt-48"
+  >
+    <div
+      class="h-2 md:h-4 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
+    <div class="grid grid-cols-12 gap-4 text-white">
+      <p
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
+      >
+        <span class="font-bold">OUR MISSION</span> is to directly challenge nationalism
+        through our unique expression of diversity. We are an African-diaspora inspired
+        art collective named after 'Sundowners' - a wonderful South African tradition
+        of sharing stories, laughter, and libations at dusk.
+      </p>
+      <div class="col-span-12 md:col-start-3 md:col-span-8">
+        <picture class="col-start-3 col-span-8">
+          <img srcset={katiesunset} sizes="" alt="jump!" class="" />
+        </picture>
+      </div>
+      <p
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32 leading-relaxed"
+      >
+        We feel Burning Man, as the world’s largest temporary city, is a fitting
+        ecosystem to explore a unique ethnographic heritage that has expressed
+        itself across Africa, America, South America, and the Caribbean.
+      </p>
+    </div>
+    <div
+      class="h-2 md:h-4 w-full"
+      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+    />
+  </section>
+
+  <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 mb-8 text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
         crew of longtime Burning Man vets from across the globe traveled to
@@ -111,8 +172,19 @@
         safari-themed art car to bring this special cultural ritual to the Burning
         Man community and beyond.
       </p>
+      <div class="col-span-12 md:col-start-2 md:col-span-10 p-2 mb-8">
+        <img
+          srcset={rexanEvolution}
+          alt="the evolution of our art car, rexan"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section id="collaborate" class="col-span-12 mt-48">
+    <div class="grid grid-cols-12 gap-4">
       <div
-        class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar"
+        class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar mb-8"
       >
         <img
           srcset={gregonrexan}
@@ -139,68 +211,8 @@
           class="max-h-96"
         />
       </div>
-    </div>
-  </section>
-  <section
-    id="mission"
-    class="col-span-12 bg-gradient-to-b from-indigo-400 to-orange-300 mt-48"
-  >
-    <div
-      class="h-4 w-full"
-      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
-    />
-    <div class="grid grid-cols-12 gap-4 text-white">
-      <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
-      >
-        <span class="font-bold">OUR MISSION</span> is to directly challenge nationalism
-        through our unique expression of diversity. We are an African-diaspora inspired
-        art collective named after 'Sundowners' - a wonderful South African tradition
-        of sharing stories, laughter, and libations at dusk.
-      </p>
-      <div class="col-span-12 md:col-start-3 md:col-span-8">
-        <picture class="col-start-3 col-span-8">
-          <img srcset={katiesunset} sizes="" alt="jump!" class="" />
-        </picture>
-      </div>
-      <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32 leading-relaxed"
-      >
-        We feel Burning Man, as the world’s largest temporary city, is a fitting
-        ecosystem to explore a unique ethnographic heritage that has expressed
-        itself across Africa, America, South America, and the Caribbean.
-      </p>
-    </div>
-    <div
-      class="h-4 w-full"
-      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
-    />
-  </section>
-
-  <section id="collaborate" class="col-span-12 mt-48">
-    <div class="grid grid-cols-12 gap-4">
-      <div
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-4"
-        style="background-image: url('{patternFans}') ; background-repeat: repeat-x;"
-      >
-        <img srcset={gregFlying} alt="dan with sign" />
-      </div>
       <p
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm text-orange-950 leading-relaxed"
-      >
-        <span class="text-orange-500 font-bold"
-          >OUR VETERAN, MULTI-CONTINENTAL CREW</span
-        > offers an experience, interactivity, and vibe that is distinct from anything
-        in Black Rock. At every step, we strive to share the wonder and appreciation
-        for one of the most special places on the planet, much like Burning Man itself.
-      </p>
-    </div>
-  </section>
-
-  <section id="collaborate" class="col-span-12">
-    <div class="grid grid-cols-12 gap-4">
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
         you would like to participate as a musician, DJ, dancer, artist or in
