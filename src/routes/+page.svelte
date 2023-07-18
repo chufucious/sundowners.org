@@ -1,25 +1,25 @@
 <script>
-  import logo from "$lib/assets/images/logo/words.png?w=400;900;1200&as=srcset";
-  import logoLion from "$lib/assets/images/logo/lion.svg?w=400;900;1200&as=srcset";
-  import gutterBottom from "$lib/assets/images/Gutter/Bottom.png";
-  import gutterLeft from "$lib/assets/images/Gutter/Left.png";
-  import gutterTop from "$lib/assets/images/Gutter/Top.png";
-  import gutterRight from "$lib/assets/images/Gutter/Right.png";
-  import katiesunset from "$lib/assets/images/Photos/katiesunset.jpg?w=400;900;1200&as=srcset";
-  import devofisheye from "$lib/assets/images/Photos/devofisheye.jpg?w=400;900;1200&as=srcset";
-  import gregonrexan from "$lib/assets/images/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
-  import runninglion from "$lib/assets/images/Photos/runninglion.jpg?w=400;900;1200&as=srcset";
-  import rexanjump from "$lib/assets/images/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
-  import logoMosaic from "$lib/assets/images/logo/Mosaic.png?w=400;900;1200&as=srcset";
-  import sundownerswalking from "$lib/assets/images/Photos/sundownerswalking.jpg?w=400;1080&as=srcset";
-  import rexanFire from "$lib/assets/images/Photos/rexan-fire.jpg?w=400;1080&as=srcset";
-  import rexanDancer from "$lib/assets/images/Photos/rexan-dancer.jpg?w=400;1080&as=srcset";
-  import rexanNightWide from "$lib/assets/images/Photos/rexan-night-wide.jpg?w=400;1080&as=srcset";
-  import group2022 from "$lib/assets/images/Photos/2022-group.jpg?w=400;1080&as=srcset";
-  import danSign from "$lib/assets/images/Photos/dan-sign.jpg?w=400;1080&as=srcset";
-  import gregFlying from "$lib/assets/images/Photos/greg-flying.jpg?w=400;1080&as=srcset";
-  import footerImage from "$lib/assets/images/Footer.png?w=400;1080&as=srcset";
-  import fabricSunrise from "$lib/assets/images/wax-fabric/sunrise.jpeg?w=400";
+  import logo from "$lib/assets/logo/words.png?w=400;900;1200&as=srcset";
+  import logoLion from "$lib/assets/logo/lion.svg?w=400;900;1200&as=srcset";
+  import gutterBottom from "$lib/assets/Gutter/Bottom.png";
+  import gutterLeft from "$lib/assets/Gutter/Left.png";
+  import gutterTop from "$lib/assets/Gutter/Top.png";
+  import gutterRight from "$lib/assets/Gutter/Right.png";
+  import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=400;900;1200&as=srcset";
+  import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;900;1200&as=srcset";
+  import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
+  import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;900;1200&as=srcset";
+  import rexanjump from "$lib/assets/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
+  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&as=srcset";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=400;1080&as=srcset";
+  import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;1080&as=srcset";
+  import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;1080&as=srcset";
+  import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;1080&as=srcset";
+  import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;1080&as=srcset";
+  import danSign from "$lib/assets/Photos/dan-sign.jpg?w=400;1080&as=srcset";
+  import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;1080&as=srcset";
+  import footerImage from "$lib/assets/Footer.png?w=400;1080&as=srcset";
+  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
 </script>
 
 <article class="grid grid-cols-12 gap-4 font-mono leading-relaxed">
