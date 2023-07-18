@@ -66,9 +66,9 @@
       <p
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-md mb-16 text-orange-950"
       >
-        Grab a drink and dance with us! We'll be at the Burn 2023 at <span
-          class="font-bold">4:45 & Grootslang</span
-        >.
+        Meet us at the Burn 2023 at <span class="font-bold"
+          >4:45 & Grootslang</span
+        >. Grab a drink at our shebeen and dance with us!
       </p>
       <p
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
