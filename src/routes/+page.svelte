@@ -172,10 +172,13 @@
         safari-themed art car to bring this special cultural ritual to the Burning
         Man community and beyond.
       </p>
-      <div class="col-span-12 md:col-start-2 md:col-span-10 p-2 mb-8">
+      <div
+        class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar p-2 mb-8"
+      >
         <img
           srcset={rexanEvolution}
           alt="the evolution of our art car, rexan"
+          class="w-full"
         />
       </div>
     </div>
