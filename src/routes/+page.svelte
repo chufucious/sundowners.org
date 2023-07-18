@@ -41,19 +41,10 @@
   </header>
 
   <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8">
-    <!-- <div
-      class="absolute bottom-0 bg-gradient-to-b from-cyan-500 from-0% via-sky-500 via-50% to-blue-500 to-100% p-16"
-    >
-      <h1 class="text-7xl font-bold font-sans text-orange-500">HOWZIT!</h1>
-      <p class="text-md text-white">
-        Grab a drink and dance with us! We're at 4:45 & Grootslang. Click here
-        for our contact information.!
-      </p>
-    </div> -->
-    <picture class="">
-      <img srcset={rexanjump} sizes="" alt="jump!" class="" />
+    <picture>
+      <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
     </picture>
-    <div class="h-4 w-full bg-background-sunrise" />
+    <div class="h-4 w-full bg-background-sunrise">hello</div>
   </div>
 
   <section id="intro" class="col-span-12 mt-4">
