@@ -49,13 +49,13 @@
       />
     </picture>
     <div
-      class="h-2 w-full"
+      class="h-1 md:h-2 w-full"
       style="background-image: url('{fabricSunrise}') ; background-repeat: repeat-x;"
     />
   </header>
 
   <div
-    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2"
+    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 mt-8 md:mt-0"
     style="background-image: url('{patternSunflower}') ; background-repeat: repeat-x; background-position: center;"
   >
     <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
@@ -78,15 +78,15 @@
       <p
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
       >
-        <span class="text-orange-500 font-bold">OUR CAMP</span> is centered on
+        <span class="text-orange-500 font-bold">SUNDOWNERS</span> is centered on
         creating liminal spaces to celebrate the multicultural art, music,
         dance, and hospitality that African traditions and speakeasies bring to
         the world.<br /><br />We strive for a holistic offering through our
-        shebeen speakeasy and safari-theme art car. However, the deep artistry,
-        meaning, and humanity of African-based music is our creative North Star.<br
-        /><br />We flavor our experience through Afrofuturism, imagining a
-        positive, inclusive future through speculative art and technology,
-        representing the diverse background and skills of our community.
+        shebeen speakeasy and safari-theme art car. The deep artistry, meaning,
+        and humanity of African-based music is our creative North Star.<br /><br
+        />We flavor our experience through Afrofuturism, imagining a positive,
+        inclusive future through speculative art and technology, representing
+        the diverse background and skills of our community.
       </p>
     </div>
     <div
@@ -134,9 +134,9 @@
       <p
         class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
       >
-        <span class="font-bold">OUR MISSION</span> is to directly challenge nationalism
-        through our unique expression of diversity. We are an African-diaspora inspired
-        art collective named after 'Sundowners' - a wonderful South African tradition
+        <span class="font-bold">OUR MISSION</span> is to challenge nationalism through
+        our unique expression of diversity. We are an African-diaspora inspired art
+        collective named after 'Sundowners' - a wonderful South African tradition
         of sharing stories, laughter, and libations at dusk.
       </p>
       <div class="col-span-12 md:col-start-3 md:col-span-8">
@@ -147,7 +147,7 @@
       <p
         class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32 leading-relaxed"
       >
-        We feel Burning Man, as the world’s largest temporary city, is a fitting
+        We feel Burning Man, as the world's largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
         itself across Africa, America, South America, and the Caribbean.
       </p>
