@@ -20,7 +20,7 @@
   import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;1080&as=srcset";
   import footerImage from "$lib/assets/Footer.png?w=400;1080&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
-  import patternDazzle from "$lib/assets/dazzle.jpeg?w=400";
+  import patternDazzle from "$lib/assets/dazzle.jpeg?w=500";
   import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
   import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800";
   import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
@@ -50,33 +50,33 @@
     </picture>
     <div
       class="h-1 md:h-2 w-full"
-      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat-x;"
+      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat; background-size: contain; background-position: center;"
     />
   </header>
 
   <div
     class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 mt-8 md:mt-0"
-    style="background-image: url('{patternSunflower}') ; background-repeat: repeat-x; background-position: center;"
+    style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
   >
     <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
   </div>
 
-  <section id="intro" class="col-span-12 mt-4">
+  <section id="intro" class="col-span-12 mt-12">
     <div class="grid grid-cols-12 gap-4">
       <h1
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-5xl md:text-7xl font-bold font-sans text-orange-500 tracking-tighter"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-5xl md:text-6xl font-bold font-sans text-orange-500 tracking-tighter"
       >
-        HOWZIT!
+        HOWZIT.
       </h1>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-md mb-16 text-orange-950"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950"
       >
         Meet us at the Burn 2023 at <span class="font-bold"
           >4:45 & Grootslang</span
         >. Grab a drink at our shebeen and dance with us!
       </p>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">SUNDOWNERS</span> is centered on
         creating liminal spaces to celebrate the multicultural art, music,
@@ -89,29 +89,27 @@
         the diverse background and skills of our community.
       </p>
     </div>
-    <div
-      class="h-2 md:h-4 w-full"
-      style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
-    />
+
     <div class="col-span-12 flex overflow-x-auto no-scrollbar">
-      <img srcset={rexanDancer} alt="dancer on rexan" />
+      <div
+        class="p-2 md:p-4"
+        style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={rexanDancer} alt="dancer on rexan" />
+      </div>
     </div>
-    <div
-      class="h-2 md:h-4 w-full"
-      style="background-image: url('{patternChickens}') ; background-repeat: repeat-x; background-position: center;"
-    />
   </section>
 
   <section id="crew" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <div
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 md:p-4 mb-8"
-        style="background-image: url('{patternFans}') ; background-repeat: repeat-x;"
+        style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={gregFlying} alt="supagreg" />
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold"
           >OUR VETERAN, MULTI-CONTINENTAL CREW</span
@@ -130,14 +128,19 @@
       class="h-2 md:h-4 w-full"
       style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
     />
-    <div class="grid grid-cols-12 gap-4 text-white">
-      <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-48 mb-8 leading-relaxed"
+    <div class="grid grid-cols-12 gap-4 text-white pt-48">
+      <h1
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-3xl font-sans text-white tracking-tighter"
       >
-        <span class="font-bold">OUR MISSION</span> is to challenge nationalism through
-        our unique expression of diversity. We are an African-diaspora inspired art
-        collective named after 'Sundowners' - a wonderful South African tradition
-        of sharing stories, laughter, and libations at dusk.
+        Our mission is to challenge nationalism through our unique expression of
+        diversity
+      </h1>
+      <p
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 leading-relaxed"
+      >
+        We are an African-diaspora inspired art collective named after
+        'Sundowners' - a wonderful South African tradition of sharing stories,
+        laughter, and libations at dusk.
       </p>
       <div class="col-span-12 md:col-start-3 md:col-span-8">
         <picture class="col-start-3 col-span-8">
@@ -161,7 +164,7 @@
   <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mb-8 text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
         crew of longtime Burning Man vets from across the globe traveled to
@@ -215,7 +218,7 @@
         />
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
         you would like to participate as a musician, DJ, dancer, artist or in
