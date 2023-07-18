@@ -159,10 +159,13 @@
     </div>
   </section>
 
-  <section id="collaborate" class="col-span-12">
+  <section id="collaborate" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
+      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8">
+        <img srcset={gregFlying} alt="dan with sign" />
+      </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm mt-48 text-orange-950 mb-8 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-6 text-sm text-orange-950 leading-relaxed"
       >
         <span class="text-orange-500 font-bold"
           >OUR VETERAN, MULTI-CONTINENTAL CREW</span
@@ -170,9 +173,6 @@
         in Black Rock. At every step, we strive to share the wonder and appreciation
         for one of the most special places on the planet, much like Burning Man itself.
       </p>
-      <div class="col-start-3 col-span-8 flex overflow-x-auto no-scrollbar">
-        <img srcset={gregFlying} alt="dan with sign" />
-      </div>
     </div>
   </section>
 
