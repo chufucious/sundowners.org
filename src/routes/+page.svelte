@@ -1,10 +1,6 @@
 <script>
   import logo from "$lib/assets/logo/words.png?w=400;900;1200&as=srcset";
   import logoLion from "$lib/assets/logo/lion.svg?w=400;900;1200&as=srcset";
-  import gutterBottom from "$lib/assets/Gutter/Bottom.png";
-  import gutterLeft from "$lib/assets/Gutter/Left.png";
-  import gutterTop from "$lib/assets/Gutter/Top.png";
-  import gutterRight from "$lib/assets/Gutter/Right.png";
   import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=400;900;1200&as=srcset";
   import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;900;1200&as=srcset";
   import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
@@ -18,7 +14,6 @@
   import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;1080&as=srcset";
   import danSign from "$lib/assets/Photos/dan-sign.jpg?w=400;1080&as=srcset";
   import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;1080&as=srcset";
-  import footerImage from "$lib/assets/Footer.png?w=400;1080&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
   import patternDazzle from "$lib/assets/dazzle.jpeg?w=500";
   import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
@@ -69,14 +64,14 @@
         HOWZIT.
       </h1>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950 max-w-prose"
       >
         Meet us at the Burn 2023 at <span class="font-bold"
           >4:45 & Grootslang</span
         >. Grab a drink at our shebeen and dance with us!
       </p>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed max-w-prose"
       >
         <span class="text-orange-500 font-bold">SUNDOWNERS</span> is centered on
         creating liminal spaces to celebrate the multicultural art, music,
@@ -109,7 +104,7 @@
         <img srcset={gregFlying} alt="supagreg" />
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-5 text-sm text-orange-950 leading-relaxed max-w-prose"
       >
         <span class="text-orange-500 font-bold"
           >OUR VETERAN, MULTI-CONTINENTAL CREW</span
@@ -164,7 +159,7 @@
   <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed max-w-prose"
       >
         <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
         crew of longtime Burning Man vets from across the globe traveled to
@@ -218,7 +213,7 @@
         />
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed max-w-prose"
       >
         <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
         you would like to participate as a musician, DJ, dancer, artist or in
