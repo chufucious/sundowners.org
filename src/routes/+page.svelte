@@ -55,7 +55,7 @@
     </picture>
     <div
       class="h-1 md:h-2 w-full"
-      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat; background-size: 25%; background-position: center;"
     />
   </header>
 
@@ -68,39 +68,57 @@
 
   <section id="intro" class="col-span-12 mt-12">
     <div class="grid grid-cols-12 gap-4">
-      <h1
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-5xl md:text-6xl font-bold font-sans text-orange-500 tracking-tighter"
-      >
-        HOWZIT.
-      </h1>
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950 max-w-prose"
-      >
-        Meet us at the Burn 2023 at <span class="font-bold"
-          >4:45 & Grootslang</span
-        >.<br />Grab a drink at our shebeen and dance with us!
-      </p>
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed max-w-prose"
-      >
-        <span class="text-orange-500 font-bold">SUNDOWNERS</span> is centered on
-        creating liminal spaces to celebrate the multicultural art, music,
-        dance, and hospitality that African traditions and speakeasies bring to
-        the world.<br /><br />We strive for a holistic offering through our
-        shebeen speakeasy and safari-theme art car. The deep artistry, meaning,
-        and humanity of African-based music is our creative North Star.<br /><br
-        />We flavor our experience through Afrofuturism, imagining a positive,
-        inclusive future through speculative art and technology, representing
-        the diverse background and skills of our community.
-      </p>
-    </div>
-
-    <div class="col-span-12 flex overflow-x-auto no-scrollbar">
+      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+        <h1
+          class=" text-5xl md:text-6xl font-bold font-sans text-orange-500 tracking-tighter"
+        >
+          HOWZIT.
+        </h1>
+      </div>
+      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+        <h2 class="text-xl md:text-2xl font-sans text-orange-950 mb-4">
+          Sundowners is centered on creating liminal spaces to celebrate the
+          multicultural art, music, dance, and hospitality that African
+          traditions and speakeasies bring to the world.
+        </h2>
+        <p class="text-md mb-8 text-orange-950 leading-relaxed max-w-prose">
+          We strive for a holistic offering through our shebeen speakeasy and
+          safari-theme art car. The deep artistry, meaning, and humanity of
+          African-based music is our creative North Star.<br /><br />We flavor
+          our experience through Afrofuturism, imagining a positive, inclusive
+          future through speculative art and technology, representing the
+          diverse background and skills of our community.
+        </p>
+      </div>
       <div
-        class="p-2 md:p-4"
-        style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+        class="col-start-2 col-span-10 md:col-start-8 md:col-span-3 md:pl-16"
       >
-        <img srcset={rexanDancer} alt="dancer on rexan" />
+        <div
+          class=" rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit"
+        >
+          <div class="text-xs p-4 font-bold">BURNING MAN 2023</div>
+          <div class="p-4">
+            <h3 class="text-stone-500 text-xs tracking-tighter">ADDRESS</h3>
+            <p class="text-sm">4:45 & Grootslang</p>
+          </div>
+          <div class="p-4">
+            <h3 class="text-stone-500 text-xs tracking-tighter">INSTAGRAM</h3>
+            <p class="text-sm">@sundownersbrc</p>
+          </div>
+          <div class="p-4">
+            <h3 class="text-stone-500 text-xs tracking-tighter">EMAIL</h3>
+            <p class="text-sm">Contact Us</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-span-12 flex overflow-x-auto no-scrollbar mt-24">
+        <div
+          class="p-2 md:p-4"
+          style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+        >
+          <img srcset={rexanDancer} alt="dancer on rexan" />
+        </div>
       </div>
     </div>
   </section>
@@ -113,14 +131,17 @@
       >
         <img srcset={gregFlying} alt="supagreg" />
       </div>
-      <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-5 text-sm text-orange-950 leading-relaxed max-w-prose"
+      <h2
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-sans text-orange-950 mb-4"
       >
-        <span class="text-orange-500 font-bold"
-          >OUR VETERAN, MULTI-CONTINENTAL CREW</span
-        > offers an experience, interactivity, and vibe that is distinct from anything
-        in Black Rock. At every step, we strive to share the wonder and appreciation
-        for one of the most special places on the planet, much like Burning Man itself.
+        Our veteran, multi-continental crew offers an experience, interactivity,
+        and vibe that is distinct from anything in Black Rock.
+      </h2>
+      <p
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md text-orange-950 leading-relaxed max-w-prose"
+      >
+        At every step, we strive to share the wonder and appreciation for one of
+        the most special places on the planet, much like Burning Man itself.
       </p>
     </div>
   </section>
@@ -134,14 +155,14 @@
       style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
     />
     <div class="grid grid-cols-12 gap-4 text-white pt-48">
-      <h1
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-3xl font-sans text-white tracking-tighter"
+      <h2
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-sans text-white mb-4"
       >
         Our mission is to challenge nationalism through our unique expression of
-        diversity
-      </h1>
+        diversity.
+      </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md mb-8 leading-relaxed"
       >
         We are an African-diaspora inspired art collective named after
         'Sundowners' - a wonderful South African tradition of sharing stories,
@@ -153,7 +174,7 @@
         </picture>
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mt-8 mb-32 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md mt-8 mb-32 leading-relaxed"
       >
         We feel Burning Man, as the world's largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
@@ -168,14 +189,18 @@
 
   <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 leading-relaxed max-w-prose"
+      <h2
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-sans text-orange-950 mb-2"
       >
-        <span class="text-orange-500 font-bold">IN 2017</span>, a passionate
-        crew of longtime Burning Man vets from across the globe traveled to
-        South Africa and went on a life-changing wildlife safari. On the
-        Savannah, we would end each day with the country's lovely sunset social
-        ceremony.<br /><br />
+        In 2017, a passionate crew of longtime Burning Man vets from across the
+        globe traveled to South Africa and went on a life-changing wildlife
+        safari.
+      </h2>
+      <p
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950 leading-relaxed max-w-prose"
+      >
+        On the Savannah, we would end each day with the country's lovely sunset
+        social ceremony.<br /><br />
         That same year, we dubbed ourselves Sundowners and created Rexan, a psychedelic
         safari-themed art car to bring this special cultural ritual to the Burning
         Man community and beyond.
@@ -222,15 +247,19 @@
           class="max-h-96"
         />
       </div>
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 leading-relaxed max-w-prose"
+      <h2
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-sans text-orange-950 mb-2"
       >
-        <span class="text-orange-500 font-bold">COLLABORATE WITH US</span> if
-        you would like to participate as a musician, DJ, dancer, artist or in
-        any creative capacity. At Black Rock City and year-round, our goal is to
-        spread the Sundowners' vision through our flavor of African diaspora
-        events, creative projects, and community involvement.<br /><br />We
-        would love to hear from you.<br /><br />
+        Collaborate with us if you would like to participate as a musician, DJ,
+        dancer, artist or in any creative capacity.
+      </h2>
+      <p
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md text-orange-950 leading-relaxed max-w-prose"
+      >
+        At Black Rock City and year-round, our goal is to spread the Sundowners'
+        vision through our flavor of African diaspora events, creative projects,
+        and community involvement.<br /><br />We would love to hear from you.<br
+        /><br />
 
         <button
           class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-none"
