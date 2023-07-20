@@ -31,6 +31,9 @@
     multicultural art, music, dance, and hospitality that African traditions and
     speakeasies bring to the world."
   />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
+  </style>
 </svelte:head>
 
 <article class="grid grid-cols-12 gap-4 font-mono">
@@ -76,7 +79,7 @@
         </h1>
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-        <h2 class="text-xl md:text-2xl font-sans text-orange-950 mb-4">
+        <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
           multicultural art, music, dance, and hospitality that African
           traditions and speakeasies bring to the world.
@@ -132,7 +135,7 @@
         <img srcset={gregFlying} alt="supagreg" />
       </div>
       <h2
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-sans text-orange-950 mb-4"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
       >
         Our veteran, multi-continental crew offers an experience, interactivity,
         and vibe that is distinct from anything in Black Rock.
@@ -156,7 +159,7 @@
     />
     <div class="grid grid-cols-12 gap-4 text-white pt-48">
       <h2
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-sans text-white mb-4"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
       >
         Our mission is to challenge nationalism through our unique expression of
         diversity.
