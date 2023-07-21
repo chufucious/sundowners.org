@@ -30,6 +30,7 @@
   import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=1600";
   import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=1600";
   import sign from "$lib/assets/Photos/sign.jpg?w=1600";
+  import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=1600";
 </script>
 
 <svelte:head>
@@ -293,16 +294,16 @@
         class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
       >
         <img
-          srcset={gregonrexan}
+          srcset={jonSmoke}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
-          alt="on rexan"
-          class="w-full max-h-96 object-cover"
+          alt="j attracting influencers"
+          class="w-full max-h-64 object-cover"
         />
         <img
           srcset={rexanDancer}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="dancer on rexan"
-          class="w-full max-h-64 object-cover self-end"
+          class="w-full max-h-96 object-cover self-end"
         />
         <img
           srcset={runninglion}
@@ -338,6 +339,12 @@
           srcset={rexanNightWide}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="night time with rexan"
+          class="w-full max-h-96 object-cover"
+        />
+        <img
+          srcset={gregonrexan}
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
+          alt="on rexan"
           class="w-full max-h-96 object-cover"
         />
       </div>
