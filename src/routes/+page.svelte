@@ -107,7 +107,7 @@
         class="col-start-2 col-span-10 md:col-start-8 md:col-span-3 md:pl-16"
       >
         <div
-          class=" rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit"
+          class="bg-white rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit mt-8 md:mt-0"
         >
           <div class="text-xs p-4 font-bold">BURNING MAN 2023</div>
           <div class="p-4">
@@ -116,11 +116,23 @@
           </div>
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter">INSTAGRAM</h3>
-            <p class="text-sm">@sundownersbrc</p>
+            <p class="text-sm">
+              <a
+                href="https://www.instagram.com/sundownerssafari/"
+                class="text-orange-500 underline hover:text-orange-700"
+                >@sundownerssafari</a
+              >
+            </p>
           </div>
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter">EMAIL</h3>
-            <p class="text-sm">Contact Us</p>
+            <p class="text-sm">
+              <a
+                href="mailto:sundownersbrc@gmail.com"
+                class="text-orange-500 underline hover:text-orange-700"
+                >Contact Us</a
+              >
+            </p>
           </div>
         </div>
       </div>
@@ -130,13 +142,13 @@
   <section id="collage" class="col-span-12 mt-24 p-8 overflow-x-hidden">
     <div class="relative w-full h-screen">
       <div
-        class="absolute w-[48rem] top-0 left-1/4 p-2 rotate-1 drop-shadow-xl"
+        class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
         style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={tucoLauren} class="object-cover" alt="t + l" />
       </div>
       <div
-        class="absolute w-[23rem] top-24 left-auto ml-8 p-2 -rotate-1 drop-shadow-xl"
+        class="absolute md:w-[23rem] top-48 md:top-24 md:eft-auto ml-8 p-2 -rotate-1 drop-shadow-xl"
         style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img
@@ -146,13 +158,13 @@
         />
       </div>
       <div
-        class="absolute w-[23rem] bottom-1/4 right-0 p-2 rotate-12 drop-shadow-xl"
+        class="absolute md:w-[23rem] w-[12rem] top-24 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={joshRexan} class="object-cover" alt="j on rexan" />
       </div>
       <div
-        class="absolute w-[44rem] bottom-0 right-48 p-2 rotate-3 drop-shadow-xl"
+        class="absolute md:w-[44rem] bottom-16 md:bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
         style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" />
@@ -230,7 +242,7 @@
         </picture>
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-opacity-80 mt-8 mb-32 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-opacity-80 mt-8 mb-96 leading-relaxed"
       >
         We feel Burning Man, as the world's largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
@@ -303,23 +315,29 @@
           class="max-h-96"
         />
       </div>
+
+      <img
+        srcset={logoLion}
+        class="col-span-12 mx-auto mb-4 mt-24"
+        alt="t + l"
+      />
       <h2
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
+        class="px-8 md:px-0 col-span-12 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
       >
         Collaborate with us if you would like to participate as a musician, DJ,
         dancer, artist or in any creative capacity.
       </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
+        class="col-span-12 max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950 text-opacity-80"
       >
         At Black Rock City and year-round, our goal is to spread the Sundowners'
         vision through our flavor of African diaspora events, creative projects,
         and community involvement.<br /><br />We would love to hear from you.<br
         /><br />
-
-        <button
-          class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-none"
-          >EMAIL US</button
+        <a
+          href="mailto:sundownersbrc@gmail.com"
+          class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+          >Email Us</a
         >
       </p>
     </div>
