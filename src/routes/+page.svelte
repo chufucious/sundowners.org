@@ -11,7 +11,6 @@
   import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;1080&as=srcset";
   import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;1080&as=srcset";
   import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;1080&as=srcset";
-  import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;1080&as=srcset";
   import danSign from "$lib/assets/Photos/dan-sign.jpg?w=400;1080&as=srcset";
   import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;1080&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
@@ -21,6 +20,10 @@
   import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
   import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800";
   import rexanEvolution from "$lib/assets/rexan-evolution.png?w=1600";
+  import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=1600";
+  import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=1600";
+  import group2022 from "$lib/assets/Photos/2022-group.jpg?w=1600";
+  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800";
 </script>
 
 <svelte:head>
@@ -63,7 +66,7 @@
   </header>
 
   <div
-    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 mt-8 md:mt-0"
+    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 mt-8 md:mt-0 -rotate-1"
     style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
   >
     <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
@@ -75,7 +78,7 @@
         <h1
           class=" text-5xl md:text-6xl font-bold font-sans text-orange-500 tracking-tighter"
         >
-          HOWZIT.
+          HOWZIT!
         </h1>
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
@@ -122,32 +125,46 @@
           class="p-2 md:p-4"
           style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
         >
-          <img srcset={rexanDancer} alt="dancer on rexan" />
+          <img srcset={lionAndLeyla} alt="lion and l" />
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="greg" class="col-span-12 mt-48">
+    <div class="grid grid-cols-12 gap-4">
+      <div
+        class="col-start-2 col-span-10 md:col-start-4 md:col-span-8 p-2 md:p-4 mb-8 rotate-1"
+        style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={gregFlying} alt="supacoogie" />
       </div>
     </div>
   </section>
 
   <section id="crew" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
-      <div
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 md:p-4 mb-8"
-        style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
-      >
-        <img srcset={gregFlying} alt="supagreg" />
+      <div class="col-start-2 col-span-6 mr-8">
+        <div
+          class="p-2"
+          style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
+        >
+          <img srcset={group2022} alt="2022 group" />
+        </div>
       </div>
-      <h2
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
-      >
-        Our veteran, multi-continental crew offers an experience, interactivity,
-        and vibe that is distinct from anything in Black Rock.
-      </h2>
-      <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
-      >
-        At every step, we strive to share the wonder and appreciation for one of
-        the most special places on the planet, much like Burning Man itself.
-      </p>
+      <div class="col-start-8 col-span-4">
+        <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+          Our veteran, multi-continental crew offers an experience,
+          interactivity, and vibe that is distinct from anything in Black Rock.
+        </h2>
+        <p
+          class="text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
+        >
+          At every step, we strive to share the wonder and appreciation for one
+          of the most special places on the planet, much like Burning Man
+          itself.
+        </p>
+      </div>
     </div>
   </section>
 
