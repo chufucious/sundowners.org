@@ -1,6 +1,6 @@
 <script>
   import logo from "$lib/assets/logo/words.png?w=400;900;1200&as=srcset";
-  import logoLion from "$lib/assets/logo/lion.svg?w=400;900;1200&as=srcset";
+  import logoLion from "$lib/assets/logo/Lion.svg?w=400;900;1200&as=srcset";
   import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=400;900;1200&as=srcset";
   import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;900;1200&as=srcset";
   import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;900;1200&as=srcset";
