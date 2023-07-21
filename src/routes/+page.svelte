@@ -29,6 +29,7 @@
   import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=1600";
   import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=1600";
   import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=1600";
+  import sign from "$lib/assets/Photos/sign.jpg?w=1600";
 </script>
 
 <svelte:head>
@@ -288,31 +289,56 @@
   <section id="collaborate" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <div
-        class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar mb-8"
+        id="gallery"
+        class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
       >
         <img
           srcset={gregonrexan}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
           alt="on rexan"
-          class="max-h-96"
+          class="w-full max-h-96 object-cover"
         />
         <img
-          srcset={katiesunset}
+          srcset={rexanDancer}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
-          alt="viewing sunset"
-          class="max-h-64"
+          alt="dancer on rexan"
+          class="w-full max-h-64 object-cover self-end"
         />
         <img
           srcset={runninglion}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="a running lion"
-          class="max-h-80"
+          class="w-full max-h-80 object-cover"
+        />
+        <img
+          srcset={sign}
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+          alt="sundowners sign"
+          class="w-full max-h-96 object-cover"
+        />
+        <img
+          srcset={gregFlying}
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+          alt="g flying"
+          class="w-full max-h-80 object-cover self-end"
         />
         <img
           srcset={devofisheye}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="fisheye lens"
-          class="max-h-96"
+          class="w-full max-h-96 object-cover"
+        />
+        <img
+          srcset={rexanFire}
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+          alt="fire on rexan"
+          class="w-full max-h-80 object-cover"
+        />
+        <img
+          srcset={rexanNightWide}
+          sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+          alt="night time with rexan"
+          class="w-full max-h-96 object-cover"
         />
       </div>
 
