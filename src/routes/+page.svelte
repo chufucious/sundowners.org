@@ -148,7 +148,7 @@
         <img srcset={tucoLauren} class="object-cover" alt="t + l" />
       </div>
       <div
-        class="absolute md:w-[23rem] top-48 md:top-24 md:eft-auto ml-8 p-2 -rotate-1 drop-shadow-xl"
+        class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
         style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img
@@ -158,13 +158,13 @@
         />
       </div>
       <div
-        class="absolute md:w-[23rem] w-[12rem] top-24 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
+        class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={joshRexan} class="object-cover" alt="j on rexan" />
       </div>
       <div
-        class="absolute md:w-[44rem] bottom-16 md:bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
+        class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
         style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
         <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" />
