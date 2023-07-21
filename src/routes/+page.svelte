@@ -172,17 +172,17 @@
     </div>
   </section>
 
-  <section id="crew" class="col-span-12 mt-8">
+  <section id="crew" class="col-span-12 md:mt-8">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-start-2 col-span-6 mr-8">
+      <div class="col-span-12 md:col-start-2 md:col-span-6 md:mr-8 px-6">
         <div
-          class="p-2 -rotate-1 drop-shadow-xl"
+          class="w-full p-2 -rotate-1 drop-shadow-xl"
           style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
         >
           <img srcset={group2022} alt="2022 group" />
         </div>
       </div>
-      <div class="col-start-8 col-span-4 mt-8">
+      <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
         <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
           Our veteran, multi-continental crew offers an experience,
           interactivity, and vibe that is distinct from anything in Black Rock.
