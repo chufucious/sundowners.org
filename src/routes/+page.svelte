@@ -17,13 +17,18 @@
   import patternDazzle from "$lib/assets/dazzle.jpeg?w=500";
   import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
   import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800";
-  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
   import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800";
+  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=800";
+  import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=800";
+  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
   import rexanEvolution from "$lib/assets/rexan-evolution.png?w=1600";
   import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=1600";
   import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=1600";
   import group2022 from "$lib/assets/Photos/2022-group.jpg?w=1600";
   import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800";
+  import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=1600";
+  import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=1600";
+  import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=1600";
 </script>
 
 <svelte:head>
@@ -72,7 +77,7 @@
     <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
   </div>
 
-  <section id="intro" class="col-span-12 mt-12">
+  <section id="intro" class="col-span-12 mt-20">
     <div class="grid grid-cols-12 gap-4">
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h1
@@ -119,40 +124,53 @@
           </div>
         </div>
       </div>
-
-      <div class="col-span-12 flex overflow-x-auto no-scrollbar mt-24">
-        <div
-          class="p-2 md:p-4"
-          style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
-        >
-          <img srcset={lionAndLeyla} alt="lion and l" />
-        </div>
-      </div>
     </div>
   </section>
 
-  <section id="greg" class="col-span-12 mt-48">
-    <div class="grid grid-cols-12 gap-4">
+  <section id="collage" class="col-span-12 mt-24 p-8 overflow-x-hidden">
+    <div class="relative w-full h-screen">
       <div
-        class="col-start-2 col-span-10 md:col-start-4 md:col-span-8 p-2 md:p-4 mb-8 rotate-1"
+        class="absolute w-[48rem] top-0 left-1/4 p-2 rotate-1 drop-shadow-xl"
         style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={gregFlying} alt="supacoogie" />
+        <img srcset={tucoLauren} class="object-cover" alt="t + l" />
+      </div>
+      <div
+        class="absolute w-[23rem] top-24 left-auto ml-8 p-2 -rotate-1 drop-shadow-xl"
+        style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img
+          srcset={coogieSign}
+          class=" object-cover"
+          alt="sundowners with sign"
+        />
+      </div>
+      <div
+        class="absolute w-[23rem] bottom-1/4 right-0 p-2 rotate-12 drop-shadow-xl"
+        style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={joshRexan} class="object-cover" alt="j on rexan" />
+      </div>
+      <div
+        class="absolute w-[44rem] bottom-0 right-48 p-2 rotate-3 drop-shadow-xl"
+        style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" />
       </div>
     </div>
   </section>
 
-  <section id="crew" class="col-span-12 mt-48">
+  <section id="crew" class="col-span-12 mt-8">
     <div class="grid grid-cols-12 gap-4">
       <div class="col-start-2 col-span-6 mr-8">
         <div
-          class="p-2"
+          class="p-2 -rotate-1 drop-shadow-xl"
           style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
         >
           <img srcset={group2022} alt="2022 group" />
         </div>
       </div>
-      <div class="col-start-8 col-span-4">
+      <div class="col-start-8 col-span-4 mt-8">
         <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
           Our veteran, multi-continental crew offers an experience,
           interactivity, and vibe that is distinct from anything in Black Rock.
@@ -168,6 +186,17 @@
     </div>
   </section>
 
+  <section id="" class="col-span-12 mt-48 p-8">
+    <div class="flex">
+      <div
+        class="p-2 md:p-4 drop-shadow-xl -rotate-1"
+        style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={lionAndLeyla} alt="lion and l" />
+      </div>
+    </div>
+  </section>
+
   <section
     id="mission"
     class="col-span-12 bg-gradient-to-b from-sky-900 bg-amber-800 mt-48"
@@ -176,7 +205,7 @@
       class="h-2 md:h-4 w-full"
       style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
     />
-    <div class="grid grid-cols-12 gap-4 text-white pt-48">
+    <div class="grid grid-cols-12 gap-4 text-white pt-96">
       <h2
         class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
       >
@@ -192,7 +221,12 @@
       </p>
       <div class="col-span-12 md:col-start-3 md:col-span-8">
         <picture class="col-start-3 col-span-8">
-          <img srcset={katiesunset} sizes="" alt="jump!" class="" />
+          <img
+            srcset={katiesunset}
+            sizes=""
+            alt="k staring into distance"
+            class="drop-shadow-xl"
+          />
         </picture>
       </div>
       <p
