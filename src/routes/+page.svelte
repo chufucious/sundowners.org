@@ -294,6 +294,12 @@
         class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
       >
         <img
+          srcset={gregonrexan}
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
+          alt="on rexan"
+          class="w-full max-h-96 object-cover"
+        />
+        <img
           srcset={jonSmoke}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
           alt="j attracting influencers"
@@ -339,12 +345,6 @@
           srcset={rexanNightWide}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="night time with rexan"
-          class="w-full max-h-96 object-cover"
-        />
-        <img
-          srcset={gregonrexan}
-          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
-          alt="on rexan"
           class="w-full max-h-96 object-cover"
         />
       </div>
