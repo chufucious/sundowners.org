@@ -141,7 +141,7 @@
     </div>
   </section>
 
-  <section id="collage" class="col-span-12 mt-24 p-8 overflow-x-hidden">
+  <section id="collage" class="col-span-12 mt-24 overflow-x-hidden">
     <div class="relative w-full h-screen">
       <div
         class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
@@ -200,14 +200,12 @@
     </div>
   </section>
 
-  <section id="" class="col-span-12 mt-48 p-8">
-    <div class="flex">
-      <div
-        class="p-2 md:p-4 drop-shadow-xl -rotate-1"
-        style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
-      >
-        <img srcset={lionAndLeyla} alt="lion and l" />
-      </div>
+  <section id="" class="col-span-12 mt-48">
+    <div
+      class="p-2 md:p-4 drop-shadow-xl -rotate-1"
+      style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+    >
+      <img srcset={lionAndLeyla} alt="lion and l" class="" />
     </div>
   </section>
 
