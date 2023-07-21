@@ -84,7 +84,9 @@
           multicultural art, music, dance, and hospitality that African
           traditions and speakeasies bring to the world.
         </h2>
-        <p class="text-md mb-8 text-orange-950 leading-relaxed max-w-prose">
+        <p
+          class="text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
+        >
           We strive for a holistic offering through our shebeen speakeasy and
           safari-theme art car. The deep artistry, meaning, and humanity of
           African-based music is our creative North Star.<br /><br />We flavor
@@ -141,7 +143,7 @@
         and vibe that is distinct from anything in Black Rock.
       </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md text-orange-950 leading-relaxed max-w-prose"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
       >
         At every step, we strive to share the wonder and appreciation for one of
         the most special places on the planet, much like Burning Man itself.
@@ -165,7 +167,7 @@
         diversity.
       </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md mb-8 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 text-opacity-80 leading-relaxed"
       >
         We are an African-diaspora inspired art collective named after
         'Sundowners' - a wonderful South African tradition of sharing stories,
@@ -177,7 +179,7 @@
         </picture>
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-md mt-8 mb-32 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-opacity-80 mt-8 mb-32 leading-relaxed"
       >
         We feel Burning Man, as the world's largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
@@ -193,14 +195,14 @@
   <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
       <h2
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-sans text-orange-950 mb-2"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
       >
         In 2017, a passionate crew of longtime Burning Man vets from across the
         globe traveled to South Africa and went on a life-changing wildlife
         safari.
       </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md mb-8 text-orange-950 leading-relaxed max-w-prose"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
       >
         On the Savannah, we would end each day with the country's lovely sunset
         social ceremony.<br /><br />
@@ -251,13 +253,13 @@
         />
       </div>
       <h2
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-sans text-orange-950 mb-2"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
       >
         Collaborate with us if you would like to participate as a musician, DJ,
         dancer, artist or in any creative capacity.
       </h2>
       <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-md text-orange-950 leading-relaxed max-w-prose"
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
       >
         At Black Rock City and year-round, our goal is to spread the Sundowners'
         vision through our flavor of African diaspora events, creative projects,
