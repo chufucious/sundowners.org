@@ -79,7 +79,7 @@
     <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
   </div>
 
-  <section id="intro" class="col-span-12 mt-20">
+  <section id="intro" class="col-span-12 mt-12">
     <div class="grid grid-cols-12 gap-4">
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h1
@@ -141,7 +141,7 @@
     </div>
   </section>
 
-  <section id="collage" class="col-span-12 mt-24 overflow-x-hidden">
+  <section id="collage" class="col-span-12 mt-4 overflow-hidden py-12">
     <div class="relative w-full h-screen">
       <div
         class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
@@ -217,7 +217,7 @@
       class="h-2 md:h-4 w-full"
       style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
     />
-    <div class="grid grid-cols-12 gap-4 text-white pt-96">
+    <div class="grid grid-cols-12 gap-4 text-white pt-48">
       <h2
         class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
       >
@@ -242,7 +242,7 @@
         </picture>
       </div>
       <p
-        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-opacity-80 mt-8 mb-96 leading-relaxed"
+        class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-opacity-80 mt-8 mb-48 leading-relaxed"
       >
         We feel Burning Man, as the world's largest temporary city, is a fitting
         ecosystem to explore a unique ethnographic heritage that has expressed
