@@ -370,6 +370,12 @@
           class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
           >Email Us</a
         >
+
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfv2tBFZXZsBnXomp4Ke-zkuQeW33qUtsqnGlwixeMUJYpAXg/viewform?usp=sf_link"
+          class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+          >DJ Application Form</a
+        >
       </p>
     </div>
   </section>
