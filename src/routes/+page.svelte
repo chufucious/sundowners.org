@@ -81,13 +81,7 @@
 
   <section id="intro" class="col-span-12 mt-12">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-        <h1
-          class=" text-5xl md:text-6xl font-bold font-sans text-orange-500 tracking-tighter"
-        >
-          HOWZIT!
-        </h1>
-      </div>
+      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5" />
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
