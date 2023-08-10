@@ -7,7 +7,7 @@
   import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;900;1200&as=srcset";
   import rexanjump from "$lib/assets/Photos/rexanjump.jpg?w=400;900;1200&as=srcset";
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&as=srcset";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=400;1080&as=srcset";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=1080";
   import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;1080&as=srcset";
   import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;1080&as=srcset";
   import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;1080&as=srcset";
@@ -31,6 +31,9 @@
   import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=1600";
   import sign from "$lib/assets/Photos/sign.jpg?w=1600";
   import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=1600";
+  import shopwebp from "$lib/assets/Shop.png?w=640;768;1024&format=webp&as=srcset";
+  import shoppng from "$lib/assets/Shop.png?w=640";
+  import visitOurStore from "$lib/assets/btn/visit-our-store.png";
 </script>
 
 <svelte:head>
@@ -47,41 +50,30 @@
 </svelte:head>
 
 <article class="grid grid-cols-12 gap-4 font-mono">
-  <header class="col-span-12 h-52">
-    <div
-      class="h-4 w-full"
-      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
-    />
+  <header
+    class="col-span-12 h-[18rem] md:h-[36rem] relative"
+    style="background-image: url('{sundownerswalking}'); background-position: center; background-size: cover;"
+  >
     <img
-      class="w-48 absolute m-auto left-0 right-0 top-12 md:top-16"
+      class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16"
       srcset={logoMosaic}
       alt="sundowners mosaic logo"
     />
 
-    <picture>
-      <img
-        srcset={sundownerswalking}
-        sizes=""
-        alt="Sundowners walking"
-        class=""
-      />
-    </picture>
     <div
-      class="h-1 md:h-2 w-full"
+      class="h-1 md:h-2 w-full absolute bottom-0"
       style="background-image: url('{fabricSunrise}') ; background-repeat: repeat; background-size: 25%; background-position: center;"
     />
   </header>
 
-  <div
-    class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 mt-8 md:mt-0 -rotate-1"
-    style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
-  >
-    <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
-  </div>
-
-  <section id="intro" class="col-span-12 mt-12">
+  <section id="intro" class="col-span-12 relative">
     <div class="grid grid-cols-12 gap-4">
-      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5" />
+      <div
+        class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-72 mb-12"
+        style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      >
+        <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
+      </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
@@ -373,10 +365,30 @@
       </p>
     </div>
   </section>
-  <footer class="col-span-12 mt-32">
-    <div
-      class="h-32 w-full"
-      style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
-    />
+  <footer class="col-span-12 mt-32 relative h-64">
+    <div id="store" class="absolute bottom-0 right-0">
+      <div class="absolute top-0 md:top-12 w-64">
+        <a href="https://shop.sundowners.org/"
+          ><img
+            src={visitOurStore}
+            class="mb-2"
+            alt="click here to visit our store"
+          />
+        </a>
+        <h3
+          class="text-xs text-orange-950 text-opacity-80 leading-relaxed text-center"
+        >
+          20% of each purchase goes towards support for our camp & Rexan 🦁
+        </h3>
+      </div>
+
+      <picture class="">
+        <img
+          src={shoppng}
+          class="w-[24rem] md:w-[32rem]"
+          alt="sundowners merchandise"
+        />
+      </picture>
+    </div>
   </footer>
 </article>
