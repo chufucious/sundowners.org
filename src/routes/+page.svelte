@@ -31,6 +31,9 @@
   import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=1600";
   import sign from "$lib/assets/Photos/sign.jpg?w=1600";
   import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=1600";
+  import shopwebp from "$lib/assets/Shop.png?w=640;768;1024&format=webp&as=srcset";
+  import shoppng from "$lib/assets/Shop.png?w=640";
+  import visitOurStore from "$lib/assets/btn/visit-our-store.png";
 </script>
 
 <svelte:head>
@@ -362,5 +365,30 @@
       </p>
     </div>
   </section>
-  <footer class="col-span-12 mt-32" />
+  <footer class="col-span-12 mt-32 relative h-64">
+    <div id="store" class="absolute bottom-0 right-0">
+      <div class="absolute top-0 md:top-12 w-64">
+        <a href="https://shop.sundowners.org/"
+          ><img
+            src={visitOurStore}
+            class="mb-2"
+            alt="click here to visit our store"
+          />
+        </a>
+        <h3
+          class="text-xs text-orange-950 text-opacity-80 leading-relaxed text-center"
+        >
+          20% of each purchase goes towards support for our camp & Rexan 🦁
+        </h3>
+      </div>
+
+      <picture class="">
+        <img
+          src={shoppng}
+          class="w-[24rem] md:w-[32rem]"
+          alt="sundowners merchandise"
+        />
+      </picture>
+    </div>
+  </footer>
 </article>
