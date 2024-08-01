@@ -97,10 +97,33 @@
         <div
           class="bg-white rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit mt-8 md:mt-0"
         >
-          <div class="text-xs p-4 font-bold">BURNING MAN 2023</div>
-          <div class="p-4">
-            <h3 class="text-stone-500 text-xs tracking-tighter">ADDRESS</h3>
-            <p class="text-sm">4:45 & Grootslang</p>
+          <div class="text-xs p-4 font-bold text-stone-950">BURNING MAN</div>
+
+          <div
+            role="tablist"
+            class="tabs tabs-bordered tabs-xs text-sm text-stone-500 p-4"
+          >
+            <input
+              type="radio"
+              name="my_tabs_1"
+              role="tab"
+              class="tab"
+              aria-label="2024"
+              checked="checked"
+            />
+            <div role="tabpanel" class="tab-content pt-4">
+              Taking the year off 🦁
+            </div>
+            <input
+              type="radio"
+              name="my_tabs_1"
+              role="tab"
+              class="tab"
+              aria-label="2023"
+            />
+            <div role="tabpanel" class="tab-content pt-4">
+              4:45 & Grootslang
+            </div>
           </div>
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter">INSTAGRAM</h3>
