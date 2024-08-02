@@ -261,9 +261,11 @@
         </p>
       </div>
 
-      <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8">
+      <div
+        class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+      >
         <table
-          class="text-orange-950 text-opacity-50 text-xs border-separate border-spacing-4 bg-orange-950 bg-opacity-5"
+          class="text-orange-950 text-opacity-50 text-xs border-separate border-spacing-4 bg-orange-950 bg-opacity-5 w-full"
         >
           <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
 
