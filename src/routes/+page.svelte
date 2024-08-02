@@ -97,33 +97,11 @@
         <div
           class="bg-white rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit mt-8 md:mt-0"
         >
-          <div class="text-xs p-4 font-bold text-stone-950">BURNING MAN</div>
-
-          <div
-            role="tablist"
-            class="tabs tabs-bordered tabs-xs text-sm text-stone-500 p-4"
-          >
-            <input
-              type="radio"
-              name="my_tabs_1"
-              role="tab"
-              class="tab"
-              aria-label="2024"
-              checked="checked"
-            />
-            <div role="tabpanel" class="tab-content pt-4">
-              Taking the year off 🦁
-            </div>
-            <input
-              type="radio"
-              name="my_tabs_1"
-              role="tab"
-              class="tab"
-              aria-label="2023"
-            />
-            <div role="tabpanel" class="tab-content pt-4">
-              4:45 & Grootslang
-            </div>
+          <div class="p-4">
+            <h3 class="text-stone-500 text-xs tracking-tighter">
+              2024: Curiouser & Curiouser
+            </h3>
+            <p class="text-sm text-stone-950">Taking 2024 off 🦁</p>
           </div>
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter">INSTAGRAM</h3>
@@ -266,22 +244,116 @@
 
   <section id="history" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
-      <h2
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-xl md:text-2xl font-garamond text-orange-950 mb-4"
-      >
-        In 2017, a passionate crew of longtime Burning Man vets from across the
-        globe traveled to South Africa and went on a life-changing wildlife
-        safari.
-      </h2>
-      <p
-        class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 text-sm mb-8 text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
-      >
-        On the Savannah, we would end each day with the country's lovely sunset
-        social ceremony.<br /><br />
-        That same year, we dubbed ourselves Sundowners and created Rexan, a psychedelic
-        safari-themed art car to bring this special cultural ritual to the Burning
-        Man community and beyond.
-      </p>
+      <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+        <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+          In 2017, a passionate crew of longtime Burning Man vets from across
+          the globe traveled to South Africa and went on a life-changing
+          wildlife safari.
+        </h2>
+        <p
+          class="text-sm mb-8 text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
+        >
+          On the Savannah, we would end each day with the country's lovely
+          sunset social ceremony.<br /><br />
+          That same year, we dubbed ourselves Sundowners and created Rexan, a psychedelic
+          safari-themed art car to bring this special cultural ritual to the Burning
+          Man community and beyond.
+        </p>
+      </div>
+
+      <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8">
+        <table
+          class="text-orange-950 text-opacity-50 text-xs border-separate border-spacing-4 bg-orange-950 bg-opacity-5"
+        >
+          <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
+
+          <tbody>
+            <tr>
+              <td>2017</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2017-event-archive/2017-art-theme-radical-ritual/"
+                  class="underline hover:text-orange-500">Radical Ritual</a
+                ></td
+              >
+              <td>7:30 & Labyrinth</td>
+            </tr>
+            <tr>
+              <td>2018</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2018-event-archive/"
+                  class="underline hover:text-orange-500">I, Robot</a
+                ></td
+              >
+              <td>8:15 & Cylon</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2019-event-archive/"
+                  class="underline hover:text-orange-500">Metamorphoses</a
+                ></td
+              >
+              <td>4:15 & Hyacinth</td>
+            </tr>
+            <tr class="line-through">
+              <td>2020</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2020-event-archive/"
+                  class="underline hover:text-orange-500">The Multiverse</a
+                ></td
+              >
+              <td>CANCELLED</td>
+            </tr>
+            <tr class="line-through">
+              <td>2021</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2021-event-archive/"
+                  class="underline hover:text-orange-500">The Great Unknown</a
+                ></td
+              >
+              <td>CANCELLED</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2022-event-archive/"
+                  class="underline hover:text-orange-500">Waking Dreams</a
+                ></td
+              >
+              <td>4:15 & Glimmer</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2023-event-archive/"
+                  class="underline hover:text-orange-500">Animalia</a
+                ></td
+              >
+              <td>4:45 & Grootslang</td>
+            </tr>
+
+            <tr>
+              <td>2024</td>
+              <td
+                ><a
+                  href="https://journal.burningman.org/2023/10/philosophical-center/the-theme/2024-curiouser-curiouser/"
+                  class="underline hover:text-orange-500"
+                  >Curiouser & Curiouser</a
+                ></td
+              >
+              <td>Rest year</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div
         class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar p-2 mb-8"
       >
