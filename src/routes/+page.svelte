@@ -98,13 +98,15 @@
           class="bg-white rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit mt-8 md:mt-0"
         >
           <div class="p-4">
-            <h3 class="text-stone-500 text-xs tracking-tighter">
-              2024: Curiouser & Curiouser
+            <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
+              ADDRESS
             </h3>
             <p class="text-sm text-stone-950">Taking 2024 off 🦁</p>
           </div>
           <div class="p-4">
-            <h3 class="text-stone-500 text-xs tracking-tighter">INSTAGRAM</h3>
+            <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
+              INSTAGRAM
+            </h3>
             <p class="text-sm">
               <a
                 href="https://www.instagram.com/sundownerssafari/"
@@ -114,7 +116,7 @@
             </p>
           </div>
           <div class="p-4">
-            <h3 class="text-stone-500 text-xs tracking-tighter">EMAIL</h3>
+            <h3 class="text-stone-500 text-xs tracking-tighter mb-2">EMAIL</h3>
             <p class="text-sm">
               <a
                 href="mailto:sundownersbrc@gmail.com"
@@ -265,7 +267,7 @@
         class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
       >
         <table
-          class="text-orange-950 text-opacity-50 text-xs border-separate border-spacing-4 bg-orange-950 bg-opacity-5 w-full"
+          class="text-orange-950 text-opacity-50 text-xs border-separate border-spacing-4 bg-orange-950 bg-opacity-5 w-full rounded"
         >
           <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
 
