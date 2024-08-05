@@ -34,7 +34,7 @@
   import shopwebp from "$lib/assets/Shop.png?w=640;768;1024&format=webp&as=srcset";
   import shoppng from "$lib/assets/Shop.png?w=640";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png";
-  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg";
+  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=400;900;1200&as=srcset";
 </script>
 
 <svelte:head>
