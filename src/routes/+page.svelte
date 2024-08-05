@@ -34,6 +34,7 @@
   import shopwebp from "$lib/assets/Shop.png?w=640;768;1024&format=webp&as=srcset";
   import shoppng from "$lib/assets/Shop.png?w=640";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png";
+  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg";
 </script>
 
 <svelte:head>
@@ -72,7 +73,7 @@
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-72 mb-12"
         style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={rexanjump} sizes="" alt="jump!" class="max-w-full" />
+        <img srcset={rexanGroup2023} sizes="" alt="jump!" class="max-w-full" />
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
