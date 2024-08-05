@@ -18,7 +18,7 @@
   import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800";
   import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800";
   import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800";
-  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=800";
+  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=400&format=webp";
   import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=800";
   import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800";
   import rexanEvolution from "$lib/assets/rexan-evolution.png?w=1600";
@@ -34,7 +34,7 @@
   import shopwebp from "$lib/assets/Shop.png?w=640;768;1024&format=webp&as=srcset";
   import shoppng from "$lib/assets/Shop.png?w=640";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png";
-  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=400;900;1200&as=srcset";
+  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=800;1600;2400&format=webp&as=srcset";
 </script>
 
 <svelte:head>
@@ -73,7 +73,13 @@
         class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-72 mb-12"
         style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={rexanGroup2023} sizes="" alt="jump!" class="max-w-full" />
+        <img
+          srcset={rexanGroup2023}
+          sizes="(max-width: 768px) 100vw, 80vw"
+          alt="jump!"
+          class="max-w-full"
+          loading="lazy"
+        />
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
@@ -195,7 +201,11 @@
       class="p-2 md:p-4 drop-shadow-xl -rotate-1"
       style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
     >
-      <img srcset={lionAndLeyla} alt="lion and l" class="" />
+      <img
+        srcset={lionAndLeyla}
+        alt="lion and l"
+        class="w-full h-auto object-cover"
+      />
     </div>
   </section>
 
