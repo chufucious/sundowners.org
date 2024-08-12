@@ -83,6 +83,9 @@
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
+          We're taking 2024 off 🦁
+        </h2>
+        <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
           multicultural art, music, dance, and hospitality that African
           traditions and speakeasies bring to the world.
