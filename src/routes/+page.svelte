@@ -109,9 +109,9 @@
         >
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
-              ADDRESS
+              2025 ADDRESS
             </h3>
-            <p class="text-sm text-stone-950">Taking 2024 off 🦁</p>
+            <p class="text-sm text-stone-950">7:45 & Ellison</p>
           </div>
           <div class="p-4">
             <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
