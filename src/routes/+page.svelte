@@ -284,14 +284,76 @@
 
           <tbody>
             <tr>
-              <td>2017</td>
+              <td>2025</td>
+              <td>
+                <a
+                  href="https://journal.burningman.org/2024/11/philosophical-center/the-theme/burning-man-2025-tomorrow-today/"
+                  class="underline hover:text-orange-500"
+                >
+                  Tomorrow Today
+                </a>
+              </td>
+              <td>7:45 & Ellison</td>
+            </tr><tr>
+              <td>2024</td>
               <td
                 ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2017-event-archive/2017-art-theme-radical-ritual/"
-                  class="underline hover:text-orange-500">Radical Ritual</a
+                  href="https://journal.burningman.org/2023/10/philosophical-center/the-theme/2024-curiouser-curiouser/"
+                  class="underline hover:text-orange-500"
+                  >Curiouser & Curiouser</a
                 ></td
               >
-              <td>7:30 & Labyrinth</td>
+              <td>Rest year</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2023-event-archive/"
+                  class="underline hover:text-orange-500">Animalia</a
+                ></td
+              >
+              <td>4:45 & Grootslang</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2022-event-archive/"
+                  class="underline hover:text-orange-500">Waking Dreams</a
+                ></td
+              >
+              <td>4:15 & Glimmer</td>
+            </tr>
+            <tr class="line-through">
+              <td>2021</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2021-event-archive/"
+                  class="underline hover:text-orange-500">The Great Unknown</a
+                ></td
+              >
+              <td>CANCELLED</td>
+            </tr>
+            <tr class="line-through">
+              <td>2020</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2020-event-archive/"
+                  class="underline hover:text-orange-500">The Multiverse</a
+                ></td
+              >
+              <td>CANCELLED</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td
+                ><a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2019-event-archive/"
+                  class="underline hover:text-orange-500">Metamorphoses</a
+                ></td
+              >
+              <td>4:15 & Hyacinth</td>
             </tr>
             <tr>
               <td>2018</td>
@@ -304,66 +366,14 @@
               <td>8:15 & Cylon</td>
             </tr>
             <tr>
-              <td>2019</td>
+              <td>2017</td>
               <td
                 ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2019-event-archive/"
-                  class="underline hover:text-orange-500">Metamorphoses</a
+                  href="https://burningman.org/about/history/brc-history/event-archives/2017-event-archive/2017-art-theme-radical-ritual/"
+                  class="underline hover:text-orange-500">Radical Ritual</a
                 ></td
               >
-              <td>4:15 & Hyacinth</td>
-            </tr>
-            <tr class="line-through">
-              <td>2020</td>
-              <td
-                ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2020-event-archive/"
-                  class="underline hover:text-orange-500">The Multiverse</a
-                ></td
-              >
-              <td>CANCELLED</td>
-            </tr>
-            <tr class="line-through">
-              <td>2021</td>
-              <td
-                ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2021-event-archive/"
-                  class="underline hover:text-orange-500">The Great Unknown</a
-                ></td
-              >
-              <td>CANCELLED</td>
-            </tr>
-            <tr>
-              <td>2022</td>
-              <td
-                ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2022-event-archive/"
-                  class="underline hover:text-orange-500">Waking Dreams</a
-                ></td
-              >
-              <td>4:15 & Glimmer</td>
-            </tr>
-            <tr>
-              <td>2023</td>
-              <td
-                ><a
-                  href="https://burningman.org/about/history/brc-history/event-archives/2023-event-archive/"
-                  class="underline hover:text-orange-500">Animalia</a
-                ></td
-              >
-              <td>4:45 & Grootslang</td>
-            </tr>
-
-            <tr>
-              <td>2024</td>
-              <td
-                ><a
-                  href="https://journal.burningman.org/2023/10/philosophical-center/the-theme/2024-curiouser-curiouser/"
-                  class="underline hover:text-orange-500"
-                  >Curiouser & Curiouser</a
-                ></td
-              >
-              <td>Rest year</td>
+              <td>7:30 & Labyrinth</td>
             </tr>
           </tbody>
         </table>
