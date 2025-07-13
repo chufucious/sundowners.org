@@ -83,7 +83,7 @@
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
-          We're taking 2024 off 🦁
+          🦁 See you in 2025! Come visit us at 7:45 & E.
         </h2>
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
