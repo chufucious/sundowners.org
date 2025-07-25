@@ -6,7 +6,7 @@
   import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=390;768;1366&format=webp&as=srcset";
   import runninglion from "$lib/assets/Photos/runninglion.jpg?w=390;768;1366&format=webp&as=srcset";
   import rexanjump from "$lib/assets/Photos/rexanjump.jpg?w=390;768;1366&format=webp&as=srcset";
-  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=256;512&format=webp&as=srcset";
+  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=390;768;1366;1920&format=webp&as=srcset";
   import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=390;768;1366&format=webp&as=srcset";
   import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=390;768;1366&format=webp&as=srcset";
@@ -48,7 +48,7 @@
   </style>
 </svelte:head>
 
-<article class="grid grid-cols-12 gap-4 font-mono">
+<main class="grid grid-cols-12 gap-4 font-mono">
   <header class="col-span-12 h-[18rem] md:h-[36rem] relative overflow-hidden">
     <img
       srcset={sundownerswalking}
@@ -85,9 +85,9 @@
         />
       </div>
       <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-        <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
+        <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
           🦁 See you in 2025! Come visit us at 7:45 & E.
-        </h2>
+        </h1>
         <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
           Sundowners is centered on creating liminal spaces to celebrate the
           multicultural art, music, dance, and hospitality that African
@@ -107,7 +107,7 @@
       <div
         class="col-start-2 col-span-10 md:col-start-8 md:col-span-3 md:pl-16"
       >
-        <div
+        <aside
           class="bg-white rounded border border-black border-opacity-10 divide-y divide-black divide-opacity-10 h-fit mt-8 md:mt-0"
         >
           <div class="p-4">
@@ -138,7 +138,7 @@
               >
             </p>
           </div>
-        </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -149,7 +149,13 @@
         class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
         style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={tucoLauren} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="t + l" loading="lazy" />
+        <img
+          srcset={tucoLauren}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="object-cover"
+          alt="t + l"
+          loading="lazy"
+        />
       </div>
       <div
         class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
@@ -167,13 +173,25 @@
         class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={joshRexan} sizes="(max-width: 768px) 12rem, 23rem" class="object-cover" alt="j on rexan" loading="lazy" />
+        <img
+          srcset={joshRexan}
+          sizes="(max-width: 768px) 12rem, 23rem"
+          class="object-cover"
+          alt="j on rexan"
+          loading="lazy"
+        />
       </div>
       <div
         class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
         style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={zuraSpotter} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="z on spotter" loading="lazy" />
+        <img
+          srcset={zuraSpotter}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          class="object-cover"
+          alt="z on spotter"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -185,7 +203,12 @@
           class="w-full p-2 -rotate-1 drop-shadow-xl"
           style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
         >
-          <img srcset={group2022} sizes="(max-width: 768px) 100vw, 80vw" alt="2022 group" loading="lazy" />
+          <img
+            srcset={group2022}
+            sizes="(max-width: 768px) 100vw, 80vw"
+            alt="2022 group"
+            loading="lazy"
+          />
         </div>
       </div>
       <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
@@ -537,4 +560,4 @@
       </picture>
     </div>
   </footer>
-</article>
+</main>
