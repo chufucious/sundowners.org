@@ -22,10 +22,10 @@
   import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=500&format=webp";
   import rexanEvolution from "$lib/assets/rexan-evolution.png?w=390;768;1366;1920&format=webp&as=srcset";
   import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=390;768;1366&format=webp&as=srcset";
+  import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=200;400;600&format=webp&as=srcset";
   import group2022 from "$lib/assets/Photos/2022-group.jpg?w=390;768;1366;1920&format=webp&as=srcset";
   import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=500&format=webp";
-  import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=390;768;1366&format=webp&as=srcset";
+  import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=200;400;600&format=webp&as=srcset";
   import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=390;768;1366&format=webp&as=srcset";
   import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=390;768;1366&format=webp&as=srcset";
   import sign from "$lib/assets/Photos/sign.jpg?w=390;768;1366;1920&format=webp&as=srcset";
@@ -157,7 +157,7 @@
       >
         <img
           srcset={coogieSign}
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 12rem, 23rem"
           class=" object-cover"
           alt="sundowners with sign"
           loading="lazy"
@@ -167,7 +167,7 @@
         class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={joshRexan} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="j on rexan" loading="lazy" />
+        <img srcset={joshRexan} sizes="(max-width: 768px) 12rem, 23rem" class="object-cover" alt="j on rexan" loading="lazy" />
       </div>
       <div
         class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
