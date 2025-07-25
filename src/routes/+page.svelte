@@ -146,7 +146,7 @@
         class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
         style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={tucoLauren} class="object-cover" alt="t + l" />
+        <img srcset={tucoLauren} class="object-cover" alt="t + l" loading="lazy" />
       </div>
       <div
         class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
@@ -156,19 +156,20 @@
           srcset={coogieSign}
           class=" object-cover"
           alt="sundowners with sign"
+          loading="lazy"
         />
       </div>
       <div
         class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={joshRexan} class="object-cover" alt="j on rexan" />
+        <img srcset={joshRexan} class="object-cover" alt="j on rexan" loading="lazy" />
       </div>
       <div
         class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
         style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" />
+        <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" loading="lazy" />
       </div>
     </div>
   </section>
@@ -180,7 +181,7 @@
           class="w-full p-2 -rotate-1 drop-shadow-xl"
           style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
         >
-          <img srcset={group2022} alt="2022 group" />
+          <img srcset={group2022} alt="2022 group" loading="lazy" />
         </div>
       </div>
       <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
@@ -208,6 +209,7 @@
         srcset={lionAndLeyla}
         alt="lion and l"
         class="w-full h-auto object-cover"
+        loading="lazy"
       />
     </div>
   </section>
@@ -240,6 +242,7 @@
             srcset={katiesunset}
             sizes=""
             alt="k staring into distance"
+            loading="lazy"
             class="drop-shadow-xl"
           />
         </picture>
@@ -389,6 +392,7 @@
           srcset={rexanEvolution}
           alt="the evolution of our art car, rexan"
           class="w-full"
+          loading="lazy"
         />
       </div>
     </div>
@@ -404,54 +408,63 @@
           srcset={gregonrexan}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
           alt="on rexan"
+          loading="lazy"
           class="w-full max-h-96 object-cover"
         />
         <img
           srcset={jonSmoke}
           sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
           alt="j attracting influencers"
+          loading="lazy"
           class="w-full max-h-64 object-cover"
         />
         <img
           srcset={rexanDancer}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="dancer on rexan"
+          loading="lazy"
           class="w-full max-h-96 object-cover self-end"
         />
         <img
           srcset={runninglion}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="a running lion"
+          loading="lazy"
           class="w-full max-h-80 object-cover"
         />
         <img
           srcset={sign}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="sundowners sign"
+          loading="lazy"
           class="w-full max-h-96 object-cover"
         />
         <img
           srcset={gregFlying}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="g flying"
+          loading="lazy"
           class="w-full max-h-80 object-cover self-end"
         />
         <img
           srcset={devofisheye}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="fisheye lens"
+          loading="lazy"
           class="w-full max-h-96 object-cover"
         />
         <img
           srcset={rexanFire}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="fire on rexan"
+          loading="lazy"
           class="w-full max-h-80 object-cover"
         />
         <img
           srcset={rexanNightWide}
           sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
           alt="night time with rexan"
+          loading="lazy"
           class="w-full max-h-96 object-cover"
         />
       </div>
@@ -460,6 +473,7 @@
         srcset={logoLion}
         class="col-span-12 mx-auto mb-4 mt-24"
         alt="t + l"
+        loading="lazy"
       />
       <h2
         class="px-8 md:px-0 col-span-12 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
@@ -496,6 +510,7 @@
             src={visitOurStore}
             class="mb-2"
             alt="click here to visit our store"
+            loading="lazy"
           />
         </a>
         <h3
@@ -510,6 +525,7 @@
           src={shoppng}
           class="w-[24rem] md:w-[32rem]"
           alt="sundowners merchandise"
+          loading="lazy"
         />
       </picture>
     </div>
