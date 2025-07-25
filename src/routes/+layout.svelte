@@ -29,12 +29,14 @@
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
     />
-    <img
-      class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
-      srcset={logoMosaic}
-      sizes="400px"
-      alt="sundowners mosaic logo"
-    />
+    <a href="/">
+      <img
+        class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
+        srcset={logoMosaic}
+        sizes="400px"
+        alt="sundowners mosaic logo"
+      /></a
+    >
 
     <div
       class="h-1 md:h-2 w-full absolute bottom-0"
