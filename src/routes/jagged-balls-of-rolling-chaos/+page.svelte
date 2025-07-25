@@ -27,6 +27,7 @@
   <img
     class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
     srcset={logoMosaic}
+    sizes="256px"
     alt="sundowners mosaic logo"
   />
 

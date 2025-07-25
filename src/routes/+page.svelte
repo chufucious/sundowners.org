@@ -62,6 +62,7 @@
     <img
       class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
       srcset={logoMosaic}
+      sizes="256px"
       alt="sundowners mosaic logo"
     />
 
@@ -150,7 +151,7 @@
         class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
         style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={tucoLauren} class="object-cover" alt="t + l" loading="lazy" />
+        <img srcset={tucoLauren} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="t + l" loading="lazy" />
       </div>
       <div
         class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
@@ -158,6 +159,7 @@
       >
         <img
           srcset={coogieSign}
+          sizes="(max-width: 768px) 100vw, 50vw"
           class=" object-cover"
           alt="sundowners with sign"
           loading="lazy"
@@ -167,13 +169,13 @@
         class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
         style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={joshRexan} class="object-cover" alt="j on rexan" loading="lazy" />
+        <img srcset={joshRexan} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="j on rexan" loading="lazy" />
       </div>
       <div
         class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
         style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
       >
-        <img srcset={zuraSpotter} class="object-cover" alt="z on spotter" loading="lazy" />
+        <img srcset={zuraSpotter} sizes="(max-width: 768px) 100vw, 50vw" class="object-cover" alt="z on spotter" loading="lazy" />
       </div>
     </div>
   </section>
@@ -185,7 +187,7 @@
           class="w-full p-2 -rotate-1 drop-shadow-xl"
           style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
         >
-          <img srcset={group2022} alt="2022 group" loading="lazy" />
+          <img srcset={group2022} sizes="(max-width: 768px) 100vw, 80vw" alt="2022 group" loading="lazy" />
         </div>
       </div>
       <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
@@ -211,6 +213,7 @@
     >
       <img
         srcset={lionAndLeyla}
+        sizes="(max-width: 768px) 100vw, 50vw"
         alt="lion and l"
         class="w-full h-auto object-cover"
         loading="lazy"
@@ -244,7 +247,7 @@
         <picture class="col-start-3 col-span-8">
           <img
             srcset={katiesunset}
-            sizes=""
+            sizes="(max-width: 768px) 100vw, 80vw"
             alt="k staring into distance"
             loading="lazy"
             class="drop-shadow-xl"
@@ -394,6 +397,7 @@
       >
         <img
           srcset={rexanEvolution}
+          sizes="(max-width: 768px) 100vw, 80vw"
           alt="the evolution of our art car, rexan"
           class="w-full"
           loading="lazy"
@@ -410,14 +414,14 @@
       >
         <img
           srcset={gregonrexan}
-          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024px"
           alt="on rexan"
           loading="lazy"
           class="w-full max-h-96 object-cover"
         />
         <img
           srcset={jonSmoke}
-          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024"
+          sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024px"
           alt="j attracting influencers"
           loading="lazy"
           class="w-full max-h-64 object-cover"
@@ -475,6 +479,7 @@
 
       <img
         srcset={logoLion}
+        sizes="256px"
         class="col-span-12 mx-auto mb-4 mt-24"
         alt="t + l"
         loading="lazy"
