@@ -29,6 +29,17 @@
     class:md:h-[18rem]={$page.data.smallHeader}
     class:md:h-[36rem]={!$page.data.smallHeader}
   >
+    <a
+      href="/"
+      class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
+    >
+      <img
+        class="w-[400px] md:w-[600px]"
+        srcset={logoAndType2025}
+        sizes="800px"
+        alt="sundowners logo"
+      /></a
+    >
     <img
       srcset={sundownerswalking}
       sizes="100vw"
@@ -36,14 +47,6 @@
       class="absolute inset-0 w-full h-full object-cover"
       fetchpriority="high"
     />
-    <a href="/">
-      <img
-        class="w-[400px] md:w-[600px] absolute m-auto left-0 right-0 top-12 md:top-32 z-10 mix-blend-color-dodge"
-        srcset={logoAndType2025}
-        sizes="800px"
-        alt="sundowners logo"
-      /></a
-    >
 
     <div
       class="h-1 md:h-2 w-full absolute bottom-0"

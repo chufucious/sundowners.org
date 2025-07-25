@@ -31,7 +31,7 @@
 <section id="intro" class="col-span-12 relative">
   <div class="grid grid-cols-12 gap-4">
     <div
-      class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-72 mb-12"
+      class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
       style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
     >
       <img
