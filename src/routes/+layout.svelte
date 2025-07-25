@@ -1,5 +1,6 @@
 <script>
   import "../app.css";
+  import { page } from "$app/stores";
   import shoppng from "$lib/assets/Shop.png?w=512&format=webp";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png?w=200&format=webp";
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
@@ -21,7 +22,11 @@
 </svelte:head>
 
 <main class="grid grid-cols-12 gap-4 font-mono">
-  <header class="col-span-12 h-[18rem] md:h-[36rem] relative overflow-hidden">
+  <header
+    class="col-span-12 h-[18rem] relative overflow-hidden"
+    class:md:h-[18rem]={$page.data.smallHeader}
+    class:md:h-[36rem]={!$page.data.smallHeader}
+  >
     <img
       srcset={sundownerswalking}
       sizes="100vw"
