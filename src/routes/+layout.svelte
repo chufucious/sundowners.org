@@ -34,7 +34,7 @@
       class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
     >
       <img
-        class="w-[400px] md:w-[600px]"
+        class="w-[300px] md:w-[600px]"
         srcset={logoAndType2025}
         sizes="800px"
         alt="sundowners logo"
