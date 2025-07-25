@@ -257,5 +257,10 @@
         </li>
       </ul>
     </section>
+    <p class="">
+      <a href="/" class="text-orange-950 underline hover:text-orange-500"
+        >Back to home</a
+      >
+    </p>
   </div>
 </article>
