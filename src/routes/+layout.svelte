@@ -51,7 +51,7 @@
   <slot />
 </main>
 <footer class="col-span-12 mt-32 relative h-32">
-  <div id="store" class="absolute bottom-0 right-0 hidden">
+  <!-- <div id="store" class="absolute bottom-0 right-0 hidden">
     <div class="absolute top-0 md:top-12 w-64">
       <a href="https://shop.sundowners.org/"
         ><img
@@ -76,5 +76,5 @@
         loading="lazy"
       />
     </picture>
-  </div>
+  </div> -->
 </footer>
