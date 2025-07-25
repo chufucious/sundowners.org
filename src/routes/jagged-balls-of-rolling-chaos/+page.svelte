@@ -6,28 +6,33 @@
   <title>Jagged Balls of Rolling Chaos | Sundowners – Black Rock City</title>
 </svelte:head>
 
-<article class="col-span-10 col-start-2 font-serif text-orange-950">
+<article class="col-span-10 col-start-2 font-serif text-orange-950 pt-8">
   <header class="grid grid-cols-12">
-    <div class="col-span-6 prose">
-      <h1 class="font-light font-sans uppercase text-8xl">
+    <div class="col-span-full md:col-span-6 prose">
+      <h1 class="font-light font-sans uppercase text-8xl tracking-tight mb-8">
         Jagged Balls of Rolling Chaos
       </h1>
-      <p class="text-4xl font-extralight font-garamond">
+      <h2 class="font-extralight font-garamond mt-0 text-4xl">
         No cheap easy ups ever - in a windstorm or dust devil they can crumple
         up and turn into <span class="italic"
           >jagged balls of rolling chaos.</span
         >
-      </p>
-      <h4 class="font-light font-sans">Saintly words from Poca</h4>
+      </h2>
+      <h4 class="font-light font-sans text-sm">
+        Saintly words from <strong>Poca</strong> of the Sundowners.
+      </h4>
     </div>
 
-    <div class="col-span-6">
-      <img
-        srcset={jaggedBalls}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        alt="Jagged balls of rolling chaos"
-        class=""
-      />
+    <div class="col-span-full md:col-span-6">
+      <figure>
+        <img
+          srcset={jaggedBalls}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          alt="Jagged balls of rolling chaos"
+          class="w-full"
+        />
+        <figcaption class="text-sm mt-2 italic">Run, Sparkle, Run!</figcaption>
+      </figure>
     </div>
   </header>
   <div class="prose prose-h2:font-light mx-auto">
