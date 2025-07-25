@@ -7,7 +7,7 @@
   import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;900;1200&format=webp&as=srcset";
   import rexanjump from "$lib/assets/Photos/rexanjump.jpg?w=400;900;1200&format=webp&as=srcset";
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&format=webp&as=srcset";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=1080&format=webp";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1024;1920&format=webp&as=srcset";
   import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;1080&format=webp&as=srcset";
   import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;1080&format=webp&as=srcset";
   import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;1080&format=webp&as=srcset";
@@ -51,19 +51,23 @@
 </svelte:head>
 
 <article class="grid grid-cols-12 gap-4 font-mono">
-  <header
-    class="col-span-12 h-[18rem] md:h-[36rem] relative"
-    style="background-image: url('{sundownerswalking}'); background-position: center; background-size: cover;"
-  >
+  <header class="col-span-12 h-[18rem] md:h-[36rem] relative overflow-hidden">
     <img
-      class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16"
+      srcset={sundownerswalking}
+      sizes="100vw"
+      alt="Sundowners walking in Black Rock City"
+      class="absolute inset-0 w-full h-full object-cover"
+      fetchpriority="high"
+    />
+    <img
+      class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
       srcset={logoMosaic}
       alt="sundowners mosaic logo"
     />
 
     <div
       class="h-1 md:h-2 w-full absolute bottom-0"
-      style="background-image: url('{fabricSunrise}') ; background-repeat: repeat; background-size: 25%; background-position: center;"
+      style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 25%; background-position: center;"
     />
   </header>
 

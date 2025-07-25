@@ -1,6 +1,6 @@
 <script>
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&format=webp&as=srcset";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=1080&format=webp";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1024;1920&format=webp&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400&format=webp";
 </script>
 
@@ -16,12 +16,16 @@
     @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
   </style>
 </svelte:head>
-<header
-  class="col-span-12 h-[18rem] md:h-[36rem] relative"
-  style="background-image: url('{sundownerswalking}'); background-position: center; background-size: cover;"
->
+<header class="col-span-12 h-[18rem] md:h-[36rem] relative overflow-hidden">
   <img
-    class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16"
+    srcset={sundownerswalking}
+    sizes="100vw"
+    alt="Sundowners walking in Black Rock City"
+    class="absolute inset-0 w-full h-full object-cover"
+    fetchpriority="high"
+  />
+  <img
+    class="w-64 absolute m-auto left-0 right-0 top-12 md:top-16 z-10"
     srcset={logoMosaic}
     alt="sundowners mosaic logo"
   />
