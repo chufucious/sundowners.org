@@ -7,12 +7,16 @@
 </svelte:head>
 
 <article class="col-span-10 col-start-2 font-serif text-orange-950 pt-8">
-  <header class="grid grid-cols-12">
-    <div class="col-span-full md:col-span-6 prose">
-      <h1 class="font-light font-sans uppercase text-8xl tracking-tight mb-8">
+  <header class="grid grid-cols-12 gap-4">
+    <div
+      class="col-span-full md:col-span-6 prose prose-headings:text-orange-950 mb-8"
+    >
+      <h1
+        class="font-light font-sans uppercase text-4xl md:text-8xl tracking-tight mb-8"
+      >
         Jagged Balls of Rolling Chaos
       </h1>
-      <h2 class="font-extralight font-garamond mt-0 text-4xl">
+      <h2 class="font-extralight font-garamond mt-0 text-xl md:text-4xl">
         No cheap easy ups ever - in a windstorm or dust devil they can crumple
         up and turn into <span class="italic"
           >jagged balls of rolling chaos.</span
@@ -35,8 +39,10 @@
       </figure>
     </div>
   </header>
-  <div class="prose prose-h2:font-light mx-auto">
-    <section id="bikes" class="">
+  <div
+    class="prose prose-headings:font-light mx-auto prose-li:text-orange-950 prose-headings:text-orange-950"
+  >
+    <section id="bikes">
       <h2>Bikes</h2>
       <ul class="list-disc">
         <li>
@@ -52,7 +58,7 @@
       </ul>
     </section>
 
-    <section id="generators" class="">
+    <section id="generators">
       <h2>Generators</h2>
       <ul class="list-disc">
         <li>
@@ -69,7 +75,7 @@
       </ul>
     </section>
 
-    <section id="emergency" class="">
+    <section id="emergency">
       <h2>In Case of Emergency</h2>
       <ul class="list-disc">
         <li>
@@ -81,7 +87,7 @@
       </ul>
     </section>
 
-    <section id="strike" class="">
+    <section id="strike">
       <h2>Strike</h2>
       <ul class="list-disc">
         <li>
@@ -93,8 +99,8 @@
       </ul>
     </section>
 
-    <section id="rain" class="">
-      <h2 class="">Rain</h2>
+    <section id="rain">
+      <h2>Rain</h2>
       <ul class="list-disc">
         <li>Be prepared for BMOrg services like artery etc. to be delayed.</li>
         <li>
@@ -119,9 +125,9 @@
       </ul>
     </section>
 
-    <section id="vehicle-care" class="">
+    <section id="vehicle-care">
       <h2>Vehicle Care</h2>
-      <h3>Pre-burn</h3>
+      <h3 class="uppercase text-sm"><strong>Pre-burn</strong></h3>
       <ul class="list-disc">
         <li>
           Cover floors/surfaces with tarps/Saran Wrap (secure w/ painters tape)
@@ -131,14 +137,14 @@
         <li>Keep windows closed.</li>
       </ul>
 
-      <h3>Arrival</h3>
+      <h3 class="uppercase text-sm"><strong>Arrival</strong></h3>
       <ul class="list-disc">
         <li>Wait until dust storm dies down to open door.</li>
         <li>Take everything out of the cab</li>
         <li>Open cab only if needed; shake off dust before entering</li>
       </ul>
 
-      <h3>Post Burn</h3>
+      <h3 class="uppercase text-sm"><strong>Post Burn</strong></h3>
       <ul class="list-disc">
         <li>Unload the vehicle</li>
         <li>
@@ -193,7 +199,7 @@
       </ul>
     </section>
 
-    <section id="gear-and-accessories" class="">
+    <section id="gear-and-accessories">
       <h2>Gear & Accessories</h2>
       <ul class="list-disc">
         <li>
