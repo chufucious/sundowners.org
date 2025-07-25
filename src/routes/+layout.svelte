@@ -6,6 +6,7 @@
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=390;768;1366;1920&format=webp&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=300&format=webp";
+  import logoLion from "$lib/assets/logo/lion.svg?w=400;900;1200&as=srcset";
 </script>
 
 <svelte:head>
@@ -21,7 +22,7 @@
   </style>
 </svelte:head>
 
-<main class="grid grid-cols-12 gap-4 font-mono">
+<main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
     class="col-span-12 h-[18rem] relative overflow-hidden"
     class:md:h-[18rem]={$page.data.smallHeader}
@@ -49,9 +50,41 @@
     />
   </header>
   <slot />
-</main>
-<footer class="col-span-12 mt-32 relative h-32">
-  <!-- <div id="store" class="absolute bottom-0 right-0 hidden">
+  <footer class="col-span-12">
+    <img
+      srcset={logoLion}
+      sizes="256px"
+      class="col-span-12 mx-auto mb-4 mt-24"
+      alt="t + l"
+      loading="lazy"
+    />
+    <h2
+      class="px-8 md:px-0 col-span-12 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
+    >
+      Collaborate with us if you would like to participate as a musician, DJ,
+      dancer, artist or in any creative capacity.
+    </h2>
+    <p
+      class="col-span-12 max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950 text-opacity-80"
+    >
+      At Black Rock City and year-round, our goal is to spread the Sundowners'
+      vision through our flavor of African diaspora events, creative projects,
+      and community involvement.<br /><br />We would love to hear from you.<br
+      /><br />
+      <a
+        href="mailto:sundownersbrc@gmail.com"
+        class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+        >Email Us</a
+      >
+
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfv2tBFZXZsBnXomp4Ke-zkuQeW33qUtsqnGlwixeMUJYpAXg/viewform?usp=sf_link"
+        class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+        >DJ Application Form</a
+      >
+    </p>
+
+    <!-- <div id="store" class="absolute bottom-0 right-0 hidden">
     <div class="absolute top-0 md:top-12 w-64">
       <a href="https://shop.sundowners.org/"
         ><img
@@ -77,4 +110,5 @@
       />
     </picture>
   </div> -->
-</footer>
+  </footer>
+</main>
