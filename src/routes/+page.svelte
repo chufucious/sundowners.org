@@ -26,6 +26,7 @@
   import sign from "$lib/assets/Photos/sign.jpg?w=390;768;1366;1920&format=webp&as=srcset";
   import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=390;768;1366;1920&format=webp&as=srcset";
   import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=390;768;1366;1920&format=webp&as=srcset";
+  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=390;768;1366&format=webp&as=srcset";
 </script>
 
 <section id="intro" class="col-span-12 relative">
@@ -381,6 +382,37 @@
   </div>
 </section>
 
+<section id="history" class="col-span-12 mt-48">
+  <div class="grid grid-cols-12 gap-4">
+    <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+      <img
+        srcset={jaggedBalls}
+        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        alt="jagged balls of rolling chaos"
+        loading="lazy"
+        class="w-full max-h-96 object-cover"
+      />
+    </div>
+
+    <div
+      class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+    >
+      <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+        Jagged Balls of Rolling Chaos
+      </h2>
+      <p
+        class="text-sm mb-8 text-orange-950 text-opacity-80 leading-relaxed max-w-prose"
+      >
+        A guide on how to survive the playa.
+      </p>
+      <a
+        href="/jagged-balls-of-rolling-chaos"
+        class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 text-sm"
+        >Read Now</a
+      >
+    </div>
+  </div>
+</section>
 <section id="collaborate" class="col-span-12 mt-48">
   <div class="grid grid-cols-12 gap-4">
     <div
