@@ -1,7 +1,7 @@
 <script>
-  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&as=srcset";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=1080";
-  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400";
+  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;900;1200&format=webp&as=srcset";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=1080&format=webp";
+  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=400&format=webp";
 </script>
 
 <svelte:head>
