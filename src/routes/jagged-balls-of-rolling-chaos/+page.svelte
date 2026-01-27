@@ -1,5 +1,5 @@
 <script>
-  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=390;768;1366&format=webp&as=srcset";
+  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
   
   export let data;
 </script>

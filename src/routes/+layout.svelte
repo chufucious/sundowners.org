@@ -4,10 +4,10 @@
   import shoppng from "$lib/assets/Shop.png?w=512&format=webp";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png?w=200&format=webp";
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=300&format=webp";
-  import logoLion from "$lib/assets/logo/lion.svg?w=400;900;1200&as=srcset";
-  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=400;900;1200&as=srcset";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
+  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
+  import logoLion from "$lib/assets/logo/lion.svg?w=256;512&as=srcset";
+  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&as=srcset";
 </script>
 
 <svelte:head>
@@ -36,7 +36,7 @@
       <img
         class="w-[300px] md:w-[600px]"
         srcset={logoAndType2025}
-        sizes="800px"
+        sizes="(max-width: 768px) 300px, 600px"
         alt="sundowners logo"
       /></a
     >
@@ -58,8 +58,8 @@
     <img
       srcset={logoLion}
       sizes="256px"
-      class="col-span-12 mx-auto mb-4 mt-24"
-      alt="t + l"
+      class="col-span-12 mx-auto mb-4 mt-24 w-64"
+      alt="sundowners lion logo"
       loading="lazy"
     />
     <h2

@@ -1,31 +1,38 @@
 <script>
-  import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=390;768;1366&format=webp&as=srcset";
-  import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=390;768;1366&format=webp&as=srcset";
-  import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=390;768;1366&format=webp&as=srcset";
-  import runninglion from "$lib/assets/Photos/runninglion.jpg?w=390;768;1366&format=webp&as=srcset";
-  import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=390;768;1366&format=webp&as=srcset";
-  import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=390;768;1366&format=webp&as=srcset";
-  import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=390;768;1366&format=webp&as=srcset";
-  import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=390;768;1366&format=webp&as=srcset";
-  import patternDazzle from "$lib/assets/dazzle.jpeg?w=400&format=webp";
-  import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=500&format=webp";
-  import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=500&format=webp";
-  import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=500&format=webp";
-  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=300&format=webp";
-  import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=500&format=webp";
-  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=500&format=webp";
-  import rexanEvolution from "$lib/assets/rexan-evolution.png?w=390;768;1366;1920&format=webp&as=srcset";
-  import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=200;400;600&format=webp&as=srcset";
-  import group2022 from "$lib/assets/Photos/2022-group.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=500&format=webp";
-  import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=200;400;600&format=webp&as=srcset";
-  import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=390;768;1366&format=webp&as=srcset";
-  import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=390;768;1366&format=webp&as=srcset";
-  import sign from "$lib/assets/Photos/sign.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=390;768;1366;1920&format=webp&as=srcset";
-  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=390;768;1366;1920&format=webp&as=srcset";
-  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=390;768;1366&format=webp&as=srcset";
+  // Full-width images: 640/1280/1920
+  import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&format=webp&as=srcset";
+  import rexanEvolution from "$lib/assets/rexan-evolution.png?w=640;1280;1920&format=webp&as=srcset";
+  import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&format=webp&as=srcset";
+  import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&format=webp&as=srcset";
+
+  // Half-width / medium images: 400/800/1200
+  import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;800;1200&format=webp&as=srcset";
+  import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;800;1200&format=webp&as=srcset";
+  import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;800;1200&format=webp&as=srcset";
+  import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;800;1200&format=webp&as=srcset";
+  import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;800;1200&format=webp&as=srcset";
+  import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;800;1200&format=webp&as=srcset";
+  import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&format=webp&as=srcset";
+  import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&format=webp&as=srcset";
+  import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&format=webp&as=srcset";
+  import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=400;800;1200&format=webp&as=srcset";
+  import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&format=webp&as=srcset";
+  import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&format=webp&as=srcset";
+  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
+
+  // Small accent images: 300/600
+  import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&format=webp&as=srcset";
+  import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=300;600&format=webp&as=srcset";
+
+  // Patterns: smaller tiles for repeating backgrounds
+  import patternDazzle from "$lib/assets/dazzle.jpeg?w=200&format=webp";
+  import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=200&format=webp";
+  import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=200&format=webp";
+  import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=200&format=webp";
+  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=200&format=webp";
+  import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=200&format=webp";
+  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=200&format=webp";
+  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=200&format=webp";
 </script>
 
 <section id="intro" class="col-span-12 relative">
@@ -36,7 +43,7 @@
     >
       <img
         srcset={rexanGroup2023}
-        sizes="(max-width: 768px) 100vw, 80vw"
+        sizes="(max-width: 768px) 100vw, 66vw"
         alt="jump!"
         class="max-w-full"
         loading="lazy"
@@ -107,7 +114,7 @@
     >
       <img
         srcset={tucoLauren}
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 100vw, 768px"
         class="object-cover"
         alt="t + l"
         loading="lazy"
@@ -119,7 +126,7 @@
     >
       <img
         srcset={coogieSign}
-        sizes="(max-width: 768px) 12rem, 23rem"
+        sizes="(max-width: 768px) 200px, 368px"
         class=" object-cover"
         alt="sundowners with sign"
         loading="lazy"
@@ -131,7 +138,7 @@
     >
       <img
         srcset={joshRexan}
-        sizes="(max-width: 768px) 12rem, 23rem"
+        sizes="(max-width: 768px) 192px, 368px"
         class="object-cover"
         alt="j on rexan"
         loading="lazy"
@@ -143,7 +150,7 @@
     >
       <img
         srcset={zuraSpotter}
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 100vw, 704px"
         class="object-cover"
         alt="z on spotter"
         loading="lazy"
@@ -161,7 +168,7 @@
       >
         <img
           srcset={group2022}
-          sizes="(max-width: 768px) 100vw, 80vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           alt="2022 group"
           loading="lazy"
         />
@@ -189,7 +196,7 @@
   >
     <img
       srcset={lionAndLeyla}
-      sizes="(max-width: 768px) 100vw, 50vw"
+      sizes="100vw"
       alt="lion and l"
       class="w-full h-auto object-cover"
       loading="lazy"
@@ -223,7 +230,7 @@
       <picture class="col-start-3 col-span-8">
         <img
           srcset={katiesunset}
-          sizes="(max-width: 768px) 100vw, 80vw"
+          sizes="(max-width: 768px) 100vw, 66vw"
           alt="k staring into distance"
           loading="lazy"
           class="drop-shadow-xl"
@@ -372,7 +379,7 @@
     >
       <img
         srcset={rexanEvolution}
-        sizes="(max-width: 768px) 100vw, 80vw"
+        sizes="(max-width: 768px) 100vw, 83vw"
         alt="the evolution of our art car, rexan"
         class="w-full"
         loading="lazy"
@@ -386,7 +393,7 @@
     <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
       <img
         srcset={jaggedBalls}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 42vw"
         alt="jagged balls of rolling chaos"
         loading="lazy"
         class="w-full max-h-96 object-cover"
@@ -420,63 +427,63 @@
     >
       <img
         srcset={gregonrexan}
-        sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="on rexan"
         loading="lazy"
         class="w-full max-h-96 object-cover"
       />
       <img
         srcset={jonSmoke}
-        sizes="(max-width: 640px) 640px, (max-width: 768px) 1024px, 1024px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="j attracting influencers"
         loading="lazy"
         class="w-full max-h-64 object-cover"
       />
       <img
         srcset={rexanDancer}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="dancer on rexan"
         loading="lazy"
         class="w-full max-h-96 object-cover self-end"
       />
       <img
         srcset={runninglion}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="a running lion"
         loading="lazy"
         class="w-full max-h-80 object-cover"
       />
       <img
         srcset={sign}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="sundowners sign"
         loading="lazy"
         class="w-full max-h-96 object-cover"
       />
       <img
         srcset={gregFlying}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="g flying"
         loading="lazy"
         class="w-full max-h-80 object-cover self-end"
       />
       <img
         srcset={devofisheye}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="fisheye lens"
         loading="lazy"
         class="w-full max-h-96 object-cover"
       />
       <img
         srcset={rexanFire}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="fire on rexan"
         loading="lazy"
         class="w-full max-h-80 object-cover"
       />
       <img
         srcset={rexanNightWide}
-        sizes="(max-width: 640px) 640px, (max-width: 1024px) 1024px, 1280px"
+        sizes="(max-width: 768px) 100vw, 400px"
         alt="night time with rexan"
         loading="lazy"
         class="w-full max-h-96 object-cover"
