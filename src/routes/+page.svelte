@@ -24,22 +24,22 @@
   import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&format=webp&as=srcset";
   import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=300;600&format=webp&as=srcset";
 
-  // Patterns: smaller tiles for repeating backgrounds
-  import patternDazzle from "$lib/assets/dazzle.jpeg?w=200&format=webp";
-  import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=200&format=webp";
-  import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=200&format=webp";
-  import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=200&format=webp";
-  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=200&format=webp";
-  import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=200&format=webp";
-  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=200&format=webp";
-  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=200&format=webp";
+  // Patterns: tiles for repeating backgrounds (higher res for crisp tiling)
+  import patternDazzle from "$lib/assets/dazzle.jpeg?w=800&format=webp";
+  import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800&format=webp";
+  import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800&format=webp";
+  import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800&format=webp";
+  import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=800&format=webp";
+  import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=800&format=webp";
+  import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
+  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
 </script>
 
 <section id="intro" class="col-span-12 relative">
   <div class="grid grid-cols-12 gap-4">
     <div
       class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
-      style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: 300px;"
     >
       <img
         srcset={rexanGroup2023}
@@ -112,7 +112,7 @@
   <div class="relative w-full h-screen">
     <div
       class="absolute w-full top-0 md:w-[48rem] md:top-0 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
-      style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: 300px;"
     >
       <img
         srcset={tucoLauren}
@@ -124,7 +124,7 @@
     </div>
     <div
       class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
-      style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: 300px;"
     >
       <img
         srcset={coogieSign}
@@ -136,7 +136,7 @@
     </div>
     <div
       class="absolute md:w-[23rem] w-[12rem] top-20 right-0 invisible md:visible md:bottom-1/4 md:right-0 p-2 rotate-12 drop-shadow-xl"
-      style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: 300px;"
     >
       <img
         srcset={joshRexan}
@@ -148,7 +148,7 @@
     </div>
     <div
       class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
-      style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: contain; background-position: center;"
+      style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: 300px;"
     >
       <img
         srcset={zuraSpotter}
@@ -166,7 +166,7 @@
     <div class="col-span-12 md:col-start-2 md:col-span-6 md:mr-8 px-6">
       <div
         class="w-full p-2 -rotate-1 drop-shadow-xl"
-        style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: contain; background-position: center; "
+        style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: 300px;"
       >
         <img
           srcset={group2022}
@@ -194,7 +194,7 @@
 <section id="l and lion" class="col-span-12 overflow-hidden mt-48">
   <div
     class="p-2 md:p-4 drop-shadow-xl -rotate-1"
-    style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: contain; background-position: center;"
+    style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: 300px;"
   >
     <img
       srcset={lionAndLeyla}
