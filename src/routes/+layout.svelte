@@ -1,6 +1,7 @@
 <script>
   import "../app.css";
   import { page } from "$app/stores";
+  import Agentation from "$lib/components/Agentation.svelte";
   import shoppng from "$lib/assets/Shop.png?w=512&format=webp";
   import visitOurStore from "$lib/assets/btn/visit-our-store.png?w=200&format=webp";
   import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
@@ -131,3 +132,5 @@
   </div> -->
   </footer>
 </main>
+
+<Agentation />
