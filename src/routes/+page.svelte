@@ -193,16 +193,18 @@
 
 <section id="l and lion" class="col-span-12 overflow-hidden mt-48">
   <div
-    class="p-2 md:p-4 drop-shadow-xl -rotate-1"
+    class="p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
     style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: 300px;"
   >
-    <img
-      srcset={lionAndLeyla}
-      sizes="100vw"
-      alt="lion and l"
-      class="w-full h-auto object-cover"
-      loading="lazy"
-    />
+    <div class="overflow-hidden">
+      <img
+        srcset={lionAndLeyla}
+        sizes="(max-width: 768px) 100vw, 1152px"
+        alt="lion and l"
+        class="w-full h-auto object-cover rotate-1"
+        loading="lazy"
+      />
+    </div>
   </div>
 </section>
 

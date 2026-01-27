@@ -62,7 +62,7 @@
 
     <div
       class="h-1 md:h-2 w-full absolute bottom-0"
-      style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 25%; background-position: center;"
+      style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
     />
   </header>
   <div id="main-content" class="contents">
@@ -71,8 +71,8 @@
   <footer class="col-span-12">
     <img
       srcset={logoLion}
-      sizes="256px"
-      class="col-span-12 mx-auto mb-4 mt-24 w-64"
+      sizes="96px"
+      class="col-span-12 mx-auto mb-4 mt-24 w-24"
       alt="sundowners lion logo"
       loading="lazy"
     />
