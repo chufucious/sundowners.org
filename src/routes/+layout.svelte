@@ -14,14 +14,25 @@
   <title>Sundowners – Black Rock City</title>
   <meta
     name="description"
-    content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the
-    multicultural art, music, dance, and hospitality that African traditions and
-    speakeasies bring to the world."
+    content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world."
   />
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap");
-  </style>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Sundowners – Black Rock City" />
+  <meta property="og:description" content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sundowners.org" />
+  <meta property="og:image" content="https://sundowners.org/android-chrome-512x512.png" />
+  <meta property="og:site_name" content="Sundowners" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sundowners – Black Rock City" />
+  <meta name="twitter:description" content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world." />
+  <meta name="twitter:image" content="https://sundowners.org/android-chrome-512x512.png" />
 </svelte:head>
+
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
+  Skip to main content
+</a>
 
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
@@ -53,7 +64,9 @@
       style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 25%; background-position: center;"
     />
   </header>
-  <slot />
+  <div id="main-content" class="contents">
+    <slot />
+  </div>
   <footer class="col-span-12">
     <img
       srcset={logoLion}
@@ -78,12 +91,14 @@
       <a
         href="mailto:sundownersbrc@gmail.com"
         class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+        aria-label="Email Sundowners camp"
         >Email Us</a
       >
 
       <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSfv2tBFZXZsBnXomp4Ke-zkuQeW33qUtsqnGlwixeMUJYpAXg/viewform?usp=sf_link"
         class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+        aria-label="Open DJ application form (opens Google Form)"
         >DJ Application Form</a
       >
     </p>

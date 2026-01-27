@@ -87,6 +87,7 @@
             <a
               href="https://www.instagram.com/sundownerssafari/"
               class="text-orange-500 underline hover:text-orange-700"
+              aria-label="Follow Sundowners on Instagram"
               >@sundownerssafari</a
             >
           </p>
@@ -97,6 +98,7 @@
             <a
               href="mailto:sundownersbrc@gmail.com"
               class="text-orange-500 underline hover:text-orange-700"
+              aria-label="Email Sundowners camp"
               >Contact Us</a
             >
           </p>
