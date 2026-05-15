@@ -1,15 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-garamond: "EB Garamond", serif;
+}
 
 @layer utilities {
-  /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

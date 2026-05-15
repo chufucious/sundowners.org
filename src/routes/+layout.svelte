@@ -2,9 +2,6 @@
   import "../app.css";
   import { page } from "$app/stores";
   import Agentation from "$lib/components/Agentation.svelte";
-  import shoppng from "$lib/assets/Shop.png?w=512&format=webp";
-  import visitOurStore from "$lib/assets/btn/visit-our-store.png?w=200&format=webp";
-  import logoMosaic from "$lib/assets/logo/Mosaic.png?w=400;800&format=webp&as=srcset";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg?w=256;512&as=srcset";
@@ -38,7 +35,6 @@
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
     class="col-span-12 h-[18rem] relative overflow-hidden"
-    class:md:h-[18rem]={$page.data.smallHeader}
     class:md:h-[36rem]={!$page.data.smallHeader}
   >
     <a
@@ -63,7 +59,7 @@
     <div
       class="h-1 md:h-2 w-full absolute bottom-0"
       style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
-    />
+    ></div>
   </header>
   <div id="main-content" class="contents">
     <slot />
@@ -83,7 +79,7 @@
       dancer, artist or in any creative capacity.
     </h2>
     <p
-      class="col-span-12 max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950 text-opacity-80"
+      class="col-span-12 max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80"
     >
       At Black Rock City and year-round, our goal is to spread the Sundowners'
       vision through our flavor of African diaspora events, creative projects,
@@ -103,33 +99,6 @@
         >DJ Application Form</a
       >
     </p>
-
-    <!-- <div id="store" class="absolute bottom-0 right-0 hidden">
-    <div class="absolute top-0 md:top-12 w-64">
-      <a href="https://shop.sundowners.org/"
-        ><img
-          src={visitOurStore}
-          class="mb-2"
-          alt="click here to visit our store"
-          loading="lazy"
-        />
-      </a>
-      <h3
-        class="text-xs text-orange-950 text-opacity-80 leading-relaxed text-center"
-      >
-        20% of each purchase goes towards support for our camp & Rexan 🦁
-      </h3>
-    </div>
-
-    <picture class="">
-      <img
-        src={shoppng}
-        class="w-[24rem] md:w-[32rem]"
-        alt="sundowners merchandise"
-        loading="lazy"
-      />
-    </picture>
-  </div> -->
   </footer>
 </main>
 
