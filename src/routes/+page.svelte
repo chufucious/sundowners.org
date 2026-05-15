@@ -212,7 +212,7 @@
 
 <section
     id="mission"
-    class="col-span-12 bg-linear-to-b from-sky-900 bg-amber-800 mt-48"
+    class="col-span-12 bg-linear-to-b from-sky-900 to-amber-800 mt-48"
 >
     <div
         class="h-2 md:h-4 w-full"

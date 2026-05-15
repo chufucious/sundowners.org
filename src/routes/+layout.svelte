@@ -1,10 +1,10 @@
 <script>
   import "../app.css";
-  import { page } from "$app/stores";
+  import { page } from "$app/state";
   import Agentation from "$lib/components/Agentation.svelte";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
-  import logoLion from "$lib/assets/logo/lion.svg?w=256;512&as=srcset";
+  import logoLion from "$lib/assets/logo/lion.svg";
   import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&as=srcset";
 </script>
 
@@ -35,7 +35,7 @@
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
     class="col-span-12 h-[18rem] relative overflow-hidden"
-    class:md:h-[36rem]={!$page.data.smallHeader}
+    class:md:h-[36rem]={!page.data.smallHeader}
   >
     <a
       href="/"
@@ -66,8 +66,7 @@
   </div>
   <footer class="col-span-12">
     <img
-      srcset={logoLion}
-      sizes="96px"
+      src={logoLion}
       class="col-span-12 mx-auto mb-4 mt-24 w-24"
       alt="sundowners lion logo"
       loading="lazy"
