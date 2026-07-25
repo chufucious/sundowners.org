@@ -438,50 +438,62 @@
         </div>
 
         <div
-            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 mb-8"
+            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 items-start mb-16 md:mb-8"
         >
-            <img
-                srcset={build2026Frame}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="raising the new frame"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
-            <img
-                srcset={build2026Toolkit}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="socket set at the dash"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
-            <img
-                srcset={build2026NightCanopy}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="working on the canopy at dusk"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
-            <img
-                srcset={build2026NightDrill}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="drilling into the side panel after dark"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
-            <img
-                srcset={build2026Solar}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="solar panels on the roof rack"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
-            <img
-                srcset={build2026Daylight}
-                sizes="(max-width: 768px) 50vw, 21vw"
-                alt="rexan in the yard"
-                loading="lazy"
-                class="w-full h-full aspect-[4/3] object-cover"
-            />
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026Frame}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="raising the new frame"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026Toolkit}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="socket set at the dash"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026NightCanopy}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="working on the canopy at dusk"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026NightDrill}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="drilling into the side panel after dark"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026Solar}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="solar panels on the roof rack"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
+            <div class="aspect-[4/3] overflow-hidden">
+                <img
+                    srcset={build2026Daylight}
+                    sizes="(max-width: 768px) 42vw, 21vw"
+                    alt="rexan in the yard"
+                    loading="lazy"
+                    class="block w-full h-full object-cover"
+                />
+            </div>
         </div>
     </div>
 </section>
