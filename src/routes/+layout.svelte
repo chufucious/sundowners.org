@@ -111,13 +111,6 @@
         aria-label="Email Sundowners camp"
         >Email Us</a
       >
-
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSfv2tBFZXZsBnXomp4Ke-zkuQeW33qUtsqnGlwixeMUJYpAXg/viewform?usp=sf_link"
-        class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
-        aria-label="Open DJ application form (opens Google Form)"
-        >DJ Application Form</a
-      >
     </p>
   </footer>
 </main>
