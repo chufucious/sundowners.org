@@ -56,7 +56,7 @@
         </div>
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
             <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
-                🦁 See you in 2026!
+                🦁 See you in {currentYear} at {currentAddress}!
             </h1>
             <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
                 Sundowners is centered on creating liminal spaces to celebrate
