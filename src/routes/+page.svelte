@@ -1,7 +1,9 @@
 <script>
     // Full-width images: 640/1280/1920
     import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&format=webp&as=srcset";
-    import rexanEvolution from "$lib/assets/rexan-evolution.png?w=640;1280;1920&format=webp&as=srcset";
+    // Line art: ship the original 2392px PNG untouched (137 kB) — webp
+    // re-encoding softened the strokes, and 2392 is the native ceiling.
+    import rexanEvolution from "$lib/assets/rexan-evolution.png";
     import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&format=webp&as=srcset";
     import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&format=webp&as=srcset";
 
@@ -19,6 +21,14 @@
     import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&format=webp&as=srcset";
     import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&format=webp&as=srcset";
     import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
+
+    // Rexan build 2026
+    import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026Toolkit from "$lib/assets/Photos/build-2026-toolkit.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026NightCanopy from "$lib/assets/Photos/build-2026-night-canopy.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026NightDrill from "$lib/assets/Photos/build-2026-night-drill.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026Solar from "$lib/assets/Photos/build-2026-solar.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026Daylight from "$lib/assets/Photos/build-2026-daylight.jpg?w=400;800;1200&format=webp&as=srcset";
 
     // Small accent images: 300/600
     import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&format=webp&as=srcset";
@@ -409,11 +419,68 @@
             class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar p-2 mb-8"
         >
             <img
-                srcset={rexanEvolution}
-                sizes="(max-width: 768px) 100vw, 83vw"
+                src={rexanEvolution}
+                width="2392"
+                height="851"
                 alt="the evolution of our art car, rexan"
-                class="w-full"
+                class="w-full max-w-[1196px] mx-auto"
                 loading="lazy"
+            />
+        </div>
+
+        <div
+            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 mb-8 text-center"
+        >
+            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-1">
+                Rexan Build 2026
+            </h2>
+            <p class="text-sm text-orange-950/80">Somewhere in Reno</p>
+        </div>
+
+        <div
+            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 mb-8"
+        >
+            <img
+                srcset={build2026Frame}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="raising the new frame"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
+            />
+            <img
+                srcset={build2026Toolkit}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="socket set at the dash"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
+            />
+            <img
+                srcset={build2026NightCanopy}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="working on the canopy at dusk"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
+            />
+            <img
+                srcset={build2026NightDrill}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="drilling into the side panel after dark"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
+            />
+            <img
+                srcset={build2026Solar}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="solar panels on the roof rack"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
+            />
+            <img
+                srcset={build2026Daylight}
+                sizes="(max-width: 768px) 50vw, 21vw"
+                alt="rexan in the yard"
+                loading="lazy"
+                class="w-full h-full aspect-[4/3] object-cover"
             />
         </div>
     </div>
