@@ -6,7 +6,6 @@
       "name": "sundowners-website",
       "dependencies": {
         "@tailwindcss/typography": "^0.5.19",
-        "agentation": "^3.0.2",
         "vite-imagetools": "^10.0.0",
       },
       "devDependencies": {
@@ -14,6 +13,7 @@
         "@sveltejs/kit": "^2.60.1",
         "@sveltejs/vite-plugin-svelte": "^7.1.2",
         "@tailwindcss/vite": "^4.3.0",
+        "agentation": "^3.0.2",
         "daisyui": "^5.5.19",
         "react": "^19.2.6",
         "react-dom": "^19.2.6",

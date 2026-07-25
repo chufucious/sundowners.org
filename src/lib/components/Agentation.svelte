@@ -1,12 +1,11 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
-  import { browser, dev } from '$app/environment';
 
   let container;
   let root;
 
   onMount(async () => {
-    if (!dev) return;
+    if (!import.meta.env.DEV) return;
 
     const [{ Agentation }, { createRoot }] = await Promise.all([
       import('agentation'),

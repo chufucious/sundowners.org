@@ -6,26 +6,47 @@
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg";
   import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&as=srcset";
+
+  let { children } = $props();
+
+  const SITE_URL = "https://sundowners.org";
+  const DEFAULT_TITLE = "Sundowners – Black Rock City";
+  const DEFAULT_DESCRIPTION =
+    "Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world.";
+  const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
+  const DEFAULT_IMAGE_ALT = "Sundowners walking in Black Rock City";
+
+  // Pages override any of these via their load(); the layout owns the single
+  // canonical set of tags so a page's values can't end up as ignored duplicates.
+  const meta = $derived({
+    title: page.data.title ?? DEFAULT_TITLE,
+    description: page.data.description ?? DEFAULT_DESCRIPTION,
+    image: page.data.ogImage ?? DEFAULT_IMAGE,
+    imageAlt: page.data.ogImageAlt ?? DEFAULT_IMAGE_ALT,
+    type: page.data.ogType ?? "website",
+    url: SITE_URL + (page.url.pathname === "/" ? "" : page.url.pathname),
+  });
 </script>
 
 <svelte:head>
-  <title>Sundowners – Black Rock City</title>
-  <meta
-    name="description"
-    content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world."
-  />
+  <title>{meta.title}</title>
+  <meta name="description" content={meta.description} />
   <!-- Open Graph -->
-  <meta property="og:title" content="Sundowners – Black Rock City" />
-  <meta property="og:description" content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sundowners.org" />
-  <meta property="og:image" content="https://sundowners.org/android-chrome-512x512.png" />
+  <meta property="og:title" content={meta.title} />
+  <meta property="og:description" content={meta.description} />
+  <meta property="og:type" content={meta.type} />
+  <meta property="og:url" content={meta.url} />
+  <meta property="og:image" content={meta.image} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={meta.imageAlt} />
   <meta property="og:site_name" content="Sundowners" />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sundowners – Black Rock City" />
-  <meta name="twitter:description" content="Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world." />
-  <meta name="twitter:image" content="https://sundowners.org/android-chrome-512x512.png" />
+  <meta name="twitter:title" content={meta.title} />
+  <meta name="twitter:description" content={meta.description} />
+  <meta name="twitter:image" content={meta.image} />
+  <meta name="twitter:image:alt" content={meta.imageAlt} />
 </svelte:head>
 
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
@@ -62,7 +83,7 @@
     ></div>
   </header>
   <div id="main-content" class="contents">
-    <slot />
+    {@render children()}
   </div>
   <footer class="col-span-12">
     <img
@@ -101,4 +122,6 @@
   </footer>
 </main>
 
-<Agentation />
+{#if import.meta.env.DEV}
+  <Agentation />
+{/if}

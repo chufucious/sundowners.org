@@ -1,23 +1,9 @@
 <script>
   import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
-  
-  export let data;
-</script>
 
-<svelte:head>
-  <title>Jagged Balls of Rolling Chaos | Sundowners – Black Rock City</title>
-  <meta property="og:title" content="Jagged Balls of Rolling Chaos | Sundowners – Black Rock City" />
-  <meta property="og:description" content="Essential survival guide for Burning Man: bikes, generators, emergency protocols, and gear wisdom from the Sundowners camp. No cheap easy ups ever - they turn into jagged balls of rolling chaos." />
-  <meta property="og:image" content={data.ogImage} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://sundowners.org/jagged-balls-of-rolling-chaos" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jagged Balls of Rolling Chaos | Sundowners – Black Rock City" />
-  <meta name="twitter:description" content="Essential survival guide for Burning Man: bikes, generators, emergency protocols, and gear wisdom from the Sundowners camp." />
-  <meta name="twitter:image" content={data.ogImage} />
-</svelte:head>
+  // Title / OG tags come from this route's load() and are rendered
+  // once by +layout.svelte — see the meta defaults there.
+</script>
 
 <article class="col-span-10 col-start-2 font-serif text-orange-950 pt-8">
   <header class="grid grid-cols-12 gap-4">

@@ -33,6 +33,11 @@
     import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=800&format=webp";
     import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
     import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
+
+    // Current placement — rendered in both the address card and the top row of
+    // the expeditions table. Update here only.
+    const currentYear = 2026;
+    const currentAddress = "7:45 & Bodhi";
 </script>
 
 <section id="intro" class="col-span-12 relative">
@@ -76,9 +81,9 @@
             >
                 <div class="p-4">
                     <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
-                        2025 ADDRESS
+                        {currentYear} ADDRESS
                     </h3>
-                    <p class="text-sm text-stone-950">7:45 & Ellison</p>
+                    <p class="text-sm text-stone-950">{currentAddress}</p>
                 </div>
                 <div class="p-4">
                     <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
@@ -287,6 +292,17 @@
 
                 <tbody>
                     <tr>
+                        <td>{currentYear}</td>
+                        <td>
+                            <a
+                                href="https://journal.burningman.org/2025/10/philosophical-center/the-theme/burning-man-2026-axis-mundi/"
+                                class="underline hover:text-orange-500"
+                            >
+                                Axis Mundi
+                            </a>
+                        </td>
+                        <td>{currentAddress}</td>
+                    </tr><tr>
                         <td>2025</td>
                         <td>
                             <a
