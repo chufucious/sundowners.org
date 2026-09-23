@@ -60,15 +60,17 @@
 
     // Bottom gallery, left to right. `class` sets each photo's max height and alignment.
     let gallery;
+    let galleryAtStart = $state(true);
+    let galleryAtEnd = $state(false);
 
-    // Mouse users can't swipe a scrollbar-less strip, so the hint pages it;
-    // at the end it wraps back to the start.
-    function scrollGallery() {
-        const atEnd = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
-        gallery.scrollTo({
-            left: atEnd ? 0 : gallery.scrollLeft + gallery.clientWidth * 0.8,
-            behavior: "smooth",
-        });
+    // Mouse users can't swipe a scrollbar-less strip, so the hints page it.
+    function scrollGallery(direction) {
+        gallery.scrollBy({ left: direction * gallery.clientWidth * 0.8, behavior: "smooth" });
+    }
+
+    function updateGalleryEnds() {
+        galleryAtStart = gallery.scrollLeft <= 1;
+        galleryAtEnd = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
     }
 
     const galleryPhotos = [
@@ -374,7 +376,7 @@
 
             <div class="md:w-96 md:shrink-0">
                 <table
-                    class="text-orange-950/50 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
+                    class="text-orange-950/80 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
                 >
                     <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
 
@@ -476,16 +478,26 @@
 </section>
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
-        <button
-            type="button"
-            onclick={scrollGallery}
-            class="col-span-12 justify-self-end px-4 text-xs text-orange-950/50 hover:text-orange-500 cursor-pointer"
-        >
-            more photos →
-        </button>
+        <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/50">
+            <button
+                type="button"
+                onclick={() => scrollGallery(-1)}
+                class={["underline hover:text-orange-500 cursor-pointer", galleryAtStart && "invisible"]}
+            >
+                ← back
+            </button>
+            <button
+                type="button"
+                onclick={() => scrollGallery(1)}
+                class={["underline hover:text-orange-500 cursor-pointer", galleryAtEnd && "invisible"]}
+            >
+                more photos →
+            </button>
+        </div>
         <div
             id="gallery"
             bind:this={gallery}
+            onscroll={updateGalleryEnds}
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
             {#each galleryPhotos as { srcset, width, height, alt, class: fit } (srcset)}
