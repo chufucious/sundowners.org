@@ -3,7 +3,7 @@
     import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&format=webp&as=srcset";
     // Line art: ship the original 2392px PNG untouched (137 kB) — webp
     // re-encoding softened the strokes, and 2392 is the native ceiling.
-    import rexanEvolution from "$lib/assets/rexan-evolution.png";
+    import rexanEvolution from "$lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&format=webp&as=srcset";
     import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&format=webp&as=srcset";
     import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&format=webp&as=srcset";
 
@@ -14,6 +14,7 @@
     import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;800;1200&format=webp&as=srcset";
     import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;800;1200&format=webp&as=srcset";
     import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;800;1200&format=webp&as=srcset";
+    import manBurnFire from "$lib/assets/Photos/man-burn-fire.jpg?w=400;627&format=webp&as=srcset";
     import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&format=webp&as=srcset";
     import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&format=webp&as=srcset";
     import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&format=webp&as=srcset";
@@ -416,14 +417,15 @@
         </div>
 
         <div
-            class="col-start-1 col-span-12 md:col-start-2 md:col-span-10 flex overflow-x-auto no-scrollbar p-2 mb-8"
+            class="col-start-1 col-span-12 flex overflow-x-auto no-scrollbar p-2 mb-8"
         >
             <img
-                src={rexanEvolution}
-                width="2392"
-                height="851"
+                srcset={rexanEvolution}
+                sizes="(max-width: 800px) 800px, (min-width: 1600px) 1600px, 100vw"
+                width="3795"
+                height="995"
                 alt="the evolution of our art car, rexan"
-                class="w-full max-w-[1196px] mx-auto"
+                class="w-full min-w-[800px] max-w-[1600px] mx-auto"
                 loading="lazy"
             />
         </div>
@@ -548,6 +550,13 @@
                 alt="j attracting influencers"
                 loading="lazy"
                 class="w-full max-h-64 object-cover"
+            />
+            <img
+                srcset={manBurnFire}
+                sizes="(max-width: 768px) 100vw, 400px"
+                alt="the man lit up above a wall of fire"
+                loading="lazy"
+                class="w-full max-h-96 object-cover"
             />
             <img
                 srcset={rexanDancer}
