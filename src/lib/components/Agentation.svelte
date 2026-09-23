@@ -1,26 +1,26 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
-
   let container;
-  let root;
 
-  onMount(async () => {
+  $effect(() => {
     if (!import.meta.env.DEV) return;
 
-    const [{ Agentation }, { createRoot }] = await Promise.all([
+    let root;
+    let cancelled = false;
+
+    Promise.all([
       import('agentation'),
-      import('react-dom/client')
-    ]);
-    const { createElement } = await import('react');
+      import('react-dom/client'),
+      import('react')
+    ]).then(([{ Agentation }, { createRoot }, { createElement }]) => {
+      if (cancelled) return;
+      root = createRoot(container);
+      root.render(createElement(Agentation));
+    });
 
-    root = createRoot(container);
-    root.render(createElement(Agentation));
-  });
-
-  onDestroy(() => {
-    if (root) {
-      root.unmount();
-    }
+    return () => {
+      cancelled = true;
+      root?.unmount();
+    };
   });
 </script>
 

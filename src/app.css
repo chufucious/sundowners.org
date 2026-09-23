@@ -8,6 +8,12 @@
   --font-garamond: "EB Garamond", serif;
 }
 
+/* Wax-fabric border behind framed photos; set the image with style:background-image. */
+@utility pattern-frame {
+  background-repeat: repeat;
+  background-size: 300px;
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

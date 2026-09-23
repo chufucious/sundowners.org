@@ -44,17 +44,54 @@
     import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
     import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
 
-    // Current placement — rendered in both the address card and the top row of
-    // the expeditions table. Update here only.
+    // Current placement — rendered in the headline, the address card, and the
+    // top row of the expeditions table. Update here only.
     const currentYear = 2026;
     const currentAddress = "7:45 & Bodhi";
+
+    const build2026Photos = [
+        { srcset: build2026Frame, alt: "raising the new frame" },
+        { srcset: build2026Toolkit, alt: "socket set at the dash" },
+        { srcset: build2026NightCanopy, alt: "working on the canopy at dusk" },
+        { srcset: build2026NightDrill, alt: "drilling into the side panel after dark" },
+        { srcset: build2026Solar, alt: "solar panels on the roof rack" },
+        { srcset: build2026Daylight, alt: "rexan in the yard" },
+    ];
+
+    // Bottom gallery, left to right. `class` sets each photo's max height and alignment.
+    const galleryPhotos = [
+        { srcset: gregonrexan, width: 2688, height: 3586, alt: "on rexan", class: "max-h-96" },
+        { srcset: jonSmoke, width: 2048, height: 1365, alt: "j attracting influencers", class: "max-h-64" },
+        { srcset: manBurnFire, width: 627, height: 940, alt: "the man lit up above a wall of fire", class: "max-h-96" },
+        { srcset: rexanDancer, width: 4000, height: 2667, alt: "dancer on rexan", class: "max-h-96 self-end" },
+        { srcset: runninglion, width: 2156, height: 2803, alt: "a running lion", class: "max-h-80" },
+        { srcset: sign, width: 2000, height: 1336, alt: "sundowners sign", class: "max-h-96" },
+        { srcset: gregFlying, width: 3106, height: 2075, alt: "g flying", class: "max-h-80 self-end" },
+        { srcset: devofisheye, width: 5568, height: 4176, alt: "fisheye lens", class: "max-h-96" },
+        { srcset: rexanFire, width: 5765, height: 3843, alt: "fire on rexan", class: "max-h-80" },
+        { srcset: rexanNightWide, width: 3910, height: 2932, alt: "night time with rexan", class: "max-h-96" },
+    ];
+
+    // Newest first. `cancelled` strikes the row through.
+    const expeditions = [
+        { year: currentYear, theme: "Axis Mundi", address: currentAddress, url: "https://journal.burningman.org/2025/10/philosophical-center/the-theme/burning-man-2026-axis-mundi/" },
+        { year: 2025, theme: "Tomorrow Today", address: "7:45 & Ellison", url: "https://journal.burningman.org/2024/11/philosophical-center/the-theme/burning-man-2025-tomorrow-today/" },
+        { year: 2024, theme: "Curiouser & Curiouser", address: "Rest year", url: "https://journal.burningman.org/2023/10/philosophical-center/the-theme/2024-curiouser-curiouser/" },
+        { year: 2023, theme: "Animalia", address: "4:45 & Grootslang", url: "https://burningman.org/about/history/brc-history/event-archives/2023-event-archive/" },
+        { year: 2022, theme: "Waking Dreams", address: "4:15 & Glimmer", url: "https://burningman.org/about/history/brc-history/event-archives/2022-event-archive/" },
+        { year: 2021, theme: "The Great Unknown", address: "CANCELLED", cancelled: true, url: "https://burningman.org/about/history/brc-history/event-archives/2021-event-archive/" },
+        { year: 2020, theme: "The Multiverse", address: "CANCELLED", cancelled: true, url: "https://burningman.org/about/history/brc-history/event-archives/2020-event-archive/" },
+        { year: 2019, theme: "Metamorphoses", address: "4:15 & Hyacinth", url: "https://burningman.org/about/history/brc-history/event-archives/2019-event-archive/" },
+        { year: 2018, theme: "I, Robot", address: "8:15 & Cylon", url: "https://burningman.org/about/history/brc-history/event-archives/2018-event-archive/" },
+        { year: 2017, theme: "Radical Ritual", address: "7:30 & Labyrinth", url: "https://burningman.org/about/history/brc-history/event-archives/2017-event-archive/2017-art-theme-radical-ritual/" },
+    ];
 </script>
 
 <section id="intro" class="col-span-12 relative">
     <div class="grid grid-cols-12 gap-4">
         <div
-            class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
-            style="background-image: url('{patternSunflower}'); background-repeat: repeat; background-size: 300px;"
+            class="pattern-frame col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
+            style:background-image="url({patternSunflower})"
         >
             <img
                 srcset={rexanGroup2023}
@@ -75,15 +112,22 @@
                 the multicultural art, music, dance, and hospitality that
                 African traditions and speakeasies bring to the world.
             </h2>
-            <p class="text-sm text-orange-950/80 leading-relaxed max-w-prose">
-                We strive for a holistic offering through our shebeen speakeasy
-                and safari-theme art car. The deep artistry, meaning, and
-                humanity of African-based music is our creative North Star.<br
-                /><br />We flavor our experience through Afrofuturism, imagining
-                a positive, inclusive future through speculative art and
-                technology, representing the diverse background and skills of
-                our community.
-            </p>
+            <div
+                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+            >
+                <p>
+                    We strive for a holistic offering through our shebeen
+                    speakeasy and safari-theme art car. The deep artistry,
+                    meaning, and humanity of African-based music is our creative
+                    North Star.
+                </p>
+                <p>
+                    We flavor our experience through Afrofuturism, imagining a
+                    positive, inclusive future through speculative art and
+                    technology, representing the diverse background and skills
+                    of our community.
+                </p>
+            </div>
         </div>
         <div
             class="col-start-2 col-span-10 md:col-start-8 md:col-span-3 md:pl-16"
@@ -130,8 +174,8 @@
 <section id="collage" class="col-span-12 mt-4 overflow-hidden py-12">
     <div class="relative w-full max-w-7xl mx-auto h-svh">
         <div
-            class="absolute w-full top-0 md:w-[48rem] md:left-1/4 p-2 rotate-1 drop-shadow-xl"
-            style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: 300px;"
+            class="pattern-frame absolute w-full top-0 md:w-192 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
+            style:background-image="url({patternFans})"
         >
             <img
                 srcset={tucoLauren}
@@ -144,22 +188,22 @@
             />
         </div>
         <div
-            class="absolute md:w-[23rem] top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
-            style="background-image: url('{patternSpirograph}'); background-repeat: repeat; background-size: 300px;"
+            class="pattern-frame absolute md:w-92 top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
+            style:background-image="url({patternSpirograph})"
         >
             <img
                 srcset={coogieSign}
                 width="2075"
                 height="3106"
                 sizes="(max-width: 768px) 200px, 368px"
-                class="object-cover w-[200px] md:w-full"
+                class="object-cover w-50 md:w-full"
                 alt="sundowners with sign"
                 loading="lazy"
             />
         </div>
         <div
-            class="absolute md:w-[23rem] w-[12rem] top-20 md:top-auto right-0 hidden md:block md:bottom-1/4 p-2 rotate-12 drop-shadow-xl"
-            style="background-image: url('{patternLeaves}'); background-repeat: repeat; background-size: 300px;"
+            class="pattern-frame absolute md:w-92 w-48 top-20 md:top-auto right-0 hidden md:block md:bottom-1/4 p-2 rotate-12 drop-shadow-xl"
+            style:background-image="url({patternLeaves})"
         >
             <img
                 srcset={joshRexan}
@@ -172,8 +216,8 @@
             />
         </div>
         <div
-            class="absolute md:w-[44rem] bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
-            style="background-image: url('{patternHandshake}'); background-repeat: repeat; background-size: 300px;"
+            class="pattern-frame absolute md:w-176 bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
+            style:background-image="url({patternHandshake})"
         >
             <img
                 srcset={zuraSpotter}
@@ -192,8 +236,8 @@
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 md:col-start-2 md:col-span-6 md:mr-8 px-6">
             <div
-                class="w-full p-2 -rotate-1 drop-shadow-xl"
-                style="background-image: url('{patternLeopard}'); background-repeat: repeat; background-size: 300px;"
+                class="pattern-frame w-full p-2 -rotate-1 drop-shadow-xl"
+                style:background-image="url({patternLeopard})"
             >
                 <img
                     srcset={group2022}
@@ -222,8 +266,8 @@
 
 <section id="l-and-lion" class="col-span-12 overflow-hidden mt-48">
     <div
-        class="p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
-        style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: 300px;"
+        class="pattern-frame p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
+        style:background-image="url({patternChickens})"
     >
         <div class="overflow-hidden">
             <img
@@ -244,8 +288,8 @@
     class="col-span-12 bg-linear-to-b from-sky-900 to-amber-800 mt-48"
 >
     <div
-        class="h-2 md:h-4 w-full"
-        style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+        class="h-2 md:h-4 w-full bg-repeat-x"
+        style:background-image="url({patternDazzle})"
     ></div>
     <div class="grid grid-cols-12 gap-4 text-white pt-48">
         <h2
@@ -284,8 +328,8 @@
         </p>
     </div>
     <div
-        class="h-2 md:h-4 w-full"
-        style="background-image: url('{patternDazzle}') ; background-repeat: repeat-x;"
+        class="h-2 md:h-4 w-full bg-repeat-x"
+        style:background-image="url({patternDazzle})"
     ></div>
 </section>
 
@@ -297,15 +341,20 @@
                 across the globe traveled to South Africa and went on a
                 life-changing wildlife safari.
             </h2>
-            <p
-                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose"
+            <div
+                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
             >
-                On the Savannah, we would end each day with the country's lovely
-                sunset social ceremony.<br /><br />
-                That same year, we dubbed ourselves Sundowners and created Rexan,
-                a psychedelic safari-themed art car to bring this special cultural
-                ritual to the Burning Man community and beyond.
-            </p>
+                <p>
+                    On the Savannah, we would end each day with the country's
+                    lovely sunset social ceremony.
+                </p>
+                <p>
+                    That same year, we dubbed ourselves Sundowners and created
+                    Rexan, a psychedelic safari-themed art car to bring this
+                    special cultural ritual to the Burning Man community and
+                    beyond.
+                </p>
+            </div>
         </div>
 
         <div
@@ -317,116 +366,17 @@
                 <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
 
                 <tbody>
-                    <tr>
-                        <td>{currentYear}</td>
-                        <td>
-                            <a
-                                href="https://journal.burningman.org/2025/10/philosophical-center/the-theme/burning-man-2026-axis-mundi/"
-                                class="underline hover:text-orange-500"
-                            >
-                                Axis Mundi
-                            </a>
-                        </td>
-                        <td>{currentAddress}</td>
-                    </tr><tr>
-                        <td>2025</td>
-                        <td>
-                            <a
-                                href="https://journal.burningman.org/2024/11/philosophical-center/the-theme/burning-man-2025-tomorrow-today/"
-                                class="underline hover:text-orange-500"
-                            >
-                                Tomorrow Today
-                            </a>
-                        </td>
-                        <td>7:45 & Ellison</td>
-                    </tr><tr>
-                        <td>2024</td>
-                        <td
-                            ><a
-                                href="https://journal.burningman.org/2023/10/philosophical-center/the-theme/2024-curiouser-curiouser/"
-                                class="underline hover:text-orange-500"
-                                >Curiouser & Curiouser</a
-                            ></td
-                        >
-                        <td>Rest year</td>
-                    </tr>
-                    <tr>
-                        <td>2023</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2023-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >Animalia</a
-                            ></td
-                        >
-                        <td>4:45 & Grootslang</td>
-                    </tr>
-                    <tr>
-                        <td>2022</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2022-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >Waking Dreams</a
-                            ></td
-                        >
-                        <td>4:15 & Glimmer</td>
-                    </tr>
-                    <tr class="line-through">
-                        <td>2021</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2021-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >The Great Unknown</a
-                            ></td
-                        >
-                        <td>CANCELLED</td>
-                    </tr>
-                    <tr class="line-through">
-                        <td>2020</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2020-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >The Multiverse</a
-                            ></td
-                        >
-                        <td>CANCELLED</td>
-                    </tr>
-                    <tr>
-                        <td>2019</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2019-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >Metamorphoses</a
-                            ></td
-                        >
-                        <td>4:15 & Hyacinth</td>
-                    </tr>
-                    <tr>
-                        <td>2018</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2018-event-archive/"
-                                class="underline hover:text-orange-500"
-                                >I, Robot</a
-                            ></td
-                        >
-                        <td>8:15 & Cylon</td>
-                    </tr>
-                    <tr>
-                        <td>2017</td>
-                        <td
-                            ><a
-                                href="https://burningman.org/about/history/brc-history/event-archives/2017-event-archive/2017-art-theme-radical-ritual/"
-                                class="underline hover:text-orange-500"
-                                >Radical Ritual</a
-                            ></td
-                        >
-                        <td>7:30 & Labyrinth</td>
-                    </tr>
+                    {#each expeditions as { year, theme, address, url, cancelled } (year)}
+                        <tr class={{ "line-through": cancelled }}>
+                            <td>{year}</td>
+                            <td>
+                                <a href={url} class="underline hover:text-orange-500"
+                                    >{theme}</a
+                                >
+                            </td>
+                            <td>{address}</td>
+                        </tr>
+                    {/each}
                 </tbody>
             </table>
         </div>
@@ -440,7 +390,7 @@
                 width="3795"
                 height="995"
                 alt="the evolution of our art car, rexan"
-                class="w-full min-w-[800px] max-w-[1600px] mx-auto"
+                class="w-full min-w-200 max-w-400 mx-auto"
                 loading="lazy"
             />
         </div>
@@ -462,60 +412,17 @@
         <div
             class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 items-start mb-16 md:mb-8"
         >
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026Frame}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="raising the new frame"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026Toolkit}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="socket set at the dash"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026NightCanopy}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="working on the canopy at dusk"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026NightDrill}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="drilling into the side panel after dark"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026Solar}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="solar panels on the roof rack"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
-            <div class="aspect-[4/3] overflow-hidden">
-                <img
-                    srcset={build2026Daylight}
-                    sizes="(max-width: 768px) 42vw, 21vw"
-                    alt="rexan in the yard"
-                    loading="lazy"
-                    class="block w-full h-full object-cover"
-                />
-            </div>
+            {#each build2026Photos as { srcset, alt } (srcset)}
+                <div class="aspect-4/3 overflow-hidden">
+                    <img
+                        {srcset}
+                        sizes="(max-width: 768px) 42vw, 21vw"
+                        {alt}
+                        loading="lazy"
+                        class="block w-full h-full object-cover"
+                    />
+                </div>
+            {/each}
         </div>
     </div>
 </section>
@@ -562,96 +469,17 @@
             id="gallery"
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
         >
-            <img
-                srcset={gregonrexan}
-                width="2688"
-                height="3586"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="on rexan"
-                loading="lazy"
-                class="w-full max-h-96 object-cover"
-            />
-            <img
-                srcset={jonSmoke}
-                width="2048"
-                height="1365"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="j attracting influencers"
-                loading="lazy"
-                class="w-full max-h-64 object-cover"
-            />
-            <img
-                srcset={manBurnFire}
-                width="627"
-                height="940"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="the man lit up above a wall of fire"
-                loading="lazy"
-                class="w-full max-h-96 object-cover"
-            />
-            <img
-                srcset={rexanDancer}
-                width="4000"
-                height="2667"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="dancer on rexan"
-                loading="lazy"
-                class="w-full max-h-96 object-cover self-end"
-            />
-            <img
-                srcset={runninglion}
-                width="2156"
-                height="2803"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="a running lion"
-                loading="lazy"
-                class="w-full max-h-80 object-cover"
-            />
-            <img
-                srcset={sign}
-                width="2000"
-                height="1336"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="sundowners sign"
-                loading="lazy"
-                class="w-full max-h-96 object-cover"
-            />
-            <img
-                srcset={gregFlying}
-                width="3106"
-                height="2075"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="g flying"
-                loading="lazy"
-                class="w-full max-h-80 object-cover self-end"
-            />
-            <img
-                srcset={devofisheye}
-                width="5568"
-                height="4176"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="fisheye lens"
-                loading="lazy"
-                class="w-full max-h-96 object-cover"
-            />
-            <img
-                srcset={rexanFire}
-                width="5765"
-                height="3843"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="fire on rexan"
-                loading="lazy"
-                class="w-full max-h-80 object-cover"
-            />
-            <img
-                srcset={rexanNightWide}
-                width="3910"
-                height="2932"
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt="night time with rexan"
-                loading="lazy"
-                class="w-full max-h-96 object-cover"
-            />
+            {#each galleryPhotos as { srcset, width, height, alt, class: fit } (srcset)}
+                <img
+                    {srcset}
+                    {width}
+                    {height}
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    {alt}
+                    loading="lazy"
+                    class={["w-full object-cover", fit]}
+                />
+            {/each}
         </div>
     </div>
 </section>

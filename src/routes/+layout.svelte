@@ -55,15 +55,17 @@
 
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
-    class="col-span-12 h-[18rem] relative overflow-hidden"
-    class:md:h-[36rem]={!page.data.smallHeader}
+    class={[
+      "col-span-12 h-72 relative overflow-hidden",
+      !page.data.smallHeader && "md:h-144",
+    ]}
   >
     <a
       href="/"
       class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
     >
       <img
-        class="w-[300px] md:w-[600px]"
+        class="w-75 md:w-150"
         srcset={logoAndType2025}
         width="2182"
         height="312"
@@ -104,20 +106,24 @@
       Collaborate with us if you would like to participate as a musician, DJ,
       dancer, artist or in any creative capacity.
     </h2>
-    <p
-      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80"
+    <div
+      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80 space-y-[1lh]"
     >
-      At Black Rock City and year-round, our goal is to spread the Sundowners'
-      vision through our flavor of African diaspora events, creative projects,
-      and community involvement.<br /><br />We would love to hear from you.<br
-      /><br />
-      <a
-        href="mailto:sundownersbrc@gmail.com"
-        class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
-        aria-label="Email Sundowners camp"
-        >Email Us</a
-      >
-    </p>
+      <p>
+        At Black Rock City and year-round, our goal is to spread the Sundowners'
+        vision through our flavor of African diaspora events, creative projects,
+        and community involvement.
+      </p>
+      <p>We would love to hear from you.</p>
+      <p>
+        <a
+          href="mailto:sundownersbrc@gmail.com"
+          class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+          aria-label="Email Sundowners camp"
+          >Email Us</a
+        >
+      </p>
+    </div>
   </footer>
 </main>
 
