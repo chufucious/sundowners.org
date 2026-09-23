@@ -3,6 +3,14 @@
 
 @theme {
   --font-garamond: "EB Garamond", serif;
+  /* Vertical rhythm between homepage sections: mt-section, pt-section, mb-section. */
+  --spacing-section: 5rem;
+}
+
+@media (width >= 48rem) {
+  :root {
+    --spacing-section: 10rem;
+  }
 }
 
 /* Wax-fabric border behind framed photos; set the image with style:background-image. */

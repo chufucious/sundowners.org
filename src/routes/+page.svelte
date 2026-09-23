@@ -171,8 +171,8 @@
     </div>
 </section>
 
-<section id="collage" class="col-span-12 mt-4 overflow-hidden py-12">
-    <div class="relative w-full max-w-7xl mx-auto h-svh">
+<section id="collage" class="col-span-12 mt-section overflow-x-clip">
+    <div class="relative w-full max-w-7xl mx-auto h-[180vw] md:h-svh">
         <div
             class="pattern-frame absolute w-full top-0 md:w-192 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
             style:background-image="url({patternFans})"
@@ -232,7 +232,7 @@
     </div>
 </section>
 
-<section id="crew" class="col-span-12 md:mt-8">
+<section id="crew" class="col-span-12 -mt-12 md:mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 md:col-start-2 md:col-span-6 md:mr-8 px-6">
             <div
@@ -264,7 +264,7 @@
     </div>
 </section>
 
-<section id="l-and-lion" class="col-span-12 overflow-hidden mt-48">
+<section id="l-and-lion" class="col-span-12 overflow-hidden mt-section">
     <div
         class="pattern-frame p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
         style:background-image="url({patternChickens})"
@@ -285,13 +285,13 @@
 
 <section
     id="mission"
-    class="col-span-12 bg-linear-to-b from-sky-900 to-amber-800 mt-48"
+    class="col-span-12 bg-linear-to-b from-sky-900 to-amber-800 mt-section"
 >
     <div
         class="h-2 md:h-4 w-full bg-repeat-x"
         style:background-image="url({patternDazzle})"
     ></div>
-    <div class="grid grid-cols-12 gap-4 text-white pt-48">
+    <div class="grid grid-cols-12 gap-4 text-white pt-section">
         <h2
             class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
         >
@@ -319,7 +319,7 @@
             </picture>
         </div>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-48 leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-section leading-relaxed"
         >
             We feel Burning Man, as the world's largest temporary city, is a
             fitting ecosystem to explore a unique ethnographic heritage that has
@@ -333,52 +333,54 @@
     ></div>
 </section>
 
-<section id="history" class="col-span-12 mt-48">
+<section id="history" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
-                In 2017, a passionate crew of longtime Burning Man vets from
-                across the globe traveled to South Africa and went on a
-                life-changing wildlife safari.
-            </h2>
-            <div
-                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
-            >
-                <p>
-                    On the Savannah, we would end each day with the country's
-                    lovely sunset social ceremony.
-                </p>
-                <p>
-                    That same year, we dubbed ourselves Sundowners and created
-                    Rexan, a psychedelic safari-themed art car to bring this
-                    special cultural ritual to the Burning Man community and
-                    beyond.
-                </p>
-            </div>
-        </div>
-
         <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+            class="col-start-2 col-span-10 w-full max-w-5xl mx-auto md:flex md:gap-16"
         >
-            <table
-                class="text-orange-950/50 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
-            >
-                <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
+            <div class="md:flex-1">
+                <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+                    In 2017, a passionate crew of longtime Burning Man vets from
+                    across the globe traveled to South Africa and went on a
+                    life-changing wildlife safari.
+                </h2>
+                <div
+                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                >
+                    <p>
+                        On the Savannah, we would end each day with the country's
+                        lovely sunset social ceremony.
+                    </p>
+                    <p>
+                        That same year, we dubbed ourselves Sundowners and created
+                        Rexan, a psychedelic safari-themed art car to bring this
+                        special cultural ritual to the Burning Man community and
+                        beyond.
+                    </p>
+                </div>
+            </div>
 
-                <tbody>
-                    {#each expeditions as { year, theme, address, url, cancelled } (year)}
-                        <tr class={{ "line-through": cancelled }}>
-                            <td>{year}</td>
-                            <td>
-                                <a href={url} class="underline hover:text-orange-500"
-                                    >{theme}</a
-                                >
-                            </td>
-                            <td>{address}</td>
-                        </tr>
-                    {/each}
-                </tbody>
-            </table>
+            <div class="md:w-96 md:shrink-0">
+                <table
+                    class="text-orange-950/50 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
+                >
+                    <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
+
+                    <tbody>
+                        {#each expeditions as { year, theme, address, url, cancelled } (year)}
+                            <tr class={{ "line-through": cancelled }}>
+                                <td>{year}</td>
+                                <td>
+                                    <a href={url} class="underline hover:text-orange-500"
+                                        >{theme}</a
+                                    >
+                                </td>
+                                <td>{address}</td>
+                            </tr>
+                        {/each}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div
@@ -401,7 +403,7 @@
         </p>
 
         <div
-            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 mb-8 text-center"
+            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 mt-8 md:mt-16 mb-8 text-center"
         >
             <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-1">
                 Rexan Build 2026
@@ -410,7 +412,7 @@
         </div>
 
         <div
-            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 items-start mb-16 md:mb-8"
+            class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 items-start"
         >
             {#each build2026Photos as { srcset, alt } (srcset)}
                 <div class="aspect-4/3 overflow-hidden">
@@ -427,7 +429,7 @@
     </div>
 </section>
 
-<section id="jagged-balls-promo" class="col-span-12 mt-48">
+<section id="jagged-balls-promo" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
             <img
@@ -460,14 +462,14 @@
         </div>
     </div>
 </section>
-<section id="collaborate" class="col-span-12 mt-48">
+<section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <p class="col-span-12 px-4 text-right text-xs text-orange-950/50">
             more photos →
         </p>
         <div
             id="gallery"
-            class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
+            class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
             {#each galleryPhotos as { srcset, width, height, alt, class: fit } (srcset)}
                 <img

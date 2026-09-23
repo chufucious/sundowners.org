@@ -96,7 +96,7 @@
       src={logoLion}
       width="79"
       height="71"
-      class="mx-auto mb-4 mt-24 w-24"
+      class="mx-auto mb-4 mt-section w-24"
       alt="sundowners lion logo"
       loading="lazy"
     />
