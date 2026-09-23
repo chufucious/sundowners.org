@@ -59,6 +59,18 @@
     ];
 
     // Bottom gallery, left to right. `class` sets each photo's max height and alignment.
+    let gallery;
+
+    // Mouse users can't swipe a scrollbar-less strip, so the hint pages it;
+    // at the end it wraps back to the start.
+    function scrollGallery() {
+        const atEnd = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
+        gallery.scrollTo({
+            left: atEnd ? 0 : gallery.scrollLeft + gallery.clientWidth * 0.8,
+            behavior: "smooth",
+        });
+    }
+
     const galleryPhotos = [
         { srcset: gregonrexan, width: 2688, height: 3586, alt: "on rexan", class: "max-h-96" },
         { srcset: jonSmoke, width: 2048, height: 1365, alt: "j attracting influencers", class: "max-h-64" },
@@ -464,11 +476,16 @@
 </section>
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
-        <p class="col-span-12 px-4 text-right text-xs text-orange-950/50">
+        <button
+            type="button"
+            onclick={scrollGallery}
+            class="col-span-12 justify-self-end px-4 text-xs text-orange-950/50 hover:text-orange-500 cursor-pointer"
+        >
             more photos →
-        </p>
+        </button>
         <div
             id="gallery"
+            bind:this={gallery}
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
             {#each galleryPhotos as { srcset, width, height, alt, class: fit } (srcset)}
