@@ -39,7 +39,7 @@
     </div>
   </header>
   <div
-    class="prose prose-headings:font-light mx-auto prose-li:text-orange-950 prose-headings:text-orange-950"
+    class="prose prose-headings:font-light mx-auto prose-li:text-orange-950 prose-headings:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]"
   >
     <section id="bikes">
       <h2>Bikes</h2>
