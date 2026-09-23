@@ -65,12 +65,16 @@
       <img
         class="w-[300px] md:w-[600px]"
         srcset={logoAndType2025}
+        width="2182"
+        height="312"
         sizes="(max-width: 768px) 300px, 600px"
         alt="sundowners logo"
       /></a
     >
     <img
       srcset={sundownerswalking}
+      width="2844"
+      height="1506"
       sizes="100vw"
       alt="Sundowners walking in Black Rock City"
       class="absolute inset-0 w-full h-full object-cover"
@@ -88,18 +92,20 @@
   <footer class="col-span-12">
     <img
       src={logoLion}
-      class="col-span-12 mx-auto mb-4 mt-24 w-24"
+      width="79"
+      height="71"
+      class="mx-auto mb-4 mt-24 w-24"
       alt="sundowners lion logo"
       loading="lazy"
     />
     <h2
-      class="px-8 md:px-0 col-span-12 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
+      class="px-8 md:px-0 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
     >
       Collaborate with us if you would like to participate as a musician, DJ,
       dancer, artist or in any creative capacity.
     </h2>
     <p
-      class="col-span-12 max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80"
+      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80"
     >
       At Black Rock City and year-round, our goal is to spread the Sundowners'
       vision through our flavor of African diaspora events, creative projects,

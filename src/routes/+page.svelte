@@ -1,8 +1,7 @@
 <script>
     // Full-width images: 640/1280/1920
     import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&format=webp&as=srcset";
-    // Line art: ship the original 2392px PNG untouched (137 kB) — webp
-    // re-encoding softened the strokes, and 2392 is the native ceiling.
+    // Line art: transparent PNG rendered from the 2026 evolution SVG at 3795px.
     import rexanEvolution from "$lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&format=webp&as=srcset";
     import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&format=webp&as=srcset";
     import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&format=webp&as=srcset";
@@ -59,6 +58,8 @@
         >
             <img
                 srcset={rexanGroup2023}
+                width="6000"
+                height="4000"
                 sizes="(max-width: 768px) 100vw, 66vw"
                 alt="jump!"
                 class="max-w-full"
@@ -67,7 +68,7 @@
         </div>
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
             <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
-                🦁 See you in {currentYear} at {currentAddress}!
+                🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
             </h1>
             <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
                 Sundowners is centered on creating liminal spaces to celebrate
@@ -127,13 +128,15 @@
 </section>
 
 <section id="collage" class="col-span-12 mt-4 overflow-hidden py-12">
-    <div class="relative w-full max-w-7xl mx-auto h-screen">
+    <div class="relative w-full max-w-7xl mx-auto h-svh">
         <div
             class="absolute w-full top-0 md:w-[48rem] md:left-1/4 p-2 rotate-1 drop-shadow-xl"
             style="background-image: url('{patternFans}'); background-repeat: repeat; background-size: 300px;"
         >
             <img
                 srcset={tucoLauren}
+                width="2000"
+                height="1336"
                 sizes="(max-width: 768px) 100vw, 768px"
                 class="object-cover"
                 alt="t + l"
@@ -146,8 +149,10 @@
         >
             <img
                 srcset={coogieSign}
+                width="2075"
+                height="3106"
                 sizes="(max-width: 768px) 200px, 368px"
-                class="object-cover"
+                class="object-cover w-[200px] md:w-full"
                 alt="sundowners with sign"
                 loading="lazy"
             />
@@ -158,6 +163,8 @@
         >
             <img
                 srcset={joshRexan}
+                width="2075"
+                height="3106"
                 sizes="(max-width: 768px) 192px, 368px"
                 class="object-cover"
                 alt="j on rexan"
@@ -170,6 +177,8 @@
         >
             <img
                 srcset={zuraSpotter}
+                width="2048"
+                height="1365"
                 sizes="(max-width: 768px) 100vw, 704px"
                 class="object-cover"
                 alt="z on spotter"
@@ -188,6 +197,8 @@
             >
                 <img
                     srcset={group2022}
+                    width="6000"
+                    height="4000"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt="2022 group"
                     loading="lazy"
@@ -209,7 +220,7 @@
     </div>
 </section>
 
-<section id="l and lion" class="col-span-12 overflow-hidden mt-48">
+<section id="l-and-lion" class="col-span-12 overflow-hidden mt-48">
     <div
         class="p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
         style="background-image: url('{patternChickens}'); background-repeat: repeat; background-size: 300px;"
@@ -217,6 +228,8 @@
         <div class="overflow-hidden">
             <img
                 srcset={lionAndLeyla}
+                width="3106"
+                height="2075"
                 sizes="(max-width: 768px) 100vw, 1152px"
                 alt="lion and l"
                 class="w-full h-auto object-cover rotate-1"
@@ -249,9 +262,11 @@
             stories, laughter, and libations at dusk.
         </p>
         <div class="col-span-12 md:col-start-3 md:col-span-8">
-            <picture class="col-start-3 col-span-8">
+            <picture>
                 <img
                     srcset={katiesunset}
+                    width="4240"
+                    height="2832"
                     sizes="(max-width: 768px) 100vw, 66vw"
                     alt="k staring into distance"
                     loading="lazy"
@@ -429,6 +444,11 @@
                 loading="lazy"
             />
         </div>
+        <p
+            class="col-span-12 -mt-6 mb-8 text-center text-xs text-orange-950/50 min-[816px]:hidden"
+        >
+            swipe for all the years →
+        </p>
 
         <div
             class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 mb-8 text-center"
@@ -505,6 +525,8 @@
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
             <img
                 srcset={jaggedBalls}
+                width="2048"
+                height="2048"
                 sizes="(max-width: 768px) 100vw, 42vw"
                 alt="jagged balls of rolling chaos"
                 loading="lazy"
@@ -533,12 +555,17 @@
 </section>
 <section id="collaborate" class="col-span-12 mt-48">
     <div class="grid grid-cols-12 gap-4">
+        <p class="col-span-12 px-4 text-right text-xs text-orange-950/50">
+            more photos →
+        </p>
         <div
             id="gallery"
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar mb-8"
         >
             <img
                 srcset={gregonrexan}
+                width="2688"
+                height="3586"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="on rexan"
                 loading="lazy"
@@ -546,6 +573,8 @@
             />
             <img
                 srcset={jonSmoke}
+                width="2048"
+                height="1365"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="j attracting influencers"
                 loading="lazy"
@@ -553,6 +582,8 @@
             />
             <img
                 srcset={manBurnFire}
+                width="627"
+                height="940"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="the man lit up above a wall of fire"
                 loading="lazy"
@@ -560,6 +591,8 @@
             />
             <img
                 srcset={rexanDancer}
+                width="4000"
+                height="2667"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="dancer on rexan"
                 loading="lazy"
@@ -567,6 +600,8 @@
             />
             <img
                 srcset={runninglion}
+                width="2156"
+                height="2803"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="a running lion"
                 loading="lazy"
@@ -574,6 +609,8 @@
             />
             <img
                 srcset={sign}
+                width="2000"
+                height="1336"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="sundowners sign"
                 loading="lazy"
@@ -581,6 +618,8 @@
             />
             <img
                 srcset={gregFlying}
+                width="3106"
+                height="2075"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="g flying"
                 loading="lazy"
@@ -588,6 +627,8 @@
             />
             <img
                 srcset={devofisheye}
+                width="5568"
+                height="4176"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="fisheye lens"
                 loading="lazy"
@@ -595,6 +636,8 @@
             />
             <img
                 srcset={rexanFire}
+                width="5765"
+                height="3843"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="fire on rexan"
                 loading="lazy"
@@ -602,6 +645,8 @@
             />
             <img
                 srcset={rexanNightWide}
+                width="3910"
+                height="2932"
                 sizes="(max-width: 768px) 100vw, 400px"
                 alt="night time with rexan"
                 loading="lazy"
