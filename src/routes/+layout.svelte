@@ -2,6 +2,7 @@
   import "../app.css";
   import { page } from "$app/state";
   import Agentation from "$lib/components/Agentation.svelte";
+  import FlameMark from "$lib/components/FlameMark.svelte";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg";
@@ -64,15 +65,35 @@
       href="/"
       class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
     >
-      <img
-        class="w-75 md:w-150"
-        srcset={logoAndType2025}
-        width="2182"
-        height="312"
-        sizes="(max-width: 768px) 300px, 600px"
-        alt="sundowners logo"
-      /></a
+      <span class="relative w-75 md:w-150">
+        <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
+        <img
+          class="w-full [clip-path:inset(0_0_0_23%)]"
+          srcset={logoAndType2025}
+          width="2182"
+          height="312"
+          sizes="(max-width: 768px) 300px, 600px"
+          alt="sundowners logo"
+        />
+        <!-- Placed over the mark's spot in the logo, with headroom above for
+             the flames (see sundowners-mark-2025-flame.png's padding). -->
+        <FlameMark
+          class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
+        />
+      </span></a
     >
+    <!-- Embers in their own layer on top, outside the color-dodge blend, so
+         their orange/red survives. Mirrors the logo's position and size. -->
+    <div
+      class="pointer-events-none fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center"
+    >
+      <span class="relative w-75 md:w-150 aspect-2182/312">
+        <FlameMark
+          embers
+          class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
+        />
+      </span>
+    </div>
     <img
       srcset={sundownerswalking}
       width="2844"
