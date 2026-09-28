@@ -25,6 +25,12 @@ test.describe("left rail", () => {
     await expect(toc.locator('[aria-current="location"]')).toHaveText("Keeping it green");
   });
 
+  test("body text stays in the reading column", async ({ page }) => {
+    // 36rem column minus 1.5rem padding each side.
+    const width = await page.getByText("Early on we powered the lights").evaluate((p) => p.getBoundingClientRect().width);
+    expect(width).toBeLessThanOrEqual(33 * 16 + 1);
+  });
+
   test("stays pinned on the left, clear of the text, while the post scrolls", async ({ page }) => {
     const toc = page.getByRole("navigation", { name: "On this page" });
     for (const id of ["the-rig-today", "what-broke", "thanks"]) {
