@@ -3,6 +3,9 @@
 
 @theme {
   --font-garamond: "EB Garamond", serif;
+  /* One web font for serif text, so it's the same in every browser: the
+     default stack starts with ui-serif, which only Safari resolves (to New York). */
+  --font-serif: "EB Garamond", ui-serif, Georgia, serif;
   /* Vertical rhythm between homepage sections: mt-section, pt-section, mb-section. */
   --spacing-section: 5rem;
 }
