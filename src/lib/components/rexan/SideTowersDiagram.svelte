@@ -12,14 +12,10 @@
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 270" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="towers-overhead-title">
       <title id="towers-overhead-title">Overhead view of the 2027 concept: line array boxes flown under the tops, subs split into side towers</title>
-      <RexanOverhead coneOpacity={0.1} scaleBarY={290}>
+      <RexanOverhead coneFill="fill-emerald-600/10" scaleBarY={290}>
         {#snippet coverage()}
-          <!-- LA112 cones, 90° horizontal: one even tint, then their outlines. -->
-          <g class="fill-violet-500" opacity="0.15">
-            <path d="M219.2 195.0 L74.4 156.2 A150.0 150.0 0 0 1 258.1 50.1 Z" />
-            <path d="M280.8 195.0 L241.9 50.1 A150.0 150.0 0 0 1 425.6 156.2 Z" />
-          </g>
-          <g class="fill-none stroke-violet-700" stroke-width="0.8" stroke-dasharray="5 3">
+          <!-- LA112 cones, 90° horizontal -->
+          <g class="fill-violet-500/15 stroke-violet-700" stroke-width="0.8" stroke-dasharray="5 3">
             <path d="M219.2 195.0 L74.4 156.2 A150.0 150.0 0 0 1 258.1 50.1 Z" />
             <path d="M280.8 195.0 L241.9 50.1 A150.0 150.0 0 0 1 425.6 156.2 Z" />
           </g>
