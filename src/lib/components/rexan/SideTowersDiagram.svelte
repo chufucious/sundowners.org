@@ -16,8 +16,8 @@
         {#snippet coverage()}
           <!-- LA112 cones, 90° horizontal -->
           <g class="fill-violet-500/15 stroke-violet-700" stroke-width="0.8" stroke-dasharray="5 3">
-            <path d="M219.2 195.0 L74.4 156.2 A150.0 150.0 0 0 1 258.1 50.1 Z" />
-            <path d="M280.8 195.0 L241.9 50.1 A150.0 150.0 0 0 1 425.6 156.2 Z" />
+            <path d="M219.2 195.0 L103.3 163.9 A150 150 0 0 1 259.4 45.3 Z" />
+            <path d="M280.8 195.0 L240.6 45.3 A150 150 0 0 1 396.7 163.9 Z" />
           </g>
         {/snippet}
         {#snippet brackets()}
