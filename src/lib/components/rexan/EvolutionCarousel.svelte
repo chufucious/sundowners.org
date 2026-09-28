@@ -34,12 +34,28 @@
     return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
   }
 
+  // Always scroll to an exact card position: Safari doesn't re-snap after a
+  // smooth programmatic scroll, so it would stop wherever the scroll ended.
+  // Later cards can't reach the text edge on wide screens; stop at the end.
   function scrollToCard(i) {
-    track.scrollTo({ left: snapLeft(i), behavior: scrollBehavior() });
+    const end = track.scrollWidth - track.clientWidth;
+    track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: scrollBehavior() });
   }
 
+  // The card lined up with the text edge.
+  function leftmostCard() {
+    let nearest = 0;
+    for (let i = 1; i < years.length; i++) {
+      if (Math.abs(snapLeft(i) - track.scrollLeft) < Math.abs(snapLeft(nearest) - track.scrollLeft)) nearest = i;
+    }
+    return nearest;
+  }
+
+  // Moves by as many whole cards as fit right of the text edge: one on phones.
   function scrollByPage(direction) {
-    track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: scrollBehavior() });
+    const first = track.children[0].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+    const perPage = Math.max(1, Math.floor((track.clientWidth - first) / snapLeft(1)));
+    scrollToCard(Math.min(years.length - 1, Math.max(0, leftmostCard() + direction * perPage)));
   }
 
   // Wide screens can't scroll the last cards to the left edge, so at the
@@ -47,15 +63,7 @@
   function updatePosition() {
     atStart = track.scrollLeft <= 1;
     atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-    if (atEnd) {
-      active = years.length - 1;
-      return;
-    }
-    let nearest = 0;
-    for (let i = 1; i < years.length; i++) {
-      if (Math.abs(snapLeft(i) - track.scrollLeft) < Math.abs(snapLeft(nearest) - track.scrollLeft)) nearest = i;
-    }
-    active = nearest;
+    active = atEnd ? years.length - 1 : leftmostCard();
   }
 
   // Resizing changes how many cards fit, which can move the ends without a scroll.
