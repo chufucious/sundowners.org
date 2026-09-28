@@ -21,6 +21,7 @@
     import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&format=webp&as=srcset";
     import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&format=webp&as=srcset";
     import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
+    import rexanCrew from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=400;800;1264&format=webp&as=srcset";
 
     // Rexan build 2026
     import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&format=webp&as=srcset";
@@ -439,6 +440,40 @@
                     />
                 </div>
             {/each}
+        </div>
+    </div>
+</section>
+
+<section id="rexan-sound-promo" class="col-span-12 mt-section">
+    <div class="grid grid-cols-12 gap-4">
+        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+            <img
+                srcset={rexanCrew}
+                width="1264"
+                height="848"
+                sizes="(max-width: 768px) 100vw, 42vw"
+                alt="the crew piled onto rexan under the speakers"
+                loading="lazy"
+                class="w-full max-h-96 object-cover"
+            />
+        </div>
+
+        <div
+            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+        >
+            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+                The Rexan Sound System
+            </h2>
+            <p
+                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose"
+            >
+                How we built a solar-powered QSC rig on a psychedelic safari car.
+            </p>
+            <a
+                href="/rexan-sound-system"
+                class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 text-sm"
+                >Read Now</a
+            >
         </div>
     </div>
 </section>
