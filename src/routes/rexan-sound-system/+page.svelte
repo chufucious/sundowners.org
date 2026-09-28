@@ -15,16 +15,17 @@
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
 
-  // Text column; the carousel's padding lines its first card up with this.
-  const column = "mx-auto max-w-2xl px-6";
-  const prose =
-    "prose max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
-  // Figures run wider than the text.
-  const wide = "mx-auto max-w-4xl px-6";
+  // Reading column. EvolutionCarousel lines its first card up with it, so
+  // change its --edge (36rem) too if this width changes.
+  const textColumn = "mx-auto max-w-xl px-6";
+  const proseStyles =
+    "prose md:prose-lg max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
+  // Photos run wider than the text.
+  const photoColumn = "mx-auto max-w-4xl px-6";
 </script>
 
-<!-- A row of photos at one shared height: each photo's flex-grow is its aspect
-     ratio, so they line up top and bottom. Stacks on phones. -->
+<!-- A row of captioned photos at one shared height: each photo's flex-grow is
+     its aspect ratio, so they line up top and bottom. Stacks on phones. -->
 {#snippet photoRow(photos)}
   <div class="flex flex-col md:flex-row gap-4 md:gap-6">
     {#each photos as { srcset, width, height, alt, caption } (srcset)}
@@ -75,7 +76,7 @@
     </div>
   </header>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <p>
       In early 2017 a crew of longtime Burner friends from around the world went on a safari in South
       Africa, and on the Savannah we ended every day the way you do there: a sundowner, which means
@@ -101,11 +102,11 @@
   </div>
 
   <section aria-label="The evolution of Rexan" class="mt-12">
-    <p class="{column} font-sans text-xs uppercase tracking-wide text-orange-950/60 mb-4">The evolution of Rexan</p>
+    <p class="{textColumn} font-sans text-xs uppercase tracking-wide text-orange-950/60 mb-4">The evolution of Rexan</p>
     <EvolutionCarousel />
   </section>
 
-  <div class="{column} {prose} mt-12">
+  <div class="{textColumn} {proseStyles} mt-12">
     <h2>Where we started</h2>
     <p>
       Our first years were focused on mutating the vehicle so we could get through the Burning Man DMV
@@ -119,14 +120,14 @@
     </p>
   </div>
 
-  <div class="{wide} my-12">
+  <div class="{photoColumn} my-12">
     {@render photoRow([
       { srcset: behringer2017, width: 2048, height: 1536, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "Rexan with the Behringer setup, before we switched to QSC (2017)." },
       { srcset: behringer2019, width: 1179, height: 1129, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "Rexan with the Behringer setup, before we switched to QSC (2019)." },
     ])}
   </div>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <p>
       Being a crew of some talented and seasoned DJs, it was inevitable that the music took over. The
       DJs playing African and African-inspired music at our sundowner ceremonies and pop-ups kept
@@ -144,29 +145,19 @@
     </p>
   </div>
 
-  <div class="{wide} my-12 space-y-12">
+  <div class="{photoColumn} my-12 space-y-12">
     {@render photoRow([
       { srcset: qsc2022, width: 768, height: 1376, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
       { srcset: qsc2023, width: 848, height: 1264, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
     ])}
-    <figure class="max-w-md mx-auto">
-      <img
-        srcset={sunrise2025}
-        width="1179"
-        height="1750"
-        sizes="(max-width: 768px) 100vw, 28rem"
-        alt="Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side"
-        loading="lazy"
-        class="w-full h-auto"
-      />
-      <figcaption class="text-sm mt-2 italic text-orange-950/80">
-        Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on
-        the passenger side.
-      </figcaption>
-    </figure>
+    <div class="max-w-md mx-auto">
+      {@render photoRow([
+        { srcset: sunrise2025, width: 1179, height: 1750, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
+      ])}
+    </div>
   </div>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <h2>The rig today</h2>
     <p>This is how Rexan is set up now:</p>
     <ul>
@@ -178,11 +169,11 @@
     <p>It's rated in the "dance club" class (90 dB and up at under 100 feet).</p>
   </div>
 
-  <div class="{column} my-12">
+  <div class="{textColumn} my-12">
     <CurrentRigDiagram />
   </div>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <h2>"What's your sound system?"</h2>
     <p>
       The two main questions we get from people dancing in front of the car are "What's the name of
@@ -275,14 +266,14 @@
     </p>
   </div>
 
-  <div class="{wide} my-12">
+  <div class="{photoColumn} my-12">
     {@render photoRow([
       { srcset: beforeMounts2026, width: 1179, height: 1734, alt: "Rexan in 2026 with four K12.2s on the top bar", caption: "2026, before the mounts went: four K12.2s up top and the K10.2s on the booth." },
       { srcset: afterMounts2026, width: 1179, height: 1924, alt: "Rexan in 2026 with the K12.2s stacked in pairs on each side", caption: "After the mounts broke: the K12.2s stacked in pairs on both sides of the car." },
     ])}
   </div>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <p>
       <strong>The monitors cook.</strong> Our K10.2s have failed pretty much every year. The cooling fan
       pulls playa dust in until it clogs and the amp overheats. In 2026 one died partway through the
@@ -316,7 +307,7 @@
     </p>
   </div>
 
-  <div class="{column} my-12">
+  <div class="{textColumn} my-12">
     <p class="font-sans text-xs uppercase tracking-wide mb-6">
       <span class="inline-block rounded-full bg-orange-950/10 px-3 py-1 text-orange-950">2027 concept</span>
       <span class="ml-2 text-orange-950/60">Work in progress, not final</span>
@@ -324,7 +315,7 @@
     <SideTowersDiagram />
   </div>
 
-  <div class="{column} {prose}">
+  <div class="{textColumn} {proseStyles}">
     <h2>Thanks</h2>
     <p>
       Rexan is built by a big multi-continental crew: welders, fabricators, firmware and electrical

@@ -1,22 +1,23 @@
 <script>
   // One card per year Rexan went out. Cropped from rexan-evolution-2026.png
   // so each year can be read at phone width instead of as one tiny strip.
-  import e2017 from "$lib/assets/rexan-sound/evolution-2017.png?w=280;542&format=webp&as=srcset";
-  import e2018 from "$lib/assets/rexan-sound/evolution-2018.png?w=280;542&format=webp&as=srcset";
-  import e2019 from "$lib/assets/rexan-sound/evolution-2019.png?w=280;542&format=webp&as=srcset";
-  import e2022 from "$lib/assets/rexan-sound/evolution-2022.png?w=280;542&format=webp&as=srcset";
-  import e2023 from "$lib/assets/rexan-sound/evolution-2023.png?w=280;542&format=webp&as=srcset";
-  import e2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&format=webp&as=srcset";
-  import e2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&format=webp&as=srcset";
+  import evolution2017 from "$lib/assets/rexan-sound/evolution-2017.png?w=280;542&format=webp&as=srcset";
+  import evolution2018 from "$lib/assets/rexan-sound/evolution-2018.png?w=280;542&format=webp&as=srcset";
+  import evolution2019 from "$lib/assets/rexan-sound/evolution-2019.png?w=280;542&format=webp&as=srcset";
+  import evolution2022 from "$lib/assets/rexan-sound/evolution-2022.png?w=280;542&format=webp&as=srcset";
+  import evolution2023 from "$lib/assets/rexan-sound/evolution-2023.png?w=280;542&format=webp&as=srcset";
+  import evolution2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&format=webp&as=srcset";
+  import evolution2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&format=webp&as=srcset";
 
+  // Notes are condensed from the post's own account of each year.
   const years = [
-    { year: 2017, srcset: e2017, note: "Two Behringers facing the riders" },
-    { year: 2018, srcset: e2018, note: "Still a safari tour with a soundtrack" },
-    { year: 2019, srcset: e2019, note: "Forward speakers, a sub, our first DJ setup" },
-    { year: 2022, srcset: e2022, note: "First year on QSC" },
-    { year: 2023, srcset: e2023, note: "Four K12.2s up top, two KS118s" },
-    { year: 2025, srcset: e2025, note: "K10.2s filling in up top" },
-    { year: 2026, srcset: e2026, note: "All four K12.2s back, new solar" },
+    { year: 2017, srcset: evolution2017, note: "Two Behringers at the back for riders" },
+    { year: 2018, srcset: evolution2018, note: "Same Behringers, no DJ setup yet" },
+    { year: 2019, srcset: evolution2019, note: "Two more Behringers, a sub, our first DJ setup" },
+    { year: 2022, srcset: evolution2022, note: "First QSC rig: two K12.2s up top, one KS118" },
+    { year: 2023, srcset: evolution2023, note: "Four K12.2s up top, a second KS118" },
+    { year: 2025, srcset: evolution2025, note: "K10.2s up top next to two working K12.2s" },
+    { year: 2026, srcset: evolution2026, note: "All four K12.2s working again" },
   ];
 
   let track;
@@ -24,25 +25,26 @@
   let atStart = $state(true);
   let atEnd = $state(false);
 
-  // The first card lines up with the text column (see the track's padding),
-  // so card i is snapped when the track has scrolled by its distance from card 0.
+  // Card i is snapped when the track has scrolled by its distance from card 0.
   function snapLeft(i) {
     return track.children[i].offsetLeft - track.children[0].offsetLeft;
   }
 
-  function behavior() {
+  function scrollBehavior() {
     return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
   }
 
-  function goTo(i) {
-    track.scrollTo({ left: snapLeft(Math.max(0, Math.min(years.length - 1, i))), behavior: behavior() });
+  function scrollToCard(i) {
+    track.scrollTo({ left: snapLeft(i), behavior: scrollBehavior() });
   }
 
-  function page(direction) {
-    track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: behavior() });
+  function scrollByPage(direction) {
+    track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: scrollBehavior() });
   }
 
-  function update() {
+  // Wide screens can't scroll the last cards to the left edge, so at the
+  // end of the track the last dot is the active one.
+  function updatePosition() {
     atStart = track.scrollLeft <= 1;
     atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
     if (atEnd) {
@@ -50,18 +52,49 @@
       return;
     }
     let nearest = 0;
-    for (let i = 0; i < years.length; i++) {
+    for (let i = 1; i < years.length; i++) {
       if (Math.abs(snapLeft(i) - track.scrollLeft) < Math.abs(snapLeft(nearest) - track.scrollLeft)) nearest = i;
     }
     active = nearest;
   }
+
+  // Resizing changes how many cards fit, which can move the ends without a scroll.
+  $effect(updatePosition);
 </script>
 
-<div class="relative" role="region" aria-roledescription="carousel" aria-label="Rexan, year by year">
+<svelte:window onresize={updatePosition} />
+
+{#snippet pageButton(direction, disabled)}
+  <button
+    type="button"
+    onclick={() => scrollByPage(direction)}
+    {disabled}
+    aria-label={direction < 0 ? "Previous years" : "Next years"}
+    class="size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
+  >
+    <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true">
+      <path
+        d={direction < 0 ? "M10 3L5 8l5 5" : "M6 3l5 5-5 5"}
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+{/snippet}
+
+<div role="region" aria-roledescription="carousel" aria-label="Rexan, year by year">
+  <!-- The first card lines up with the page's text column (max-w-xl px-6):
+       --edge plus the 1rem gap equals that column's left text edge. The edges
+       are ::before/::after spacers, not padding, because older Safari drops
+       end padding in a scrolling flex row and the last card couldn't clear. -->
   <ul
     bind:this={track}
-    onscroll={update}
-    class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory px-[max(1.5rem,calc((100%-42rem)/2))] scroll-px-[max(1.5rem,calc((100%-42rem)/2))] pb-2"
+    onscroll={updatePosition}
+    style="--edge: max(0.5rem, calc((100% - 36rem) / 2 + 0.5rem))"
+    class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
   >
     {#each years as { year, srcset, note }, i (year)}
       <li
@@ -70,7 +103,7 @@
       >
         <img
           {srcset}
-          sizes="(max-width: 768px) 176px, 216px"
+          sizes="(min-width: 768px) 216px, 184px"
           width="542"
           height="870"
           alt="Line drawing of Rexan from the front in {year}"
@@ -83,14 +116,14 @@
     {/each}
   </ul>
 
-  <div class="mx-auto max-w-2xl px-6 mt-4 flex items-center justify-end gap-3">
+  <div class="mx-auto max-w-xl px-6 mt-4 flex items-center justify-end gap-3">
     <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
       {#each years as { year }, i (year)}
         <button
           type="button"
-          onclick={() => goTo(i)}
+          onclick={() => scrollToCard(i)}
           aria-label="Show {year}"
-          aria-current={active === i}
+          aria-current={active === i || undefined}
           class={[
             "h-2 rounded-full transition-all cursor-pointer",
             active === i ? "w-6 bg-orange-950/70" : "w-2 bg-orange-950/30 hover:bg-orange-950/50",
@@ -98,27 +131,7 @@
         ></button>
       {/each}
     </div>
-    <button
-      type="button"
-      onclick={() => page(-1)}
-      disabled={atStart}
-      aria-label="Previous years"
-      class="size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
-    >
-      <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true"
-        ><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg
-      >
-    </button>
-    <button
-      type="button"
-      onclick={() => page(1)}
-      disabled={atEnd}
-      aria-label="Next years"
-      class="size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
-    >
-      <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true"
-        ><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg
-      >
-    </button>
+    {@render pageButton(-1, atStart)}
+    {@render pageButton(1, atEnd)}
   </div>
 </div>
