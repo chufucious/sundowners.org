@@ -9,15 +9,24 @@
   import evolution2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&enhanced";
   import evolution2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&enhanced";
 
+  // A wax-fabric frame per year, like the homepage's framed photos.
+  import sunflower from "$lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
+  import fans from "$lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
+  import spirograph from "$lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
+  import mic from "$lib/assets/wax-fabric/mic.jpg?w=600&format=webp";
+  import eyes from "$lib/assets/wax-fabric/eyes.webp?w=600&format=webp";
+  import feathers from "$lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
+  import redstrokes from "$lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
+
   // Notes are condensed from the post's own account of each year.
   const years = [
-    { year: 2017, image: evolution2017, note: "Two Behringers at the back for riders" },
-    { year: 2018, image: evolution2018, note: "Same Behringers, no DJ setup yet" },
-    { year: 2019, image: evolution2019, note: "Two more Behringers, a sub, our first DJ setup" },
-    { year: 2022, image: evolution2022, note: "First QSC rig: two K12.2s up top, one KS118" },
-    { year: 2023, image: evolution2023, note: "Four K12.2s up top, a second KS118" },
-    { year: 2025, image: evolution2025, note: "K10.2s up top next to two working K12.2s" },
-    { year: 2026, image: evolution2026, note: "All four K12.2s working again" },
+    { year: 2017, image: evolution2017, fabric: sunflower, note: "Two Behringers at the back for riders" },
+    { year: 2018, image: evolution2018, fabric: fans, note: "Same Behringers, no DJ setup yet" },
+    { year: 2019, image: evolution2019, fabric: spirograph, note: "Two more Behringers, a sub, our first DJ setup" },
+    { year: 2022, image: evolution2022, fabric: mic, note: "First QSC rig: two K12.2s up top, one KS118" },
+    { year: 2023, image: evolution2023, fabric: eyes, note: "Four K12.2s up top, a second KS118" },
+    { year: 2025, image: evolution2025, fabric: feathers, note: "K10.2s up top next to two working K12.2s" },
+    { year: 2026, image: evolution2026, fabric: redstrokes, note: "All four K12.2s working again" },
   ];
 
   let track;
@@ -104,20 +113,23 @@
     style="--edge: max(0.5rem, calc((100% - 36rem) / 2 + 0.5rem))"
     class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
   >
-    {#each years as { year, image, note }, i (year)}
+    {#each years as { year, image, fabric, note }, i (year)}
       <li
-        class="snap-start shrink-0 w-56 md:w-64 bg-white/60 rounded-3xl p-5 flex flex-col"
+        class="pattern-frame snap-start shrink-0 w-56 md:w-64 p-2"
+        style:background-image="url({fabric})"
         aria-label="{i + 1} of {years.length}: {year}"
       >
-        <enhanced:img
-          src={image}
-          sizes="(min-width: 768px) 216px, 184px"
-          alt="Line drawing of Rexan from the front in {year}"
-          loading="lazy"
-          class="w-full h-auto"
-        />
-        <p class="mt-4 font-garamond text-3xl text-orange-950">{year}</p>
-        <p class="mt-1 font-mono text-xs text-orange-950/70 leading-relaxed">{note}</p>
+        <div class="h-full bg-orange-50 p-5 flex flex-col">
+          <enhanced:img
+            src={image}
+            sizes="(min-width: 768px) 200px, 168px"
+            alt="Line drawing of Rexan from the front in {year}"
+            loading="lazy"
+            class="w-full h-auto"
+          />
+          <p class="mt-4 font-garamond text-3xl text-orange-950">{year}</p>
+          <p class="mt-1 font-mono text-xs text-orange-950/70 leading-relaxed">{note}</p>
+        </div>
       </li>
     {/each}
   </ul>
