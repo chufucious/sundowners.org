@@ -14,7 +14,8 @@
   } = $props();
 </script>
 
-<!-- K12.2 coverage, 75°, drawn to 20 ft -->
+<!-- K12.2 coverage, 75°. Every cone ends on one 20 ft circle centred on the top
+     bar (not one per speaker), so the see-through overlaps line up. -->
 <g class={coneFill}>
   <path d="M214.8 195.0 L100.1 190.0 A150 150 0 0 1 184.8 59.9 Z" />
   <path d="M223.8 195.0 L118.6 122.7 A150 150 0 0 1 276.0 47.3 Z" />

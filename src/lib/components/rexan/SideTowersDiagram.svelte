@@ -100,7 +100,7 @@
       <LegendItem swatch="bg-red-900">
         LS218 (near side, solid) and the KS118 stack (far side, dashed) sit about 11 to 12 ft apart. Bass sums straight ahead and behind, with a dip around 50 Hz directly off each side.
       </LegendItem>
-      <LegendItem swatch="bg-orange-950/30">
+      <LegendItem>
         Weight: 184 lb on the passenger side vs about 208 lb on the driver side, both low and between the axles.
       </LegendItem>
     {/snippet}

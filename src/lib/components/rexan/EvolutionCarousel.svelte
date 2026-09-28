@@ -62,8 +62,8 @@
 
   // Moves by as many whole cards as fit right of the text edge: one on phones.
   function scrollByPage(direction) {
-    const first = track.children[0].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
-    const perPage = Math.max(1, Math.floor((track.clientWidth - first) / snapLeft(1)));
+    const textEdge = track.children[0].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+    const perPage = Math.max(1, Math.floor((track.clientWidth - textEdge) / snapLeft(1)));
     scrollToCard(Math.min(years.length - 1, Math.max(0, leftmostCard() + direction * perPage)));
   }
 
@@ -75,10 +75,10 @@
     active = atEnd ? years.length - 1 : leftmostCard();
   }
 
-  // Resizing changes how many cards fit, which can move the ends without a scroll.
   $effect(updatePosition);
 </script>
 
+<!-- Resizing changes how many cards fit, which can move the ends without a scroll. -->
 <svelte:window onresize={updatePosition} />
 
 {#snippet pageButton(direction, disabled)}
@@ -103,14 +103,14 @@
 {/snippet}
 
 <div role="region" aria-roledescription="carousel" aria-label="Rexan, year by year">
-  <!-- The first card lines up with the page's text column (max-w-xl px-6):
+  <!-- The first card lines up with the page's text column (--reading-width, px-6):
        --edge plus the 1rem gap equals that column's left text edge. The edges
        are ::before/::after spacers, not padding, because older Safari drops
        end padding in a scrolling flex row and the last card couldn't clear. -->
   <ul
     bind:this={track}
     onscroll={updatePosition}
-    style="--edge: max(0.5rem, calc((100% - 36rem) / 2 + 0.5rem))"
+    style="--edge: max(0.5rem, calc((100% - var(--reading-width, 36rem)) / 2 + 0.5rem))"
     class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
   >
     {#each years as { year, image, fabric, note }, i (year)}
@@ -134,7 +134,7 @@
     {/each}
   </ul>
 
-  <div class="mx-auto max-w-xl px-6 mt-4 flex items-center justify-end gap-3">
+  <div class="mx-auto max-w-(--reading-width,36rem) px-6 mt-4 flex items-center justify-end gap-3">
     <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
       {#each years as { year }, i (year)}
         <button

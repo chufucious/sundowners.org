@@ -5,12 +5,16 @@ import { test, expect } from "@playwright/test";
 
 const compact = (page) => page.getByRole("link", { name: "Sundowners home", includeHidden: true });
 
+// Scrolls until the header (and its logo) is just out of view, or further.
+const scrollPastHeader = (page, extra = 200) =>
+  page.locator("main > header").evaluate((header, extra) => scrollTo(0, header.getBoundingClientRect().bottom + scrollY + extra), extra);
+
 test("compact logo appears only after the header logo scrolls away", async ({ page }) => {
   await page.goto("/rexan-sound-system");
   await expect(compact(page)).toHaveAttribute("inert", "");
   await expect(compact(page)).toHaveCSS("opacity", "0");
 
-  await page.evaluate(() => scrollTo(0, 800));
+  await scrollPastHeader(page);
   await expect(compact(page)).not.toHaveAttribute("inert");
   await expect(compact(page)).toHaveCSS("opacity", "1");
 
@@ -20,14 +24,14 @@ test("compact logo appears only after the header logo scrolls away", async ({ pa
 
 test("compact logo goes home", async ({ page }) => {
   await page.goto("/rexan-sound-system");
-  await page.evaluate(() => scrollTo(0, 800));
+  await scrollPastHeader(page);
   await compact(page).click();
   await expect(page).toHaveURL("/");
 });
 
 test("compact logo on the homepage returns to the top", async ({ page }) => {
   await page.goto("/");
-  await page.evaluate(() => scrollTo(0, 1500));
+  await scrollPastHeader(page, 1000);
   await compact(page).click();
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
 });

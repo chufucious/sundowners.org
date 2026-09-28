@@ -7,19 +7,21 @@ import { test, expect } from "@playwright/test";
 async function cardOffsets(page) {
   // Each card's left edge relative to the reading column's text edge, taken
   // from the "The evolution of Rexan" label, which sits in that column.
-  return page.evaluate(() => {
+  const label = await page.getByText("The evolution of Rexan", { exact: true }).elementHandle();
+  return page.evaluate((label) => {
     const carousel = document.querySelector('[aria-roledescription="carousel"]');
-    const label = carousel.previousElementSibling;
     const textEdge = label.getBoundingClientRect().left + parseFloat(getComputedStyle(label).paddingLeft);
     const track = carousel.querySelector("ul");
     return [...track.children].map((card) => Math.round(card.getBoundingClientRect().left - textEdge));
-  });
+  }, label);
 }
 
-// Clicks, then waits for the smooth scroll to finish before measuring.
+// Clicks, then waits for the smooth scroll to start and then finish.
 async function clickAndSettle(page, button) {
-  await button.click();
   const track = page.locator('[aria-roledescription="carousel"] ul');
+  const before = await track.evaluate((el) => el.scrollLeft);
+  await button.click();
+  await expect.poll(() => track.evaluate((el) => el.scrollLeft)).not.toBe(before);
   let last;
   await expect
     .poll(async () => {

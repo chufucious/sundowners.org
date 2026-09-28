@@ -6,7 +6,14 @@
   import RexanOverhead from "./RexanOverhead.svelte";
   import RexanSide from "./RexanSide.svelte";
 
-  const spl = [
+  // KS118 rings at 5 / 10 / 20 ft, fainter as they widen.
+  const subRings = [
+    { r: 37.5, width: 1, opacity: 1 },
+    { r: 75, width: 0.8, opacity: 0.8 },
+    { r: 150, width: 0.6, opacity: 0.6 },
+  ];
+
+  const splByModel = [
     { model: "K12.2 (tops)", qty: 4, coverage: "75° conical", db: [132, 122, 114, 108, 102] },
     { model: "K10.2 (DJ monitors)", qty: 2, coverage: "90° conical", db: [130, 120, 112, 106, 100] },
     { model: "KS118 (sub)", qty: 1, coverage: "Omni", db: [136, 126, 118, 112, 106] },
@@ -15,18 +22,21 @@
   const distances = ["@1 m", "10 ft", "25 ft", "50 ft", "100 ft"];
 </script>
 
+{#snippet rings(cx, cy)}
+  <g class="fill-none stroke-orange-600" stroke-dasharray="4 3">
+    {#each subRings as { r, width, opacity } (r)}
+      <circle {cx} {cy} {r} stroke-width={width} stroke-opacity={opacity} />
+    {/each}
+  </g>
+{/snippet}
+
 <figure class="font-mono text-orange-950 space-y-12">
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 316" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="current-overhead-title">
       <title id="current-overhead-title">Overhead view of Rexan's current speaker layout and coverage</title>
       <RexanOverhead coneFill="fill-emerald-600/15" scaleBarY={336}>
         {#snippet coverage()}
-          <!-- KS118 rings at 5 / 10 / 20 ft -->
-          <g class="fill-none stroke-orange-600" stroke-dasharray="4 3">
-            <circle cx="286.375" cy="200.25" r="37.5" stroke-width="1" />
-            <circle cx="286.375" cy="200.25" r="75" stroke-width="0.8" stroke-opacity="0.8" />
-            <circle cx="286.375" cy="200.25" r="150" stroke-width="0.6" stroke-opacity="0.6" />
-          </g>
+          {@render rings(286.375, 200.25)}
         {/snippet}
         {#snippet overCar()}
           <!-- K10.2 cones, cross-firing at the DJ -->
@@ -46,7 +56,7 @@
 
     {#snippet legend()}
       <LegendItem swatch="bg-emerald-600">
-        <strong class="text-orange-950">K12.2 ×4</strong> in pairs at the ends of the top bar, 6 ft back from the front. 75° coverage, cones drawn to 20 ft.
+        <strong class="text-orange-950">K12.2 ×4</strong> in pairs at the ends of the top bar, 6 ft back from the front. 75° coverage, drawn out to 20 ft from the top bar.
       </LegendItem>
       <LegendItem swatch="bg-orange-600">
         <strong class="text-orange-950">KS118 ×2</strong> stacked on the passenger bracket. Rings at 5, 10 and 20 ft.
@@ -66,11 +76,7 @@
       <RexanSide>
         {#snippet coverage()}
           <!-- KS118 rings, cut off at the ground -->
-          <g class="fill-none stroke-orange-600" stroke-dasharray="4 3" clip-path="url(#current-side-above)">
-            <circle cx="144.75" cy="689.75" r="37.5" stroke-width="1" />
-            <circle cx="144.75" cy="689.75" r="75" stroke-width="0.8" stroke-opacity="0.8" />
-            <circle cx="144.75" cy="689.75" r="150" stroke-width="0.6" stroke-opacity="0.6" />
-          </g>
+          <g clip-path="url(#current-side-above)">{@render rings(144.75, 689.75)}</g>
           <path d="M150 643.2 L481.4 506 L484 506 L484 722 L210.4 722 Z" class="fill-emerald-600/15" />
           <path d="M170.2 665.8 L116.6 692.6 A60.0 60.0 0 0 1 143.4 612.1 Z" class="fill-amber-600/20" />
         {/snippet}
@@ -116,7 +122,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each spl as { model, qty, coverage, db } (model)}
+          {#each splByModel as { model, qty, coverage, db } (model)}
             <tr class="border-b border-orange-950/10 last:border-0">
               <td class="p-2 whitespace-nowrap">{model}</td>
               <td class="p-2">{qty}</td>

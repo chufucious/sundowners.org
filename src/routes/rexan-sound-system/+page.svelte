@@ -16,9 +16,9 @@
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
 
-  // Reading column. EvolutionCarousel lines its first card up with it, so
-  // change its --edge (36rem) too if this width changes.
-  const textColumn = "mx-auto max-w-xl px-6";
+  // Reading column; its width is --reading-width on the article, which
+  // EvolutionCarousel also reads to line its first card up with the text.
+  const textColumn = "mx-auto max-w-(--reading-width) px-6";
   const proseStyles =
     "prose prose-xl max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-p:leading-[1.6] prose-li:leading-[1.6] prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
   // Photos run wider than the text; the widest reach near the page edges.
@@ -63,7 +63,7 @@
   <h2 {id} class="scroll-mt-24">{sectionTitle[id]}</h2>
 {/snippet}
 
-<article class="col-span-12 font-serif text-orange-950 pt-8">
+<article class="col-span-12 font-serif text-orange-950 pt-8 [--reading-width:36rem]">
   <header class="mx-auto max-w-6xl px-6 grid grid-cols-12 gap-4 md:gap-12 mb-16">
     <div class="col-span-full md:col-span-6 prose prose-headings:text-orange-950">
       <h1 class="font-light font-sans uppercase text-4xl md:text-7xl tracking-tight mb-8">
@@ -320,7 +320,8 @@
            - Subs: text says move ONE sub to a new driver-side bracket "so there's one on each side".
              Diagram stacks BOTH KS118s on the new driver bracket and puts an LS218 on the passenger bracket.
            - Line array: text says "LS112"; QSC's box (and the diagrams) is the LA112.
-           - Text says 2× LS218; the diagram shows 1×. -->
+           - Text says 2× LS218; the diagram shows 1×.
+           - Draft said "QSC L series"; changed to "L Class", QSC's name for the line. -->
       <p>
         Sundowners' decade at the Burn is in 2027 and we want Rexan to sound the best it ever has. The plan
         is to move one of the subs to a new bracket on the driver's side so there's one on each side of

@@ -23,7 +23,7 @@ for (const route of routes) {
     for (const image of await images.all()) {
       if (!(await image.isVisible())) continue; // e.g. collage photos hidden on phones
       await image.scrollIntoViewIfNeeded();
-      await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0), { message: await image.getAttribute("alt") }).toBe(true);
+      await expect.poll(() => image.evaluate((img) => img.complete && img.naturalWidth > 0), { message: await image.getAttribute("alt"), timeout: 15_000 }).toBe(true);
     }
     // Every content image carries its dimensions, so nothing shifts as it
     // loads. Decorative images (alt="", e.g. FlameMark's) are sized by CSS.

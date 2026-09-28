@@ -4,10 +4,12 @@
   let { sections } = $props();
   const labelId = $props.id();
 
+  let nav;
   let current = $state(); // set on mount from the scroll position
 
   // The current section is the last heading scrolled past the top third.
   function updateCurrent() {
+    if (!nav.offsetParent) return; // hidden (phones): nothing to update
     const line = innerHeight / 3;
     let passed = sections[0].id;
     for (const { id } of sections) {
@@ -22,7 +24,7 @@
 
 <svelte:window onscroll={updateCurrent} onresize={updateCurrent} />
 
-<nav aria-labelledby={labelId}>
+<nav bind:this={nav} aria-labelledby={labelId}>
   <p id={labelId} class="eyebrow mb-4">On this page</p>
   <ul class="border-l border-orange-950/15 space-y-1">
     {#each sections as { id, title } (id)}
