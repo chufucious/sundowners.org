@@ -40,9 +40,9 @@
 
 <!-- A row of captioned photos at one shared height: each photo's flex-grow is
      its aspect ratio (from the enhanced image's own dimensions), so they line up
-     top and bottom. Stacks on phones. -->
+     top and bottom. Stacks on phones, with room to tie each caption to its photo. -->
 {#snippet photoRow(photos)}
-  <div class="flex flex-col md:flex-row gap-4 md:gap-6">
+  <div class="flex flex-col md:flex-row gap-10 md:gap-6">
     {#each photos as { image, alt, caption } (image)}
       <figure class="md:min-w-0" style:flex="{image.img.w / image.img.h} 1 0">
         <enhanced:img
