@@ -1,5 +1,5 @@
 <script>
-  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
+  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
@@ -28,8 +28,8 @@
 
     <div class="col-span-full md:col-span-6">
       <figure>
-        <img
-          srcset={jaggedBalls}
+        <enhanced:img
+          src={jaggedBalls}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt="Jagged balls of rolling chaos"
           class="w-full"

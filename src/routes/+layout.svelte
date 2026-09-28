@@ -3,10 +3,10 @@
   import { page } from "$app/state";
   import Agentation from "$lib/components/Agentation.svelte";
   import FlameMark from "$lib/components/FlameMark.svelte";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
+  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg";
-  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&as=srcset";
+  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
   let { children } = $props();
 
@@ -67,11 +67,9 @@
     >
       <span class="relative w-75 md:w-150">
         <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
-        <img
+        <enhanced:img
           class="w-full [clip-path:inset(0_0_0_23%)]"
-          srcset={logoAndType2025}
-          width="2182"
-          height="312"
+          src={logoAndType2025}
           sizes="(max-width: 768px) 300px, 600px"
           alt="sundowners logo"
         />
@@ -94,10 +92,8 @@
         />
       </span>
     </div>
-    <img
-      srcset={sundownerswalking}
-      width="2844"
-      height="1506"
+    <enhanced:img
+      src={sundownerswalking}
       sizes="100vw"
       alt="Sundowners walking in Black Rock City"
       class="absolute inset-0 w-full h-full object-cover"

@@ -13,6 +13,12 @@
   }
 }
 
+/* <enhanced:img> renders a <picture>; let its <img> lay out as if it were the
+   direct child, so classes on the image keep working inside flex and grid. */
+picture {
+  display: contents;
+}
+
 /* Wax-fabric border behind framed photos; set the image with style:background-image. */
 @utility pattern-frame {
   background-repeat: repeat;

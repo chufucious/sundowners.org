@@ -3,19 +3,8 @@
   // Only the drawing lives in the SVG; legends, table and notes are HTML.
   import DiagramPanel from "./DiagramPanel.svelte";
   import LegendItem from "./LegendItem.svelte";
-  import {
-    k12Cones,
-    overheadCarBody,
-    overheadCarLabels,
-    overheadMonitors,
-    overheadTopBar,
-    overheadK12s,
-    overheadCompass,
-    sideCar,
-    sideBarPost,
-    sideK12,
-    sideGround,
-  } from "./RexanDrawing.svelte";
+  import RexanOverhead from "./RexanOverhead.svelte";
+  import RexanSide from "./RexanSide.svelte";
 
   const spl = [
     { model: "K12.2 (tops)", qty: 4, coverage: "75° conical", db: [132, 122, 114, 108, 102] },
@@ -30,28 +19,29 @@
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 316" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="current-overhead-title">
       <title id="current-overhead-title">Overhead view of Rexan's current speaker layout and coverage</title>
-      {@render k12Cones("fill-sky-600/15")}
-      <!-- KS118 rings at 5 / 10 / 20 ft -->
-      <g class="fill-none stroke-orange-600" stroke-dasharray="4 3">
-        <circle cx="286.375" cy="200.25" r="37.5" stroke-width="1" />
-        <circle cx="286.375" cy="200.25" r="75" stroke-width="0.8" stroke-opacity="0.8" />
-        <circle cx="286.375" cy="200.25" r="150" stroke-width="0.6" stroke-opacity="0.6" />
-      </g>
-      {@render overheadCarBody()}
-      <!-- K10.2 cones, cross-firing at the DJ -->
-      <g class="fill-emerald-600/20">
-        <path d="M215.5 172.5 L267.3 142.2 A60.0 60.0 0 0 1 245.8 224.3 Z" />
-        <path d="M284.5 172.5 L254.2 224.3 A60.0 60.0 0 0 1 232.7 142.2 Z" />
-      </g>
-      {@render overheadCarLabels()}
-      {@render overheadMonitors()}
-      <!-- passenger bracket with the KS118 stack -->
-      <path d="M280 192H281.5M280 208.5H281.5" class="stroke-orange-950/50" stroke-width="2" />
-      <rect x="281.5" y="189" width="9.75" height="22.5" rx="2" class="fill-orange-600" />
-      <line x1="281.5" y1="200.25" x2="291.25" y2="200.25" class="stroke-orange-100" stroke-width="1" />
-      {@render overheadTopBar()}
-      {@render overheadK12s()}
-      {@render overheadCompass(336)}
+      <RexanOverhead coneFill="fill-sky-600/15" scaleBarY={336}>
+        {#snippet coverage()}
+          <!-- KS118 rings at 5 / 10 / 20 ft -->
+          <g class="fill-none stroke-orange-600" stroke-dasharray="4 3">
+            <circle cx="286.375" cy="200.25" r="37.5" stroke-width="1" />
+            <circle cx="286.375" cy="200.25" r="75" stroke-width="0.8" stroke-opacity="0.8" />
+            <circle cx="286.375" cy="200.25" r="150" stroke-width="0.6" stroke-opacity="0.6" />
+          </g>
+        {/snippet}
+        {#snippet overCar()}
+          <!-- K10.2 cones, cross-firing at the DJ -->
+          <g class="fill-emerald-600/20">
+            <path d="M215.5 172.5 L267.3 142.2 A60.0 60.0 0 0 1 245.8 224.3 Z" />
+            <path d="M284.5 172.5 L254.2 224.3 A60.0 60.0 0 0 1 232.7 142.2 Z" />
+          </g>
+        {/snippet}
+        {#snippet brackets()}
+          <!-- passenger bracket with the KS118 stack -->
+          <path d="M280 192H281.5M280 208.5H281.5" class="stroke-orange-950/50" stroke-width="2" />
+          <rect x="281.5" y="189" width="9.75" height="22.5" rx="2" class="fill-orange-600" />
+          <line x1="281.5" y1="200.25" x2="291.25" y2="200.25" class="stroke-orange-100" stroke-width="1" />
+        {/snippet}
+      </RexanOverhead>
     </svg>
 
     {#snippet legend()}
@@ -73,27 +63,31 @@
       <defs>
         <clipPath id="current-side-above"><rect x="0" y="0" width="500" height="722" /></clipPath>
       </defs>
-      <!-- KS118 rings, cut off at the ground -->
-      <g class="fill-none stroke-orange-600" stroke-dasharray="4 3" clip-path="url(#current-side-above)">
-        <circle cx="144.75" cy="689.75" r="37.5" stroke-width="1" />
-        <circle cx="144.75" cy="689.75" r="75" stroke-width="0.8" stroke-opacity="0.8" />
-        <circle cx="144.75" cy="689.75" r="150" stroke-width="0.6" stroke-opacity="0.6" />
-      </g>
-      <path d="M150 643.2 L481.4 506 L484 506 L484 722 L210.4 722 Z" class="fill-sky-600/15" />
-      <path d="M170.2 665.8 L116.6 692.6 A60.0 60.0 0 0 1 143.4 612.1 Z" class="fill-emerald-600/20" />
-      {@render sideCar()}
-      <!-- KS118 stack on the bracket -->
-      <rect x="133.5" y="672.5" width="22.5" height="34.5" rx="2" class="fill-orange-600" />
-      <line x1="133.5" y1="689.75" x2="156" y2="689.75" class="stroke-orange-100" stroke-width="1" />
-      {@render sideBarPost()}
-      <!-- K12.2 throw: upper edge, on-axis, lower edge -->
-      <g class="stroke-sky-800">
-        <line x1="150" y1="643.2" x2="481.4" y2="506" stroke-dasharray="2 3" />
-        <line x1="150" y1="643.2" x2="443.9" y2="722" stroke-width="1.5" />
-        <line x1="150" y1="643.2" x2="210.4" y2="722" stroke-dasharray="6 3" />
-      </g>
-      {@render sideK12()}
-      {@render sideGround()}
+      <RexanSide>
+        {#snippet coverage()}
+          <!-- KS118 rings, cut off at the ground -->
+          <g class="fill-none stroke-orange-600" stroke-dasharray="4 3" clip-path="url(#current-side-above)">
+            <circle cx="144.75" cy="689.75" r="37.5" stroke-width="1" />
+            <circle cx="144.75" cy="689.75" r="75" stroke-width="0.8" stroke-opacity="0.8" />
+            <circle cx="144.75" cy="689.75" r="150" stroke-width="0.6" stroke-opacity="0.6" />
+          </g>
+          <path d="M150 643.2 L481.4 506 L484 506 L484 722 L210.4 722 Z" class="fill-sky-600/15" />
+          <path d="M170.2 665.8 L116.6 692.6 A60.0 60.0 0 0 1 143.4 612.1 Z" class="fill-emerald-600/20" />
+        {/snippet}
+        {#snippet brackets()}
+          <!-- KS118 stack on the bracket -->
+          <rect x="133.5" y="672.5" width="22.5" height="34.5" rx="2" class="fill-orange-600" />
+          <line x1="133.5" y1="689.75" x2="156" y2="689.75" class="stroke-orange-100" stroke-width="1" />
+        {/snippet}
+        {#snippet beforeTop()}
+          <!-- K12.2 throw: upper edge, on-axis, lower edge -->
+          <g class="stroke-sky-800">
+            <line x1="150" y1="643.2" x2="481.4" y2="506" stroke-dasharray="2 3" />
+            <line x1="150" y1="643.2" x2="443.9" y2="722" stroke-width="1.5" />
+            <line x1="150" y1="643.2" x2="210.4" y2="722" stroke-dasharray="6 3" />
+          </g>
+        {/snippet}
+      </RexanSide>
     </svg>
 
     {#snippet legend()}

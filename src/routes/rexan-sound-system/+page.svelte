@@ -1,12 +1,12 @@
 <script>
-  import crewOnRexan from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=640;1264&format=webp&as=srcset";
-  import behringer2017 from "$lib/assets/rexan-sound/2017-behringer.jpg?w=400;800;1200&format=webp&as=srcset";
-  import behringer2019 from "$lib/assets/rexan-sound/2019-behringer.jpg?w=400;800;1179&format=webp&as=srcset";
-  import qsc2022 from "$lib/assets/rexan-sound/2022-first-qsc.jpg?w=400;768&format=webp&as=srcset";
-  import qsc2023 from "$lib/assets/rexan-sound/2023-qsc.jpg?w=400;848&format=webp&as=srcset";
-  import sunrise2025 from "$lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&format=webp&as=srcset";
-  import beforeMounts2026 from "$lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&format=webp&as=srcset";
-  import afterMounts2026 from "$lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&format=webp&as=srcset";
+  import crewOnRexan from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=640;1264&enhanced";
+  import behringer2017 from "$lib/assets/rexan-sound/2017-behringer.jpg?w=400;800;1200&enhanced";
+  import behringer2019 from "$lib/assets/rexan-sound/2019-behringer.jpg?w=400;800;1179&enhanced";
+  import qsc2022 from "$lib/assets/rexan-sound/2022-first-qsc.jpg?w=400;768&enhanced";
+  import qsc2023 from "$lib/assets/rexan-sound/2023-qsc.jpg?w=400;848&enhanced";
+  import sunrise2025 from "$lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&enhanced";
+  import beforeMounts2026 from "$lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&enhanced";
+  import afterMounts2026 from "$lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&enhanced";
   import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
   import EvolutionCarousel from "$lib/components/rexan/EvolutionCarousel.svelte";
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
@@ -25,15 +25,14 @@
 </script>
 
 <!-- A row of captioned photos at one shared height: each photo's flex-grow is
-     its aspect ratio, so they line up top and bottom. Stacks on phones. -->
+     its aspect ratio (from the enhanced image's own dimensions), so they line up
+     top and bottom. Stacks on phones. -->
 {#snippet photoRow(photos)}
   <div class="flex flex-col md:flex-row gap-4 md:gap-6">
-    {#each photos as { srcset, width, height, alt, caption } (srcset)}
-      <figure class="md:min-w-0" style:flex="{width / height} 1 0">
-        <img
-          {srcset}
-          {width}
-          {height}
+    {#each photos as { image, alt, caption } (image)}
+      <figure class="md:min-w-0" style:flex="{image.img.w / image.img.h} 1 0">
+        <enhanced:img
+          src={image}
           sizes="(max-width: 768px) 100vw, 28rem"
           {alt}
           loading="lazy"
@@ -62,11 +61,9 @@
     <div class="col-span-full md:col-span-6">
       <figure>
         <div class="pattern-frame p-2 -rotate-1 drop-shadow-xl" style:background-image="url({patternLeopard})">
-          <img
-            srcset={crewOnRexan}
+          <enhanced:img
+            src={crewOnRexan}
             sizes="(max-width: 768px) 100vw, 50vw"
-            width="1264"
-            height="848"
             alt="The Sundowners crew piled onto Rexan, waving under two QSC speakers on the top deck"
             class="w-full"
             fetchpriority="high"
@@ -122,8 +119,8 @@
 
   <div class="{photoColumn} my-12">
     {@render photoRow([
-      { srcset: behringer2017, width: 2048, height: 1536, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "Rexan with the Behringer setup, before we switched to QSC (2017)." },
-      { srcset: behringer2019, width: 1179, height: 1129, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "Rexan with the Behringer setup, before we switched to QSC (2019)." },
+      { image: behringer2017, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "Rexan with the Behringer setup, before we switched to QSC (2017)." },
+      { image: behringer2019, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "Rexan with the Behringer setup, before we switched to QSC (2019)." },
     ])}
   </div>
 
@@ -147,12 +144,12 @@
 
   <div class="{photoColumn} my-12 space-y-12">
     {@render photoRow([
-      { srcset: qsc2022, width: 768, height: 1376, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
-      { srcset: qsc2023, width: 848, height: 1264, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
+      { image: qsc2022, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
+      { image: qsc2023, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
     ])}
     <div class="max-w-md mx-auto">
       {@render photoRow([
-        { srcset: sunrise2025, width: 1179, height: 1750, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
+        { image: sunrise2025, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
       ])}
     </div>
   </div>
@@ -268,8 +265,8 @@
 
   <div class="{photoColumn} my-12">
     {@render photoRow([
-      { srcset: beforeMounts2026, width: 1179, height: 1734, alt: "Rexan in 2026 with four K12.2s on the top bar", caption: "2026, before the mounts went: four K12.2s up top and the K10.2s on the booth." },
-      { srcset: afterMounts2026, width: 1179, height: 1924, alt: "Rexan in 2026 with the K12.2s stacked in pairs on each side", caption: "After the mounts broke: the K12.2s stacked in pairs on both sides of the car." },
+      { image: beforeMounts2026, alt: "Rexan in 2026 with four K12.2s on the top bar", caption: "2026, before the mounts went: four K12.2s up top and the K10.2s on the booth." },
+      { image: afterMounts2026, alt: "Rexan in 2026 with the K12.2s stacked in pairs on each side", caption: "After the mounts broke: the K12.2s stacked in pairs on both sides of the car." },
     ])}
   </div>
 

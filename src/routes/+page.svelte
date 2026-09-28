@@ -1,39 +1,39 @@
 <script>
     // Full-width images: 640/1280/1920
-    import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&format=webp&as=srcset";
+    import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
     // Line art: transparent PNG rendered from the 2026 evolution SVG at 3795px.
-    import rexanEvolution from "$lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&format=webp&as=srcset";
-    import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&format=webp&as=srcset";
-    import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&format=webp&as=srcset";
+    import rexanEvolution from "$lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&enhanced";
+    import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&enhanced";
+    import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&enhanced";
 
     // Half-width / medium images: 400/800/1200
-    import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;800;1200&format=webp&as=srcset";
-    import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;800;1200&format=webp&as=srcset";
-    import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;800;1200&format=webp&as=srcset";
-    import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;800;1200&format=webp&as=srcset";
-    import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;800;1200&format=webp&as=srcset";
-    import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;800;1200&format=webp&as=srcset";
-    import manBurnFire from "$lib/assets/Photos/man-burn-fire.jpg?w=400;627&format=webp&as=srcset";
-    import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&format=webp&as=srcset";
-    import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&format=webp&as=srcset";
-    import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&format=webp&as=srcset";
-    import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=400;800;1200&format=webp&as=srcset";
-    import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&format=webp&as=srcset";
-    import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&format=webp&as=srcset";
-    import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
-    import rexanCrew from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=400;800;1264&format=webp&as=srcset";
+    import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;800;1200&enhanced";
+    import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;800;1200&enhanced";
+    import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;800;1200&enhanced";
+    import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;800;1200&enhanced";
+    import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;800;1200&enhanced";
+    import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;800;1200&enhanced";
+    import manBurnFire from "$lib/assets/Photos/man-burn-fire.jpg?w=400;627&enhanced";
+    import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&enhanced";
+    import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&enhanced";
+    import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&enhanced";
+    import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=400;800;1200&enhanced";
+    import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&enhanced";
+    import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&enhanced";
+    import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
+    import rexanCrew from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=400;800;1264&enhanced";
 
     // Rexan build 2026
-    import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&format=webp&as=srcset";
-    import build2026Toolkit from "$lib/assets/Photos/build-2026-toolkit.jpg?w=400;800;1200&format=webp&as=srcset";
-    import build2026NightCanopy from "$lib/assets/Photos/build-2026-night-canopy.jpg?w=400;800;1200&format=webp&as=srcset";
-    import build2026NightDrill from "$lib/assets/Photos/build-2026-night-drill.jpg?w=400;800;1200&format=webp&as=srcset";
-    import build2026Solar from "$lib/assets/Photos/build-2026-solar.jpg?w=400;800;1200&format=webp&as=srcset";
-    import build2026Daylight from "$lib/assets/Photos/build-2026-daylight.jpg?w=400;800;1200&format=webp&as=srcset";
+    import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&enhanced";
+    import build2026Toolkit from "$lib/assets/Photos/build-2026-toolkit.jpg?w=400;800;1200&enhanced";
+    import build2026NightCanopy from "$lib/assets/Photos/build-2026-night-canopy.jpg?w=400;800;1200&enhanced";
+    import build2026NightDrill from "$lib/assets/Photos/build-2026-night-drill.jpg?w=400;800;1200&enhanced";
+    import build2026Solar from "$lib/assets/Photos/build-2026-solar.jpg?w=400;800;1200&enhanced";
+    import build2026Daylight from "$lib/assets/Photos/build-2026-daylight.jpg?w=400;800;1200&enhanced";
 
     // Small accent images: 300/600
-    import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&format=webp&as=srcset";
-    import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=300;600&format=webp&as=srcset";
+    import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&enhanced";
+    import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=300;600&enhanced";
 
     // Patterns: tiles for repeating backgrounds (higher res for crisp tiling)
     import patternDazzle from "$lib/assets/dazzle.jpeg?w=800&format=webp";
@@ -51,12 +51,12 @@
     const currentAddress = "7:45 & Bodhi";
 
     const build2026Photos = [
-        { srcset: build2026Frame, alt: "raising the new frame" },
-        { srcset: build2026Toolkit, alt: "socket set at the dash" },
-        { srcset: build2026NightCanopy, alt: "working on the canopy at dusk" },
-        { srcset: build2026NightDrill, alt: "drilling into the side panel after dark" },
-        { srcset: build2026Solar, alt: "solar panels on the roof rack" },
-        { srcset: build2026Daylight, alt: "rexan in the yard" },
+        { image: build2026Frame, alt: "raising the new frame" },
+        { image: build2026Toolkit, alt: "socket set at the dash" },
+        { image: build2026NightCanopy, alt: "working on the canopy at dusk" },
+        { image: build2026NightDrill, alt: "drilling into the side panel after dark" },
+        { image: build2026Solar, alt: "solar panels on the roof rack" },
+        { image: build2026Daylight, alt: "rexan in the yard" },
     ];
 
     // Bottom gallery, left to right. `class` sets each photo's max height and alignment.
@@ -75,16 +75,16 @@
     }
 
     const galleryPhotos = [
-        { srcset: gregonrexan, width: 2688, height: 3586, alt: "on rexan", class: "max-h-96" },
-        { srcset: jonSmoke, width: 2048, height: 1365, alt: "j attracting influencers", class: "max-h-64" },
-        { srcset: manBurnFire, width: 627, height: 940, alt: "the man lit up above a wall of fire", class: "max-h-96" },
-        { srcset: rexanDancer, width: 4000, height: 2667, alt: "dancer on rexan", class: "max-h-96 self-end" },
-        { srcset: runninglion, width: 2156, height: 2803, alt: "a running lion", class: "max-h-80" },
-        { srcset: sign, width: 2000, height: 1336, alt: "sundowners sign", class: "max-h-96" },
-        { srcset: gregFlying, width: 3106, height: 2075, alt: "g flying", class: "max-h-80 self-end" },
-        { srcset: devofisheye, width: 5568, height: 4176, alt: "fisheye lens", class: "max-h-96" },
-        { srcset: rexanFire, width: 5765, height: 3843, alt: "fire on rexan", class: "max-h-80" },
-        { srcset: rexanNightWide, width: 3910, height: 2932, alt: "night time with rexan", class: "max-h-96" },
+        { image: gregonrexan, alt: "on rexan", class: "max-h-96" },
+        { image: jonSmoke, alt: "j attracting influencers", class: "max-h-64" },
+        { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
+        { image: rexanDancer, alt: "dancer on rexan", class: "max-h-96 self-end" },
+        { image: runninglion, alt: "a running lion", class: "max-h-80" },
+        { image: sign, alt: "sundowners sign", class: "max-h-96" },
+        { image: gregFlying, alt: "g flying", class: "max-h-80 self-end" },
+        { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
+        { image: rexanFire, alt: "fire on rexan", class: "max-h-80" },
+        { image: rexanNightWide, alt: "night time with rexan", class: "max-h-96" },
     ];
 
     // Newest first. `absent` dims years we didn't go; `cancelled` also strikes the row through.
@@ -108,10 +108,8 @@
             class="pattern-frame col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
             style:background-image="url({patternSunflower})"
         >
-            <img
-                srcset={rexanGroup2023}
-                width="6000"
-                height="4000"
+            <enhanced:img
+                src={rexanGroup2023}
                 sizes="(max-width: 768px) 100vw, 66vw"
                 alt="jump!"
                 class="max-w-full"
@@ -192,10 +190,8 @@
             class="pattern-frame absolute w-full top-0 md:w-192 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
             style:background-image="url({patternFans})"
         >
-            <img
-                srcset={tucoLauren}
-                width="2000"
-                height="1336"
+            <enhanced:img
+                src={tucoLauren}
                 sizes="(max-width: 768px) 100vw, 768px"
                 class="object-cover"
                 alt="t + l"
@@ -206,10 +202,8 @@
             class="pattern-frame absolute md:w-92 top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
             style:background-image="url({patternSpirograph})"
         >
-            <img
-                srcset={coogieSign}
-                width="2075"
-                height="3106"
+            <enhanced:img
+                src={coogieSign}
                 sizes="(max-width: 768px) 200px, 368px"
                 class="object-cover w-50 md:w-full"
                 alt="sundowners with sign"
@@ -220,10 +214,8 @@
             class="pattern-frame absolute md:w-92 w-48 top-20 md:top-auto right-0 hidden md:block md:bottom-1/4 p-2 rotate-12 drop-shadow-xl"
             style:background-image="url({patternLeaves})"
         >
-            <img
-                srcset={joshRexan}
-                width="2075"
-                height="3106"
+            <enhanced:img
+                src={joshRexan}
                 sizes="(max-width: 768px) 192px, 368px"
                 class="object-cover"
                 alt="j on rexan"
@@ -234,10 +226,8 @@
             class="pattern-frame absolute md:w-176 bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
             style:background-image="url({patternHandshake})"
         >
-            <img
-                srcset={zuraSpotter}
-                width="2048"
-                height="1365"
+            <enhanced:img
+                src={zuraSpotter}
                 sizes="(max-width: 768px) 100vw, 704px"
                 class="object-cover"
                 alt="z on spotter"
@@ -254,10 +244,8 @@
                 class="pattern-frame w-full p-2 -rotate-1 drop-shadow-xl"
                 style:background-image="url({patternLeopard})"
             >
-                <img
-                    srcset={group2022}
-                    width="6000"
-                    height="4000"
+                <enhanced:img
+                    src={group2022}
                     sizes="(max-width: 768px) 100vw, 50vw"
                     alt="2022 group"
                     loading="lazy"
@@ -285,10 +273,8 @@
         style:background-image="url({patternChickens})"
     >
         <div class="overflow-hidden">
-            <img
-                srcset={lionAndLeyla}
-                width="3106"
-                height="2075"
+            <enhanced:img
+                src={lionAndLeyla}
                 sizes="(max-width: 768px) 100vw, 1152px"
                 alt="lion and l"
                 class="w-full h-auto object-cover rotate-1"
@@ -321,17 +307,13 @@
             stories, laughter, and libations at dusk.
         </p>
         <div class="col-span-12 md:col-start-3 md:col-span-8">
-            <picture>
-                <img
-                    srcset={katiesunset}
-                    width="4240"
-                    height="2832"
-                    sizes="(max-width: 768px) 100vw, 66vw"
-                    alt="k staring into distance"
-                    loading="lazy"
-                    class="drop-shadow-xl"
-                />
-            </picture>
+            <enhanced:img
+                src={katiesunset}
+                sizes="(max-width: 768px) 100vw, 66vw"
+                alt="k staring into distance"
+                loading="lazy"
+                class="drop-shadow-xl"
+            />
         </div>
         <p
             class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-section leading-relaxed"
@@ -401,11 +383,9 @@
         <div
             class="col-start-1 col-span-12 flex overflow-x-auto no-scrollbar p-2 mb-8"
         >
-            <img
-                srcset={rexanEvolution}
+            <enhanced:img
+                src={rexanEvolution}
                 sizes="(max-width: 800px) 800px, (min-width: 1600px) 1600px, 100vw"
-                width="3795"
-                height="995"
                 alt="the evolution of our art car, rexan"
                 class="w-full min-w-200 max-w-400 mx-auto"
                 loading="lazy"
@@ -429,10 +409,10 @@
         <div
             class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 md:w-3/4 md:mx-auto grid grid-cols-2 md:grid-cols-3 items-start"
         >
-            {#each build2026Photos as { srcset, alt } (srcset)}
+            {#each build2026Photos as { image, alt } (image)}
                 <div class="aspect-4/3 overflow-hidden">
-                    <img
-                        {srcset}
+                    <enhanced:img
+                        src={image}
                         sizes="(max-width: 768px) 42vw, 21vw"
                         {alt}
                         loading="lazy"
@@ -447,10 +427,8 @@
 <section id="rexan-sound-promo" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-            <img
-                srcset={rexanCrew}
-                width="1264"
-                height="848"
+            <enhanced:img
+                src={rexanCrew}
                 sizes="(max-width: 768px) 100vw, 42vw"
                 alt="the crew piled onto rexan under the speakers"
                 loading="lazy"
@@ -481,10 +459,8 @@
 <section id="jagged-balls-promo" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
-            <img
-                srcset={jaggedBalls}
-                width="2048"
-                height="2048"
+            <enhanced:img
+                src={jaggedBalls}
                 sizes="(max-width: 768px) 100vw, 42vw"
                 alt="jagged balls of rolling chaos"
                 loading="lazy"
@@ -535,11 +511,9 @@
             onscroll={updateGalleryEnds}
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
-            {#each galleryPhotos as { srcset, width, height, alt, class: fit } (srcset)}
-                <img
-                    {srcset}
-                    {width}
-                    {height}
+            {#each galleryPhotos as { image, alt, class: fit } (image)}
+                <enhanced:img
+                    src={image}
                     sizes="(max-width: 768px) 100vw, 400px"
                     {alt}
                     loading="lazy"

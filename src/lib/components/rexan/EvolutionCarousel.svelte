@@ -1,23 +1,23 @@
 <script>
   // One card per year Rexan went out. Cropped from rexan-evolution-2026.png
   // so each year can be read at phone width instead of as one tiny strip.
-  import evolution2017 from "$lib/assets/rexan-sound/evolution-2017.png?w=280;542&format=webp&as=srcset";
-  import evolution2018 from "$lib/assets/rexan-sound/evolution-2018.png?w=280;542&format=webp&as=srcset";
-  import evolution2019 from "$lib/assets/rexan-sound/evolution-2019.png?w=280;542&format=webp&as=srcset";
-  import evolution2022 from "$lib/assets/rexan-sound/evolution-2022.png?w=280;542&format=webp&as=srcset";
-  import evolution2023 from "$lib/assets/rexan-sound/evolution-2023.png?w=280;542&format=webp&as=srcset";
-  import evolution2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&format=webp&as=srcset";
-  import evolution2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&format=webp&as=srcset";
+  import evolution2017 from "$lib/assets/rexan-sound/evolution-2017.png?w=280;542&enhanced";
+  import evolution2018 from "$lib/assets/rexan-sound/evolution-2018.png?w=280;542&enhanced";
+  import evolution2019 from "$lib/assets/rexan-sound/evolution-2019.png?w=280;542&enhanced";
+  import evolution2022 from "$lib/assets/rexan-sound/evolution-2022.png?w=280;542&enhanced";
+  import evolution2023 from "$lib/assets/rexan-sound/evolution-2023.png?w=280;542&enhanced";
+  import evolution2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&enhanced";
+  import evolution2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&enhanced";
 
   // Notes are condensed from the post's own account of each year.
   const years = [
-    { year: 2017, srcset: evolution2017, note: "Two Behringers at the back for riders" },
-    { year: 2018, srcset: evolution2018, note: "Same Behringers, no DJ setup yet" },
-    { year: 2019, srcset: evolution2019, note: "Two more Behringers, a sub, our first DJ setup" },
-    { year: 2022, srcset: evolution2022, note: "First QSC rig: two K12.2s up top, one KS118" },
-    { year: 2023, srcset: evolution2023, note: "Four K12.2s up top, a second KS118" },
-    { year: 2025, srcset: evolution2025, note: "K10.2s up top next to two working K12.2s" },
-    { year: 2026, srcset: evolution2026, note: "All four K12.2s working again" },
+    { year: 2017, image: evolution2017, note: "Two Behringers at the back for riders" },
+    { year: 2018, image: evolution2018, note: "Same Behringers, no DJ setup yet" },
+    { year: 2019, image: evolution2019, note: "Two more Behringers, a sub, our first DJ setup" },
+    { year: 2022, image: evolution2022, note: "First QSC rig: two K12.2s up top, one KS118" },
+    { year: 2023, image: evolution2023, note: "Four K12.2s up top, a second KS118" },
+    { year: 2025, image: evolution2025, note: "K10.2s up top next to two working K12.2s" },
+    { year: 2026, image: evolution2026, note: "All four K12.2s working again" },
   ];
 
   let track;
@@ -96,16 +96,14 @@
     style="--edge: max(0.5rem, calc((100% - 36rem) / 2 + 0.5rem))"
     class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
   >
-    {#each years as { year, srcset, note }, i (year)}
+    {#each years as { year, image, note }, i (year)}
       <li
         class="snap-start shrink-0 w-56 md:w-64 bg-white/60 rounded-3xl p-5 flex flex-col"
         aria-label="{i + 1} of {years.length}: {year}"
       >
-        <img
-          {srcset}
+        <enhanced:img
+          src={image}
           sizes="(min-width: 768px) 216px, 184px"
-          width="542"
-          height="870"
           alt="Line drawing of Rexan from the front in {year}"
           loading="lazy"
           class="w-full h-auto"
