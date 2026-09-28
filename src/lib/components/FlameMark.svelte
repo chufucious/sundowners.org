@@ -253,10 +253,15 @@
     observer.observe(canvas);
     resize();
 
+    // Wait for `load`, not decode(): with several marks on the page, Safari
+    // can resolve decode() before the pixels are ready for texImage2D.
     const image = new Image();
+    const loaded = new Promise((resolve, reject) => {
+      image.onload = resolve;
+      image.onerror = () => reject(new Error("image failed to load"));
+    });
     image.src = mark;
-    image
-      .decode()
+    loaded
       .then(() => {
         if (cancelled) return;
         gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
