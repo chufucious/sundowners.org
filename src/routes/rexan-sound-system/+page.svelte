@@ -150,8 +150,8 @@
 
     <div class="{photoColumn} my-12">
       {@render photoRow([
-        { image: behringer2017, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "Rexan with the Behringer setup, before we switched to QSC (2017)." },
-        { image: behringer2019, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "Rexan with the Behringer setup, before we switched to QSC (2019)." },
+        { image: behringer2017, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "2017: two Behringers at the back for the riders, and no DJ setup yet." },
+        { image: behringer2019, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "2019: more Behringers facing forward, a sub, and our first DJ setup." },
       ])}
     </div>
 
