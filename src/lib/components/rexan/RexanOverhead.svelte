@@ -5,7 +5,7 @@
   // <svg>; each diagram slots its own speakers and coverage between the layers.
   // Geometry from the Dropbox diagram SVGs: 7.5 units = 1 ft, top bar at y=195.
   let {
-    coneFill, // fill class for the K12.2 cones
+    coneOpacity, // how strongly the K12.2 coverage is tinted
     scaleBarY, // where the 10 ft scale bar sits, below the drawing
     coverage = undefined, // under the car
     overCar = undefined, // over the car body, under its labels
@@ -14,8 +14,9 @@
   } = $props();
 </script>
 
-<!-- K12.2 coverage, 75°, drawn to 20 ft -->
-<g class={coneFill}>
+<!-- K12.2 coverage, 75°, drawn to 20 ft. Solid cones faded as one group, so
+     overlaps read as a single even tint instead of stacking darker. -->
+<g class="fill-emerald-600" opacity={coneOpacity}>
   <path d="M214.8 195.0 L64.9 188.5 A150.0 150.0 0 0 1 182.3 48.6 Z" />
   <path d="M223.8 195.0 L100.1 110.0 A150.0 150.0 0 0 1 273.8 53.6 Z" />
   <path d="M276.2 195.0 L226.2 53.6 A150.0 150.0 0 0 1 399.9 110.0 Z" />

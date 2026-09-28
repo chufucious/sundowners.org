@@ -19,7 +19,7 @@
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 316" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="current-overhead-title">
       <title id="current-overhead-title">Overhead view of Rexan's current speaker layout and coverage</title>
-      <RexanOverhead coneFill="fill-emerald-600/15" scaleBarY={336}>
+      <RexanOverhead coneOpacity={0.15} scaleBarY={336}>
         {#snippet coverage()}
           <!-- KS118 rings at 5 / 10 / 20 ft -->
           <g class="fill-none stroke-orange-600" stroke-dasharray="4 3">
@@ -30,7 +30,7 @@
         {/snippet}
         {#snippet overCar()}
           <!-- K10.2 cones, cross-firing at the DJ -->
-          <g class="fill-amber-600/20">
+          <g class="fill-amber-600" opacity="0.2">
             <path d="M215.5 172.5 L267.3 142.2 A60.0 60.0 0 0 1 245.8 224.3 Z" />
             <path d="M284.5 172.5 L254.2 224.3 A60.0 60.0 0 0 1 232.7 142.2 Z" />
           </g>
