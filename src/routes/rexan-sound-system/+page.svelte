@@ -20,7 +20,7 @@
   // change its --edge (36rem) too if this width changes.
   const textColumn = "mx-auto max-w-xl px-6";
   const proseStyles =
-    "prose prose-lg max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
+    "prose prose-xl max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-p:leading-[1.6] prose-li:leading-[1.6] prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
   // Photos run wider than the text.
   const photoColumn = "mx-auto max-w-4xl px-6";
 
@@ -171,16 +171,12 @@
       </p>
     </div>
 
-    <div class="{photoColumn} my-12 space-y-12">
+    <div class="{photoColumn} my-12">
       {@render photoRow([
         { image: qsc2022, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
         { image: qsc2023, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
+        { image: sunrise2025, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
       ])}
-      <div class="max-w-md mx-auto">
-        {@render photoRow([
-          { image: sunrise2025, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
-        ])}
-      </div>
     </div>
 
     <div class="{textColumn} {proseStyles}">
