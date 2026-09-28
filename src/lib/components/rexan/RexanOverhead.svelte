@@ -38,14 +38,14 @@
 
 <!-- open windscreen frame with a monitor at each end -->
 <line x1="212.5" y1="172.5" x2="287.5" y2="172.5" class="stroke-orange-950/50" stroke-width="1.5" />
-<rect x="210.5" y="168.5" width="10" height="8" rx="2" class="fill-emerald-600" />
-<rect x="279.5" y="168.5" width="10" height="8" rx="2" class="fill-emerald-600" />
+<rect x="210.5" y="168.5" width="10" height="8" rx="2" class="fill-amber-600" />
+<rect x="279.5" y="168.5" width="10" height="8" rx="2" class="fill-amber-600" />
 {@render brackets?.()}
 
 <!-- top bar, with K12.2 pairs at its ends -->
 <line x1="211" y1="195" x2="289" y2="195" class="stroke-orange-950/50" stroke-width="2" />
 {@render underTops?.()}
-<g class="fill-sky-700">
+<g class="fill-emerald-600">
   <rect x="210.25" y="190" width="9" height="10" rx="2" />
   <rect x="219.25" y="190" width="9" height="10" rx="2" />
   <rect x="271.75" y="190" width="9" height="10" rx="2" />

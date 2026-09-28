@@ -26,7 +26,7 @@
 </g>
 <!-- windscreen frame and its monitor -->
 <path d="M172.5 692 L170.25 665.75 L163.5 665.75" class="fill-none stroke-orange-950/60" stroke-width="1.5" />
-<rect x="165.25" y="656.75" width="10" height="8" rx="2" class="fill-emerald-600" />
+<rect x="165.25" y="656.75" width="10" height="8" rx="2" class="fill-amber-600" />
 <rect x="157.5" y="662" width="12" height="41.25" rx="3" class="fill-white/60 stroke-orange-950/40" stroke-width="0.75" stroke-dasharray="3 2" />
 <text x="163.5" y="680" text-anchor="middle" dominant-baseline="central" class="fill-orange-950/80 text-[11px]">DJ</text>
 <text x="104" y="689.75" text-anchor="middle" dominant-baseline="central" class="fill-orange-950/80 text-[13px]">Deck</text>
@@ -35,7 +35,7 @@
 <!-- top bar post and K12.2 -->
 <line x1="150" y1="650.75" x2="150" y2="669.5" class="stroke-orange-950/50" stroke-width="2" />
 {@render beforeTop?.()}
-<rect x="145" y="635.2" width="10" height="16" rx="2" class="fill-sky-700" transform="rotate(-15 150 643.2)" />
+<rect x="145" y="635.2" width="10" height="16" rx="2" class="fill-emerald-600" transform="rotate(-15 150 643.2)" />
 {@render underTop?.()}
 
 <!-- ear height, ground, distances -->

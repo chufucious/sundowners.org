@@ -12,7 +12,7 @@
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 270" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="towers-overhead-title">
       <title id="towers-overhead-title">Overhead view of the 2027 concept: line array boxes flown under the tops, subs split into side towers</title>
-      <RexanOverhead coneFill="fill-sky-600/10" scaleBarY={290}>
+      <RexanOverhead coneFill="fill-emerald-600/10" scaleBarY={290}>
         {#snippet coverage()}
           <!-- LA112 cones, 90° horizontal -->
           <g class="fill-violet-500/15 stroke-violet-700" stroke-width="0.8" stroke-dasharray="5 3">
@@ -42,7 +42,7 @@
       <LegendItem swatch="bg-violet-300 ring-1 ring-violet-700">
         <strong class="text-orange-950">LA112 ×4</strong>, two hung under each K12.2 pair at the bar ends. 90° horizontal.
       </LegendItem>
-      <LegendItem swatch="bg-sky-700">
+      <LegendItem swatch="bg-emerald-600">
         <strong class="text-orange-950">K12.2 ×4</strong> on the top bar, unchanged. Now secondary fill.
       </LegendItem>
       <LegendItem swatch="bg-red-900">
@@ -51,7 +51,7 @@
       <LegendItem swatch="bg-orange-600">
         <strong class="text-orange-950">KS118 ×2</strong> stacked on a new driver-side bracket (about 208 lb).
       </LegendItem>
-      <LegendItem swatch="bg-emerald-600">
+      <LegendItem swatch="bg-amber-600">
         <strong class="text-orange-950">K12.2 monitors</strong> on the open windscreen frame.
       </LegendItem>
     {/snippet}
@@ -63,8 +63,8 @@
       <RexanSide>
         {#snippet coverage()}
           <!-- K12.2 throw -->
-          <path d="M150 643.2 L457.2 516 L484 516 L484 722 L210.4 722 Z" class="fill-sky-600/10" />
-          <g class="stroke-sky-600" stroke-width="0.75">
+          <path d="M150 643.2 L457.2 516 L484 516 L484 722 L210.4 722 Z" class="fill-emerald-600/10" />
+          <g class="stroke-emerald-500" stroke-width="0.75">
             <line x1="150" y1="643.2" x2="457.2" y2="516" stroke-dasharray="2 3" />
             <line x1="150" y1="643.2" x2="210.4" y2="722" stroke-dasharray="6 3" />
           </g>
