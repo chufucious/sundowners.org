@@ -21,8 +21,7 @@
   const textColumn = "mx-auto max-w-xl px-6";
   const proseStyles =
     "prose prose-xl max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-p:leading-[1.6] prose-li:leading-[1.6] prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
-  // Photos run wider than the text; the widest reach near the page edges
-  // (data-wide tells the table of contents to fade while they pass it).
+  // Photos run wider than the text; the widest reach near the page edges.
   const photoColumn = "mx-auto max-w-4xl px-6";
   const widePhotoColumn = "mx-auto max-w-7xl px-4 md:px-6";
 
@@ -53,7 +52,7 @@
           loading="lazy"
           class="w-full h-auto"
         />
-        <figcaption class="text-sm mt-2 italic text-orange-950/80">{caption}</figcaption>
+        <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
       </figure>
     {/each}
   </div>
@@ -73,8 +72,9 @@
       <h2 class="font-extralight font-garamond mt-0 text-xl md:text-3xl">
         How we built a solar-powered QSC rig on a psychedelic safari car.
       </h2>
-      <p class="font-light font-sans text-sm">
-        By <strong>Joshuah Vincent</strong> &amp; <strong>Greg Liburd</strong>
+      <p class="not-prose font-mono text-sm text-orange-950/80">
+        By <strong class="font-semibold text-orange-950">Joshuah Vincent</strong> &amp;
+        <strong class="font-semibold text-orange-950">Greg Liburd</strong>
       </p>
     </div>
 
@@ -93,17 +93,17 @@
     </div>
   </header>
 
-  <div class="relative">
-    <!-- Pinned in the left margin, clear of the photo column (max-w-4xl), on
-         screens wide enough to hold it. -->
-    <aside class="hidden min-[87rem]:block absolute inset-y-0 left-[calc(50%-42rem)] w-52">
+  <!-- From md up, a left rail holds the table of contents, pinned while the
+       post scrolls; everything else centres in the space to its right. -->
+  <div class="relative md:pl-60">
+    <aside class="hidden md:block absolute inset-y-0 left-6 w-48">
       <div class="sticky top-28">
         <TableOfContents {sections} />
       </div>
     </aside>
 
-    <!-- Narrower screens get the table of contents inline instead. -->
-    <div class="{textColumn} mb-12 min-[87rem]:hidden">
+    <!-- Phones get the table of contents inline instead. -->
+    <div class="{textColumn} mb-12 md:hidden">
       <TableOfContents {sections} />
     </div>
 
@@ -132,10 +132,8 @@
       <p>And Rexan's heart is our community, and its voice is its sound system.</p>
     </div>
 
-    <!-- Kept inside the photo column where the table of contents shows, so
-         cards don't slide under it. -->
-    <section aria-label="The evolution of Rexan" class="mt-12 min-[87rem]:mx-auto min-[87rem]:max-w-4xl">
-      <p class="{textColumn} font-sans text-xs uppercase tracking-wide text-orange-950/60 mb-4">The evolution of Rexan</p>
+    <section aria-label="The evolution of Rexan" class="mt-12">
+      <p class="{textColumn} eyebrow mb-4">The evolution of Rexan</p>
       <EvolutionCarousel />
     </section>
 
@@ -178,7 +176,7 @@
       </p>
     </div>
 
-    <div class="{widePhotoColumn} my-12" data-wide>
+    <div class="{widePhotoColumn} my-12">
       {@render photoRow([
         { image: qsc2022, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
         { image: qsc2023, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
@@ -337,9 +335,9 @@
     </div>
 
     <div class="{textColumn} my-12">
-      <p class="font-sans text-xs uppercase tracking-wide mb-6">
+      <p class="eyebrow mb-6">
         <span class="inline-block rounded-full bg-orange-950/10 px-3 py-1 text-orange-950">2027 concept</span>
-        <span class="ml-2 text-orange-950/60">Work in progress, not final</span>
+        <span class="ml-2">Work in progress, not final</span>
       </p>
       <SideTowersDiagram />
     </div>
@@ -361,7 +359,7 @@
         — Joshuah Vincent &amp; Greg Liburd, Rexan by Joshuah Vincent &amp; the Sundowners
       </p>
       <p>
-        <a href="/" class="text-orange-950 underline hover:text-orange-500">Back to home</a>
+        <a href="/" class="font-mono text-sm text-orange-950 underline hover:text-orange-500">Back to home</a>
       </p>
     </div>
   </div>

@@ -8,7 +8,7 @@
   import RexanSide from "./RexanSide.svelte";
 </script>
 
-<figure class="font-sans text-orange-950 space-y-12">
+<figure class="font-mono text-orange-950 space-y-12">
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 270" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="towers-overhead-title">
       <title id="towers-overhead-title">Overhead view of the 2027 concept: line array boxes flown under the tops, subs split into side towers</title>

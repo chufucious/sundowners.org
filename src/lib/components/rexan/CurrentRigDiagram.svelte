@@ -15,7 +15,7 @@
   const distances = ["@1 m", "10 ft", "25 ft", "50 ft", "100 ft"];
 </script>
 
-<figure class="font-sans text-orange-950 space-y-12">
+<figure class="font-mono text-orange-950 space-y-12">
   <DiagramPanel title="Overhead, to scale" sides>
     <svg viewBox="56 40 388 316" class="w-full h-auto max-w-lg mx-auto" role="img" aria-labelledby="current-overhead-title">
       <title id="current-overhead-title">Overhead view of Rexan's current speaker layout and coverage</title>
@@ -102,7 +102,7 @@
   </DiagramPanel>
 
   <section>
-    <h3 class="text-xs uppercase tracking-wide text-orange-950/60 mb-2">Projected SPL per speaker class (peak, dB)</h3>
+    <h3 class="eyebrow mb-2">Projected SPL per speaker class (peak, dB)</h3>
     <div class="overflow-x-auto -mx-6 px-6">
       <table class="w-full min-w-lg text-xs text-orange-950/80 bg-orange-950/5 rounded tabular-nums">
         <thead class="text-orange-950 text-left">

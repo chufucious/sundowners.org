@@ -116,8 +116,8 @@
           loading="lazy"
           class="w-full h-auto"
         />
-        <p class="mt-4 font-sans text-2xl font-light text-orange-950">{year}</p>
-        <p class="font-sans text-xs text-orange-950/70 leading-snug">{note}</p>
+        <p class="mt-4 font-garamond text-3xl text-orange-950">{year}</p>
+        <p class="mt-1 font-mono text-xs text-orange-950/70 leading-relaxed">{note}</p>
       </li>
     {/each}
   </ul>

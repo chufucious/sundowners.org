@@ -22,6 +22,11 @@ picture {
   display: contents;
 }
 
+/* Small mono labels over sections, figures and panels ("ON THIS PAGE"). */
+@utility eyebrow {
+  @apply font-mono text-xs uppercase tracking-widest text-orange-950/60;
+}
+
 /* Wax-fabric border behind framed photos; set the image with style:background-image. */
 @utility pattern-frame {
   background-repeat: repeat;

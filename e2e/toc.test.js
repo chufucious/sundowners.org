@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
-// Wide screens (87rem+) pin the table of contents in the left margin;
-// narrower ones show it inline under the title.
+// From md up the table of contents is pinned in a left rail; phones show it
+// inline under the title.
 
 test("phones show it inline, and its links jump", async ({ page, isMobile }) => {
   test.skip(!isMobile, "phone layout");
@@ -12,9 +12,10 @@ test("phones show it inline, and its links jump", async ({ page, isMobile }) => 
   await expect(page.locator("#what-broke")).toBeInViewport();
 });
 
-test.describe("wide screens", () => {
-  test.use({ viewport: { width: 1440, height: 900 } });
-  test.skip(({ isMobile }) => isMobile, "desktop-only layout");
+test.describe("left rail", () => {
+  // Roughly a laptop browser window that isn't full screen.
+  test.use({ viewport: { width: 1000, height: 800 } });
+  test.skip(({ isMobile }) => isMobile, "desktop layout");
 
   test.beforeEach(async ({ page }) => {
     await page.goto("/rexan-sound-system");
@@ -28,17 +29,14 @@ test.describe("wide screens", () => {
     await expect(toc.locator('[aria-current="location"]')).toHaveText("Keeping it green");
   });
 
-  test("fades while the wide photo row passes behind it", async ({ page }) => {
-    const toc = page.locator("aside nav");
-    await page.evaluate(() => scrollTo(0, 1600));
-    await expect(toc).not.toHaveAttribute("inert");
-
-    // Put the wide row level with the pinned nav.
-    await page.locator("[data-wide]").evaluate((row) => scrollBy(0, row.getBoundingClientRect().top - 150));
-    await expect(toc).toHaveAttribute("inert", "");
-    await expect(toc).toHaveCSS("opacity", "0");
-
-    await page.locator("[data-wide]").evaluate((row) => scrollBy(0, row.getBoundingClientRect().bottom + 200));
-    await expect(toc).not.toHaveAttribute("inert");
+  test("stays pinned on the left, clear of the text, while the post scrolls", async ({ page }) => {
+    const toc = page.getByRole("navigation", { name: "On this page" });
+    for (const id of ["the-rig-today", "what-broke", "thanks"]) {
+      await page.locator(`#${id}`).scrollIntoViewIfNeeded();
+      await expect(toc).toBeInViewport();
+      const nav = await toc.boundingBox();
+      const text = await page.locator(`#${id}`).boundingBox();
+      expect(nav.x + nav.width).toBeLessThan(text.x);
+    }
   });
 });
