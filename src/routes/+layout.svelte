@@ -3,12 +3,25 @@
   import { page } from "$app/state";
   import Agentation from "$lib/components/Agentation.svelte";
   import FlameMark from "$lib/components/FlameMark.svelte";
+  import CompactLogo from "$lib/components/CompactLogo.svelte";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
   import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg";
   import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
   let { children } = $props();
+
+  // The header logo scrolls away with the header; once it's fully off screen
+  // the compact flame lion takes over.
+  let headerLogo;
+  let headerLogoVisible = $state(true);
+  $effect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      headerLogoVisible = entry.isIntersecting;
+    });
+    observer.observe(headerLogo);
+    return () => observer.disconnect();
+  });
 
   const SITE_URL = "https://sundowners.org";
   const DEFAULT_TITLE = "Sundowners – Black Rock City";
@@ -63,7 +76,8 @@
   >
     <a
       href="/"
-      class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
+      bind:this={headerLogo}
+      class="absolute left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
     >
       <span class="relative w-75 md:w-150">
         <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
@@ -83,7 +97,7 @@
     <!-- Embers in their own layer on top, outside the color-dodge blend, so
          their orange/red survives. Mirrors the logo's position and size. -->
     <div
-      class="pointer-events-none fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center"
+      class="pointer-events-none absolute left-0 right-0 top-12 md:top-16 z-20 flex justify-center"
     >
       <span class="relative w-75 md:w-150 aspect-2182/312">
         <FlameMark
@@ -105,6 +119,7 @@
       style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
     ></div>
   </header>
+  <CompactLogo shown={!headerLogoVisible} />
   <div id="main-content" class="contents">
     {@render children()}
   </div>
