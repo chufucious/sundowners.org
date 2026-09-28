@@ -94,18 +94,14 @@
   </header>
 
   <!-- From md up, a left rail holds the table of contents, pinned while the
-       post scrolls; everything else centres in the space to its right. -->
+       post scrolls; everything else centres in the space to its right.
+       Phones skip it: there's no room, and the post reads top to bottom. -->
   <div class="relative md:pl-60">
     <aside class="hidden md:block absolute inset-y-0 left-6 w-48">
       <div class="sticky top-28">
         <TableOfContents {sections} />
       </div>
     </aside>
-
-    <!-- Phones get the table of contents inline instead. -->
-    <div class="{textColumn} mb-12 md:hidden">
-      <TableOfContents {sections} />
-    </div>
 
     <div class="{textColumn} {proseStyles}">
       <p>

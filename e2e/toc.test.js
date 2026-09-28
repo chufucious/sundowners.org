@@ -1,15 +1,11 @@
 import { test, expect } from "@playwright/test";
 
-// From md up the table of contents is pinned in a left rail; phones show it
-// inline under the title.
+// From md up the table of contents is pinned in a left rail; phones hide it.
 
-test("phones show it inline, and its links jump", async ({ page, isMobile }) => {
+test("phones hide it", async ({ page, isMobile }) => {
   test.skip(!isMobile, "phone layout");
   await page.goto("/rexan-sound-system");
-  const toc = page.getByRole("navigation", { name: "On this page" });
-  await expect(toc).toBeVisible();
-  await toc.getByRole("link", { name: "What broke (and what we learned)" }).click();
-  await expect(page.locator("#what-broke")).toBeInViewport();
+  await expect(page.getByRole("navigation", { name: "On this page", includeHidden: true })).toBeHidden();
 });
 
 test.describe("left rail", () => {

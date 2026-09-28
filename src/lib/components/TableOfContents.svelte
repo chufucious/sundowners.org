@@ -2,7 +2,7 @@
   // "On this page" links with the section being read marked on the rule.
   // `sections` are { id, title } for headings rendered with those ids.
   let { sections } = $props();
-  const labelId = $props.id(); // the page can show two: pinned and inline
+  const labelId = $props.id();
 
   let current = $state(); // set on mount from the scroll position
 
