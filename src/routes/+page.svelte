@@ -48,7 +48,7 @@
 <section id="intro" class="col-span-12 relative">
     <div class="grid grid-cols-12 gap-4">
         <div
-            class="pattern-frame col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 md:-mt-80 mb-12"
+            class="pattern-frame col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 -mt-4 md:-mt-88 mb-12"
             style:background-image="url({patternSunflower})"
         >
             <enhanced:img
@@ -124,6 +124,14 @@
                 </div>
             </aside>
         </div>
+    </div>
+</section>
+
+<section id="articles" class="col-span-12 relative mt-section grid grid-cols-12 gap-4">
+    <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
+        {#each articles as article (article.id)}
+            <ArticleCard {...article} />
+        {/each}
     </div>
 </section>
 
@@ -367,9 +375,6 @@
     </div>
 </section>
 
-{#each articles as article (article.id)}
-    <ArticleCard {...article} />
-{/each}
 
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
