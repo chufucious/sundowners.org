@@ -15,7 +15,6 @@
   import panelsLoopPoster from "$lib/assets/rexan-sound/panels-loop-poster.jpg";
   import panelTestLoop from "$lib/assets/rexan-sound/panel-test-loop.mp4";
   import panelTestLoopPoster from "$lib/assets/rexan-sound/panel-test-loop-poster.jpg";
-  import { prefersReducedMotion } from "svelte/motion";
   import EvolutionCarousel from "$lib/components/rexan/EvolutionCarousel.svelte";
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
@@ -75,7 +74,7 @@
 {/snippet}
 
 <!-- A short, silent, looping clip standing in for a GIF. `muted` and `playsinline`
-     let it autoplay on iPhones; with reduced motion it holds on the poster frame.
+     let it autoplay on iPhones.
      `ratio` (width / height) sets its flex-grow within a row, like a photo's. -->
 {#snippet loop({ src, poster, label, caption, ratio, class: extraClass = "" })}
   <figure class="md:min-w-0 {extraClass}" style:flex={ratio ? `${ratio} 1 0` : undefined}>
@@ -89,9 +88,6 @@
       playsinline
       preload="metadata"
       class="w-full h-auto"
-      {@attach (video) => {
-        if (prefersReducedMotion.current) video.pause();
-      }}
     ></video>
     <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
   </figure>

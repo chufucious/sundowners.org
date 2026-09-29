@@ -39,16 +39,12 @@
     return track.children[i].offsetLeft - track.children[0].offsetLeft;
   }
 
-  function scrollBehavior() {
-    return matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-  }
-
   // Always scroll to an exact card position: Safari doesn't re-snap after a
   // smooth programmatic scroll, so it would stop wherever the scroll ended.
   // Later cards can't reach the text edge on wide screens; stop at the end.
   function scrollToCard(i) {
     const end = track.scrollWidth - track.clientWidth;
-    track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: scrollBehavior() });
+    track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: "smooth" });
   }
 
   // The card lined up with the text edge.

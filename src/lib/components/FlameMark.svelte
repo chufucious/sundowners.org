@@ -1,14 +1,12 @@
 <script>
   // The sun mark with a never-repeating heat-shimmer warp: a WebGL shader
-  // samples the mark through 3D simplex noise that drifts upward over time.
+  // samples the mark through 3D simplex noise that drifts upward over time,
+  // with a few embers rising off the tips.
   // The transparent padding in the texture gives the warped edges room.
-  // Falls back to the static image without WebGL or with reduced motion.
-  import mark from "$lib/assets/logo/sundowners-mark-2025-flame.png";
+  // Falls back to the static image without WebGL.
+  import mark from "$lib/assets/logo/sundowners-mark-2025-flame-purple.png";
 
-  // `embers` draws only the rising sparks instead of the mark, so they can sit
-  // in their own layer outside the logo's color-dodge blend (which can only
-  // brighten, and would wash their orange/red out).
-  let { class: className = "", embers = false } = $props();
+  let { class: className = "" } = $props();
 
   let canvas;
   let running = $state(false);
@@ -33,7 +31,6 @@
 
     uniform sampler2D mark;
     uniform float time;
-    uniform bool embers;
     varying vec2 uv;
 
     // 3D simplex noise — Ashima Arts / Stefan Gustavson (MIT).
@@ -105,9 +102,9 @@
     }
 
     // Rising sparks above the tips: launched fast, slowing as they climb,
-    // drifting with the flame's sway, and burning out from yellow-white
-    // through orange to dull red.
-    void drawEmbers() {
+    // drifting with the flame's sway, and burning out from pale pink
+    // through pink to violet.
+    vec4 embers() {
       vec3 rgb = vec3(0.0);
       float alpha = 0.0;
 
@@ -128,8 +125,8 @@
         pos.x -= swayAt(0.6 + life * 0.5) * 0.014 * (1.0 + life);
 
         float heat = 1.0 - life;
-        vec3 ember = mix(vec3(0.75, 0.12, 0.04), vec3(1.0, 0.55, 0.15), smoothstep(0.15, 0.55, heat));
-        ember = mix(ember, vec3(1.0, 0.9, 0.6), smoothstep(0.6, 0.95, heat));
+        vec3 ember = mix(vec3(0.45, 0.2, 0.8), vec3(0.9, 0.4, 0.8), smoothstep(0.15, 0.55, heat));
+        ember = mix(ember, vec3(1.0, 0.85, 0.95), smoothstep(0.6, 0.95, heat));
         float radius = mix(0.01, 0.022, heat);
         float sputter = mix(1.0, 0.55 + 0.45 * sin(time * 23.0 + n * 5.0), smoothstep(0.5, 0.9, life));
         float brightness = smoothstep(0.0, 0.08, life) * pow(heat, 0.8) * sputter;
@@ -143,15 +140,10 @@
       }
 
       // Overlapping sparks can sum past alpha; keep it valid premultiplied.
-      gl_FragColor = vec4(min(rgb, vec3(alpha)), alpha);
+      return vec4(min(rgb, vec3(alpha)), alpha);
     }
 
     void main() {
-      if (embers) {
-        drawEmbers();
-        return;
-      }
-
       // 0 at the mark's base (texture y ≈ 0.02), 1 at its tips (y ≈ 0.75).
       float reach = smoothstep(0.2, 0.7, uv.y);
 
@@ -176,7 +168,7 @@
       vec4 color = texture2D(mark, suv);
 
       // Flickering tips: a quicker noise field thins the tongues, but only
-      // where there's open sky just above (so solid gold stays solid), and
+      // where there's open sky just above (so solid color stays solid), and
       // hardest at the peak of a lick — stretch, then pinch off.
       float tips = smoothstep(0.45, 0.78, uv.y);
       float exposed = 1.0 - texture2D(mark, suv + vec2(0.0, 0.035)).a;
@@ -184,8 +176,11 @@
       float cut = tips * (0.35 + 0.2 * lick) * exposed;
       float mask = smoothstep(cut - 0.15, cut, erode);
 
-      // The texture is uploaded premultiplied, so scale all four channels.
-      gl_FragColor = color * mask;
+      // Embers go over the flame, premultiplied "over" (the texture is uploaded
+      // premultiplied, so the mask scales all four channels). Sparks and their
+      // halos never reach below y ≈ 0.62, so skip them there.
+      vec4 spark = uv.y > 0.6 ? embers() : vec4(0.0);
+      gl_FragColor = spark + color * mask * (1.0 - spark.a);
     }
   `;
 
@@ -200,11 +195,6 @@
   }
 
   $effect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      status = "reduced motion is on";
-      return;
-    }
-
     const gl = canvas.getContext("webgl", { premultipliedAlpha: true });
     if (!gl) {
       status = "no WebGL";
@@ -240,7 +230,6 @@
     gl.enableVertexAttribArray(position);
     gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
     const timeUniform = gl.getUniformLocation(program, "time");
-    gl.uniform1i(gl.getUniformLocation(program, "embers"), embers ? 1 : 0);
 
     // Keep the drawing buffer matched to the element's size on screen.
     const resize = () => {
@@ -266,7 +255,7 @@
         if (cancelled) return;
         gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-        // Premultiply on upload so linear filtering doesn't blend the gold
+        // Premultiply on upload so linear filtering doesn't blend the colors
         // with the black stored in transparent pixels (a dark, crawling rim).
         gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
@@ -301,13 +290,11 @@
 </script>
 
 <div class={["pointer-events-none", className]} aria-hidden="true">
-  {#if !embers}
-    <img
-      src={mark}
-      alt=""
-      class={["absolute inset-0 size-full", running && "invisible"]}
-    />
-  {/if}
+  <img
+    src={mark}
+    alt=""
+    class={["absolute inset-0 size-full", running && "invisible"]}
+  />
   <canvas
     bind:this={canvas}
     class={["absolute inset-0 size-full", !running && "invisible"]}
@@ -315,7 +302,7 @@
   {#if import.meta.env.DEV && status !== "running"}
     <span
       class="absolute top-full left-0 whitespace-nowrap bg-black/80 px-1 text-[10px] text-white"
-      >{embers ? "embers" : "flame"}: {status}</span
+      >flame: {status}</span
     >
   {/if}
 </div>

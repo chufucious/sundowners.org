@@ -1,34 +1,33 @@
+<script module>
+  // How far the header logo has left (0–1) when the two logos swap reach, and
+  // when this one starts fading in.
+  export const HANDOVER = 0.5;
+</script>
+
 <script>
-  // The header's flame lion, pinned top centre once the header logo has
-  // scrolled away: same mark, shimmer, embers and color-dodge blend.
-  // Motion follows Material 3: entering uses emphasized-decelerate over 400ms
-  // (arrives quickly, settles gently); exiting uses emphasized-accelerate over
-  // a snappy 100ms. Reduced motion keeps only the fade.
+  // The header's flame lion, pinned top centre as the header logo scrolls
+  // away: same mark, shimmer and embers. `swap` (0–1) is how far the header
+  // logo has left; this one fades in from HANDOVER,
+  // arriving quickly and settling gently (ease-out cubic) from slightly small
+  // and high (92%, as in Material 3's fade through).
   import FlameMark from "./FlameMark.svelte";
 
-  let { shown = false } = $props();
+  let { swap = 0 } = $props();
 
-  // Shared by both layers so they move as one. Centred with a negative margin
-  // (w-18 / 2) because `translate` is animated. The blend has to sit on the
-  // fixed element itself: fixed positioning isolates blending inside it.
-  const layer = $derived([
-    "fixed -top-3 md:top-0.5 left-1/2 -ml-9 z-30 w-18 aspect-551/432 transition-[opacity,scale,translate]",
-    shown
-      ? "opacity-100 duration-400 ease-[cubic-bezier(0.05,0.7,0.1,1)]"
-      : "opacity-0 scale-95 -translate-y-1 duration-100 ease-[cubic-bezier(0.3,0,0.8,0.15)] motion-reduce:scale-100 motion-reduce:translate-y-0",
-  ]);
+  const progress = $derived(1 - (1 - Math.max((swap - HANDOVER) / (1 - HANDOVER), 0)) ** 3);
+
+  const motion = $derived(
+    `opacity: ${progress}; scale: ${0.92 + 0.08 * progress}; translate: -50% ${-4 * (1 - progress)}px`,
+  );
 </script>
 
 <a
   href="/"
   aria-label="Sundowners home"
-  inert={!shown}
-  class={[layer, "block mix-blend-color-dodge focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"]}
+  inert={swap < HANDOVER}
+  style={motion}
+  class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block mix-blend-color-dodge focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
 >
   <!-- Sized to the mark's texture (551 x 432), flames included, as in the header. -->
   <FlameMark class="absolute inset-0" />
 </a>
-<!-- Embers outside the blend, as in the header, so their orange/red survives. -->
-<div class={[layer, "pointer-events-none"]} aria-hidden="true">
-  <FlameMark embers class="absolute inset-0" />
-</div>
