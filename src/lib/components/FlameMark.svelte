@@ -6,10 +6,11 @@
   // Falls back to the static image without WebGL.
   import mark from "$lib/assets/logo/sundowners-mark-2025-flame-purple.png";
 
-  let { class: className = "" } = $props();
+  let { class: className = "", active = true } = $props();
 
   let canvas;
   let running = $state(false);
+  let pageVisible = $state(true);
   // Why the animation isn't running, shown under the logo in dev.
   let status = $state("starting");
 
@@ -201,8 +202,46 @@
       return;
     }
 
-    let frame;
+    let frame = null;
     let cancelled = false;
+    let ready = false;
+    let shouldAnimate = false;
+    let lastDraw = null;
+    const frameInterval = 1000 / 30;
+
+    const draw = (now) => {
+      frame = null;
+      if (!shouldAnimate || cancelled) return;
+      const elapsed = lastDraw === null ? frameInterval : now - lastDraw;
+      // Keep time continuous while drawing at most 30 frames per second.
+      // The small tolerance avoids skipping a frame due to timestamp rounding.
+      if (elapsed >= frameInterval - 0.1) {
+        lastDraw = now;
+        gl.uniform1f(timeUniform, now / 1000);
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        running = true;
+        status = "running";
+      }
+      frame = requestAnimationFrame(draw);
+    };
+
+    const syncAnimation = () => {
+      if (ready && shouldAnimate && frame === null) {
+        lastDraw = null;
+        frame = requestAnimationFrame(draw);
+      } else if (!shouldAnimate && frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    };
+
+    // Visibility changes only start/stop the loop; keep the WebGL resources.
+    $effect(() => {
+      shouldAnimate = active && pageVisible && !document.hidden;
+      syncAnimation();
+    });
 
     const program = gl.createProgram();
     try {
@@ -265,16 +304,8 @@
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
-        const draw = (now) => {
-          gl.uniform1f(timeUniform, now / 1000);
-          gl.clearColor(0, 0, 0, 0);
-          gl.clear(gl.COLOR_BUFFER_BIT);
-          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-          running = true;
-          status = "running";
-          frame = requestAnimationFrame(draw);
-        };
-        frame = requestAnimationFrame(draw);
+        ready = true;
+        syncAnimation();
       })
       .catch((error) => {
         status = "texture failed: " + error.message;
@@ -288,6 +319,8 @@
     };
   });
 </script>
+
+<svelte:document onvisibilitychange={() => (pageVisible = !document.hidden)} />
 
 <div class={["pointer-events-none", className]} aria-hidden="true">
   <img

@@ -20,6 +20,65 @@ const scrollLogoOff = (page, fraction) =>
 const scrollPastHeader = (page, extra = 200) =>
   page.locator("main > header").evaluate((header, extra) => scrollTo(0, header.getBoundingClientRect().bottom + scrollY + extra), extra);
 
+test("flames cap drawing at 30 fps and pause/resume with logo and page visibility", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.flameDraws = new WeakMap();
+    const draw = WebGLRenderingContext.prototype.drawArrays;
+    WebGLRenderingContext.prototype.drawArrays = function (...args) {
+      window.flameDraws.set(this.canvas, (window.flameDraws.get(this.canvas) ?? 0) + 1);
+      return draw.apply(this, args);
+    };
+  });
+  await page.goto("/rexan-sound-system");
+  const headerCanvas = full(page).locator("canvas");
+  const compactCanvas = compact(page).locator("canvas");
+  const count = (canvas) => canvas.evaluate((el) => window.flameDraws.get(el) ?? 0);
+  const sample = () => page.evaluate(async () => {
+    const canvases = [...document.querySelectorAll("canvas")];
+    const before = canvases.map((el) => window.flameDraws.get(el) ?? 0);
+    const start = performance.now();
+    await new Promise((resolve) => setTimeout(resolve, 1100));
+    return canvases.map((el, i) => ({
+      frames: (window.flameDraws.get(el) ?? 0) - before[i],
+      fps: ((window.flameDraws.get(el) ?? 0) - before[i]) * 1000 / (performance.now() - start),
+    }));
+  });
+  await expect.poll(() => count(headerCanvas)).toBeGreaterThan(0);
+  let [header, small] = await sample();
+  expect(header.frames).toBeGreaterThan(0);
+  expect(header.fps).toBeLessThanOrEqual(31);
+  expect(small.frames).toBe(0);
+
+  await scrollPastHeader(page);
+  await expect.poll(() => count(compactCanvas)).toBeGreaterThan(0);
+  [header, small] = await sample();
+  expect(header.frames).toBe(0);
+  expect(small.frames).toBeGreaterThan(0);
+  expect(small.fps).toBeLessThanOrEqual(31);
+
+  // Exercise the visibility handler deterministically in headless browsers.
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", { configurable: true, value: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  [header, small] = await sample();
+  expect(header.frames).toBe(0);
+  expect(small.frames).toBe(0);
+  const pausedCount = await count(compactCanvas);
+  await page.evaluate(() => {
+    delete document.hidden;
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect.poll(() => count(compactCanvas)).toBeGreaterThan(pausedCount);
+
+  await page.evaluate(() => scrollTo(0, 0));
+  await expect(full(page)).toHaveCSS("opacity", "1");
+  [header, small] = await sample();
+  expect(header.frames).toBeGreaterThan(0);
+  expect(header.fps).toBeLessThanOrEqual(31);
+  expect(small.frames).toBe(0);
+});
+
 test("full and compact logos hand over with the scroll as the header logo leaves", async ({ page }) => {
   await page.goto("/rexan-sound-system");
   await expect(full(page)).toHaveCSS("opacity", "1");

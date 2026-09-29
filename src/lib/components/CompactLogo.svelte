@@ -10,6 +10,7 @@
   // logo has left; this one fades in from HANDOVER,
   // arriving quickly and settling gently (ease-out cubic) from slightly small
   // and high (92%, as in Material 3's fade through).
+  import { resolve } from "$app/paths";
   import FlameMark from "./FlameMark.svelte";
 
   let { swap = 0 } = $props();
@@ -22,12 +23,12 @@
 </script>
 
 <a
-  href="/"
+  href={resolve("/")}
   aria-label="Sundowners home"
   inert={swap < HANDOVER}
   style={motion}
   class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block mix-blend-color-dodge focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
 >
   <!-- Sized to the mark's texture (551 x 432), flames included, as in the header. -->
-  <FlameMark class="absolute inset-0" />
+  <FlameMark active={progress > 0} class="absolute inset-0" />
 </a>

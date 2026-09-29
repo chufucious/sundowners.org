@@ -1,4 +1,5 @@
 <script>
+  import { resolve } from "$app/paths";
   import FlameMark from "$lib/components/FlameMark.svelte";
   import CompactLogo, { HANDOVER } from "$lib/components/CompactLogo.svelte";
   import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
@@ -37,7 +38,7 @@
   ]}
 >
   <a
-    href="/"
+    href={resolve("/")}
     bind:this={headerLogo}
     inert={logoSwap >= HANDOVER}
     style:opacity={headerLogoOpacity}
@@ -54,6 +55,7 @@
       <!-- Placed over the mark's spot in the logo, with headroom above for
            the flames (see sundowners-mark-2025-flame-purple.png's padding). -->
       <FlameMark
+        active={headerLogoOpacity > 0}
         class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
       />
     </span></a
