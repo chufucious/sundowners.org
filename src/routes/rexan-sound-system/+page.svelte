@@ -378,7 +378,7 @@
       </p>
       <p>See you on the trash fence at sunrise.</p>
       <p class="italic">
-        — Joshuah Vincent &amp; Greg Liburd, Rexan by Joshuah Vincent &amp; the Sundowners
+        — Joshuah Vincent &amp; Greg Liburd
       </p>
       <p>
         <a href="/" class="font-mono text-sm text-orange-950 underline hover:text-orange-500">Back to home</a>
