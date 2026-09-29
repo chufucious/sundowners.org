@@ -102,6 +102,48 @@
     ];
 </script>
 
+<!-- A post's card: photo beside its title, blurb and Read Now. The photo and
+     the text are the targets, not the whole row: the photo is its own link
+     (hidden from tabbing and screen readers, which get Read Now), and Read
+     Now's ::after stretches over the text. Hovering either lights up the card.
+     `position` is the photo's object-position class. -->
+{#snippet articleCard({ id, href, image, alt, position = "", title, blurb })}
+    <section {id} class="col-span-12 mt-section">
+        <div class="grid grid-cols-12 gap-4 group">
+            <a
+                {href}
+                tabindex="-1"
+                aria-hidden="true"
+                class="block col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden"
+            >
+                <enhanced:img
+                    src={image}
+                    sizes="(max-width: 768px) 100vw, 42vw"
+                    {alt}
+                    loading="lazy"
+                    class="w-full max-h-96 object-cover {position} transition-transform duration-500 group-has-[a:hover]:scale-[1.03]"
+                />
+            </a>
+
+            <div
+                class="relative self-start col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
+            >
+                <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-has-[a:hover]:text-orange-700 transition-colors mb-4">
+                    {title}
+                </h2>
+                <p class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose">
+                    {blurb}
+                </p>
+                <a
+                    {href}
+                    class="inline-block bg-orange-500 group-has-[a:hover]:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
+                    >Read Now<span class="sr-only">: {title}</span></a
+                >
+            </div>
+        </div>
+    </section>
+{/snippet}
+
 <section id="intro" class="col-span-12 relative">
     <div class="grid grid-cols-12 gap-4">
         <div
@@ -424,71 +466,24 @@
     </div>
 </section>
 
-<section id="rexan-sound-promo" class="col-span-12 mt-section">
-    <!-- The whole card is one link: Read Now's ::after stretches over it. -->
-    <div class="grid grid-cols-12 gap-4 relative group">
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden">
-            <enhanced:img
-                src={rexanDusk}
-                sizes="(max-width: 768px) 100vw, 42vw"
-                alt="rexan at dusk on the playa, headlight eyes glowing blue, speakers and lanterns on the top deck"
-                loading="lazy"
-                class="w-full max-h-96 object-cover object-[52%_60%] transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-        </div>
+{@render articleCard({
+    id: "rexan-sound-promo",
+    href: "/rexan-sound-system",
+    image: rexanDusk,
+    alt: "rexan at dusk on the playa, headlight eyes glowing blue, speakers and lanterns on the top deck",
+    position: "object-[52%_60%]",
+    title: "The Rexan Sound System",
+    blurb: "How we built a solar-powered QSC rig on a psychedelic safari car.",
+})}
 
-        <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
-        >
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-hover:text-orange-700 transition-colors mb-4">
-                The Rexan Sound System
-            </h2>
-            <p
-                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose"
-            >
-                How we built a solar-powered QSC rig on a psychedelic safari car.
-            </p>
-            <a
-                href="/rexan-sound-system"
-                class="inline-block bg-orange-500 group-hover:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
-                >Read Now<span class="sr-only">: The Rexan Sound System</span></a
-            >
-        </div>
-    </div>
-</section>
-
-<section id="jagged-balls-promo" class="col-span-12 mt-section">
-    <!-- The whole card is one link: Read Now's ::after stretches over it. -->
-    <div class="grid grid-cols-12 gap-4 relative group">
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden">
-            <enhanced:img
-                src={jaggedBalls}
-                sizes="(max-width: 768px) 100vw, 42vw"
-                alt="jagged balls of rolling chaos"
-                loading="lazy"
-                class="w-full max-h-96 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-        </div>
-
-        <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
-        >
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-hover:text-orange-700 transition-colors mb-4">
-                Jagged Balls of Rolling Chaos
-            </h2>
-            <p
-                class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose"
-            >
-                A guide on how to survive the playa.
-            </p>
-            <a
-                href="/jagged-balls-of-rolling-chaos"
-                class="inline-block bg-orange-500 group-hover:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
-                >Read Now<span class="sr-only">: Jagged Balls of Rolling Chaos</span></a
-            >
-        </div>
-    </div>
-</section>
+{@render articleCard({
+    id: "jagged-balls-promo",
+    href: "/jagged-balls-of-rolling-chaos",
+    image: jaggedBalls,
+    alt: "jagged balls of rolling chaos",
+    title: "Jagged Balls of Rolling Chaos",
+    blurb: "A guide on how to survive the playa.",
+})}
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/50">

@@ -60,17 +60,29 @@ test("homepage gallery pages with its hints", async ({ page }) => {
 });
 
 test("article cards on the home page open their post from the photo", async ({ page }) => {
-  // Each card is one link (Read Now stretched over it), so the photo clicks through too.
+  // The photo is its own link to the post, alongside Read Now.
   for (const [card, path] of [["#rexan-sound-promo", "/rexan-sound-system"], ["#jagged-balls-promo", "/jagged-balls-of-rolling-chaos"]]) {
     await page.goto("/");
-    // Click where the photo sits on screen: the link's overlay, not the img
-    // itself, should take the click.
     const photo = page.locator(`${card} img`);
     await photo.scrollIntoViewIfNeeded();
     const box = await photo.boundingBox();
     await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
     await expect(page).toHaveURL(path);
   }
+});
+
+test("article cards don't click through from empty space", async ({ page }) => {
+  // Below the Read Now button, beside the photo: part of the card's row, but
+  // neither photo nor text.
+  await page.goto("/");
+  const button = page.locator("#rexan-sound-promo a", { hasText: "Read Now" });
+  await button.scrollIntoViewIfNeeded();
+  const photo = await page.locator("#rexan-sound-promo img").boundingBox();
+  const box = await button.boundingBox();
+  const below = box.y + box.height + 40;
+  test.skip(below > photo.y + photo.height, "no empty space below the button at this width");
+  await page.mouse.click(box.x + 4, below);
+  await expect(page).toHaveURL("/");
 });
 
 test("rexan loops play silently and inline", async ({ page }) => {
