@@ -24,7 +24,7 @@ picture {
 
 /* Small mono labels over sections, figures and panels ("ON THIS PAGE"). */
 @utility eyebrow {
-  @apply font-mono text-xs uppercase tracking-widest text-orange-950/60;
+  @apply font-mono text-xs uppercase tracking-widest text-orange-950/70;
 }
 
 /* Wax-fabric border behind framed photos; set the image with style:background-image. */

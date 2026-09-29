@@ -35,3 +35,16 @@ test("compact logo on the homepage returns to the top", async ({ page }) => {
   await compact(page).click();
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
 });
+
+test("the rexan post leads with its own photo as the header", async ({ page }) => {
+  // The page supplies headerImage from its load(); other pages keep the
+  // default banner at its usual height.
+  await page.goto("/rexan-sound-system");
+  const hero = page.locator("main > header img[alt^='Rexan at dusk']");
+  await expect(hero).toBeVisible();
+  const { height } = await page.locator("main > header").boundingBox();
+  expect(height).toBeGreaterThan(page.viewportSize().height * 0.7);
+
+  await page.goto("/");
+  await expect(page.locator("main > header img[alt='Sundowners walking in Black Rock City']")).toBeVisible();
+});

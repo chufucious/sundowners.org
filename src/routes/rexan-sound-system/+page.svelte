@@ -1,5 +1,7 @@
 <script>
-  import crewOnRexan from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=640;1264&enhanced";
+  import buildStockVan from "$lib/assets/rexan-sound/2017-build-stock-van.jpg?w=400;800;1200&enhanced";
+  import buildBodyOff from "$lib/assets/rexan-sound/2017-build-body-off.jpg?w=400;800;1200&enhanced";
+  import buildWelding from "$lib/assets/rexan-sound/2017-build-welding.jpg?w=400;800;1200&enhanced";
   import behringer2017 from "$lib/assets/rexan-sound/2017-behringer.jpg?w=400;800;1200&enhanced";
   import behringer2019 from "$lib/assets/rexan-sound/2019-behringer.jpg?w=400;800;1179&enhanced";
   import qsc2022 from "$lib/assets/rexan-sound/2022-first-qsc.jpg?w=400;768&enhanced";
@@ -7,7 +9,6 @@
   import sunrise2025 from "$lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&enhanced";
   import beforeMounts2026 from "$lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&enhanced";
   import afterMounts2026 from "$lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&enhanced";
-  import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
   import EvolutionCarousel from "$lib/components/rexan/EvolutionCarousel.svelte";
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
@@ -25,6 +26,13 @@
   // Photos run wider than the text; the widest reach near the page edges.
   const photoColumn = "mx-auto max-w-4xl px-6";
   const widePhotoColumn = "mx-auto max-w-7xl px-4 md:px-6";
+  // The build photos: one large beside two small, between the two.
+  const featurePhotoColumn = "mx-auto max-w-5xl px-6";
+  // Image sizes for a photo at full width on phones, or up to 40rem beside others.
+  const photoSizes = "(max-width: 768px) 100vw, 40rem";
+  const smallPhotoSizes = "(max-width: 768px) 100vw, 20rem";
+  // Diagrams set their two views side by side, so they need the room too.
+  const diagramColumn = "mx-auto max-w-6xl px-6";
 
   // Section headings, in order; the table of contents links to these ids.
   const sections = [
@@ -32,7 +40,7 @@
     { id: "the-rig-today", title: "The rig today" },
     { id: "whats-your-sound-system", title: '"What\'s your sound system?"' },
     { id: "keeping-it-green", title: "Keeping it green" },
-    { id: "what-broke", title: "What broke (and what we learned)" },
+    { id: "bumps-in-the-road", title: "Bumps in the road (and what we learned)" },
     { id: "whats-next", title: "What's next for year ten" },
     { id: "thanks", title: "Thanks" },
   ];
@@ -45,18 +53,18 @@
 {#snippet photoRow(photos)}
   <div class="flex flex-col md:flex-row gap-10 md:gap-6">
     {#each photos as { image, alt, caption } (image)}
-      <figure class="md:min-w-0" style:flex="{image.img.w / image.img.h} 1 0">
-        <enhanced:img
-          src={image}
-          sizes="(max-width: 768px) 100vw, 28rem"
-          {alt}
-          loading="lazy"
-          class="w-full h-auto"
-        />
-        <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
-      </figure>
+      {@render photo({ image, alt, caption, grow: image.img.w / image.img.h })}
     {/each}
   </div>
+{/snippet}
+
+<!-- One captioned photo. `grow`, when given, sets its flex-grow within a row;
+     `class` adds layout classes to the figure. -->
+{#snippet photo({ image, alt, caption, sizes = photoSizes, class: extraClass = "", grow })}
+  <figure class="md:min-w-0 {extraClass}" style:flex={grow ? `${grow} 1 0` : undefined}>
+    <enhanced:img src={image} {sizes} {alt} loading="lazy" class="w-full h-auto" />
+    <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
+  </figure>
 {/snippet}
 
 <!-- scroll-mt clears the compact logo when jumping to a section. -->
@@ -64,34 +72,20 @@
   <h2 {id} class="scroll-mt-24">{sectionTitle[id]}</h2>
 {/snippet}
 
-<article class="col-span-12 font-serif text-orange-950 pt-8 [--reading-width:36rem]">
-  <header class="mx-auto max-w-6xl px-6 grid grid-cols-12 gap-4 md:gap-12 mb-16">
-    <div class="col-span-full md:col-span-6 prose prose-headings:text-orange-950">
-      <h1 class="font-light font-sans uppercase text-4xl md:text-7xl tracking-tight mb-8">
-        The Rexan Sound System
-      </h1>
-      <h2 class="font-extralight font-garamond mt-0 text-xl md:text-3xl">
-        How we built a solar-powered QSC rig on a psychedelic safari car.
-      </h2>
-      <p class="not-prose font-mono text-sm text-orange-950/80">
-        By <strong class="font-semibold text-orange-950">Joshuah Vincent</strong> &amp;
-        <strong class="font-semibold text-orange-950">Greg Liburd</strong>
-      </p>
-    </div>
-
-    <div class="col-span-full md:col-span-6">
-      <figure>
-        <div class="pattern-frame p-2 -rotate-1 drop-shadow-xl" style:background-image="url({patternLeopard})">
-          <enhanced:img
-            src={crewOnRexan}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            alt="The Sundowners crew piled onto Rexan, waving under two QSC speakers on the top deck"
-            class="w-full"
-            fetchpriority="high"
-          />
-        </div>
-      </figure>
-    </div>
+<!-- The hero photo is the site header on this page (headerImage in +page.server.ts). -->
+<article class="col-span-12 font-serif text-orange-950 [--reading-width:36rem]">
+  <!-- Editorial title block: centred, the title set huge with tight leading. -->
+  <header class="mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
+    <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
+      The Rexan Sound System
+    </h1>
+    <p class="mt-6 md:mt-8 text-xl md:text-3xl lg:text-4xl leading-snug text-balance text-orange-950/75">
+      How we built a solar-powered QSC rig on a psychedelic safari car.
+    </p>
+    <p class="mt-6 md:mt-8 font-mono text-sm text-orange-950/80">
+      By <strong class="font-semibold text-orange-950">Joshuah Vincent</strong> &amp;
+      <strong class="font-semibold text-orange-950">Greg Liburd</strong>
+    </p>
   </header>
 
   <!-- From md up, a left rail holds the table of contents, pinned while the
@@ -117,6 +111,36 @@
         some Afrofuturism mixed in. On playa that comes down to two things. The first is our Shebeen,
         named after the South African speakeasy. The second is Rexan.
       </p>
+    </div>
+
+    <!-- One photo large, two small stacked beside it on desktop. Phones stack all
+         three in build order: the side column dissolves (contents) so the stock
+         van can move ahead of the large photo. -->
+    <div class="{featurePhotoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
+      {@render photo({
+        image: buildBodyOff,
+        alt: "The van with its body cut away behind the front seats and a steel frame going up over the back",
+        caption: "Summer 2017, in Sparks: most of the body cut off and the new frame going up.",
+        class: "md:flex-2",
+      })}
+      <div class="contents md:flex md:flex-1 md:flex-col md:gap-6">
+        {@render photo({
+          image: buildStockVan,
+          alt: "A stock dark-blue 1997 Ford E350 van in a parking lot",
+          caption: "The E350 as we bought it.",
+          sizes: smallPhotoSizes,
+          class: "order-first md:order-none",
+        })}
+        {@render photo({
+          image: buildWelding,
+          alt: "Welding the new steel cage onto the stripped van at night",
+          caption: "Welding the new cage, late into the night.",
+          sizes: smallPhotoSizes,
+        })}
+      </div>
+    </div>
+
+    <div class="{textColumn} {proseStyles}">
       <p>
         Rexan is our psychedelic safari art car. We started from a 1997 Ford E350 with a V10, cut most of
         the body off in a workshop in Sparks, and welded a whole new frame and cage around it. Nine years
@@ -148,7 +172,7 @@
       </p>
     </div>
 
-    <div class="{photoColumn} my-12">
+    <div class="{widePhotoColumn} my-12">
       {@render photoRow([
         { image: behringer2017, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "2017: two Behringers at the back for the riders, and no DJ setup yet." },
         { image: behringer2019, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "2019: more Behringers facing forward, a sub, and our first DJ setup." },
@@ -193,7 +217,7 @@
       <p>It's rated in the "dance club" class (90 dB and up at under 100 feet).</p>
     </div>
 
-    <div class="{textColumn} my-12">
+    <div class="{diagramColumn} my-12">
       <CurrentRigDiagram />
     </div>
 
@@ -257,36 +281,36 @@
         iteration to land on that balance.
       </p>
 
-      {@render sectionHeading("what-broke")}
+      {@render sectionHeading("bumps-in-the-road")}
       <p>
-        Playa is brutal. Fine alkaline dust gets into everything, the car shakes its way across miles of
-        rutted lakebed, and we ask the system to play for hours at a time (often up to 10 hours
-        continuous), night after night. Plenty has gone wrong. Here are the big ones.
+        The playa is as brutal as it is beautiful. Fine alkaline dust gets into everything, the vehicle
+        bounces across miles of rutted lakebed, and we ask our gear to keep the party going for hours on
+        end—often up to 10 hours straight, night after night. Naturally, a few things have tested us along
+        the way! Here are the big learning moments.
       </p>
       <p>
-        <strong>The 3kW inverter overheated.</strong> Our first charging inverter ran too hot, so in 2023
-        we moved up to 6kW. More headroom, cooler running.
+        <strong>The 3kW inverter ran a bit too warm.</strong> Our original battery inverter tended to
+        overheat under pressure, so in 2023 we happily upgraded to a 6kW unit. That gave us almost three
+        times the headroom for sound and lights, plus nice, cool operation.
       </p>
       <p>
-        <strong>Our inverter pushed 136V instead of 120V.</strong> This was a big headache in 2026. The
-        rear inverter drifted to about 136V, which meant we couldn't run the K12.2s off the main circuit
-        (they powered on but wouldn't play, and it was a nightmare homing in on the problem). We ended up
-        running them straight off the generator (bypassing the batteries) to keep the party going. That's
-        our electrical problem, not a speaker problem, and it's the first thing we're fixing: a stable 120V
-        from the rear inverter.
+        <strong>An adventurous inverter output 136V instead of 120V.</strong> We ran into a fun puzzle in
+        2026 when our rear inverter drifted up to 136V. The K12.2s powered on safely but wouldn't play
+        audio, sending us on a bit of a mystery hunt! To keep the music flowing, we plugged them directly
+        into the generator while we worked out the fix: ensuring a rock-solid 120V supply from the rear
+        inverter for future runs.
       </p>
       <p>
-        <strong>The pole mounts cracked.</strong> Early on in 2026 (Monday afternoon) every pole mount on
-        the top K12.2s had broken. A cabinet sitting on top of a pole, on a vehicle bouncing across the
-        playa, puts a lot of repeated load into a small cup. Our fix is to take the cup out of the load
-        path. We'll shorten the pole so the base of each cabinet rests on the horizontal bar with neoprene
-        in between to absorb shock, then fabricate tie-down points off the yoke mounts and strap
-        everything to the bar.
+        <strong>The K12.2 pole mounts needed a redesign.</strong> Early in the week in 2026, the bumps of
+        the lakebed proved to be a bit much for our custom pole mounts, and the cabinet cups cracked under
+        the strain. Our upcoming fix is to take the cups out of the load path entirely: we'll shorten the
+        poles so the speakers rest safely on the horizontal bar with shock-absorbing neoprene, secured
+        with custom tie-downs and yoke mounts.
       </p>
       <p>
-        When the mounts went this year we didn't stop the party. We pulled the K12.2s down and stacked
-        them in pairs, one pair on top of the subs on the passenger side and another pair on the driver's
-        side. It wasn't pretty, but it sounded great.
+        Even with the cracked mounts, the music didn't stop for a second! We simply brought the K12.2s
+        down and stacked them in pairs on the sides of the car. It was a bit improvisational, but it
+        sounded fantastic and kept everyone dancing.
       </p>
     </div>
 
@@ -299,21 +323,21 @@
 
     <div class="{textColumn} {proseStyles}">
       <p>
-        <strong>The monitors cook.</strong> Our K10.2s have failed pretty much every year. The cooling fan
-        pulls playa dust in until it clogs and the amp overheats. In 2026 one died partway through the
-        week, and the 136V supply probably didn't help either. We're looking at swapping those monitors
-        for K12.2s and building a proper sealed DJ box. Special hack: spray compressed air at the fans
-        while you power up the system, and they usually start up again (get those fans spinning).
+        <strong>Giving the monitors some extra TLC.</strong> Our DJ booth K10.2s have definitely eaten
+        their share of dust over the years. When the fine playa dust clogs the cooling fans, the amplifiers
+        can thermal-throttle. We've learned a handy field trick—using compressed air on the fans during
+        startup to get them spinning freely—and for future burns, we're planning to build a sealed DJ box
+        and step up to K12.2 monitors.
       </p>
       <p>
-        <strong>The DJ booth takes a beating too.</strong> Our DJM-900NXS had some power-cycling issues
-        this year. We're adding a spare mixer, spraying every terminal with DeoxIT, and weatherproofing
-        the XLR, power and cabling.
+        <strong>Weatherproofing the DJ booth.</strong> Our trusted DJM-900NXS had a few power-cycling
+        quirks this year from the elements. To keep our setups seamless, we're adding a backup mixer,
+        treating all connections with DeoxIT, and giving our cable runs extra weatherproofing.
       </p>
       <p>
-        None of these failures stopped a single sunrise, and the crew deserves the credit for that. The
-        car had problems in 2026 and we still kept the party rolling all week. Similarly, in 2023 during
-        the big rains, we turned it all off and started it up again post rain and had a real party!
+        None of these little hiccups missed a single sunrise, which is a true testament to our incredible
+        crew! Whether troubleshooting electrical quirks in 2026 or dancing through the rain in 2023, the
+        team always finds a way to keep the energy high and the music playing.
       </p>
 
       {@render sectionHeading("whats-next")}
@@ -332,7 +356,7 @@
       </p>
     </div>
 
-    <div class="{textColumn} my-12">
+    <div class="{diagramColumn} my-12">
       <p class="eyebrow mb-6">
         <span class="inline-block rounded-full bg-orange-950/10 px-3 py-1 text-orange-950">2027 concept</span>
         <span class="ml-2">Work in progress, not final</span>

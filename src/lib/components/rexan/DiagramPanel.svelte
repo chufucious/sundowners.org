@@ -1,18 +1,19 @@
 <script>
-  // One view of a diagram: heading, the drawing (children), and its legend
-  // (LegendItem rows). Overhead views pass `sides` to caption left and right.
-  let { title, sides = false, children, legend } = $props();
+  // One view of a diagram: heading and the drawing (children). Overhead views
+  // pass `sides` to caption left and right. The drawing sits at the bottom of
+  // the panel, so views set side by side share a bottom edge; the legend for
+  // both views follows them, as a Legend.
+  let { title, sides = false, children } = $props();
 </script>
 
-<section>
+<section class="flex flex-col">
   <h3 class="eyebrow mb-2">{title}</h3>
-  {@render children()}
-  {#if sides}
-    <div class="flex justify-between text-xs text-orange-950/60 max-w-lg mx-auto -mt-1">
-      <span>← Driver side</span><span>Passenger side →</span>
-    </div>
-  {/if}
-  <ul class="mt-6 space-y-2 text-xs md:text-sm leading-relaxed text-orange-950/80">
-    {@render legend()}
-  </ul>
+  <div class="mt-auto">
+    {@render children()}
+    {#if sides}
+      <div class="flex justify-between text-xs text-orange-950/70 max-w-lg mx-auto -mt-1">
+        <span>← Driver side</span><span>Passenger side →</span>
+      </div>
+    {/if}
+  </div>
 </section>

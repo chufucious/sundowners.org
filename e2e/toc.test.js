@@ -33,7 +33,7 @@ test.describe("left rail", () => {
 
   test("stays pinned on the left, clear of the text, while the post scrolls", async ({ page }) => {
     const toc = page.getByRole("navigation", { name: "On this page" });
-    for (const id of ["the-rig-today", "what-broke", "thanks"]) {
+    for (const id of ["the-rig-today", "bumps-in-the-road", "thanks"]) {
       await page.locator(`#${id}`).scrollIntoViewIfNeeded();
       await expect(toc).toBeInViewport();
       const nav = await toc.boundingBox();

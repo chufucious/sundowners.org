@@ -11,6 +11,15 @@
 
   let { children } = $props();
 
+  // A page can lead with its own photo as the header by returning
+  // `headerImage` ({ src: an ?enhanced import, placeholder: a tiny inlined
+  // copy, alt, position: a CSS object-position }) from its load(). The header then grows to fill the screen, so
+  // the photo leads the page with the logo over its sky.
+  const hero = $derived(page.data.headerImage);
+  // A plain variable, not an expression: <enhanced:img> only picks up
+  // dynamic image objects passed that way.
+  const headerPhoto = $derived(hero?.src ?? sundownerswalking);
+
   // The header logo scrolls away with the header; once it's fully off screen
   // the compact flame lion takes over.
   let headerLogo;
@@ -70,8 +79,9 @@
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
   <header
     class={[
-      "col-span-12 h-72 relative overflow-hidden",
-      !page.data.smallHeader && "md:h-144",
+      "col-span-12 relative overflow-hidden",
+      hero ? "h-[max(28rem,75svh)] md:h-[clamp(32rem,100svh,60rem)]" : "h-72",
+      !hero && !page.data.smallHeader && "md:h-144",
     ]}
   >
     <a
@@ -106,11 +116,22 @@
         />
       </span>
     </div>
+    <!-- Stand-in for a page's header photo while it loads: the tiny inlined
+         copy, blurred, so the header never paints empty. -->
+    {#if hero?.placeholder}
+      <div
+        class="absolute inset-0 bg-cover blur-2xl scale-110"
+        style:background-image="url({hero.placeholder})"
+        style:background-position={hero.position}
+        aria-hidden="true"
+      ></div>
+    {/if}
     <enhanced:img
-      src={sundownerswalking}
+      src={headerPhoto}
       sizes="100vw"
-      alt="Sundowners walking in Black Rock City"
+      alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
       class="absolute inset-0 w-full h-full object-cover"
+      style:object-position={hero?.position}
       fetchpriority="high"
     />
 

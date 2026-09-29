@@ -58,3 +58,17 @@ test("homepage gallery pages with its hints", async ({ page }) => {
   await expect(back).toBeVisible();
   await expect.poll(() => page.locator("#gallery").evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
 });
+
+test("article cards on the home page open their post from the photo", async ({ page }) => {
+  // Each card is one link (Read Now stretched over it), so the photo clicks through too.
+  for (const [card, path] of [["#rexan-sound-promo", "/rexan-sound-system"], ["#jagged-balls-promo", "/jagged-balls-of-rolling-chaos"]]) {
+    await page.goto("/");
+    // Click where the photo sits on screen: the link's overlay, not the img
+    // itself, should take the click.
+    const photo = page.locator(`${card} img`);
+    await photo.scrollIntoViewIfNeeded();
+    const box = await photo.boundingBox();
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(page).toHaveURL(path);
+  }
+});

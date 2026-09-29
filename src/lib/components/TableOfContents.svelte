@@ -36,7 +36,7 @@
             "-ml-px block border-l-2 py-1.5 pl-4 font-sans text-sm leading-snug transition-colors",
             current === id
               ? "border-orange-500 text-orange-700" // the site's button orange; 700 keeps the text readable
-              : "border-transparent text-orange-950/60 hover:text-orange-950",
+              : "border-transparent text-orange-950/70 hover:text-orange-950",
           ]}
         >
           {title}

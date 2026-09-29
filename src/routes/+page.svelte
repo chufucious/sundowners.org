@@ -21,7 +21,7 @@
     import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&enhanced";
     import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&enhanced";
     import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
-    import rexanCrew from "$lib/assets/rexan-sound/crew-on-rexan.jpg?w=400;800;1264&enhanced";
+    import rexanDusk from "$lib/assets/rexan-sound/hero-rexan-dusk.jpg?w=400;800;1200&enhanced";
 
     // Rexan build 2026
     import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&enhanced";
@@ -425,21 +425,22 @@
 </section>
 
 <section id="rexan-sound-promo" class="col-span-12 mt-section">
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+    <!-- The whole card is one link: Read Now's ::after stretches over it. -->
+    <div class="grid grid-cols-12 gap-4 relative group">
+        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden">
             <enhanced:img
-                src={rexanCrew}
+                src={rexanDusk}
                 sizes="(max-width: 768px) 100vw, 42vw"
-                alt="the crew piled onto rexan under the speakers"
+                alt="rexan at dusk on the playa, headlight eyes glowing blue, speakers and lanterns on the top deck"
                 loading="lazy"
-                class="w-full max-h-96 object-cover"
+                class="w-full max-h-96 object-cover object-[52%_60%] transition-transform duration-500 group-hover:scale-[1.03]"
             />
         </div>
 
         <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
         >
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-hover:text-orange-700 transition-colors mb-4">
                 The Rexan Sound System
             </h2>
             <p
@@ -449,29 +450,30 @@
             </p>
             <a
                 href="/rexan-sound-system"
-                class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 text-sm"
-                >Read Now</a
+                class="inline-block bg-orange-500 group-hover:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
+                >Read Now<span class="sr-only">: The Rexan Sound System</span></a
             >
         </div>
     </div>
 </section>
 
 <section id="jagged-balls-promo" class="col-span-12 mt-section">
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+    <!-- The whole card is one link: Read Now's ::after stretches over it. -->
+    <div class="grid grid-cols-12 gap-4 relative group">
+        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden">
             <enhanced:img
                 src={jaggedBalls}
                 sizes="(max-width: 768px) 100vw, 42vw"
                 alt="jagged balls of rolling chaos"
                 loading="lazy"
-                class="w-full max-h-96 object-cover"
+                class="w-full max-h-96 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
         </div>
 
         <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8 relative"
+            class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
         >
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-hover:text-orange-700 transition-colors mb-4">
                 Jagged Balls of Rolling Chaos
             </h2>
             <p
@@ -481,8 +483,8 @@
             </p>
             <a
                 href="/jagged-balls-of-rolling-chaos"
-                class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 text-sm"
-                >Read Now</a
+                class="inline-block bg-orange-500 group-hover:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
+                >Read Now<span class="sr-only">: Jagged Balls of Rolling Chaos</span></a
             >
         </div>
     </div>
