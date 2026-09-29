@@ -72,3 +72,18 @@ test("article cards on the home page open their post from the photo", async ({ p
     await expect(page).toHaveURL(path);
   }
 });
+
+test("rexan loops play silently and inline", async ({ page }) => {
+  // Standing in for GIFs: they must autoplay on iPhones, which needs muted
+  // and playsinline, and they loop without controls.
+  await page.goto("/rexan-sound-system");
+  const videos = page.locator("main video");
+  await expect(videos).toHaveCount(3);
+  for (const video of await videos.all()) {
+    await video.scrollIntoViewIfNeeded();
+    await expect.poll(() => video.evaluate((v) => v.muted && v.loop && v.playsInline && !v.paused && v.currentTime > 0), {
+      message: await video.getAttribute("aria-label"),
+      timeout: 15_000,
+    }).toBe(true);
+  }
+});

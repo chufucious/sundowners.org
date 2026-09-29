@@ -9,6 +9,13 @@
   import sunrise2025 from "$lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&enhanced";
   import beforeMounts2026 from "$lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&enhanced";
   import afterMounts2026 from "$lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&enhanced";
+  import duskLoop from "$lib/assets/rexan-sound/dusk-loop.mp4";
+  import duskLoopPoster from "$lib/assets/rexan-sound/dusk-loop-poster.jpg";
+  import panelsLoop from "$lib/assets/rexan-sound/panels-loop.mp4";
+  import panelsLoopPoster from "$lib/assets/rexan-sound/panels-loop-poster.jpg";
+  import panelTestLoop from "$lib/assets/rexan-sound/panel-test-loop.mp4";
+  import panelTestLoopPoster from "$lib/assets/rexan-sound/panel-test-loop-poster.jpg";
+  import { prefersReducedMotion } from "svelte/motion";
   import EvolutionCarousel from "$lib/components/rexan/EvolutionCarousel.svelte";
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
@@ -63,6 +70,29 @@
 {#snippet photo({ image, alt, caption, sizes = photoSizes, class: extraClass = "", grow })}
   <figure class="md:min-w-0 {extraClass}" style:flex={grow ? `${grow} 1 0` : undefined}>
     <enhanced:img src={image} {sizes} {alt} loading="lazy" class="w-full h-auto" />
+    <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
+  </figure>
+{/snippet}
+
+<!-- A short, silent, looping clip standing in for a GIF. `muted` and `playsinline`
+     let it autoplay on iPhones; with reduced motion it holds on the poster frame.
+     `ratio` (width / height) sets its flex-grow within a row, like a photo's. -->
+{#snippet loop({ src, poster, label, caption, ratio, class: extraClass = "" })}
+  <figure class="md:min-w-0 {extraClass}" style:flex={ratio ? `${ratio} 1 0` : undefined}>
+    <video
+      {src}
+      {poster}
+      aria-label={label}
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="metadata"
+      class="w-full h-auto"
+      {@attach (video) => {
+        if (prefersReducedMotion.current) video.pause();
+      }}
+    ></video>
     <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
   </figure>
 {/snippet}
@@ -247,7 +277,18 @@
         volume for the trash fence. In 2026 we planned sunrise runs on Sunday, Tuesday, Thursday and
         Saturday, playing out at the fence from around 5am well into the morning.
       </p>
+    </div>
 
+    <div class="{photoColumn} my-12">
+      {@render loop({
+        src: duskLoop,
+        poster: duskLoopPoster,
+        label: "Rexan at dusk on the playa, headlight eyes glowing, a DJ up top and people walking past",
+        caption: "Rexan at dusk on the playa.",
+      })}
+    </div>
+
+    <div class="{textColumn} {proseStyles}">
       {@render sectionHeading("keeping-it-green")}
       <p>
         Early on we powered the lights and sound with a pair of Honda 2000 generators. That worked, but it
@@ -280,6 +321,29 @@
         Sun and battery first, alternator while we roll, generator as the backup. It took us years of
         iteration to land on that balance.
       </p>
+    </div>
+
+    <!-- Aspect ratios are the encoded clips' own: 720×1100 and 1280×720. -->
+    <div class="{photoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
+      {@render loop({
+        src: panelTestLoop,
+        poster: panelTestLoopPoster,
+        label: "A laser-cut zebra panel lying on the floor, its LEDs shifting through pink, red and white",
+        caption: "Testing a zebra panel's LEDs before it goes on the car.",
+        ratio: 720 / 1100,
+        // Full width on a phone, this tall clip would fill the screen.
+        class: "max-md:w-3/4 max-md:mx-auto",
+      })}
+      {@render loop({
+        src: panelsLoop,
+        poster: panelsLoopPoster,
+        label: "Rexan's zebra-striped LED panels glowing purple, green and pink over the rear wheel",
+        caption: "The panels on Rexan, part of the roughly 4,000 LEDs the batteries carry.",
+        ratio: 1280 / 720,
+      })}
+    </div>
+
+    <div class="{textColumn} {proseStyles}">
 
       {@render sectionHeading("bumps-in-the-road")}
       <p>
