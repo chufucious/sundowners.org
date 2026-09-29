@@ -3,6 +3,9 @@
 
 @theme {
   --font-garamond: "EB Garamond", serif;
+  /* Gold rules and lettering on the wax-print labels (the Rexan carousel). */
+  --color-gold: #b8913c;
+  --color-gold-dark: #8a6a24;
   /* One web font for serif text, so it's the same in every browser: the
      default stack starts with ui-serif, which only Safari resolves (to New York). */
   --font-serif: "EB Garamond", ui-serif, Georgia, serif;
