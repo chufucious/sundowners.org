@@ -1,4 +1,6 @@
 <script>
+    import ArticleCard from "$lib/components/ArticleCard.svelte";
+    import { articles, build2026Photos, galleryPhotos } from "$lib/homepage.js";
     // Full-width images: 640/1280/1920
     import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
     // Line art: transparent PNG rendered from the 2026 evolution SVG at 3795px.
@@ -7,29 +9,9 @@
     import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&enhanced";
 
     // Half-width / medium images: 400/800/1200
-    import devofisheye from "$lib/assets/Photos/devofisheye.jpg?w=400;800;1200&enhanced";
-    import gregonrexan from "$lib/assets/Photos/gregonrexan.jpg?w=400;800;1200&enhanced";
-    import runninglion from "$lib/assets/Photos/runninglion.jpg?w=400;800;1200&enhanced";
-    import rexanFire from "$lib/assets/Photos/rexan-fire.jpg?w=400;800;1200&enhanced";
-    import rexanDancer from "$lib/assets/Photos/rexan-dancer.jpg?w=400;800;1200&enhanced";
-    import rexanNightWide from "$lib/assets/Photos/rexan-night-wide.jpg?w=400;800;1200&enhanced";
-    import manBurnFire from "$lib/assets/Photos/man-burn-fire.jpg?w=400;627&enhanced";
-    import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&enhanced";
     import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&enhanced";
     import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&enhanced";
     import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=400;800;1200&enhanced";
-    import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&enhanced";
-    import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&enhanced";
-    import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
-    import rexanDusk from "$lib/assets/rexan-sound/hero-rexan-dusk.jpg?w=400;800;1200&enhanced";
-
-    // Rexan build 2026
-    import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&enhanced";
-    import build2026Toolkit from "$lib/assets/Photos/build-2026-toolkit.jpg?w=400;800;1200&enhanced";
-    import build2026NightCanopy from "$lib/assets/Photos/build-2026-night-canopy.jpg?w=400;800;1200&enhanced";
-    import build2026NightDrill from "$lib/assets/Photos/build-2026-night-drill.jpg?w=400;800;1200&enhanced";
-    import build2026Solar from "$lib/assets/Photos/build-2026-solar.jpg?w=400;800;1200&enhanced";
-    import build2026Daylight from "$lib/assets/Photos/build-2026-daylight.jpg?w=400;800;1200&enhanced";
 
     // Small accent images: 300/600
     import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&enhanced";
@@ -47,16 +29,6 @@
 
     import { currentYear, currentAddress, expeditions } from "$lib/expeditions.js";
 
-    const build2026Photos = [
-        { image: build2026Frame, alt: "raising the new frame" },
-        { image: build2026Toolkit, alt: "socket set at the dash" },
-        { image: build2026NightCanopy, alt: "working on the canopy at dusk" },
-        { image: build2026NightDrill, alt: "drilling into the side panel after dark" },
-        { image: build2026Solar, alt: "solar panels on the roof rack" },
-        { image: build2026Daylight, alt: "rexan in the yard" },
-    ];
-
-    // Bottom gallery, left to right. `class` sets each photo's max height and alignment.
     let gallery;
     let galleryAtStart = $state(true);
     let galleryAtEnd = $state(false);
@@ -71,62 +43,7 @@
         galleryAtEnd = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
     }
 
-    const galleryPhotos = [
-        { image: gregonrexan, alt: "on rexan", class: "max-h-96" },
-        { image: jonSmoke, alt: "j attracting influencers", class: "max-h-64" },
-        { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
-        { image: rexanDancer, alt: "dancer on rexan", class: "max-h-96 self-end" },
-        { image: runninglion, alt: "a running lion", class: "max-h-80" },
-        { image: sign, alt: "sundowners sign", class: "max-h-96" },
-        { image: gregFlying, alt: "g flying", class: "max-h-80 self-end" },
-        { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
-        { image: rexanFire, alt: "fire on rexan", class: "max-h-80" },
-        { image: rexanNightWide, alt: "night time with rexan", class: "max-h-96" },
-    ];
-
 </script>
-
-<!-- A post's card: photo beside its title, blurb and Read Now. The photo and
-     the text are the targets, not the whole row: the photo is its own link
-     (hidden from tabbing and screen readers, which get Read Now), and Read
-     Now's ::after stretches over the text. Hovering either lights up the card.
-     `position` is the photo's object-position class. -->
-{#snippet articleCard({ id, href, image, alt, position = "", title, blurb })}
-    <section {id} class="col-span-12 mt-section">
-        <div class="grid grid-cols-12 gap-4 group">
-            <a
-                {href}
-                tabindex="-1"
-                aria-hidden="true"
-                class="block col-start-2 col-span-10 md:col-start-3 md:col-span-5 overflow-hidden"
-            >
-                <enhanced:img
-                    src={image}
-                    sizes="(max-width: 768px) 100vw, 42vw"
-                    {alt}
-                    loading="lazy"
-                    class="w-full max-h-96 object-cover {position} transition-transform duration-500 group-has-[a:hover]:scale-[1.03]"
-                />
-            </a>
-
-            <div
-                class="relative self-start col-start-2 col-span-10 md:col-start-8 md:col-span-4 md:pl-8"
-            >
-                <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-has-[a:hover]:text-orange-700 transition-colors mb-4">
-                    {title}
-                </h2>
-                <p class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose">
-                    {blurb}
-                </p>
-                <a
-                    {href}
-                    class="inline-block bg-orange-500 group-has-[a:hover]:bg-orange-700 text-white px-4 py-2 text-sm after:absolute after:inset-0"
-                    >Read Now<span class="sr-only">: {title}</span></a
-                >
-            </div>
-        </div>
-    </section>
-{/snippet}
 
 <section id="intro" class="col-span-12 relative">
     <div class="grid grid-cols-12 gap-4">
@@ -450,24 +367,10 @@
     </div>
 </section>
 
-{@render articleCard({
-    id: "rexan-sound-promo",
-    href: "/rexan-sound-system",
-    image: rexanDusk,
-    alt: "rexan at dusk on the playa, headlight eyes glowing blue, speakers and lanterns on the top deck",
-    position: "object-[52%_60%]",
-    title: "The Rexan Sound System",
-    blurb: "How we built a solar-powered QSC rig on a psychedelic safari car.",
-})}
+{#each articles as article (article.id)}
+    <ArticleCard {...article} />
+{/each}
 
-{@render articleCard({
-    id: "jagged-balls-promo",
-    href: "/jagged-balls-of-rolling-chaos",
-    image: jaggedBalls,
-    alt: "jagged balls of rolling chaos",
-    title: "Jagged Balls of Rolling Chaos",
-    blurb: "A guide on how to survive the playa.",
-})}
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/50">

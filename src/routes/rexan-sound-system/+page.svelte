@@ -1,4 +1,7 @@
 <script>
+  import Photo from "$lib/components/Photo.svelte";
+  import PhotoRow from "$lib/components/PhotoRow.svelte";
+  import VideoLoop from "$lib/components/VideoLoop.svelte";
   import buildStockVan from "$lib/assets/rexan-sound/2017-build-stock-van.jpg?w=400;800;1200&enhanced";
   import buildBodyOff from "$lib/assets/rexan-sound/2017-build-body-off.jpg?w=400;800;1200&enhanced";
   import buildWelding from "$lib/assets/rexan-sound/2017-build-welding.jpg?w=400;800;1200&enhanced";
@@ -34,8 +37,7 @@
   const widePhotoColumn = "mx-auto max-w-7xl px-4 md:px-6";
   // The build photos: one large beside two small, between the two.
   const featurePhotoColumn = "mx-auto max-w-5xl px-6";
-  // Image sizes for a photo at full width on phones, or up to 40rem beside others.
-  const photoSizes = "(max-width: 768px) 100vw, 40rem";
+  // Smaller photos beside the main build photo.
   const smallPhotoSizes = "(max-width: 768px) 100vw, 20rem";
   // Diagrams set their two views side by side, so they need the room too.
   const diagramColumn = "mx-auto max-w-6xl px-6";
@@ -52,46 +54,6 @@
   ];
   const sectionTitle = Object.fromEntries(sections.map(({ id, title }) => [id, title]));
 </script>
-
-<!-- A row of captioned photos at one shared height: each photo's flex-grow is
-     its aspect ratio (from the enhanced image's own dimensions), so they line up
-     top and bottom. Stacks on phones, with room to tie each caption to its photo. -->
-{#snippet photoRow(photos)}
-  <div class="flex flex-col md:flex-row gap-10 md:gap-6">
-    {#each photos as { image, alt, caption } (image)}
-      {@render photo({ image, alt, caption, grow: image.img.w / image.img.h })}
-    {/each}
-  </div>
-{/snippet}
-
-<!-- One captioned photo. `grow`, when given, sets its flex-grow within a row;
-     `class` adds layout classes to the figure. -->
-{#snippet photo({ image, alt, caption, sizes = photoSizes, class: extraClass = "", grow })}
-  <figure class="md:min-w-0 {extraClass}" style:flex={grow ? `${grow} 1 0` : undefined}>
-    <enhanced:img src={image} {sizes} {alt} loading="lazy" class="w-full h-auto" />
-    <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
-  </figure>
-{/snippet}
-
-<!-- A short, silent, looping clip standing in for a GIF. `muted` and `playsinline`
-     let it autoplay on iPhones.
-     `ratio` (width / height) sets its flex-grow within a row, like a photo's. -->
-{#snippet loop({ src, poster, label, caption, ratio, class: extraClass = "" })}
-  <figure class="md:min-w-0 {extraClass}" style:flex={ratio ? `${ratio} 1 0` : undefined}>
-    <video
-      {src}
-      {poster}
-      aria-label={label}
-      autoplay
-      loop
-      muted
-      playsinline
-      preload="metadata"
-      class="w-full h-auto"
-    ></video>
-    <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
-  </figure>
-{/snippet}
 
 <!-- scroll-mt clears the compact logo when jumping to a section. -->
 {#snippet sectionHeading(id)}
@@ -143,26 +105,26 @@
          three in build order: the side column dissolves (contents) so the stock
          van can move ahead of the large photo. -->
     <div class="{featurePhotoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
-      {@render photo({
-        image: buildBodyOff,
-        alt: "The van with its body cut away behind the front seats and a steel frame going up over the back",
-        caption: "Summer 2017, in Sparks: most of the body cut off and the new frame going up.",
-        class: "md:flex-2",
-      })}
+      <Photo
+        image={buildBodyOff}
+        alt="The van with its body cut away behind the front seats and a steel frame going up over the back"
+        caption="Summer 2017, in Sparks: most of the body cut off and the new frame going up."
+        class="md:flex-2"
+      />
       <div class="contents md:flex md:flex-1 md:flex-col md:gap-6">
-        {@render photo({
-          image: buildStockVan,
-          alt: "A stock dark-blue 1997 Ford E350 van in a parking lot",
-          caption: "The E350 as we bought it.",
-          sizes: smallPhotoSizes,
-          class: "order-first md:order-none",
-        })}
-        {@render photo({
-          image: buildWelding,
-          alt: "Welding the new steel cage onto the stripped van at night",
-          caption: "Welding the new cage, late into the night.",
-          sizes: smallPhotoSizes,
-        })}
+        <Photo
+          image={buildStockVan}
+          alt="A stock dark-blue 1997 Ford E350 van in a parking lot"
+          caption="The E350 as we bought it."
+          sizes={smallPhotoSizes}
+          class="order-first md:order-none"
+        />
+        <Photo
+          image={buildWelding}
+          alt="Welding the new steel cage onto the stripped van at night"
+          caption="Welding the new cage, late into the night."
+          sizes={smallPhotoSizes}
+        />
       </div>
     </div>
 
@@ -199,10 +161,10 @@
     </div>
 
     <div class="{widePhotoColumn} my-12">
-      {@render photoRow([
+      <PhotoRow photos={[
         { image: behringer2017, alt: "Rexan in 2017 with Behringer speakers at the back", caption: "2017: two Behringers at the back for the riders, and no DJ setup yet." },
         { image: behringer2019, alt: "Rexan in 2019 with Behringer speakers facing forward", caption: "2019: more Behringers facing forward, a sub, and our first DJ setup." },
-      ])}
+      ]} />
     </div>
 
     <div class="{textColumn} {proseStyles}">
@@ -224,11 +186,11 @@
     </div>
 
     <div class="{widePhotoColumn} my-12">
-      {@render photoRow([
+      <PhotoRow photos={[
         { image: qsc2022, alt: "Rexan in 2022 with its first QSC speakers", caption: "2022: our first year on QSC." },
         { image: qsc2023, alt: "Rexan in 2023 with four K12.2s on the top bar", caption: "2023: four K12.2s up top and K10.2s on the booth. The two subs are out of frame." },
         { image: sunrise2025, alt: "Rexan at sunrise in 2025 with speakers on the top bar and subs on the passenger side", caption: "Sunrise, 2025. K12.2s and K10.2s up top, the booth monitors in the middle, and the subs stacked on the passenger side." },
-      ])}
+      ]} />
     </div>
 
     <div class="{textColumn} {proseStyles}">
@@ -276,12 +238,12 @@
     </div>
 
     <div class="{photoColumn} my-12">
-      {@render loop({
-        src: duskLoop,
-        poster: duskLoopPoster,
-        label: "Rexan at dusk on the playa, headlight eyes glowing, a DJ up top and people walking past",
-        caption: "Rexan at dusk on the playa.",
-      })}
+      <VideoLoop
+        src={duskLoop}
+        poster={duskLoopPoster}
+        label="Rexan at dusk on the playa, headlight eyes glowing, a DJ up top and people walking past"
+        caption="Rexan at dusk on the playa."
+      />
     </div>
 
     <div class="{textColumn} {proseStyles}">
@@ -321,22 +283,22 @@
 
     <!-- Aspect ratios are the encoded clips' own: 720×1100 and 1280×720. -->
     <div class="{photoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
-      {@render loop({
-        src: panelTestLoop,
-        poster: panelTestLoopPoster,
-        label: "A laser-cut zebra panel lying on the floor, its LEDs shifting through pink, red and white",
-        caption: "Testing a zebra panel's LEDs before it goes on the car.",
-        ratio: 720 / 1100,
-        // Full width on a phone, this tall clip would fill the screen.
-        class: "max-md:w-3/4 max-md:mx-auto",
-      })}
-      {@render loop({
-        src: panelsLoop,
-        poster: panelsLoopPoster,
-        label: "Rexan's zebra-striped LED panels glowing purple, green and pink over the rear wheel",
-        caption: "The panels on Rexan, part of the roughly 4,000 LEDs the batteries carry.",
-        ratio: 1280 / 720,
-      })}
+      <!-- Full width on a phone, this tall clip would fill the screen. -->
+      <VideoLoop
+        src={panelTestLoop}
+        poster={panelTestLoopPoster}
+        label="A laser-cut zebra panel lying on the floor, its LEDs shifting through pink, red and white"
+        caption="Testing a zebra panel's LEDs before it goes on the car."
+        ratio={720 / 1100}
+        class="max-md:w-3/4 max-md:mx-auto"
+      />
+      <VideoLoop
+        src={panelsLoop}
+        poster={panelsLoopPoster}
+        label="Rexan's zebra-striped LED panels glowing purple, green and pink over the rear wheel"
+        caption="The panels on Rexan, part of the roughly 4,000 LEDs the batteries carry."
+        ratio={1280 / 720}
+      />
     </div>
 
     <div class="{textColumn} {proseStyles}">
@@ -375,10 +337,10 @@
     </div>
 
     <div class="{photoColumn} my-12">
-      {@render photoRow([
+      <PhotoRow photos={[
         { image: beforeMounts2026, alt: "Rexan in 2026 with four K12.2s on the top bar", caption: "2026, before the mounts went: four K12.2s up top and the K10.2s on the booth." },
         { image: afterMounts2026, alt: "Rexan in 2026 with the K12.2s stacked in pairs on each side", caption: "After the mounts broke: the K12.2s stacked in pairs on both sides of the car." },
-      ])}
+      ]} />
     </div>
 
     <div class="{textColumn} {proseStyles}">

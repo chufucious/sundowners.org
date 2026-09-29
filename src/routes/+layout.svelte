@@ -1,39 +1,11 @@
 <script>
   import "../app.css";
   import { page } from "$app/state";
+  import SiteHeader from "$lib/components/SiteHeader.svelte";
   import Agentation from "$lib/components/Agentation.svelte";
-  import FlameMark from "$lib/components/FlameMark.svelte";
-  import CompactLogo, { HANDOVER } from "$lib/components/CompactLogo.svelte";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
-  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoLion from "$lib/assets/logo/lion.svg";
-  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
   let { children } = $props();
-
-  // A page can lead with its own photo as the header by returning
-  // `headerImage` ({ src: an ?enhanced import, placeholder: a tiny inlined
-  // copy, alt, position: a CSS object-position }) from its load(). The header then grows to fill the screen, so
-  // the photo leads the page with the logo over its sky.
-  const hero = $derived(page.data.headerImage);
-  // A plain variable, not an expression: <enhanced:img> only picks up
-  // dynamic image objects passed that way.
-  const headerPhoto = $derived(hero?.src ?? sundownerswalking);
-
-  // The header logo scrolls up with the header. As it slides off the top of
-  // the screen it hands over to the compact flame lion, in step with the
-  // scroll: `logoSwap` is 0 while it's fully in view, 1 once it's fully gone.
-  // Staggered like Material 3's fade through, so the two lions are never both
-  // half there: the header logo fades out over the first 60% of its exit, and
-  // CompactLogo fades in from HANDOVER (halfway), where they also swap reach.
-  let headerLogo;
-  let logoSwap = $state(0);
-  function updateLogoSwap() {
-    const { top, height } = headerLogo.getBoundingClientRect();
-    logoSwap = Math.min(Math.max(-top / height, 0), 1);
-  }
-  $effect(updateLogoSwap);
-  const headerLogoOpacity = $derived(1 - Math.min(logoSwap / 0.6, 1));
 
   const SITE_URL = "https://sundowners.org";
   const DEFAULT_TITLE = "Sundowners – Black Rock City";
@@ -75,73 +47,12 @@
   <meta name="twitter:image:alt" content={meta.imageAlt} />
 </svelte:head>
 
-<svelte:window onscroll={updateLogoSwap} onresize={updateLogoSwap} />
-
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
   Skip to main content
 </a>
 
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
-  <header
-    class={[
-      "col-span-12 relative overflow-hidden",
-      hero ? "h-[max(28rem,75svh)] md:h-[clamp(32rem,100svh,60rem)]" : "h-72",
-      !hero && !page.data.smallHeader && "md:h-144",
-    ]}
-  >
-    <a
-      href="/"
-      bind:this={headerLogo}
-      inert={logoSwap >= HANDOVER}
-      style:opacity={headerLogoOpacity}
-      class="absolute left-0 right-0 top-8 md:top-10 z-20 flex justify-center mix-blend-color-dodge"
-    >
-      <span class="relative w-75 md:w-150">
-        <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
-        <enhanced:img
-          class="w-full [clip-path:inset(0_0_0_23%)]"
-          src={logoAndType2025}
-          sizes="(max-width: 768px) 300px, 600px"
-          alt="sundowners logo"
-        />
-        <!-- Placed over the mark's spot in the logo, with headroom above for
-             the flames (see sundowners-mark-2025-flame-purple.png's padding). -->
-        <FlameMark
-          class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
-        />
-      </span></a
-    >
-    <!-- Stand-in for a page's header photo while it loads: the tiny inlined
-         copy, blurred, so the header never paints empty. -->
-    {#if hero?.placeholder}
-      <div
-        class="absolute inset-0 bg-cover blur-2xl scale-110"
-        style:background-image="url({hero.placeholder})"
-        style:background-position={hero.position}
-        aria-hidden="true"
-      ></div>
-    {/if}
-    <enhanced:img
-      src={headerPhoto}
-      sizes="100vw"
-      alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
-      class="absolute inset-0 w-full h-full object-cover"
-      style:object-position={hero?.position}
-      fetchpriority="high"
-    />
-    <!-- Darkens the sky behind the logo so its color-dodge blend keeps the
-         mark's colors instead of blowing out to white on bright skies. -->
-    <div
-      class="absolute inset-x-0 top-0 h-64 md:h-96 bg-linear-to-b from-black/45 via-black/20 to-transparent"
-      aria-hidden="true"
-    ></div>
-
-    <div
-      class="h-1 md:h-2 w-full absolute bottom-0"
-      style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
-    ></div>
-  </header>
-  <CompactLogo swap={logoSwap} />
+  <SiteHeader hero={page.data.headerImage} smallHeader={page.data.smallHeader} />
   <div id="main-content" class="contents">
     {@render children()}
   </div>
