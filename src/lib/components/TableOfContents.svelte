@@ -1,4 +1,6 @@
 <script>
+  import activeFabric from "$lib/assets/wax-fabric/leaves.jpeg?w=200&format=webp";
+
   // "On this page" links with the section being read marked on the rule.
   // `sections` are { id, title } for headings rendered with those ids.
   let { sections } = $props();
@@ -33,12 +35,19 @@
           href="#{id}"
           aria-current={current === id ? "location" : undefined}
           class={[
-            "-ml-px block border-l-2 py-1.5 pl-4 font-sans text-sm leading-snug transition-colors",
+            "relative -ml-px block py-1.5 pl-5 font-sans text-sm leading-snug transition-colors",
             current === id
-              ? "border-orange-500 text-orange-700" // the site's button orange; 700 keeps the text readable
-              : "border-transparent text-orange-950/70 hover:text-orange-950",
+              ? "text-cyan-800" // matches the blue leaves fabric
+              : "text-orange-950/70 hover:text-orange-950",
           ]}
         >
+          {#if current === id}
+            <span
+              aria-hidden="true"
+              class="absolute inset-y-0 left-0 w-2 bg-repeat bg-center bg-size-[64px]"
+              style:background-image="url({activeFabric})"
+            ></span>
+          {/if}
           {title}
         </a>
       </li>

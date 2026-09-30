@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// From md up the table of contents is pinned in a left rail; phones hide it.
+// Wide screens have a pinned contents rail; the article keeps the page's center.
 
 test("phones hide it", async ({ page, isMobile }) => {
   test.skip(!isMobile, "phone layout");
@@ -9,8 +9,7 @@ test("phones hide it", async ({ page, isMobile }) => {
 });
 
 test.describe("left rail", () => {
-  // Roughly a laptop browser window that isn't full screen.
-  test.use({ viewport: { width: 1000, height: 800 } });
+  test.use({ viewport: { width: 1600, height: 800 } });
   test.skip(({ isMobile }) => isMobile, "desktop layout");
 
   test.beforeEach(async ({ page }) => {
@@ -26,9 +25,16 @@ test.describe("left rail", () => {
   });
 
   test("body text stays in the reading column", async ({ page }) => {
-    // 36rem column minus 1.5rem padding each side.
-    const width = await page.getByText("Early on we powered the lights").evaluate((p) => p.getBoundingClientRect().width);
-    expect(width).toBeLessThanOrEqual(33 * 16 + 1);
+    // Measure 65ch in the rendered body font; gutters sit outside the prose.
+    const { width, measure } = await page.getByText("Early on we powered the lights").evaluate((p) => {
+      const probe = document.createElement("span");
+      probe.style.cssText = "display:block;position:absolute;width:65ch;height:0;visibility:hidden";
+      p.append(probe);
+      const measure = probe.getBoundingClientRect().width;
+      probe.remove();
+      return { width: p.getBoundingClientRect().width, measure };
+    });
+    expect(width).toBeCloseTo(measure, 0);
   });
 
   test("stays pinned on the left, clear of the text, while the post scrolls", async ({ page }) => {
@@ -41,4 +47,26 @@ test.describe("left rail", () => {
       expect(nav.x + nav.width).toBeLessThan(text.x);
     }
   });
+});
+
+test("title, body, photos and carousel share the page center", async ({ page, isMobile }) => {
+  test.skip(isMobile, "desktop and tablet layout");
+  for (const width of [768, 1024, 1440, 1600, 1920]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/rexan-sound-system");
+    await page.evaluate(() => document.fonts.ready);
+    const centered = [
+      page.locator("article > header"),
+      page.locator("article .prose").first(),
+      page.locator("article figure").first().locator(".."),
+      page.getByRole("region", { name: "Rexan, year by year" }),
+    ];
+    for (const element of centered) {
+      const box = await element.boundingBox();
+      expect(Math.abs(box.x + box.width / 2 - width / 2)).toBeLessThanOrEqual(1);
+    }
+    const toc = page.getByRole("navigation", { name: "On this page", includeHidden: true });
+    if (width < 1536) await expect(toc).toBeHidden();
+    else await expect(toc).toBeVisible();
+  }
 });

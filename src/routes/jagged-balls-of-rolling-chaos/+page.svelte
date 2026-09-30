@@ -1,6 +1,7 @@
 <script>
   import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
-  import { articleLayout, articleTextColumn, articleProse } from "$lib/article-styles.js";
+  import ArticleText from "$lib/components/ArticleText.svelte";
+  import { articleLayout } from "$lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
@@ -39,9 +40,7 @@
       </figure>
     </div>
   </header>
-  <div
-    class="{articleTextColumn} {articleProse}"
-  >
+  <ArticleText>
     <section id="bikes">
       <h2>Bikes</h2>
       <ul class="list-disc">
@@ -262,5 +261,5 @@
         >Back to home</a
       >
     </p>
-  </div>
+  </ArticleText>
 </article>

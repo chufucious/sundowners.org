@@ -22,7 +22,8 @@
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
   import TableOfContents from "$lib/components/TableOfContents.svelte";
-  import { articleLayout, articleTextColumn as textColumn, articleProse as proseStyles } from "$lib/article-styles.js";
+  import ArticleText from "$lib/components/ArticleText.svelte";
+  import { articleLayout } from "$lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
@@ -52,13 +53,13 @@
 
 <!-- scroll-mt clears the compact logo when jumping to a section. -->
 {#snippet sectionHeading(id)}
-  <h2 {id} class="scroll-mt-24">{sectionTitle[id]}</h2>
+  <h2 {id} class="scroll-mt-24 pt-8 md:pt-12">{sectionTitle[id]}</h2>
 {/snippet}
 
 <!-- The hero photo is the site header on this page (headerImage in +page.server.ts). -->
-<article class="col-span-12 {articleLayout}">
+<article class="col-span-12 grid grid-cols-1 2xl:grid-cols-[minmax(15rem,1fr)_minmax(0,80rem)_minmax(15rem,1fr)] {articleLayout}">
   <!-- Editorial title block: centred, the title set huge with tight leading. -->
-  <header class="mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
+  <header class="col-span-full w-full mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
     <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
       The Rexan Sound System
     </h1>
@@ -71,17 +72,15 @@
     </p>
   </header>
 
-  <!-- From md up, a left rail holds the table of contents, pinned while the
-       post scrolls; everything else centres in the space to its right.
-       Phones skip it: there's no room, and the post reads top to bottom. -->
-  <div class="relative md:pl-60">
-    <aside class="hidden md:block absolute inset-y-0 left-6 w-48">
-      <div class="sticky top-28">
-        <TableOfContents {sections} />
-      </div>
-    </aside>
+  <!-- Equal outer tracks keep the article centered; the left track holds the rail. -->
+  <aside class="hidden 2xl:block col-start-1 row-start-2 px-6">
+    <div class="sticky top-28 w-48 ml-auto">
+      <TableOfContents {sections} />
+    </div>
+  </aside>
 
-    <div class="{textColumn} {proseStyles}">
+  <div class="min-w-0 2xl:col-start-2 2xl:row-start-2">
+    <ArticleText>
       <p>
         In early 2017 a crew of longtime Burner friends from around the world went on a safari in South
         Africa, and on the Savannah we ended every day the way you do there: a sundowner, which means
@@ -94,19 +93,19 @@
         some Afrofuturism mixed in. On playa that comes down to two things. The first is our Shebeen,
         named after the South African speakeasy. The second is Rexan.
       </p>
-    </div>
+    </ArticleText>
 
     <!-- One photo large, two small stacked beside it on desktop. Phones stack all
          three in build order: the side column dissolves (contents) so the stock
          van can move ahead of the large photo. -->
-    <div class="{featurePhotoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
+    <div class="{featurePhotoColumn} my-12 grid grid-cols-1 md:grid-cols-3 items-start gap-10 md:gap-6">
       <Photo
         image={buildBodyOff}
         alt="The van with its body cut away behind the front seats and a steel frame going up over the back"
         caption="Summer 2017, in Sparks: most of the body cut off and the new frame going up."
-        class="md:flex-2"
+        class="md:col-span-2"
       />
-      <div class="contents md:flex md:flex-1 md:flex-col md:gap-6">
+      <div class="contents md:grid md:gap-6">
         <Photo
           image={buildStockVan}
           alt="A stock dark-blue 1997 Ford E350 van in a parking lot"
@@ -123,7 +122,7 @@
       </div>
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       <p>
         Rexan is our psychedelic safari art car. We started from a 1997 Ford E350 with a V10, cut most of
         the body off in a workshop in Sparks, and welded a whole new frame and cage around it. Nine years
@@ -134,14 +133,18 @@
         2018, 2019, 2022, 2023, 2025 and 2026. Next year is our tenth anniversary.
       </p>
       <p>And Rexan's heart is our community, and its voice is its sound system.</p>
-    </div>
+    </ArticleText>
 
     <section aria-label="The evolution of Rexan" class="mt-12">
-      <p class="{textColumn} eyebrow mb-4">The evolution of Rexan</p>
+      <div class="px-6 mb-4">
+        <div class="mx-auto max-w-(--reading-width)">
+          <p class="eyebrow">The evolution of Rexan</p>
+        </div>
+      </div>
       <EvolutionCarousel />
     </section>
 
-    <div class="{textColumn} {proseStyles} mt-12">
+    <ArticleText class="mt-12">
       {@render sectionHeading("where-we-started")}
       <p>
         Our first years were focused on mutating the vehicle so we could get through the Burning Man DMV
@@ -153,7 +156,7 @@
         2019 we added two more Behringers facing forward, a sub and our first DJ setup. It started out as
         a safari tour with a soundtrack, and by 2019 it was turning into a dance floor.
       </p>
-    </div>
+    </ArticleText>
 
     <div class="{widePhotoColumn} my-12">
       <PhotoRow photos={[
@@ -162,7 +165,7 @@
       ]} />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       <p>
         Being a crew of some talented and seasoned DJs, it was inevitable that the music took over. The
         DJs playing African and African-inspired music at our sundowner ceremonies and pop-ups kept
@@ -178,7 +181,7 @@
         DJ monitors. The K8s kept failing on us (those heat fans are just too small for the dust at BRC).
         By 2026 all four K12.2s were working again, and that's the rig we run today.
       </p>
-    </div>
+    </ArticleText>
 
     <div class="{widePhotoColumn} my-12">
       <PhotoRow photos={[
@@ -188,7 +191,7 @@
       ]} />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       {@render sectionHeading("the-rig-today")}
       <p>This is how Rexan is set up now:</p>
       <ul>
@@ -198,13 +201,13 @@
         <li><strong>Booth:</strong> Pioneer XDJ-1000 decks into a DJM-900NXS mixer.</li>
       </ul>
       <p>It's rated in the "dance club" class (90 dB and up at under 100 feet).</p>
-    </div>
+    </ArticleText>
 
     <div class="{diagramColumn} my-12">
       <CurrentRigDiagram />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       {@render sectionHeading("whats-your-sound-system")}
       <p>
         The two main questions we get from people dancing in front of the car are "What's the name of
@@ -230,7 +233,7 @@
         volume for the trash fence. In 2026 we planned sunrise runs on Sunday, Tuesday, Thursday and
         Saturday, playing out at the fence from around 5am well into the morning.
       </p>
-    </div>
+    </ArticleText>
 
     <div class="{photoColumn} my-12">
       <VideoLoop
@@ -241,7 +244,7 @@
       />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       {@render sectionHeading("keeping-it-green")}
       <p>
         Early on we powered the lights and sound with a pair of Honda 2000 generators. That worked, but it
@@ -274,7 +277,7 @@
         Sun and battery first, alternator while we roll, generator as the backup. It took us years of
         iteration to land on that balance.
       </p>
-    </div>
+    </ArticleText>
 
     <!-- Aspect ratios are the encoded clips' own: 720×1100 and 1280×720. -->
     <div class="{photoColumn} my-12 flex flex-col md:flex-row gap-10 md:gap-6">
@@ -296,7 +299,7 @@
       />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
 
       {@render sectionHeading("bumps-in-the-road")}
       <p>
@@ -329,7 +332,7 @@
         down and stacked them in pairs on the sides of the car. It was a bit improvisational, but it
         sounded fantastic and kept everyone dancing.
       </p>
-    </div>
+    </ArticleText>
 
     <div class="{photoColumn} my-12">
       <PhotoRow photos={[
@@ -338,7 +341,7 @@
       ]} />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       <p>
         <strong>Giving the monitors some extra TLC.</strong> Our DJ booth K10.2s have definitely eaten
         their share of dust over the years. When the fine playa dust clogs the cooling fans, the amplifiers
@@ -371,7 +374,7 @@
         a line array (QSC L Class: we want 4× LS112 and 2× LS218s if we can raise the money to support
         it), and we've started talking with the QSC team about how to position and mount it.
       </p>
-    </div>
+    </ArticleText>
 
     <div class="{diagramColumn} my-12">
       <p class="eyebrow mb-6">
@@ -381,7 +384,7 @@
       <SideTowersDiagram />
     </div>
 
-    <div class="{textColumn} {proseStyles}">
+    <ArticleText>
       {@render sectionHeading("thanks")}
       <p>
         Rexan is built by a big multi-continental crew: welders, fabricators, firmware and electrical
@@ -400,6 +403,6 @@
       <p>
         <a href="/" class="font-mono text-sm text-orange-950 underline hover:text-orange-500">Back to home</a>
       </p>
-    </div>
+    </ArticleText>
   </div>
 </article>

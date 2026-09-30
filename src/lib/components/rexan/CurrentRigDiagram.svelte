@@ -114,57 +114,59 @@
   </Legend>
 
   <!-- The table and notes stay at reading width, in line with the text. -->
-  <section class="mx-auto max-w-(--reading-width)">
-    <!-- Phones drop Qty and Coverage (the legend gives both) so every distance
-         fits; the scroller is only a fallback. The 1 m column is QSC's spec
-         figure, ruled off from the projected ones. -->
-    <div class="overflow-x-auto -mx-6 px-6">
-      <table class="w-full text-xs text-orange-950/80 tabular-nums">
-        <caption class="eyebrow mb-2 text-left">
-          Projected SPL per speaker class <span class="normal-case">(peak, dB)</span>
-        </caption>
-        <thead class="text-orange-950 bg-orange-950/5">
-          <tr>
-            <td></td>
-            <td class="hidden sm:table-cell" colspan="2"></td>
-            <th scope="colgroup" colspan={distances.length} class="px-1.5 pt-2 font-normal text-right text-orange-950/70">
-              At distance
-            </th>
-          </tr>
-          <tr class="border-b border-orange-950/10 text-left whitespace-nowrap">
-            <th scope="col" class="py-2 px-1.5 font-semibold">Model</th>
-            <th scope="col" class="hidden sm:table-cell py-2 px-1.5 font-semibold">Qty</th>
-            <th scope="col" class="hidden sm:table-cell py-2 px-1.5 font-semibold">Coverage</th>
-            {#each distances as distance, i (distance)}
-              <th scope="col" class={["py-2 px-1.5 font-semibold text-right", i === 0 && "border-r border-orange-950/10"]}>{distance}</th>
-            {/each}
-          </tr>
-        </thead>
-        <tbody class="bg-orange-950/5">
-          {#each splByModel as { model, role, swatch, qty, coverage, db } (model + role)}
-            <tr class="border-b border-orange-950/10 last:border-0">
-              <th scope="row" class="py-2 px-1.5 font-normal text-left">
-                <span class="flex items-center gap-2 whitespace-nowrap"><Swatch class={swatch} /><span>{model}<span class="hidden sm:inline"> ({role})</span></span></span>
+  <section class="mx-auto max-w-(--reading-width) font-serif">
+    <div class="font-mono">
+      <!-- Phones drop Qty and Coverage (the legend gives both) so every distance
+           fits; the scroller is only a fallback. The 1 m column is QSC's spec
+           figure, ruled off from the projected ones. -->
+      <div class="overflow-x-auto -mx-6 px-6">
+        <table class="w-full text-xs text-orange-950/80 tabular-nums">
+          <caption class="eyebrow mb-2 text-left">
+            Projected SPL per speaker class <span class="normal-case">(peak, dB)</span>
+          </caption>
+          <thead class="text-orange-950 bg-orange-950/5">
+            <tr>
+              <td></td>
+              <td class="hidden sm:table-cell" colspan="2"></td>
+              <th scope="colgroup" colspan={distances.length} class="px-1.5 pt-2 font-normal text-right text-orange-950/70">
+                At distance
               </th>
-              <td class="hidden sm:table-cell py-2 px-1.5">{qty}</td>
-              <td class="hidden sm:table-cell py-2 px-1.5 whitespace-nowrap">{coverage}</td>
-              {#each db as value, i (i)}
-                <td class={["py-2 px-1.5 text-right", i === 0 && "border-r border-orange-950/10"]}>{value}</td>
+            </tr>
+            <tr class="border-b border-orange-950/10 text-left whitespace-nowrap">
+              <th scope="col" class="py-2 px-1.5 font-semibold">Model</th>
+              <th scope="col" class="hidden sm:table-cell py-2 px-1.5 font-semibold">Qty</th>
+              <th scope="col" class="hidden sm:table-cell py-2 px-1.5 font-semibold">Coverage</th>
+              {#each distances as distance, i (distance)}
+                <th scope="col" class={["py-2 px-1.5 font-semibold text-right", i === 0 && "border-r border-orange-950/10"]}>{distance}</th>
               {/each}
             </tr>
-          {/each}
-        </tbody>
-      </table>
+          </thead>
+          <tbody class="bg-orange-950/5">
+            {#each splByModel as { model, role, swatch, qty, coverage, db } (model + role)}
+              <tr class="border-b border-orange-950/10 last:border-0">
+                <th scope="row" class="py-2 px-1.5 font-normal text-left">
+                  <span class="flex items-center gap-2 whitespace-nowrap"><Swatch class={swatch} /><span>{model}<span class="hidden sm:inline"> ({role})</span></span></span>
+                </th>
+                <td class="hidden sm:table-cell py-2 px-1.5">{qty}</td>
+                <td class="hidden sm:table-cell py-2 px-1.5 whitespace-nowrap">{coverage}</td>
+                {#each db as value, i (i)}
+                  <td class={["py-2 px-1.5 text-right", i === 0 && "border-r border-orange-950/10"]}>{value}</td>
+                {/each}
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+      <details class="mt-4 text-xs text-orange-950/70">
+        <summary class="cursor-pointer text-orange-950 underline hover:text-orange-500">How we estimated this</summary>
+        <ul class="mt-2 list-disc pl-5 space-y-1">
+          <li>Per-box peak SPL from QSC specs, free field, −6 dB per doubling of distance.</li>
+          <li>Continuous (music) level runs about 6 dB below peak. Stacked subs add about 6 dB from coupling.</li>
+          <li>Overlapping K12.2 cones add about 3 dB in front. Ignores the crowd and high-frequency air absorption.</li>
+          <li>The tops sit about 10.5 ft up, so inside about 10 ft the K12.2 levels run about 3 dB lower (slant distance).</li>
+          <li>Heights of the cab, frame, DJ and sub bracket are estimates. Cones and rings are illustrative.</li>
+        </ul>
+      </details>
     </div>
-    <details class="mt-4 text-xs text-orange-950/70">
-      <summary class="cursor-pointer text-orange-950 underline hover:text-orange-500">How we estimated this</summary>
-      <ul class="mt-2 list-disc pl-5 space-y-1">
-        <li>Per-box peak SPL from QSC specs, free field, −6 dB per doubling of distance.</li>
-        <li>Continuous (music) level runs about 6 dB below peak. Stacked subs add about 6 dB from coupling.</li>
-        <li>Overlapping K12.2 cones add about 3 dB in front. Ignores the crowd and high-frequency air absorption.</li>
-        <li>The tops sit about 10.5 ft up, so inside about 10 ft the K12.2 levels run about 3 dB lower (slant distance).</li>
-        <li>Heights of the cab, frame, DJ and sub bracket are estimates. Cones and rings are illustrative.</li>
-      </ul>
-    </details>
   </section>
 </figure>

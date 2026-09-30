@@ -12,7 +12,11 @@ async function cardOffsets(page) {
     const carousel = document.querySelector('[aria-roledescription="carousel"]');
     const textEdge = label.getBoundingClientRect().left + parseFloat(getComputedStyle(label).paddingLeft);
     const track = carousel.querySelector("ul");
-    return [...track.children].map((card) => Math.round(card.getBoundingClientRect().left - textEdge));
+    return [...track.children].map((card) => {
+      const offset = Math.round(card.getBoundingClientRect().left - textEdge);
+      // Subpixel differences can round to -0 in Safari; alignment treats it as 0.
+      return offset === 0 ? 0 : offset;
+    });
   }, label);
 }
 

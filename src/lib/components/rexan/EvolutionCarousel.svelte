@@ -104,14 +104,14 @@
 {/snippet}
 
 <div role="region" aria-roledescription="carousel" aria-label="Rexan, year by year">
-  <!-- The first card lines up with the page's text column (--reading-width, px-6):
-       --edge plus the 1rem gap equals that column's left text edge. The edges
+  <!-- The first card lines up with the 65ch reading column:
+       --edge plus the 1rem gap equals the text edge, with 1.5rem phone gutters. The edges
        are ::before/::after spacers, not padding, because older Safari drops
        end padding in a scrolling flex row and the last card couldn't clear. -->
   <ul
     bind:this={track}
     onscroll={updatePosition}
-    style="--edge: max(0.5rem, calc((100% - var(--reading-width, 36rem)) / 2 + 0.5rem))"
+    style="--edge: max(0.5rem, calc((100% - var(--reading-width, 65ch)) / 2 - 1rem))"
     class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
   >
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
@@ -150,23 +150,25 @@
     {/each}
   </ul>
 
-  <div class="mx-auto max-w-(--reading-width,36rem) px-6 mt-4 flex items-center justify-end gap-3">
-    <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
-      {#each years as { year }, i (year)}
-        <button
-          type="button"
-          onclick={() => scrollToCard(i)}
-          aria-label="Show {year}"
-          aria-current={active === i || undefined}
-          class={[
-            "h-2 rounded-full transition-all cursor-pointer",
-            active === i ? "w-6 bg-orange-950/70" : "w-2 bg-orange-950/30 hover:bg-orange-950/50",
-          ]}
-        ></button>
-      {/each}
+  <div class="px-6 mt-4">
+    <div class="mx-auto max-w-(--reading-width,65ch) flex items-center justify-end gap-3">
+      <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
+        {#each years as { year }, i (year)}
+          <button
+            type="button"
+            onclick={() => scrollToCard(i)}
+            aria-label="Show {year}"
+            aria-current={active === i || undefined}
+            class={[
+              "h-2 rounded-full transition-all cursor-pointer",
+              active === i ? "w-6 bg-orange-950/70" : "w-2 bg-orange-950/30 hover:bg-orange-950/50",
+            ]}
+          ></button>
+        {/each}
+      </div>
+      {@render pageButton(-1, atStart)}
+      {@render pageButton(1, atEnd)}
     </div>
-    {@render pageButton(-1, atStart)}
-    {@render pageButton(1, atEnd)}
   </div>
 </div>
 
