@@ -188,22 +188,51 @@
     </div>
 </section>
 
-<section id="crew" class="col-span-12 -mt-12 md:mt-section">
-    <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 md:col-start-2 md:col-span-6 md:mr-8 px-6">
+<!-- The lion photo tucks over the empty playa at the bottom of the crew photo.
+     Stacked (below lg): crew photo, lion, then text. Side by side (lg): the crew
+     photo spans a fixed overlap row that the lion starts in, so the lion lands
+     on the photo's bottom edge and can never ride up into the text. -->
+<section id="crew" class="col-span-12 -mt-12 md:mt-section overflow-x-clip">
+    <div
+        class="grid grid-cols-12 gap-x-4 [--crew-overlap:clamp(2.5rem,4.5vw,5rem)] lg:grid-rows-[auto_var(--crew-overlap)_auto]"
+    >
+        <div
+            class="col-span-11 pl-6 md:col-start-2 md:col-span-8 md:pl-0 lg:col-start-2 lg:col-span-6 lg:row-start-1 lg:row-span-2 lg:mr-8 self-start"
+        >
             <div
                 class="pattern-frame w-full p-2 -rotate-1 drop-shadow-xl"
                 style:background-image="url({patternLeopard})"
             >
                 <enhanced:img
                     src={group2022}
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 767px) 92vw, (max-width: 1023px) 67vw, 50vw"
                     alt="2022 group"
                     loading="lazy"
                 />
             </div>
         </div>
-        <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
+        <div
+            id="l-and-lion"
+            class="relative z-10 col-start-2 col-span-11 -mt-[8vw] md:col-start-4 md:col-span-9 md:mr-[4vw] md:-mt-[6vw] lg:col-start-4 lg:col-end-13 lg:row-start-2 lg:row-span-2 lg:mt-0"
+        >
+            <div
+                class="pattern-frame p-2 md:p-4 drop-shadow-xl rotate-1"
+                style:background-image="url({patternChickens})"
+            >
+                <div class="overflow-hidden">
+                    <enhanced:img
+                        src={lionAndLeyla}
+                        sizes="(max-width: 767px) 92vw, 75vw"
+                        alt="lion and l"
+                        class="w-full h-auto object-cover -rotate-1"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+        <div
+            class="col-start-2 col-span-10 mt-12 md:col-start-2 md:col-span-8 lg:col-start-8 lg:col-span-5 lg:pr-8 xl:col-span-4 xl:pr-0 lg:row-start-1 lg:mt-8 lg:pb-8"
+        >
             <p class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
                 Our veteran, multi-continental crew offers an experience,
                 interactivity, and vibe that is distinct from anything in Black
@@ -214,23 +243,6 @@
                 for one of the most special places on the planet, much like
                 Burning Man itself.
             </p>
-        </div>
-    </div>
-</section>
-
-<section id="l-and-lion" class="col-span-12 overflow-hidden mt-section">
-    <div
-        class="pattern-frame p-2 md:p-4 drop-shadow-xl -rotate-1 max-w-6xl mx-auto"
-        style:background-image="url({patternChickens})"
-    >
-        <div class="overflow-hidden">
-            <enhanced:img
-                src={lionAndLeyla}
-                sizes="(max-width: 768px) 100vw, 1152px"
-                alt="lion and l"
-                class="w-full h-auto object-cover rotate-1"
-                loading="lazy"
-            />
         </div>
     </div>
 </section>
