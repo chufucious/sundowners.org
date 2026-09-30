@@ -69,7 +69,7 @@
                 African traditions and speakeasies bring to the world.
             </p>
             <div
-                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[0.5lh]"
             >
                 <p>
                     We strive for a holistic offering through our shebeen
@@ -305,7 +305,7 @@
                     life-changing wildlife safari.
                 </p>
                 <div
-                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[0.5lh]"
                 >
                     <p>
                         On the Savannah, we would end each day with the country's
