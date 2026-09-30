@@ -390,18 +390,18 @@
 
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/50">
+        <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/80">
             <button
                 type="button"
                 onclick={() => scrollGallery(-1)}
-                class={["underline hover:text-orange-500 cursor-pointer", galleryAtStart && "invisible"]}
+                class={["underline hover:text-orange-700 cursor-pointer", galleryAtStart && "invisible"]}
             >
                 ← back
             </button>
             <button
                 type="button"
                 onclick={() => scrollGallery(1)}
-                class={["underline hover:text-orange-500 cursor-pointer", galleryAtEnd && "invisible"]}
+                class={["underline hover:text-orange-700 cursor-pointer", galleryAtEnd && "invisible"]}
             >
                 more photos →
             </button>
