@@ -91,38 +91,38 @@
             </div>
         </div>
         <div
-            class="col-span-full md:col-span-3 md:pl-16"
+            class="col-span-full md:col-span-3 md:pl-6 lg:pl-16"
         >
             <aside
                 class="bg-white rounded border border-black/10 divide-y divide-black/10 h-fit mt-8 md:mt-0"
             >
-                <div class="p-4">
-                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
+                <div class="px-4 py-3">
+                    <p class="eyebrow mb-1.5">
                         {currentYear} ADDRESS
                     </p>
-                    <p class="text-base text-stone-950">{currentAddress}</p>
+                    <p class="text-sm text-stone-950">{currentAddress}</p>
                 </div>
-                <div class="p-4">
-                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
+                <div class="px-4 py-3">
+                    <p class="eyebrow mb-1.5">
                         INSTAGRAM
                     </p>
-                    <p class="text-base">
+                    <p class="text-sm wrap-anywhere">
                         <a
                             href="https://www.instagram.com/sundownerssafari/"
-                            class="text-orange-500 underline hover:text-orange-700"
+                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
                             aria-label="Follow Sundowners on Instagram"
                             >@sundownerssafari</a
                         >
                     </p>
                 </div>
-                <div class="p-4">
-                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
+                <div class="px-4 py-3">
+                    <p class="eyebrow mb-1.5">
                         EMAIL
                     </p>
-                    <p class="text-base">
+                    <p class="text-sm">
                         <a
                             href="mailto:sundownersbrc@gmail.com"
-                            class="text-orange-500 underline hover:text-orange-700"
+                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
                             aria-label="Email Sundowners camp">Contact Us</a
                         >
                     </p>
