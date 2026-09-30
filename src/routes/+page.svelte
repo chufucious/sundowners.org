@@ -257,13 +257,13 @@
     ></div>
     <div class="grid grid-cols-12 gap-4 text-white pt-section">
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
+            class="col-start-2 col-span-10 md:col-start-3 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
         >
             Our mission is to challenge nationalism through our unique
             expression of diversity.
         </p>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 text-white/80 leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-3 md:col-span-4 text-sm mb-8 text-white/80 leading-relaxed"
         >
             We are an African-diaspora inspired art collective named after
             'Sundowners' - a wonderful South African tradition of sharing
