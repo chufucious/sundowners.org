@@ -8,6 +8,8 @@ import manBurnFire from "$lib/assets/Photos/man-burn-fire.jpg?w=400;627&enhanced
 import gregFlying from "$lib/assets/Photos/greg-flying.jpg?w=400;800;1200&enhanced";
 import sign from "$lib/assets/Photos/sign.jpg?w=400;800;1200&enhanced";
 import jonSmoke from "$lib/assets/Photos/jon-smoke.jpg?w=400;800;1200&enhanced";
+import sundownersSignLoop from "$lib/assets/Photos/sundowners-sign-loop.mp4";
+import sundownersSignPoster from "$lib/assets/Photos/sundowners-sign-poster.jpg";
 import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
 import rexanDusk from "$lib/assets/rexan-sound/hero-rexan-dusk.jpg?w=400;800;1200&enhanced";
 import build2026Frame from "$lib/assets/Photos/build-2026-frame.jpg?w=400;800;1200&enhanced";
@@ -28,10 +30,11 @@ export const build2026Photos = [
 
 // Bottom gallery, left to right; class controls each photo's height and alignment.
 export const galleryPhotos = [
+  { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
+  { video: sundownersSignLoop, poster: sundownersSignPoster, alt: "Sundowners sign and wax-print flag at dusk", class: "h-80 w-auto max-w-none shrink-0 self-end" },
+  { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
   { image: gregonrexan, alt: "on rexan", class: "max-h-96" },
   { image: jonSmoke, alt: "j attracting influencers", class: "max-h-64" },
-  { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
-  { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
   { image: rexanDancer, alt: "dancer on rexan", class: "max-h-96 self-end" },
   { image: runninglion, alt: "a running lion", class: "max-h-80" },
   { image: sign, alt: "sundowners sign", class: "max-h-96" },

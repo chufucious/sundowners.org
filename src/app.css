@@ -1,7 +1,16 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/roboto-mono-latin.woff2") format("woff2");
+}
+
 @theme {
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
   --font-garamond: "EB Garamond", serif;
   /* Gold rules and lettering on the wax-print labels (the Rexan carousel). */
   --color-gold: #b8913c;

@@ -48,7 +48,7 @@
 <section id="intro" class="col-span-12 relative">
     <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
         <div
-            class="pattern-frame col-span-full p-2 -rotate-1 -mt-4 md:-mt-88 mb-12"
+            class="pattern-frame col-span-full p-2 -rotate-1 mt-8 md:-mt-88 mb-12"
             style:background-image="url({patternSunflower})"
         >
             <enhanced:img
@@ -69,7 +69,7 @@
                 African traditions and speakeasies bring to the world.
             </p>
             <div
-                class="text-base text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
             >
                 <p>
                     We strive for a holistic offering through our shebeen
@@ -209,7 +209,7 @@
                 interactivity, and vibe that is distinct from anything in Black
                 Rock.
             </p>
-            <p class="text-base text-orange-950/80 leading-relaxed max-w-prose">
+            <p class="text-sm text-orange-950/80 leading-relaxed max-w-prose">
                 At every step, we strive to share the wonder and appreciation
                 for one of the most special places on the planet, much like
                 Burning Man itself.
@@ -251,7 +251,7 @@
             expression of diversity.
         </p>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-base mb-8 text-white/80 leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 text-white/80 leading-relaxed"
         >
             We are an African-diaspora inspired art collective named after
             'Sundowners' - a wonderful South African tradition of sharing
@@ -267,7 +267,7 @@
             />
         </div>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-base text-white/80 mt-8 mb-section leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-section leading-relaxed"
         >
             We feel Burning Man, as the world's largest temporary city, is a
             fitting ecosystem to explore a unique ethnographic heritage that has
@@ -293,7 +293,7 @@
                     life-changing wildlife safari.
                 </p>
                 <div
-                    class="text-base mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
                 >
                     <p>
                         On the Savannah, we would end each day with the country's
@@ -400,14 +400,30 @@
             onscroll={updateGalleryEnds}
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
-            {#each galleryPhotos as { image, alt, class: fit } (image)}
-                <enhanced:img
-                    src={image}
-                    sizes="(max-width: 768px) 100vw, 400px"
-                    {alt}
-                    loading="lazy"
-                    class={["w-full object-cover", fit]}
-                />
+            {#each galleryPhotos as { image, video, poster, alt, class: fit } (image ?? video)}
+                {#if video}
+                    <video
+                        src={video}
+                        {poster}
+                        width="960"
+                        height="540"
+                        aria-label={alt}
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="metadata"
+                        class={fit}
+                    ></video>
+                {:else}
+                    <enhanced:img
+                        src={image}
+                        sizes="(max-width: 768px) 100vw, 400px"
+                        {alt}
+                        loading="lazy"
+                        class={["w-full object-cover", fit]}
+                    />
+                {/if}
             {/each}
         </div>
     </div>

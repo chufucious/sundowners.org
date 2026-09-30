@@ -30,7 +30,7 @@
             <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-has-[a:hover]:text-orange-700 transition-colors mb-4">
                 {title}
             </h2>
-            <p class="text-base mb-8 text-orange-950/80 leading-relaxed max-w-prose">
+            <p class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose">
                 {blurb}
             </p>
             <a

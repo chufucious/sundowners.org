@@ -57,7 +57,7 @@
 {/snippet}
 
 <!-- The hero photo is the site header on this page (headerImage in +page.server.ts). -->
-<article class="col-span-12 grid grid-cols-1 2xl:grid-cols-[minmax(15rem,1fr)_minmax(0,80rem)_minmax(15rem,1fr)] {articleLayout}">
+<article class="col-span-12 grid grid-cols-1 lg:grid-cols-[minmax(12rem,1fr)_minmax(0,80rem)_minmax(12rem,1fr)] {articleLayout}">
   <!-- Editorial title block: centred, the title set huge with tight leading. -->
   <header class="col-span-full w-full mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
     <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
@@ -73,13 +73,13 @@
   </header>
 
   <!-- Equal outer tracks keep the article centered; the left track holds the rail. -->
-  <aside class="hidden 2xl:block col-start-1 row-start-2 px-6">
-    <div class="sticky top-28 w-48 ml-auto">
+  <aside class="hidden lg:block col-start-1 row-start-2 px-4">
+    <div class="sticky top-28 w-40 ml-auto">
       <TableOfContents {sections} />
     </div>
   </aside>
 
-  <div class="min-w-0 2xl:col-start-2 2xl:row-start-2">
+  <div class="min-w-0 lg:col-start-2 lg:row-start-2">
     <ArticleText>
       <p>
         In early 2017 a crew of longtime Burner friends from around the world went on a safari in South

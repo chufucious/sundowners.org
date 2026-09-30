@@ -35,6 +35,19 @@ for (const route of routes) {
   });
 }
 
+test("homepage loads its shared monospace font and smaller secondary copy", async ({ page }) => {
+  await page.goto("/");
+  const faces = await page.evaluate(async () => {
+    const loaded = await document.fonts.load('14px "Roboto Mono"');
+    return loaded.map((face) => ({ family: face.family, status: face.status }));
+  });
+  expect(faces).toEqual([{ family: "Roboto Mono", status: "loaded" }]);
+  const copy = page.locator("#crew p").nth(1);
+  await expect(copy).toHaveCSS("font-size", "14px");
+  await expect(copy).toHaveCSS("line-height", "22.75px");
+  await expect(copy).toHaveCSS("font-family", /Roboto Mono/);
+});
+
 test("rexan diagrams draw as SVG", async ({ page }) => {
   // Shared diagram parts are separate components; if they ever render in the
   // HTML namespace, their shapes exist but have no size.
@@ -57,6 +70,22 @@ test("homepage gallery pages with its hints", async ({ page }) => {
   await more.click();
   await expect(back).toBeVisible();
   await expect.poll(() => page.locator("#gallery").evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+});
+
+test("homepage gallery opens with fire, a bottom-aligned loop, and fisheye", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#collage video")).toHaveCount(0);
+  await expect(page.locator("#gallery > :nth-child(1) img")).toHaveAttribute("alt", "the man lit up above a wall of fire");
+  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "fisheye lens");
+  const video = page.locator("#gallery > :nth-child(2)");
+  await expect(video).toHaveAttribute("aria-label", "Sundowners sign and wax-print flag at dusk");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v) => v.muted && v.loop && v.playsInline && !v.paused && v.currentTime > 0), {
+    timeout: 15_000,
+  }).toBe(true);
+  expect(await video.evaluate((v) => v.duration)).toBeGreaterThanOrEqual(9);
+  const bottomGap = await video.evaluate((v) => v.parentElement.getBoundingClientRect().bottom - v.getBoundingClientRect().bottom);
+  expect(Math.abs(bottomGap)).toBeLessThanOrEqual(1);
 });
 
 test("article cards on the home page open their post from the photo", async ({ page }) => {

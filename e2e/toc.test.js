@@ -51,7 +51,7 @@ test.describe("left rail", () => {
 
 test("title, body, photos and carousel share the page center", async ({ page, isMobile }) => {
   test.skip(isMobile, "desktop and tablet layout");
-  for (const width of [768, 1024, 1440, 1600, 1920]) {
+  for (const width of [768, 1023, 1024, 1280, 1366, 1440, 1600, 1920]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/rexan-sound-system");
     await page.evaluate(() => document.fonts.ready);
@@ -66,7 +66,16 @@ test("title, body, photos and carousel share the page center", async ({ page, is
       expect(Math.abs(box.x + box.width / 2 - width / 2)).toBeLessThanOrEqual(1);
     }
     const toc = page.getByRole("navigation", { name: "On this page", includeHidden: true });
-    if (width < 1536) await expect(toc).toBeHidden();
-    else await expect(toc).toBeVisible();
+    if (width < 1024) {
+      await expect(toc).toBeHidden();
+    } else {
+      await centered[1].scrollIntoViewIfNeeded();
+      await expect(toc).toBeInViewport();
+      const nav = await toc.boundingBox();
+      const text = await centered[1].boundingBox();
+      expect(nav.x + nav.width).toBeLessThan(text.x);
+      await page.locator("#thanks").scrollIntoViewIfNeeded();
+      await expect(toc).toBeInViewport();
+    }
   }
 });
