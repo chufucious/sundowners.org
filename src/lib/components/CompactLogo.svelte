@@ -27,7 +27,7 @@
   aria-label="Sundowners home"
   inert={swap < HANDOVER}
   style={motion}
-  class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block mix-blend-color-dodge focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
+  class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
 >
   <!-- Sized to the mark's texture (551 x 432), flames included, as in the header. -->
   <FlameMark active={progress > 0} class="absolute inset-0" />
