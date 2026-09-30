@@ -48,7 +48,7 @@
 <section id="intro" class="col-span-12 relative">
     <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
         <div
-            class="pattern-frame col-span-full p-2 -rotate-1 mt-8 md:-mt-88 mb-12"
+            class="pattern-frame col-span-full p-2 -rotate-1 mt-8 md:-mt-88 lg:-mt-102 mb-12"
             style:background-image="url({patternSunflower})"
         >
             <enhanced:img
@@ -63,17 +63,22 @@
             <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
                 🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
             </h1>
-            <p class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
-                Sundowners is centered on creating liminal spaces to celebrate
-                the multicultural art, music, dance, and hospitality that
-                African traditions and speakeasies bring to the world.
+            <p class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
+                We’re <strong>Sundowners</strong>, an African-diaspora inspired Burning Man camp, bringing music, art, and community to the playa.
+
             </p>
             <div
-                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[0.5lh]"
+                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
             >
+                <p>Sundowners is centered on creating liminal spaces to celebrate
+                the multicultural art, music, dance, and hospitality that
+                African traditions and speakeasies bring to the world.</p>
                 <p>
                     We strive for a holistic offering through our shebeen
-                    speakeasy and safari-theme art car. The deep artistry,
+                    speakeasy and
+                    <a href="/rexan-sound-system" class="underline hover:text-orange-700"
+                        >safari-theme art car</a
+                    >. The deep artistry,
                     meaning, and humanity of African-based music is our creative
                     North Star.
                 </p>
@@ -135,52 +140,56 @@
     </div>
 </section>
 
+<!-- Photos are placed in percentages of a box with a fixed aspect ratio, so the
+     arrangement scales as one piece instead of spreading out on tall screens or
+     running off the edges of narrow ones. Phones get their own arrangement; from
+     md up it's the layout designed at 1280x900. -->
 <section id="collage" class="col-span-12 mt-section overflow-x-clip">
-    <div class="relative w-full max-w-7xl mx-auto h-[180vw] md:h-svh">
+    <div class="relative w-full max-w-7xl mx-auto aspect-[5/9] md:aspect-[64/45]">
         <div
-            class="pattern-frame absolute w-full top-0 md:w-192 md:left-1/4 p-2 rotate-1 drop-shadow-xl"
+            class="pattern-frame absolute top-0 left-[2%] w-[92%] md:left-1/4 md:w-3/5 p-2 rotate-1 drop-shadow-xl"
             style:background-image="url({patternFans})"
         >
             <enhanced:img
                 src={tucoLauren}
-                sizes="(max-width: 768px) 100vw, 768px"
-                class="object-cover"
+                sizes="(max-width: 767px) 92vw, (max-width: 1279px) 60vw, 768px"
+                class="w-full h-auto"
                 alt="t + l"
                 loading="lazy"
             />
         </div>
         <div
-            class="pattern-frame absolute md:w-92 top-48 md:top-24 ml-8 p-2 -rotate-1 drop-shadow-xl"
+            class="pattern-frame absolute top-[27.8%] left-[4%] w-[48%] md:top-[10.67%] md:left-[2.5%] md:w-[28.75%] p-2 -rotate-1 drop-shadow-xl"
             style:background-image="url({patternSpirograph})"
         >
             <enhanced:img
                 src={coogieSign}
-                sizes="(max-width: 768px) 200px, 368px"
-                class="object-cover w-50 md:w-full"
+                sizes="(max-width: 767px) 48vw, (max-width: 1279px) 29vw, 368px"
+                class="w-full h-auto"
                 alt="sundowners with sign"
                 loading="lazy"
             />
         </div>
         <div
-            class="pattern-frame absolute md:w-92 w-48 top-20 md:top-auto right-0 hidden md:block md:bottom-1/4 p-2 rotate-12 drop-shadow-xl"
+            class="pattern-frame absolute top-[35.6%] right-[4%] w-[44%] md:right-[4.5%] md:top-auto md:bottom-1/4 md:w-[28.75%] p-2 rotate-6 md:rotate-12 drop-shadow-xl"
             style:background-image="url({patternLeaves})"
         >
             <enhanced:img
                 src={joshRexan}
-                sizes="(max-width: 768px) 192px, 368px"
-                class="object-cover"
+                sizes="(max-width: 767px) 44vw, (max-width: 1279px) 29vw, 368px"
+                class="w-full h-auto"
                 alt="j on rexan"
                 loading="lazy"
             />
         </div>
         <div
-            class="pattern-frame absolute md:w-176 bottom-0 md:right-48 p-2 rotate-3 drop-shadow-xl"
+            class="pattern-frame absolute bottom-0 right-[1.5%] w-[94%] md:right-[15%] md:w-[55%] p-2 rotate-3 drop-shadow-xl"
             style:background-image="url({patternHandshake})"
         >
             <enhanced:img
                 src={zuraSpotter}
-                sizes="(max-width: 768px) 100vw, 704px"
-                class="object-cover"
+                sizes="(max-width: 767px) 94vw, (max-width: 1279px) 55vw, 704px"
+                class="w-full h-auto"
                 alt="z on spotter"
                 loading="lazy"
             />
@@ -192,7 +201,7 @@
      Stacked (below lg): crew photo, lion, then text. Side by side (lg): the crew
      photo spans a fixed overlap row that the lion starts in, so the lion lands
      on the photo's bottom edge and can never ride up into the text. -->
-<section id="crew" class="col-span-12 -mt-12 md:mt-section overflow-x-clip">
+<section id="crew" class="col-span-12 -mt-6 md:mt-section overflow-x-clip">
     <div
         class="grid grid-cols-12 gap-x-4 [--crew-overlap:clamp(2.5rem,4.5vw,5rem)] lg:grid-rows-[auto_var(--crew-overlap)_auto]"
     >
@@ -299,13 +308,13 @@
             class="col-start-2 col-span-10 w-full max-w-5xl mx-auto md:flex md:gap-16"
         >
             <div class="md:flex-1">
-                <p class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+                <p class="text-xl md:text-2xl font-garamond text-orange-950 mb-8">
                     In 2017, a passionate crew of longtime Burning Man vets from
                     across the globe traveled to South Africa and went on a
                     life-changing wildlife safari.
                 </p>
                 <div
-                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[0.5lh]"
+                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
                 >
                     <p>
                         On the Savannah, we would end each day with the country's

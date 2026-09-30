@@ -23,6 +23,8 @@ test("keyboard users can skip the header, open an article, and operate its carou
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL(/#main-content$/);
   await page.keyboard.press(tabKey);
+  await expect(page.getByRole("link", { name: "safari-theme art car", exact: true })).toBeFocused();
+  await page.keyboard.press(tabKey);
   await expect(page.getByRole("link", { name: "Follow Sundowners on Instagram" })).toBeFocused();
 
   const article = page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ });
