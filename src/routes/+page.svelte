@@ -228,15 +228,13 @@
                 class="pattern-frame p-2 md:p-4 drop-shadow-xl rotate-1"
                 style:background-image="url({patternChickens})"
             >
-                <div class="overflow-hidden">
-                    <enhanced:img
-                        src={lionAndLeyla}
-                        sizes="(max-width: 767px) 92vw, 75vw"
-                        alt="lion and l"
-                        class="w-full h-auto object-cover -rotate-1"
-                        loading="lazy"
-                    />
-                </div>
+                <enhanced:img
+                    src={lionAndLeyla}
+                    sizes="(max-width: 767px) 92vw, 75vw"
+                    alt="lion and l"
+                    class="w-full h-auto"
+                    loading="lazy"
+                />
             </div>
         </div>
         <div
