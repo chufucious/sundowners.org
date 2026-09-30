@@ -6,7 +6,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"test:e2e": "playwright test"
+		"test:e2e": "playwright test",
+		"test:links": "EXTERNAL=1 playwright test --project=desktop-chromium"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.63.0",
