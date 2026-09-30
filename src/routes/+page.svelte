@@ -76,7 +76,7 @@
                 <p>
                     We strive for a holistic offering through our shebeen
                     speakeasy and
-                    <a href="/rexan-sound-system" class="underline hover:text-orange-700"
+                    <a href="/rexan-sound-system" class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
                         >safari-theme art car</a
                     >. The deep artistry,
                     meaning, and humanity of African-based music is our creative
