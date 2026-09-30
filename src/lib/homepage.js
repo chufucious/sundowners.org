@@ -31,11 +31,11 @@ export const galleryPhotos = [
   { image: gregonrexan, alt: "on rexan", class: "max-h-96" },
   { image: jonSmoke, alt: "j attracting influencers", class: "max-h-64" },
   { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
+  { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
   { image: rexanDancer, alt: "dancer on rexan", class: "max-h-96 self-end" },
   { image: runninglion, alt: "a running lion", class: "max-h-80" },
   { image: sign, alt: "sundowners sign", class: "max-h-96" },
   { image: gregFlying, alt: "g flying", class: "max-h-80 self-end" },
-  { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
   { image: rexanFire, alt: "fire on rexan", class: "max-h-80" },
   { image: rexanNightWide, alt: "night time with rexan", class: "max-h-96" },
 ];
