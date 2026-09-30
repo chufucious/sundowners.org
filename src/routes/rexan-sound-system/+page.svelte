@@ -364,14 +364,13 @@
       <!-- TODO: The subfolder's side-towers diagram (below) is the plan, and it disagrees with this paragraph:
            - Subs: text says move ONE sub to a new driver-side bracket "so there's one on each side".
              Diagram stacks BOTH KS118s on the new driver bracket and puts an LS218 on the passenger bracket.
-           - Line array: text says "LS112"; QSC's box (and the diagrams) is the LA112.
            - Text says 2× LS218; the diagram shows 1×.
            - Draft said "QSC L series"; changed to "L Class", QSC's name for the line. -->
       <p>
         Sundowners' decade at the Burn is in 2027 and we want Rexan to sound the best it ever has. The plan
         is to move one of the subs to a new bracket on the driver's side so there's one on each side of
         the car, which spreads the bass and gives us a second platform for stacking. We're also designing
-        a line array (QSC L Class: we want 4× LS112 and 2× LS218s if we can raise the money to support
+        a line array (QSC L Class: we want 4× LA112 and 2× LS218s if we can raise the money to support
         it), and we've started talking with the QSC team about how to position and mount it.
       </p>
     </ArticleText>
