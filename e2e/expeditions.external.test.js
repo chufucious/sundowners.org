@@ -16,6 +16,8 @@ test.describe("expedition links", { tag: "@external" }, () => {
     test(`${year} ${theme} still leads to its theme page`, async ({ page }) => {
       const response = await page.goto(url, { waitUntil: "domcontentloaded" });
       expect(response?.status(), url).toBeLessThan(400);
+      // Retired archive pages redirect to a site's front page rather than 404ing.
+      expect(new URL(page.url()).pathname, `${url} redirected to ${page.url()}`).not.toBe("/");
       await expect(page.locator("body")).toContainText(mention(theme), { timeout: 15_000 });
     });
   }
