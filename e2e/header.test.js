@@ -129,6 +129,30 @@ test("compact logo on the homepage returns to the top", async ({ page }) => {
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
 });
 
+test("compact logo on the homepage glides to the top instead of jumping", async ({ page }) => {
+  await page.goto("/");
+  await scrollPastHeader(page, 3000);
+  const start = await page.evaluate(() => scrollY);
+  const entries = await page.evaluate(() => history.length);
+  await compact(page).click();
+  // Straight after the click it's still on its way up, not already at the top.
+  const justAfter = await page.evaluate(() => scrollY);
+  expect(justAfter).toBeGreaterThan(0);
+  expect(justAfter).toBeLessThanOrEqual(start);
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+  // Scrolling in place: no navigation, no new history entry.
+  await expect(page).toHaveURL("/");
+  expect(await page.evaluate(() => history.length)).toBe(entries);
+});
+
+test("compact logo jumps straight to the top when motion is reduced", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await scrollPastHeader(page, 3000);
+  await compact(page).click();
+  expect(await page.evaluate(() => scrollY)).toBe(0);
+});
+
 test("the rexan post leads with its own photo as the header", async ({ page }) => {
   // The page supplies headerImage from its load(); other pages keep the
   // default banner at its usual height.

@@ -11,9 +11,24 @@
   // arriving quickly and settling gently (ease-out cubic) from slightly small
   // and high (92%, as in Material 3's fade through).
   import { resolve } from "$app/paths";
+  import { page } from "$app/state";
   import FlameMark from "./FlameMark.svelte";
 
   let { swap = 0 } = $props();
+
+  // Already home: glide back to the top rather than jump, so it reads as moving
+  // up the page (and the header logo visibly returns). Instant with reduced
+  // motion; modified clicks still open home in a new tab or window.
+  function toTop(event) {
+    if (page.url.pathname !== resolve("/")) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    scrollTo({ top: 0, behavior: reduce ? "instant" : "smooth" });
+    // As a navigation would, let focus fall back to the page; the link turns
+    // inert once the header logo is back anyway.
+    event.currentTarget.blur();
+  }
 
   const progress = $derived(1 - (1 - Math.max((swap - HANDOVER) / (1 - HANDOVER), 0)) ** 3);
 
@@ -26,6 +41,7 @@
   href={resolve("/")}
   aria-label="Sundowners home"
   inert={swap < HANDOVER}
+  onclick={toTop}
   style={motion}
   class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
 >
