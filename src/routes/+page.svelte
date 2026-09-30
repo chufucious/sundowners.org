@@ -46,30 +46,30 @@
 </script>
 
 <section id="intro" class="col-span-12 relative">
-    <div class="grid grid-cols-12 gap-4">
+    <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
         <div
-            class="pattern-frame col-start-2 col-span-10 md:col-start-3 md:col-span-8 p-2 -rotate-1 -mt-4 md:-mt-88 mb-12"
+            class="pattern-frame col-span-full p-2 -rotate-1 -mt-4 md:-mt-88 mb-12"
             style:background-image="url({patternSunflower})"
         >
             <enhanced:img
                 src={rexanGroup2023}
-                sizes="(max-width: 768px) 100vw, 66vw"
+                sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
                 alt="jump!"
                 class="max-w-full"
                 loading="lazy"
             />
         </div>
-        <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-5">
+        <div class="col-span-full md:col-span-5">
             <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
                 🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
             </h1>
-            <h2 class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
+            <p class="text-xl md:text-2xl text-orange-950 mb-4 font-garamond">
                 Sundowners is centered on creating liminal spaces to celebrate
                 the multicultural art, music, dance, and hospitality that
                 African traditions and speakeasies bring to the world.
-            </h2>
+            </p>
             <div
-                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                class="text-base text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
             >
                 <p>
                     We strive for a holistic offering through our shebeen
@@ -86,22 +86,22 @@
             </div>
         </div>
         <div
-            class="col-start-2 col-span-10 md:col-start-8 md:col-span-3 md:pl-16"
+            class="col-span-full md:col-span-3 md:pl-16"
         >
             <aside
                 class="bg-white rounded border border-black/10 divide-y divide-black/10 h-fit mt-8 md:mt-0"
             >
                 <div class="p-4">
-                    <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
+                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
                         {currentYear} ADDRESS
-                    </h3>
-                    <p class="text-sm text-stone-950">{currentAddress}</p>
+                    </p>
+                    <p class="text-base text-stone-950">{currentAddress}</p>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
+                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
                         INSTAGRAM
-                    </h3>
-                    <p class="text-sm">
+                    </p>
+                    <p class="text-base">
                         <a
                             href="https://www.instagram.com/sundownerssafari/"
                             class="text-orange-500 underline hover:text-orange-700"
@@ -111,10 +111,10 @@
                     </p>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-stone-500 text-xs tracking-tighter mb-2">
+                    <p class="text-stone-500 text-xs tracking-tighter mb-2">
                         EMAIL
-                    </h3>
-                    <p class="text-sm">
+                    </p>
+                    <p class="text-base">
                         <a
                             href="mailto:sundownersbrc@gmail.com"
                             class="text-orange-500 underline hover:text-orange-700"
@@ -127,8 +127,8 @@
     </div>
 </section>
 
-<section id="articles" class="col-span-12 relative mt-section grid grid-cols-12 gap-4">
-    <div class="col-start-2 col-span-10 md:col-start-3 md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
+<section id="articles" class="col-span-12 relative mt-section">
+    <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
         {#each articles as article (article.id)}
             <ArticleCard {...article} />
         {/each}
@@ -204,12 +204,12 @@
             </div>
         </div>
         <div class="col-start-2 col-span-10 md:col-start-8 md:col-span-4 mt-8">
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+            <p class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
                 Our veteran, multi-continental crew offers an experience,
                 interactivity, and vibe that is distinct from anything in Black
                 Rock.
-            </h2>
-            <p class="text-sm text-orange-950/80 leading-relaxed max-w-prose">
+            </p>
+            <p class="text-base text-orange-950/80 leading-relaxed max-w-prose">
                 At every step, we strive to share the wonder and appreciation
                 for one of the most special places on the planet, much like
                 Burning Man itself.
@@ -244,14 +244,14 @@
         style:background-image="url({patternDazzle})"
     ></div>
     <div class="grid grid-cols-12 gap-4 text-white pt-section">
-        <h2
+        <p
             class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-xl md:text-2xl font-garamond text-white mb-4"
         >
             Our mission is to challenge nationalism through our unique
             expression of diversity.
-        </h2>
+        </p>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm mb-8 text-white/80 leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-base mb-8 text-white/80 leading-relaxed"
         >
             We are an African-diaspora inspired art collective named after
             'Sundowners' - a wonderful South African tradition of sharing
@@ -267,7 +267,7 @@
             />
         </div>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-section leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-base text-white/80 mt-8 mb-section leading-relaxed"
         >
             We feel Burning Man, as the world's largest temporary city, is a
             fitting ecosystem to explore a unique ethnographic heritage that has
@@ -287,13 +287,13 @@
             class="col-start-2 col-span-10 w-full max-w-5xl mx-auto md:flex md:gap-16"
         >
             <div class="md:flex-1">
-                <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
+                <p class="text-xl md:text-2xl font-garamond text-orange-950 mb-4">
                     In 2017, a passionate crew of longtime Burning Man vets from
                     across the globe traveled to South Africa and went on a
                     life-changing wildlife safari.
-                </h2>
+                </p>
                 <div
-                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                    class="text-base mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
                 >
                     <p>
                         On the Savannah, we would end each day with the country's

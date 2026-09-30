@@ -65,14 +65,14 @@
       alt="sundowners lion logo"
       loading="lazy"
     />
-    <h2
+    <p
       class="px-8 md:px-0 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
     >
       Collaborate with us if you would like to participate as a musician, DJ,
       dancer, artist or in any creative capacity.
-    </h2>
+    </p>
     <div
-      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80 space-y-[1lh]"
+      class="max-w-prose mx-auto px-8 md:px-0 text-base text-center leading-relaxed text-orange-950/80 space-y-[1lh]"
     >
       <p>
         At Black Rock City and year-round, our goal is to spread the Sundowners'

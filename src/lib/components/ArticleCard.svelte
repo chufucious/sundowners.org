@@ -17,7 +17,7 @@
         >
             <enhanced:img
                 src={image}
-                sizes="(max-width: 768px) 83vw, 33vw"
+                sizes="(min-width: 1920px) 624px, (min-width: 768px) 33vw, 83vw"
                 {alt}
                 loading="lazy"
                 class="w-full aspect-video object-cover {position} transition-transform duration-500 group-has-[a:hover]:scale-[1.03]"
@@ -30,7 +30,7 @@
             <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-has-[a:hover]:text-orange-700 transition-colors mb-4">
                 {title}
             </h2>
-            <p class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose">
+            <p class="text-base mb-8 text-orange-950/80 leading-relaxed max-w-prose">
                 {blurb}
             </p>
             <a

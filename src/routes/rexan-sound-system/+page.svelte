@@ -22,16 +22,11 @@
   import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
   import TableOfContents from "$lib/components/TableOfContents.svelte";
+  import { articleLayout, articleTextColumn as textColumn, articleProse as proseStyles } from "$lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
 
-  // Reading column; its width is --reading-width on the article, which
-  // EvolutionCarousel also reads to line its first card up with the text.
-  // Important (!) so it beats proseStyles' max-w-none on the same element.
-  const textColumn = "mx-auto max-w-(--reading-width)! px-6";
-  const proseStyles =
-    "prose prose-xl max-w-none prose-p:text-orange-950/90 prose-li:text-orange-950/90 prose-p:leading-[1.6] prose-li:leading-[1.6] prose-headings:text-orange-950 prose-headings:font-light prose-strong:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]";
   // Photos run wider than the text; the widest reach near the page edges.
   const photoColumn = "mx-auto max-w-4xl px-6";
   const widePhotoColumn = "mx-auto max-w-7xl px-4 md:px-6";
@@ -61,7 +56,7 @@
 {/snippet}
 
 <!-- The hero photo is the site header on this page (headerImage in +page.server.ts). -->
-<article class="col-span-12 font-serif text-orange-950 [--reading-width:36rem]">
+<article class="col-span-12 {articleLayout}">
   <!-- Editorial title block: centred, the title set huge with tight leading. -->
   <header class="mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
     <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
