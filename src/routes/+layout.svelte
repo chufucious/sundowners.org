@@ -1,9 +1,9 @@
 <script>
   import "../app.css";
   import { page } from "$app/state";
-  import SiteHeader from "$lib/components/SiteHeader.svelte";
-  import Agentation from "$lib/components/Agentation.svelte";
-  import logoLion from "$lib/assets/logo/lion.svg";
+  import SiteHeader from "#lib/components/SiteHeader.svelte";
+  import Agentation from "#lib/components/Agentation.svelte";
+  import logoLion from "#lib/assets/logo/lion.svg";
 
   let { children } = $props();
 

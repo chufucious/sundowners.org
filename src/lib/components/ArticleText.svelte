@@ -1,5 +1,5 @@
 <script>
-  import { articleProse } from "$lib/article-styles.js";
+  import { articleProse } from "#lib/article-styles.js";
 
   let { children, class: className = "" } = $props();
 </script>

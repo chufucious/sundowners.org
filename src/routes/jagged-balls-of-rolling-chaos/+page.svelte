@@ -1,7 +1,7 @@
 <script>
-  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
-  import ArticleText from "$lib/components/ArticleText.svelte";
-  import { articleLayout } from "$lib/article-styles.js";
+  import jaggedBalls from "#lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
+  import ArticleText from "#lib/components/ArticleText.svelte";
+  import { articleLayout } from "#lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.

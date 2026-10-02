@@ -1,29 +1,29 @@
 <script>
-  import Photo from "$lib/components/Photo.svelte";
-  import PhotoRow from "$lib/components/PhotoRow.svelte";
-  import VideoLoop from "$lib/components/VideoLoop.svelte";
-  import buildStockVan from "$lib/assets/rexan-sound/2017-build-stock-van.jpg?w=400;800;1200&enhanced";
-  import buildBodyOff from "$lib/assets/rexan-sound/2017-build-body-off.jpg?w=400;800;1200&enhanced";
-  import buildWelding from "$lib/assets/rexan-sound/2017-build-welding.jpg?w=400;800;1200&enhanced";
-  import behringer2017 from "$lib/assets/rexan-sound/2017-behringer.jpg?w=400;800;1200&enhanced";
-  import behringer2019 from "$lib/assets/rexan-sound/2019-behringer.jpg?w=400;800;1179&enhanced";
-  import qsc2022 from "$lib/assets/rexan-sound/2022-first-qsc.jpg?w=400;768&enhanced";
-  import qsc2023 from "$lib/assets/rexan-sound/2023-qsc.jpg?w=400;848&enhanced";
-  import sunrise2025 from "$lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&enhanced";
-  import beforeMounts2026 from "$lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&enhanced";
-  import afterMounts2026 from "$lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&enhanced";
-  import duskLoop from "$lib/assets/rexan-sound/dusk-loop.mp4";
-  import duskLoopPoster from "$lib/assets/rexan-sound/dusk-loop-poster.jpg";
-  import panelsLoop from "$lib/assets/rexan-sound/panels-loop.mp4";
-  import panelsLoopPoster from "$lib/assets/rexan-sound/panels-loop-poster.jpg";
-  import panelTestLoop from "$lib/assets/rexan-sound/panel-test-loop.mp4";
-  import panelTestLoopPoster from "$lib/assets/rexan-sound/panel-test-loop-poster.jpg";
-  import EvolutionCarousel from "$lib/components/rexan/EvolutionCarousel.svelte";
-  import CurrentRigDiagram from "$lib/components/rexan/CurrentRigDiagram.svelte";
-  import SideTowersDiagram from "$lib/components/rexan/SideTowersDiagram.svelte";
-  import TableOfContents from "$lib/components/TableOfContents.svelte";
-  import ArticleText from "$lib/components/ArticleText.svelte";
-  import { articleLayout } from "$lib/article-styles.js";
+  import Photo from "#lib/components/Photo.svelte";
+  import PhotoRow from "#lib/components/PhotoRow.svelte";
+  import VideoLoop from "#lib/components/VideoLoop.svelte";
+  import buildStockVan from "#lib/assets/rexan-sound/2017-build-stock-van.jpg?w=400;800;1200&enhanced";
+  import buildBodyOff from "#lib/assets/rexan-sound/2017-build-body-off.jpg?w=400;800;1200&enhanced";
+  import buildWelding from "#lib/assets/rexan-sound/2017-build-welding.jpg?w=400;800;1200&enhanced";
+  import behringer2017 from "#lib/assets/rexan-sound/2017-behringer.jpg?w=400;800;1200&enhanced";
+  import behringer2019 from "#lib/assets/rexan-sound/2019-behringer.jpg?w=400;800;1179&enhanced";
+  import qsc2022 from "#lib/assets/rexan-sound/2022-first-qsc.jpg?w=400;768&enhanced";
+  import qsc2023 from "#lib/assets/rexan-sound/2023-qsc.jpg?w=400;848&enhanced";
+  import sunrise2025 from "#lib/assets/rexan-sound/2025-sunrise.jpg?w=400;800;1179&enhanced";
+  import beforeMounts2026 from "#lib/assets/rexan-sound/2026-before-mounts.jpg?w=400;800;1179&enhanced";
+  import afterMounts2026 from "#lib/assets/rexan-sound/2026-after-mounts.jpg?w=400;800;1179&enhanced";
+  import duskLoop from "#lib/assets/rexan-sound/dusk-loop.mp4";
+  import duskLoopPoster from "#lib/assets/rexan-sound/dusk-loop-poster.jpg";
+  import panelsLoop from "#lib/assets/rexan-sound/panels-loop.mp4";
+  import panelsLoopPoster from "#lib/assets/rexan-sound/panels-loop-poster.jpg";
+  import panelTestLoop from "#lib/assets/rexan-sound/panel-test-loop.mp4";
+  import panelTestLoopPoster from "#lib/assets/rexan-sound/panel-test-loop-poster.jpg";
+  import EvolutionCarousel from "#lib/components/rexan/EvolutionCarousel.svelte";
+  import CurrentRigDiagram from "#lib/components/rexan/CurrentRigDiagram.svelte";
+  import SideTowersDiagram from "#lib/components/rexan/SideTowersDiagram.svelte";
+  import TableOfContents from "#lib/components/TableOfContents.svelte";
+  import ArticleText from "#lib/components/ArticleText.svelte";
+  import { articleLayout } from "#lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.

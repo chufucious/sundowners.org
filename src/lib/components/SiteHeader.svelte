@@ -1,10 +1,10 @@
 <script>
   import { resolve } from "$app/paths";
-  import FlameMark from "$lib/components/FlameMark.svelte";
-  import CompactLogo, { HANDOVER } from "$lib/components/CompactLogo.svelte";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
-  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
-  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
+  import FlameMark from "#lib/components/FlameMark.svelte";
+  import CompactLogo, { HANDOVER } from "#lib/components/CompactLogo.svelte";
+  import sundownerswalking from "#lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
+  import fabricSunrise from "#lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
+  import logoAndType2025 from "#lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
   let { hero, smallHeader = false } = $props();
 

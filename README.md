@@ -1,10 +1,10 @@
 # Sundowners
 
-The Sundowners Burning Man camp website. Built with SvelteKit, Svelte 5, and Tailwind CSS 4; all pages are prerendered. Netlify builds with Node 22 and publishes `build/`.
+The Sundowners Burning Man camp website. Built with SvelteKit 3, Svelte 5, and Tailwind CSS 4; all pages are prerendered. Netlify builds with Node 22 and publishes `build/`. SvelteKit and Netlify adapter configuration live in `vite.config.js`.
 
 ## Start editing
 
-Use Node 22 and Bun. Check the active versions first:
+Use Node 22.17 or newer and Bun. Check the active versions first:
 
 ```sh
 node --version
@@ -76,6 +76,7 @@ bunx playwright install chromium webkit
 Run the browser checks against a fresh production build:
 
 ```sh
+bun run check
 CI=1 bun run test:e2e
 git diff --check
 ```
