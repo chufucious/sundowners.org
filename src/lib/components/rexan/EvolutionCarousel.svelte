@@ -20,19 +20,24 @@
   import feathers from "#lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
   import redstrokes from "#lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
 
+  let { mode = "carousel" } = $props();
+  const isCarousel = $derived(mode === "carousel");
+
   // Equipment and notes come from the post's account of each year. Counts and
   // models are omitted where the historical account does not specify them. `tint` is
   // the fabric's key colour: washed pale behind the drawing, a 1px edge that
   // keeps the card's shape where a fabric's light strokes meet the page, and
   // the label's shadow.
+  // Chassis centers use the same tire-baseline measurement on each 542px crop.
+  // Grid labels follow these centers without cropping or moving the artwork.
   const years = [
-    { year: 2017, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "Rear-facing for riders" },
-    { year: 2018, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "No DJ setup" },
-    { year: 2019, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"], note: "First DJ setup" },
-    { year: 2022, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"], note: "2 tops · 2 DJ monitors" },
-    { year: 2023, image: evolution2023, fabric: eyes, tint: "#7e1132", equipment: ["4 × QSC K12.2", "QSC K10.2 monitors", "2 × QSC KS118"] },
-    { year: 2025, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"], note: "Temporary replacements" },
-    { year: 2026, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"], note: "All four tops restored" },
+    { year: 2017, chassisCenter: 268.5, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "Rear-facing for riders" },
+    { year: 2018, chassisCenter: 279.0, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "No DJ setup" },
+    { year: 2019, chassisCenter: 264.5, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"], note: "First DJ setup" },
+    { year: 2022, chassisCenter: 265.75, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"], note: "2 tops · 2 DJ monitors" },
+    { year: 2023, chassisCenter: 265.0, image: evolution2023, fabric: eyes, tint: "#7e1132", equipment: ["4 × QSC K12.2", "QSC K10.2 monitors", "2 × QSC KS118"] },
+    { year: 2025, chassisCenter: 265.0, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"], note: "Temporary replacements" },
+    { year: 2026, chassisCenter: 280.0, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"], note: "All four tops restored" },
   ];
 
   let track;
@@ -72,6 +77,7 @@
   // Wide screens can't scroll the last cards to the left edge, so at the
   // end of the track the last dot is the active one.
   function updatePosition() {
+    if (!isCarousel || !track) return;
     atStart = track.scrollLeft <= 1;
     atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
     active = atEnd ? years.length - 1 : leftmostCard();
@@ -104,36 +110,39 @@
   </button>
 {/snippet}
 
-<div role="region" aria-roledescription="carousel" aria-label="Rexan, year by year">
+<div role="region" aria-roledescription={isCarousel ? "carousel" : undefined} aria-label="Rexan, year by year">
   <!-- The first card lines up with the 65ch reading column:
        --edge plus the 1rem gap equals the text edge, with 1.5rem phone gutters. The edges
        are ::before/::after spacers, not padding, because older Safari drops
        end padding in a scrolling flex row and the last card couldn't clear. -->
   <ul
     bind:this={track}
-    onscroll={updatePosition}
-    style="--edge: max(0.5rem, calc((100% - var(--reading-width, 65ch)) / 2 - 1rem))"
-    class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
+    onscroll={isCarousel ? updatePosition : undefined}
+    style={isCarousel ? "--edge: max(0.5rem, calc((100% - var(--reading-width, 65ch)) / 2 - 1rem))" : undefined}
+    class={isCarousel
+      ? "flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
+      : "mx-auto max-w-400 px-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-x-4 gap-y-6 pb-2"}
   >
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
          fabric itself with a cream label on it, like the label on a length
          of wax print (a gold double rule, that year's Burning Man theme). -->
-    {#each years as { year, image, fabric, tint, equipment, note }, i (year)}
+    {#each years as { year, image, fabric, tint, equipment, note, chassisCenter }, i (year)}
       <li
-        class="pattern-frame ring-1 ring-inset ring-(--tint) snap-start shrink-0 w-56 md:w-64 p-2 flex flex-col"
-        style:background-image="url({fabric})"
-        style:--tint={tint}
+        class={isCarousel ? "pattern-frame ring-1 ring-inset ring-(--tint) p-2 flex flex-col snap-start shrink-0 w-56 md:w-64" : "min-w-0 text-center"}
+        style:background-image={isCarousel ? `url(${fabric})` : undefined}
+        style:--tint={isCarousel ? tint : undefined}
         aria-label="{i + 1} of {years.length}: {year}"
       >
-        <div class="wash px-5 pt-5">
+        <div class={isCarousel ? "wash px-5 pt-5" : undefined}>
           <enhanced:img
             src={image}
-            sizes="(min-width: 768px) 200px, 168px"
+            sizes={isCarousel ? "(min-width: 768px) 200px, 168px" : "(min-width: 1024px) 210px, (min-width: 640px) 240px, calc((100vw - 64px) / 2)"}
             alt="Line drawing of Rexan from the front in {year}"
             loading="lazy"
             class="w-full h-auto"
           />
         </div>
+        {#if isCarousel}
         <!-- The label stretches to fill the fabric below the drawing, so every
              card's label is the height of the longest equipment list. -->
         <div class="flex-1 flex justify-center pt-6 pb-7">
@@ -154,10 +163,16 @@
             </div>
           </div>
         </div>
+        {:else}
+          <p class="relative mt-3 h-9 font-garamond text-3xl text-orange-950">
+            <span class="absolute -translate-x-1/2" style:left={`${chassisCenter / 542 * 100}%`}>{year}</span>
+          </p>
+        {/if}
       </li>
     {/each}
   </ul>
 
+  {#if isCarousel}
   <div class="px-6 mt-4">
     <div class="mx-auto max-w-(--reading-width,65ch) flex items-center justify-end gap-3">
       <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
@@ -178,6 +193,7 @@
       {@render pageButton(1, atEnd)}
     </div>
   </div>
+  {/if}
 </div>
 
 <style>

@@ -3,8 +3,8 @@
     import { articles, build2026Photos, galleryPhotos } from "#lib/homepage.js";
     // Full-width images: 640/1280/1920
     import katiesunset from "#lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
-    // Line art: transparent PNG rendered from the 2026 evolution SVG at 3795px.
-    import rexanEvolution from "#lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&enhanced";
+    import EvolutionCarousel from "#lib/components/rexan/EvolutionCarousel.svelte";
+    import rexanLogo from "#lib/assets/logo/rexan-sign.svg";
     import lionAndLeyla from "#lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&enhanced";
     import rexanGroup2023 from "#lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&enhanced";
 
@@ -331,7 +331,7 @@
                 <table
                     class="text-orange-900 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
                 >
-                    <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
+                    <caption class="mb-4 eyebrow">EXPEDITIONS</caption>
 
                     <tbody>
                         {#each expeditions as { year, theme, address, url, absent, cancelled } (year)}
@@ -350,22 +350,24 @@
             </div>
         </div>
 
-        <div
-            class="col-start-1 col-span-12 flex overflow-x-auto no-scrollbar p-2 mb-8"
-        >
-            <enhanced:img
-                src={rexanEvolution}
-                sizes="(max-width: 800px) 800px, (min-width: 1600px) 1600px, 100vw"
-                alt="the evolution of our art car, rexan"
-                class="w-full min-w-200 max-w-400 mx-auto"
+        <div class="col-start-1 col-span-12 mb-8">
+            <img
+                src={rexanLogo}
+                alt="Rexan"
+                width="4536"
+                height="864"
+                class="mx-auto mt-12 md:mt-20 mb-6 md:mb-10 w-44 md:w-64 h-auto"
                 loading="lazy"
             />
+            <EvolutionCarousel mode="grid" />
+            <p class="mt-6 px-6 text-center font-garamond text-xl">
+                <a
+                    href="/rexan-sound-system"
+                    class="text-orange-800 underline underline-offset-4 hover:text-orange-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+                    >Read about Rexan's Evolution</a
+                >
+            </p>
         </div>
-        <p
-            class="col-span-12 -mt-6 mb-8 text-center text-xs text-orange-800 min-[816px]:hidden"
-        >
-            swipe for all the years →
-        </p>
 
         <div
             class="col-start-2 col-span-10 md:col-start-2 md:col-span-10 mt-8 md:mt-16 mb-8 text-center"

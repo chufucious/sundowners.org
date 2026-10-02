@@ -80,13 +80,30 @@
         and community involvement.
       </p>
       <p>We would love to hear from you.</p>
-      <p>
+      <p class="flex flex-wrap items-center justify-center gap-4">
         <a
           href="mailto:sundownersbrc@gmail.com"
-          class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Email Sundowners camp"
-          >Email Us</a
         >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 6 9 7 9-7" />
+          </svg>
+          Email
+        </a>
+        <a
+          href="https://www.instagram.com/sundownerssafari/"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          aria-label="Follow Sundowners on Instagram"
+        >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Instagram
+        </a>
       </p>
     </div>
   </footer>
