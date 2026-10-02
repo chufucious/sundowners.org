@@ -1,12 +1,9 @@
 <script>
   import "../app.css";
   import { page } from "$app/state";
-  import Agentation from "$lib/components/Agentation.svelte";
-  import FlameMark from "$lib/components/FlameMark.svelte";
-  import sundownerswalking from "$lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&format=webp&as=srcset";
-  import fabricSunrise from "$lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
-  import logoLion from "$lib/assets/logo/lion.svg";
-  import logoAndType2025 from "$lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&as=srcset";
+  import SiteHeader from "#lib/components/SiteHeader.svelte";
+  import Agentation from "#lib/components/Agentation.svelte";
+  import logoLion from "#lib/assets/logo/lion.svg";
 
   let { children } = $props();
 
@@ -55,60 +52,7 @@
 </a>
 
 <main class="grid grid-cols-12 gap-4 font-mono pb-32">
-  <header
-    class={[
-      "col-span-12 h-72 relative overflow-hidden",
-      !page.data.smallHeader && "md:h-144",
-    ]}
-  >
-    <a
-      href="/"
-      class="fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center mix-blend-color-dodge"
-    >
-      <span class="relative w-75 md:w-150">
-        <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
-        <img
-          class="w-full [clip-path:inset(0_0_0_23%)]"
-          srcset={logoAndType2025}
-          width="2182"
-          height="312"
-          sizes="(max-width: 768px) 300px, 600px"
-          alt="sundowners logo"
-        />
-        <!-- Placed over the mark's spot in the logo, with headroom above for
-             the flames (see sundowners-mark-2025-flame.png's padding). -->
-        <FlameMark
-          class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
-        />
-      </span></a
-    >
-    <!-- Embers in their own layer on top, outside the color-dodge blend, so
-         their orange/red survives. Mirrors the logo's position and size. -->
-    <div
-      class="pointer-events-none fixed left-0 right-0 top-12 md:top-16 z-20 flex justify-center"
-    >
-      <span class="relative w-75 md:w-150 aspect-2182/312">
-        <FlameMark
-          embers
-          class="absolute -left-[2.108%] -top-[35.256%] w-[25.252%] h-[138.462%]"
-        />
-      </span>
-    </div>
-    <img
-      srcset={sundownerswalking}
-      width="2844"
-      height="1506"
-      sizes="100vw"
-      alt="Sundowners walking in Black Rock City"
-      class="absolute inset-0 w-full h-full object-cover"
-      fetchpriority="high"
-    />
-
-    <div
-      class="h-1 md:h-2 w-full absolute bottom-0"
-      style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
-    ></div>
-  </header>
+  <SiteHeader hero={page.data.headerImage} smallHeader={page.data.smallHeader} />
   <div id="main-content" class="contents">
     {@render children()}
   </div>
@@ -117,18 +61,18 @@
       src={logoLion}
       width="79"
       height="71"
-      class="mx-auto mb-4 mt-section w-24"
+      class="mx-auto mb-8 md:mb-12 mt-section w-24"
       alt="sundowners lion logo"
       loading="lazy"
     />
-    <h2
+    <p
       class="px-8 md:px-0 max-w-prose mx-auto text-xl md:text-2xl font-garamond text-orange-950 mb-4 text-center"
     >
       Collaborate with us if you would like to participate as a musician, DJ,
       dancer, artist or in any creative capacity.
-    </h2>
+    </p>
     <div
-      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80 space-y-[1lh]"
+      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-900 space-y-[1lh]"
     >
       <p>
         At Black Rock City and year-round, our goal is to spread the Sundowners'
@@ -136,13 +80,40 @@
         and community involvement.
       </p>
       <p>We would love to hear from you.</p>
-      <p>
+      <p class="flex flex-wrap items-center justify-center gap-4">
         <a
           href="mailto:sundownersbrc@gmail.com"
-          class="inline-block bg-orange-500 hover:bg-orange-700 text-white px-4 py-2"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Email Sundowners camp"
-          >Email Us</a
         >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3 6 9 7 9-7" />
+          </svg>
+          Email
+        </a>
+        <a
+          href="https://www.instagram.com/sundownerssafari/"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          aria-label="Follow Sundowners on Instagram"
+        >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Instagram
+        </a>
+        <a
+          href="https://www.facebook.com/sundownersbrc"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          aria-label="Follow Sundowners on Facebook"
+        >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M14 21v-8h3l.5-4H14V7c0-1 .5-2 2-2h2V1.5a23 23 0 0 0-3-.2C12 1.3 10 3.2 10 6.6V9H7v4h3v8" />
+          </svg>
+          Facebook
+        </a>
       </p>
     </div>
   </footer>

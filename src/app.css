@@ -1,8 +1,23 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/roboto-mono-latin.woff2") format("woff2");
+}
+
 @theme {
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
   --font-garamond: "EB Garamond", serif;
+  /* Gold rules and lettering on the wax-print labels (the Rexan carousel). */
+  --color-gold: #b8913c;
+  --color-gold-dark: #8a6a24;
+  /* One web font for serif text, so it's the same in every browser: the
+     default stack starts with ui-serif, which only Safari resolves (to New York). */
+  --font-serif: "EB Garamond", ui-serif, Georgia, serif;
   /* Vertical rhythm between homepage sections: mt-section, pt-section, mb-section. */
   --spacing-section: 5rem;
 }
@@ -11,6 +26,17 @@
   :root {
     --spacing-section: 10rem;
   }
+}
+
+/* <enhanced:img> renders a <picture>; let its <img> lay out as if it were the
+   direct child, so classes on the image keep working inside flex and grid. */
+picture {
+  display: contents;
+}
+
+/* Small mono labels over sections, figures and panels ("ON THIS PAGE"). */
+@utility eyebrow {
+  @apply font-mono text-xs uppercase tracking-widest text-orange-800;
 }
 
 /* Wax-fabric border behind framed photos; set the image with style:background-image. */

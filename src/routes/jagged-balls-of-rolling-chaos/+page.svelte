@@ -1,35 +1,37 @@
 <script>
-  import jaggedBalls from "$lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&format=webp&as=srcset";
+  import jaggedBalls from "#lib/assets/jagged-balls-of-rolling-chaos.png?w=400;800;1200&enhanced";
+  import ArticleText from "#lib/components/ArticleText.svelte";
+  import { articleLayout } from "#lib/article-styles.js";
 
   // Title / OG tags come from this route's load() and are rendered
   // once by +layout.svelte — see the meta defaults there.
 </script>
 
-<article class="col-span-10 col-start-2 font-serif text-orange-950 pt-8">
-  <header class="grid grid-cols-12 gap-4">
+<article class="col-span-12 pt-8 {articleLayout}">
+  <header class="mx-auto w-5/6 grid grid-cols-12 gap-4">
     <div
-      class="col-span-full md:col-span-6 prose prose-headings:text-orange-950 mb-8"
+      class="col-span-full md:col-span-6 prose max-w-none prose-headings:text-orange-950 mb-8"
     >
       <h1
         class="font-light font-sans uppercase text-4xl md:text-8xl tracking-tight mb-8"
       >
         Jagged Balls of Rolling Chaos
       </h1>
-      <h2 class="font-extralight font-garamond mt-0 text-xl md:text-4xl">
+      <p class="font-extralight font-garamond text-orange-950 mt-0 mb-[1em] text-xl md:text-4xl">
         No cheap easy ups ever - in a windstorm or dust devil they can crumple
         up and turn into <span class="italic"
           >jagged balls of rolling chaos.</span
         >
-      </h2>
-      <h4 class="font-light font-sans text-sm">
+      </p>
+      <p class="font-light font-sans text-orange-950 text-sm mt-[1.5em] mb-[0.5em]">
         Saintly words from <strong>Poca</strong> of the Sundowners.
-      </h4>
+      </p>
     </div>
 
     <div class="col-span-full md:col-span-6">
       <figure>
-        <img
-          srcset={jaggedBalls}
+        <enhanced:img
+          src={jaggedBalls}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           alt="Jagged balls of rolling chaos"
           class="w-full"
@@ -38,9 +40,7 @@
       </figure>
     </div>
   </header>
-  <div
-    class="prose prose-headings:font-light mx-auto prose-li:text-orange-950 prose-headings:text-orange-950 [--tw-prose-bullets:var(--color-amber-600)]"
-  >
+  <ArticleText>
     <section id="bikes">
       <h2>Bikes</h2>
       <ul class="list-disc">
@@ -261,5 +261,5 @@
         >Back to home</a
       >
     </p>
-  </div>
+  </ArticleText>
 </article>

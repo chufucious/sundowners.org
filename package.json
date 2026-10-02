@@ -2,26 +2,39 @@
 	"name": "sundowners-website",
 	"version": "0.0.1",
 	"private": true,
+	"engines": {
+		"node": ">=22.17"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test:e2e": "playwright test",
+		"test:links": "EXTERNAL=1 playwright test --project=desktop-chromium"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-netlify": "^6.0.4",
-		"@sveltejs/kit": "^2.70.3",
+		"@playwright/test": "^1.63.0",
+		"@sveltejs/adapter-netlify": "^7.0.0",
+		"@sveltejs/enhanced-img": "^0.11.0",
+		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"agentation": "^3.1.2",
 		"react": "^19.3.0",
 		"react-dom": "^19.3.0",
 		"svelte": "^5.57.1",
+		"svelte-check": "^4.7.6",
 		"tailwindcss": "^4.3.3",
+		"typescript": "^6.0.3",
 		"vite": "^8.3.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"@tailwindcss/typography": "^0.5.20",
-		"vite-imagetools": "^12.0.1"
+		"@tailwindcss/typography": "^0.5.20"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
 	}
 }

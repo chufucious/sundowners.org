@@ -1,0 +1,10 @@
+{
+  "extends": "$app/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "types": ["$app/types", "vite/client", "@sveltejs/enhanced-img"]
+  },
+  "include": ["src", "e2e", "*.js"],
+  "exclude": ["node_modules", "build", ".netlify"]
+}
