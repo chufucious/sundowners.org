@@ -110,7 +110,14 @@
   </button>
 {/snippet}
 
-<div role="region" aria-roledescription={isCarousel ? "carousel" : undefined} aria-label="Rexan, year by year">
+<!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users need to focus the horizontal scroll region.) -->
+<div
+  role="region"
+  aria-roledescription={isCarousel ? "carousel" : undefined}
+  aria-label="Rexan, year by year"
+  tabindex={isCarousel ? undefined : 0}
+  class={isCarousel ? undefined : "overflow-x-auto no-scrollbar focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"}
+>
   <!-- The first card lines up with the 65ch reading column:
        --edge plus the 1rem gap equals the text edge, with 1.5rem phone gutters. The edges
        are ::before/::after spacers, not padding, because older Safari drops
@@ -121,7 +128,7 @@
     style={isCarousel ? "--edge: max(0.5rem, calc((100% - var(--reading-width, 65ch)) / 2 - 1rem))" : undefined}
     class={isCarousel
       ? "flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
-      : "mx-auto max-w-400 px-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-x-4 gap-y-6 pb-2"}
+      : "mx-auto min-w-200 max-w-400 px-6 grid grid-cols-7 gap-x-4 pb-2"}
   >
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
          fabric itself with a cream label on it, like the label on a length
@@ -136,7 +143,7 @@
         <div class={isCarousel ? "wash px-5 pt-5" : undefined}>
           <enhanced:img
             src={image}
-            sizes={isCarousel ? "(min-width: 768px) 200px, 168px" : "(min-width: 1024px) 210px, (min-width: 640px) 240px, calc((100vw - 64px) / 2)"}
+            sizes={isCarousel ? "(min-width: 768px) 200px, 168px" : "(min-width: 1600px) 208px, (min-width: 816px) calc((100vw - 160px) / 7), 94px"}
             alt="Line drawing of Rexan from the front in {year}"
             loading="lazy"
             class="w-full h-auto"

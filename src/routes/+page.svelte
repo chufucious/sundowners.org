@@ -356,10 +356,13 @@
                 alt="Rexan"
                 width="4536"
                 height="864"
-                class="mx-auto mt-12 md:mt-20 mb-6 md:mb-10 w-44 md:w-64 h-auto"
+                class="mx-auto mt-12 md:mt-20 mb-6 md:mb-0 w-44 md:w-64 h-auto"
                 loading="lazy"
             />
             <EvolutionCarousel mode="grid" />
+            <p class="mt-3 px-6 text-center font-mono text-xs text-orange-800 min-[816px]:hidden">
+                Swipe for all the years →
+            </p>
             <p class="mt-6 px-6 text-center font-garamond text-xl">
                 <a
                     href="/rexan-sound-system"
