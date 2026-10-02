@@ -11,7 +11,7 @@
   <div class="mt-auto">
     {@render children()}
     {#if sides}
-      <div class="flex justify-between text-xs text-orange-950/70 max-w-lg mx-auto -mt-1">
+      <div class="flex justify-between text-xs text-orange-800 max-w-lg mx-auto -mt-1">
         <span>← Driver side</span><span>Passenger side →</span>
       </div>
     {/if}

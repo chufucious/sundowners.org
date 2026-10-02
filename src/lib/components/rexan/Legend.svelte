@@ -5,7 +5,7 @@
   let { keys, lines } = $props();
 </script>
 
-<div class="grid gap-x-12 sm:grid-cols-2 text-xs md:text-sm leading-relaxed text-orange-950/80">
+<div class="grid gap-x-12 sm:grid-cols-2 text-xs md:text-sm leading-relaxed text-orange-900">
   <ul class="space-y-3">{@render keys()}</ul>
   <ul class="space-y-3 mt-3 sm:mt-0">{@render lines()}</ul>
 </div>

@@ -11,5 +11,5 @@
 
 <figure class="md:min-w-0 {extraClass}" style:flex={grow ? `${grow} 1 0` : undefined}>
   <enhanced:img src={image} {sizes} {alt} loading="lazy" class="w-full h-auto" />
-  <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
+  <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-800">{caption}</figcaption>
 </figure>

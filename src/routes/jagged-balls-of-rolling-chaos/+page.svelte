@@ -10,7 +10,7 @@
 <article class="col-span-12 pt-8 {articleLayout}">
   <header class="mx-auto w-5/6 grid grid-cols-12 gap-4">
     <div
-      class="col-span-full md:col-span-6 prose prose-headings:text-orange-950 mb-8"
+      class="col-span-full md:col-span-6 prose max-w-none prose-headings:text-orange-950 mb-8"
     >
       <h1
         class="font-light font-sans uppercase text-4xl md:text-8xl tracking-tight mb-8"

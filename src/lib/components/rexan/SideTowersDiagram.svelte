@@ -107,7 +107,7 @@
   </Legend>
 
   <div class="mx-auto max-w-(--reading-width) font-serif">
-    <p class="font-mono text-xs text-orange-950/70">
+    <p class="font-mono text-xs text-orange-800">
       Heights and aims are estimates; cones are illustrative. LA112: 47 lb, 15.4 in tall, 90° × 15°, 136 dB peak. LS218: 184 lb, 141 dB peak.
     </p>
   </div>
