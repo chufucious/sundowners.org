@@ -1,5 +1,5 @@
 <script>
-  import activeFabric from "$lib/assets/wax-fabric/leaves.jpeg?w=200&format=webp";
+  import activeFabric from "#lib/assets/wax-fabric/leaves.jpeg?w=200&format=webp";
 
   // "On this page" links with the section being read marked on the rule.
   // `sections` are { id, title } for headings rendered with those ids.

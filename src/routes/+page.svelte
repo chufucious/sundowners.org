@@ -1,33 +1,33 @@
 <script>
-    import ArticleCard from "$lib/components/ArticleCard.svelte";
-    import { articles, build2026Photos, galleryPhotos } from "$lib/homepage.js";
+    import ArticleCard from "#lib/components/ArticleCard.svelte";
+    import { articles, build2026Photos, galleryPhotos } from "#lib/homepage.js";
     // Full-width images: 640/1280/1920
-    import katiesunset from "$lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
+    import katiesunset from "#lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
     // Line art: transparent PNG rendered from the 2026 evolution SVG at 3795px.
-    import rexanEvolution from "$lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&enhanced";
-    import lionAndLeyla from "$lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&enhanced";
-    import rexanGroup2023 from "$lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&enhanced";
+    import rexanEvolution from "#lib/assets/rexan-evolution-2026.png?w=800;1600;2400;3200&enhanced";
+    import lionAndLeyla from "#lib/assets/Photos/lion-and-leyla.jpg?w=640;1280;1920&enhanced";
+    import rexanGroup2023 from "#lib/assets/Photos/DSC01143-Edit.jpeg?w=640;1280;1920&enhanced";
 
     // Half-width / medium images: 400/800/1200
-    import group2022 from "$lib/assets/Photos/2022-group.jpg?w=400;800;1200&enhanced";
-    import zuraSpotter from "$lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&enhanced";
-    import tucoLauren from "$lib/assets/Photos/tucolauren.jpg?w=400;800;1200&enhanced";
+    import group2022 from "#lib/assets/Photos/2022-group.jpg?w=400;800;1200&enhanced";
+    import zuraSpotter from "#lib/assets/Photos/zura-spotter-seat.jpg?w=400;800;1200&enhanced";
+    import tucoLauren from "#lib/assets/Photos/tucolauren.jpg?w=400;800;1200&enhanced";
 
     // Small accent images: 300/600
-    import coogieSign from "$lib/assets/Photos/coogie-sign.jpg?w=300;600&enhanced";
-    import joshRexan from "$lib/assets/Photos/josh-on-rexan.jpg?w=300;600&enhanced";
+    import coogieSign from "#lib/assets/Photos/coogie-sign.jpg?w=300;600&enhanced";
+    import joshRexan from "#lib/assets/Photos/josh-on-rexan.jpg?w=300;600&enhanced";
 
     // Patterns: tiles for repeating backgrounds (higher res for crisp tiling)
-    import patternDazzle from "$lib/assets/dazzle.jpeg?w=800&format=webp";
-    import patternChickens from "$lib/assets/wax-fabric/chickens.webp?w=800&format=webp";
-    import patternFans from "$lib/assets/wax-fabric/fans.jpg?w=800&format=webp";
-    import patternSunflower from "$lib/assets/wax-fabric/sunflower.webp?w=800&format=webp";
-    import patternSpirograph from "$lib/assets/wax-fabric/spirograph.png?w=800&format=webp";
-    import patternHandshake from "$lib/assets/wax-fabric/handshake.jpg?w=800&format=webp";
-    import patternLeaves from "$lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
-    import patternLeopard from "$lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
+    import patternDazzle from "#lib/assets/dazzle.jpeg?w=800&format=webp";
+    import patternChickens from "#lib/assets/wax-fabric/chickens.webp?w=800&format=webp";
+    import patternFans from "#lib/assets/wax-fabric/fans.jpg?w=800&format=webp";
+    import patternSunflower from "#lib/assets/wax-fabric/sunflower.webp?w=800&format=webp";
+    import patternSpirograph from "#lib/assets/wax-fabric/spirograph.png?w=800&format=webp";
+    import patternHandshake from "#lib/assets/wax-fabric/handshake.jpg?w=800&format=webp";
+    import patternLeaves from "#lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
+    import patternLeopard from "#lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
 
-    import { currentYear, currentAddress, expeditions } from "$lib/expeditions.js";
+    import { currentYear, currentAddress, expeditions } from "#lib/expeditions.js";
 
     let gallery;
     let galleryAtStart = $state(true);

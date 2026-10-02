@@ -1,24 +1,24 @@
 <script>
   // One card per year Rexan went out. Cropped from rexan-evolution-2026.png
   // so each year can be read at phone width instead of as one tiny strip.
-  import evolution2017 from "$lib/assets/rexan-sound/evolution-2017.png?w=280;542&enhanced";
-  import evolution2018 from "$lib/assets/rexan-sound/evolution-2018.png?w=280;542&enhanced";
-  import evolution2019 from "$lib/assets/rexan-sound/evolution-2019.png?w=280;542&enhanced";
-  import evolution2022 from "$lib/assets/rexan-sound/evolution-2022.png?w=280;542&enhanced";
-  import evolution2023 from "$lib/assets/rexan-sound/evolution-2023.png?w=280;542&enhanced";
-  import evolution2025 from "$lib/assets/rexan-sound/evolution-2025.png?w=280;542&enhanced";
-  import evolution2026 from "$lib/assets/rexan-sound/evolution-2026.png?w=280;542&enhanced";
+  import evolution2017 from "#lib/assets/rexan-sound/evolution-2017.png?w=280;542&enhanced";
+  import evolution2018 from "#lib/assets/rexan-sound/evolution-2018.png?w=280;542&enhanced";
+  import evolution2019 from "#lib/assets/rexan-sound/evolution-2019.png?w=280;542&enhanced";
+  import evolution2022 from "#lib/assets/rexan-sound/evolution-2022.png?w=280;542&enhanced";
+  import evolution2023 from "#lib/assets/rexan-sound/evolution-2023.png?w=280;542&enhanced";
+  import evolution2025 from "#lib/assets/rexan-sound/evolution-2025.png?w=280;542&enhanced";
+  import evolution2026 from "#lib/assets/rexan-sound/evolution-2026.png?w=280;542&enhanced";
 
-  import { themeOf } from "$lib/expeditions.js";
+  import { themeOf } from "#lib/expeditions.js";
 
   // A wax-fabric frame per year, like the homepage's framed photos.
-  import sunflower from "$lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
-  import fans from "$lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
-  import spirograph from "$lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
-  import mic from "$lib/assets/wax-fabric/mic.jpg?w=600&format=webp";
-  import eyes from "$lib/assets/wax-fabric/eyes.webp?w=600&format=webp";
-  import feathers from "$lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
-  import redstrokes from "$lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
+  import sunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
+  import fans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
+  import spirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
+  import mic from "#lib/assets/wax-fabric/mic.jpg?w=600&format=webp";
+  import eyes from "#lib/assets/wax-fabric/eyes.webp?w=600&format=webp";
+  import feathers from "#lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
+  import redstrokes from "#lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
 
   // Notes are condensed from the post's own account of each year. `tint` is
   // the fabric's key colour: washed pale behind the drawing, a 1px edge that

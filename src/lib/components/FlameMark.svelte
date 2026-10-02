@@ -4,7 +4,7 @@
   // with a few embers rising off the tips.
   // The transparent padding in the texture gives the warped edges room.
   // Falls back to the static image without WebGL.
-  import mark from "$lib/assets/logo/sundowners-mark-2025-flame-purple.png";
+  import mark from "#lib/assets/logo/sundowners-mark-2025-flame-purple.png";
 
   let { class: className = "", active = true } = $props();
 
