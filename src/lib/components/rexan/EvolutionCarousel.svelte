@@ -23,7 +23,7 @@
   let { mode = "carousel" } = $props();
   const isCarousel = $derived(mode === "carousel");
 
-  // Equipment and notes come from the post's account of each year. Counts and
+  // Equipment comes from the post's account of each year. Counts and
   // models are omitted where the historical account does not specify them. `tint` is
   // the fabric's key colour: washed pale behind the drawing, a 1px edge that
   // keeps the card's shape where a fabric's light strokes meet the page, and
@@ -31,17 +31,16 @@
   // Chassis centers use the same tire-baseline measurement on each 542px crop.
   // Grid labels follow these centers without cropping or moving the artwork.
   const years = [
-    { year: 2017, chassisCenter: 268.5, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "Rear-facing for riders" },
-    { year: 2018, chassisCenter: 279.0, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "No DJ setup" },
-    { year: 2019, chassisCenter: 264.5, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"], note: "First DJ setup" },
-    { year: 2022, chassisCenter: 265.75, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"], note: "2 tops · 2 DJ monitors" },
+    { year: 2017, chassisCenter: 268.5, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"] },
+    { year: 2018, chassisCenter: 279.0, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"] },
+    { year: 2019, chassisCenter: 264.5, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"] },
+    { year: 2022, chassisCenter: 265.75, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"] },
     { year: 2023, chassisCenter: 265.0, image: evolution2023, fabric: eyes, tint: "#7e1132", equipment: ["4 × QSC K12.2", "QSC K10.2 monitors", "2 × QSC KS118"] },
-    { year: 2025, chassisCenter: 265.0, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"], note: "Temporary replacements" },
-    { year: 2026, chassisCenter: 280.0, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"], note: "All four tops restored" },
+    { year: 2025, chassisCenter: 265.0, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"] },
+    { year: 2026, chassisCenter: 280.0, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"] },
   ];
 
   let track;
-  let active = $state(0);
   let atStart = $state(true);
   let atEnd = $state(false);
 
@@ -52,7 +51,7 @@
 
   // Always scroll to an exact card position: Safari doesn't re-snap after a
   // smooth programmatic scroll, so it would stop wherever the scroll ended.
-  // Later cards can't reach the text edge on wide screens; stop at the end.
+  // The trailing spacer lets the last card reach the same reading edge.
   function scrollToCard(i) {
     const end = track.scrollWidth - track.clientWidth;
     track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: "smooth" });
@@ -67,20 +66,14 @@
     return nearest;
   }
 
-  // Moves by as many whole cards as fit right of the text edge: one on phones.
-  function scrollByPage(direction) {
-    const textEdge = track.children[0].getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
-    const perPage = Math.max(1, Math.floor((track.clientWidth - textEdge) / snapLeft(1)));
-    scrollToCard(Math.min(years.length - 1, Math.max(0, leftmostCard() + direction * perPage)));
+  function scrollByCard(direction) {
+    scrollToCard(Math.min(years.length - 1, Math.max(0, leftmostCard() + direction)));
   }
 
-  // Wide screens can't scroll the last cards to the left edge, so at the
-  // end of the track the last dot is the active one.
   function updatePosition() {
     if (!isCarousel || !track) return;
     atStart = track.scrollLeft <= 1;
     atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
-    active = atEnd ? years.length - 1 : leftmostCard();
   }
 
   $effect(updatePosition);
@@ -92,7 +85,7 @@
 {#snippet pageButton(direction, disabled)}
   <button
     type="button"
-    onclick={() => scrollByPage(direction)}
+    onclick={() => scrollByCard(direction)}
     {disabled}
     aria-label={direction < 0 ? "Previous years" : "Next years"}
     class="size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
@@ -110,7 +103,8 @@
   </button>
 {/snippet}
 
-<!-- svelte-ignore a11y_no_noninteractive_tabindex (Keyboard users need to focus the horizontal scroll region.) -->
+<!-- Keyboard users need to focus the horizontal scroll region. -->
+<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
 <div
   role="region"
   aria-roledescription={isCarousel ? "carousel" : undefined}
@@ -118,24 +112,22 @@
   tabindex={isCarousel ? undefined : 0}
   class={isCarousel ? undefined : "overflow-x-auto no-scrollbar focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"}
 >
-  <!-- The first card lines up with the 65ch reading column:
-       --edge plus the 1rem gap equals the text edge, with 1.5rem phone gutters. The edges
-       are ::before/::after spacers, not padding, because older Safari drops
-       end padding in a scrolling flex row and the last card couldn't clear. -->
+  <!-- Align the first and last cards with the reading column while scrolling
+       across the full page. Real end spacers also work in Safari. -->
   <ul
     bind:this={track}
     onscroll={isCarousel ? updatePosition : undefined}
     style={isCarousel ? "--edge: max(0.5rem, calc((100% - var(--reading-width, 65ch)) / 2 - 1rem))" : undefined}
     class={isCarousel
-      ? "flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 before:w-(--edge) before:shrink-0 after:w-(--edge) after:shrink-0"
+      ? "flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-pl-[calc(var(--edge)+1rem)] pb-2 [--card-width:14rem] md:[--card-width:16rem] before:w-(--edge) before:shrink-0 after:w-[max(0px,calc(100%-var(--edge)-2rem-var(--card-width)))] after:shrink-0"
       : "mx-auto min-w-200 max-w-400 px-6 grid grid-cols-7 gap-x-4 pb-2"}
   >
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
          fabric itself with a cream label on it, like the label on a length
          of wax print (a gold double rule, that year's Burning Man theme). -->
-    {#each years as { year, image, fabric, tint, equipment, note, chassisCenter }, i (year)}
+    {#each years as { year, image, fabric, tint, equipment, chassisCenter }, i (year)}
       <li
-        class={isCarousel ? "pattern-frame ring-1 ring-inset ring-(--tint) p-2 flex flex-col snap-start shrink-0 w-56 md:w-64" : "min-w-0 text-center"}
+        class={isCarousel ? "pattern-frame ring-1 ring-inset ring-(--tint) p-2 flex flex-col snap-start shrink-0 w-(--card-width)" : "min-w-0 text-center"}
         style:background-image={isCarousel ? `url(${fabric})` : undefined}
         style:--tint={isCarousel ? tint : undefined}
         aria-label="{i + 1} of {years.length}: {year}"
@@ -164,9 +156,6 @@
                   <p>{line}</p>
                 {/each}
               </div>
-              {#if note}
-                <p class="mt-2 font-serif text-xs text-orange-800 leading-relaxed">{note}</p>
-              {/if}
             </div>
           </div>
         </div>
@@ -182,20 +171,6 @@
   {#if isCarousel}
   <div class="px-6 mt-4">
     <div class="mx-auto max-w-(--reading-width,65ch) flex items-center justify-end gap-3">
-      <div class="flex items-center gap-2 rounded-full bg-orange-950/10 px-3 h-9">
-        {#each years as { year }, i (year)}
-          <button
-            type="button"
-            onclick={() => scrollToCard(i)}
-            aria-label="Show {year}"
-            aria-current={active === i || undefined}
-            class={[
-              "h-2 rounded-full transition-all cursor-pointer",
-              active === i ? "w-6 bg-orange-950/70" : "w-2 bg-orange-950/30 hover:bg-orange-950/50",
-            ]}
-          ></button>
-        {/each}
-      </div>
       {@render pageButton(-1, atStart)}
       {@render pageButton(1, atEnd)}
     </div>

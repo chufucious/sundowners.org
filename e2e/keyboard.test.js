@@ -16,6 +16,8 @@ test("keyboard users can skip the header, open an article, and operate its carou
   // https://support.apple.com/guide/safari/cpsh003/mac
   const tabKey = browserName === "webkit" && process.platform === "darwin" ? "Alt+Tab" : "Tab";
   await page.goto("/");
+  // Finish loading client modules before sending native keyboard input.
+  await page.waitForLoadState("networkidle");
   const skip = page.getByRole("link", { name: "Skip to main content" });
   await page.keyboard.press(tabKey);
   await expect(skip).toBeFocused();
@@ -25,32 +27,27 @@ test("keyboard users can skip the header, open an article, and operate its carou
   await page.keyboard.press(tabKey);
   await expect(page.getByRole("link", { name: "safari-theme art car", exact: true })).toBeFocused();
   await page.keyboard.press(tabKey);
-  await expect(page.getByRole("link", { name: "Follow Sundowners on Instagram" })).toBeFocused();
+  await expect(page.getByRole("link", { name: "Follow Sundowners on Instagram" }).first()).toBeFocused();
 
   const article = page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ });
   await tabTo(page, article, tabKey);
   await page.keyboard.press("Enter");
   await expect(page).toHaveURL("/rexan-sound-system");
-
-  const firstYear = page.getByRole("button", { name: "Show 2017", exact: true });
-  await tabTo(page, firstYear, tabKey);
-  await page.keyboard.press(tabKey);
-  const secondYear = page.getByRole("button", { name: "Show 2018", exact: true });
-  await expect(secondYear).toBeFocused();
-  await page.keyboard.press("Enter");
-  await expect(secondYear).toHaveAttribute("aria-current", "true");
-
-  await page.keyboard.press(tabKey);
-  const thirdYear = page.getByRole("button", { name: "Show 2019", exact: true });
-  await expect(thirdYear).toBeFocused();
-  await page.keyboard.press("Space");
-  await expect(thirdYear).toHaveAttribute("aria-current", "true");
+  await page.waitForLoadState("networkidle");
 
   const next = page.getByRole("button", { name: "Next years", exact: true });
   await tabTo(page, next, tabKey);
   const track = page.locator('[aria-roledescription="carousel"] ul');
   const before = await track.evaluate((element) => element.scrollLeft);
+  await expect(next).toBeFocused();
   await page.keyboard.press("Enter");
   await expect.poll(() => track.evaluate((element) => element.scrollLeft)).toBeGreaterThan(before);
   await expect(next).toBeFocused();
+
+  await page.keyboard.press(tabKey === "Alt+Tab" ? "Alt+Shift+Tab" : "Shift+Tab");
+  const previous = page.getByRole("button", { name: "Previous years", exact: true });
+  await expect(previous).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect.poll(() => track.evaluate((element) => element.scrollLeft)).toBe(0);
+  await expect(previous).toBeDisabled();
 });

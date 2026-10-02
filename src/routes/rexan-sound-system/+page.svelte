@@ -19,6 +19,7 @@
   import panelTestLoop from "#lib/assets/rexan-sound/panel-test-loop.mp4";
   import panelTestLoopPoster from "#lib/assets/rexan-sound/panel-test-loop-poster.jpg";
   import EvolutionCarousel from "#lib/components/rexan/EvolutionCarousel.svelte";
+  import rexanLogo from "#lib/assets/logo/rexan-sign.svg";
   import CurrentRigDiagram from "#lib/components/rexan/CurrentRigDiagram.svelte";
   import SideTowersDiagram from "#lib/components/rexan/SideTowersDiagram.svelte";
   import TableOfContents from "#lib/components/TableOfContents.svelte";
@@ -57,7 +58,7 @@
 {/snippet}
 
 <!-- The hero photo is the site header on this page (headerImage in +page.server.ts). -->
-<article class="col-span-12 grid grid-cols-1 lg:grid-cols-[minmax(12rem,1fr)_minmax(0,80rem)_minmax(12rem,1fr)] {articleLayout}">
+<article class="@container/article col-span-12 grid grid-cols-1 lg:grid-cols-[minmax(12rem,1fr)_minmax(0,80rem)_minmax(12rem,1fr)] {articleLayout}">
   <!-- Editorial title block: centred, the title set huge with tight leading. -->
   <header class="col-span-full w-full mx-auto max-w-7xl px-6 mt-12 md:mt-20 mb-16 md:mb-24 text-center">
     <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
@@ -136,12 +137,22 @@
     </ArticleText>
 
     <section aria-label="The evolution of Rexan" class="mt-12">
-      <div class="px-6 mb-4">
+      <div class="px-6">
         <div class="mx-auto max-w-(--reading-width)">
-          <p class="eyebrow">The evolution of Rexan</p>
+          <img
+            src={rexanLogo}
+            alt="Rexan"
+            width="4536"
+            height="864"
+            loading="lazy"
+            class="mb-6 w-44 md:w-64 h-auto"
+          />
+          <!-- Let cards pass across the rail while the first card starts at the reading edge. -->
+          <div class="relative left-[calc((100%-100cqw)/2)] w-[100cqw]">
+            <EvolutionCarousel />
+          </div>
         </div>
       </div>
-      <EvolutionCarousel />
     </section>
 
     <ArticleText class="mt-12">
