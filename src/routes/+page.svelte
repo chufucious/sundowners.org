@@ -94,7 +94,7 @@
             class="col-span-full md:col-span-3 md:pl-6 lg:pl-16"
         >
             <aside
-                class="bg-white rounded border border-black/10 divide-y divide-black/10 h-fit mt-8 md:mt-0"
+                class="bg-white rounded border border-orange-200 divide-y divide-orange-200 h-fit mt-8 md:mt-0"
             >
                 <div class="px-4 py-3">
                     <p class="eyebrow mb-1.5">
