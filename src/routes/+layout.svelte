@@ -104,6 +104,16 @@
           </svg>
           Instagram
         </a>
+        <a
+          href="https://www.facebook.com/sundownersbrc"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          aria-label="Follow Sundowners on Facebook"
+        >
+          <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M14 21v-8h3l.5-4H14V7c0-1 .5-2 2-2h2V1.5a23 23 0 0 0-3-.2C12 1.3 10 3.2 10 6.6V9H7v4h3v8" />
+          </svg>
+          Facebook
+        </a>
       </p>
     </div>
   </footer>

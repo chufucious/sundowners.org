@@ -42,9 +42,9 @@
     bind:this={headerLogo}
     inert={logoSwap >= HANDOVER}
     style:opacity={headerLogoOpacity}
-    class="absolute left-0 right-0 top-8 md:top-10 z-20 flex justify-center mix-blend-color-dodge"
+    class="absolute left-1/2 -translate-x-1/2 top-8 md:top-10 z-20 block w-75 md:w-150 mix-blend-color-dodge"
   >
-    <span class="relative w-75 md:w-150">
+    <span class="relative block">
       <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
       <enhanced:img
         class="w-full [clip-path:inset(0_0_0_23%)]"
