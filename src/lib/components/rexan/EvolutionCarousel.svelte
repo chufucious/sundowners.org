@@ -23,21 +23,20 @@
   let { mode = "carousel" } = $props();
   const isCarousel = $derived(mode === "carousel");
 
-  // Equipment comes from the post's account of each year. Counts and
-  // models are omitted where the historical account does not specify them. `tint` is
+  // Each chapter follows the post's account of that year. `tint` is
   // the fabric's key colour: washed pale behind the drawing, a 1px edge that
   // keeps the card's shape where a fabric's light strokes meet the page, and
   // the label's shadow.
   // Chassis centers use the same tire-baseline measurement on each 542px crop.
   // Grid labels follow these centers without cropping or moving the artwork.
   const years = [
-    { year: 2017, chassisCenter: 268.5, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"] },
-    { year: 2018, chassisCenter: 279.0, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"] },
-    { year: 2019, chassisCenter: 264.5, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"] },
-    { year: 2022, chassisCenter: 265.75, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"] },
-    { year: 2023, chassisCenter: 265.0, image: evolution2023, fabric: eyes, tint: "#7e1132", equipment: ["4 × QSC K12.2", "QSC K10.2 monitors", "2 × QSC KS118"] },
-    { year: 2025, chassisCenter: 265.0, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"] },
-    { year: 2026, chassisCenter: 280.0, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"] },
+    { year: 2017, chassisCenter: 268.5, image: evolution2017, fabric: sunflower, tint: "#a07517", story: "A simple sound system gave our safari a soundtrack." },
+    { year: 2018, chassisCenter: 279.0, image: evolution2018, fabric: fans, tint: "#8c2425", story: "Our sound system brought wildlife calls and music to the riders." },
+    { year: 2019, chassisCenter: 264.5, image: evolution2019, fabric: spirograph, tint: "#1b5965", story: "Our first DJ setup turned the safari into a dance floor." },
+    { year: 2022, chassisCenter: 265.75, image: evolution2022, fabric: mic, tint: "#d9914b", story: "Switching to QSC brought dance-club sound to Rexan." },
+    { year: 2023, chassisCenter: 265.0, image: evolution2023, fabric: eyes, tint: "#7e1132", story: "More speakers and a second sub brought the full rig together." },
+    { year: 2025, chassisCenter: 265.0, image: evolution2025, fabric: feathers, tint: "#535939", story: "Repurposing the monitors helped us adapt Rexan's sound system." },
+    { year: 2026, chassisCenter: 280.0, image: evolution2026, fabric: redstrokes, tint: "#b23b39", story: "By 2026 all four K12.2s were working again, and that's the rig we run today." },
   ];
 
   let track;
@@ -125,7 +124,7 @@
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
          fabric itself with a cream label on it, like the label on a length
          of wax print (a gold double rule, that year's Burning Man theme). -->
-    {#each years as { year, image, fabric, tint, equipment, chassisCenter }, i (year)}
+    {#each years as { year, image, fabric, tint, story, chassisCenter }, i (year)}
       <li
         class={isCarousel ? "pattern-frame ring-1 ring-inset ring-(--tint) p-2 flex flex-col snap-start shrink-0 w-(--card-width)" : "min-w-0 text-center"}
         style:background-image={isCarousel ? `url(${fabric})` : undefined}
@@ -143,7 +142,7 @@
         </div>
         {#if isCarousel}
         <!-- The label stretches to fill the fabric below the drawing, so every
-             card's label is the height of the longest equipment list. -->
+             card's label is the height of the longest chapter. -->
         <div class="flex-1 flex justify-center pt-6 pb-7">
           <div class="label w-[82%] flex bg-orange-50 p-1">
             <div class="flex-1 border border-gold outline outline-gold/40 -outline-offset-4 px-3 pt-2.5 pb-3">
@@ -151,11 +150,7 @@
                 {themeOf(year)}
               </p>
               <p class="mt-1 font-garamond text-3xl text-orange-950">{year}</p>
-              <div class="mt-1 font-serif text-sm text-orange-950 leading-relaxed">
-                {#each equipment as line (line)}
-                  <p>{line}</p>
-                {/each}
-              </div>
+              <p class="mt-2 font-serif text-sm text-orange-950 leading-relaxed">{story}</p>
             </div>
           </div>
         </div>
