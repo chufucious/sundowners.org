@@ -38,7 +38,7 @@
             "relative -ml-px block py-1.5 pl-5 font-sans text-sm leading-snug transition-colors",
             current === id
               ? "text-cyan-800" // matches the blue leaves fabric
-              : "text-orange-950/70 hover:text-orange-950",
+              : "text-orange-800 hover:text-orange-950",
           ]}
         >
           {#if current === id}

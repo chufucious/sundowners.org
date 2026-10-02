@@ -63,10 +63,10 @@
     <h1 class="font-sans font-light uppercase tracking-tight leading-[0.9] text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-balance">
       The Rexan Sound System
     </h1>
-    <p class="mt-6 md:mt-8 text-xl md:text-3xl lg:text-4xl leading-snug text-balance text-orange-950/75">
+    <p class="mt-6 md:mt-8 text-xl md:text-3xl lg:text-4xl leading-snug text-balance text-orange-900">
       How we built a solar-powered QSC rig on a psychedelic safari car.
     </p>
-    <p class="mt-6 md:mt-8 font-mono text-sm text-orange-950/80">
+    <p class="mt-6 md:mt-8 font-mono text-sm text-orange-900">
       By <strong class="font-semibold text-orange-950">Joshuah Vincent</strong> &amp;
       <strong class="font-semibold text-orange-950">Greg Liburd</strong>
     </p>

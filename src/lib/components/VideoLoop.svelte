@@ -15,5 +15,5 @@
     preload="metadata"
     class="w-full h-auto"
   ></video>
-  <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-950/70">{caption}</figcaption>
+  <figcaption class="mt-3 font-mono text-xs leading-relaxed text-orange-800">{caption}</figcaption>
 </figure>

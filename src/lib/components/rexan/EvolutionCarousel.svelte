@@ -142,7 +142,7 @@
                 {themeOf(year)}
               </p>
               <p class="mt-1 font-garamond text-3xl text-orange-950">{year}</p>
-              <p class="mt-1 font-mono text-xs text-orange-950/70 leading-relaxed">{note}</p>
+              <p class="mt-1 font-mono text-xs text-orange-800 leading-relaxed">{note}</p>
             </div>
           </div>
         </div>

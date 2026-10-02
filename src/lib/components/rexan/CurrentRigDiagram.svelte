@@ -120,7 +120,7 @@
            fits; the scroller is only a fallback. The 1 m column is QSC's spec
            figure, ruled off from the projected ones. -->
       <div class="overflow-x-auto -mx-6 px-6">
-        <table class="w-full text-xs text-orange-950/80 tabular-nums">
+        <table class="w-full text-xs text-orange-900 tabular-nums">
           <caption class="eyebrow mb-2 text-left">
             Projected SPL per speaker class <span class="normal-case">(peak, dB)</span>
           </caption>
@@ -128,7 +128,7 @@
             <tr>
               <td></td>
               <td class="hidden sm:table-cell" colspan="2"></td>
-              <th scope="colgroup" colspan={distances.length} class="px-1.5 pt-2 font-normal text-right text-orange-950/70">
+              <th scope="colgroup" colspan={distances.length} class="px-1.5 pt-2 font-normal text-right text-orange-800">
                 At distance
               </th>
             </tr>
@@ -157,7 +157,7 @@
           </tbody>
         </table>
       </div>
-      <details class="mt-4 text-xs text-orange-950/70">
+      <details class="mt-4 text-xs text-orange-800">
         <summary class="cursor-pointer text-orange-950 underline hover:text-orange-500">How we estimated this</summary>
         <ul class="mt-2 list-disc pl-5 space-y-1">
           <li>Per-box peak SPL from QSC specs, free field, −6 dB per doubling of distance.</li>

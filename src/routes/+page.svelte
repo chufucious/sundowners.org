@@ -68,7 +68,7 @@
 
             </p>
             <div
-                class="text-sm text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                class="text-sm text-orange-900 leading-relaxed max-w-prose space-y-[1lh]"
             >
                 <p>Sundowners is centered on creating liminal spaces to celebrate
                 the multicultural art, music, dance, and hospitality that
@@ -245,7 +245,7 @@
                 interactivity, and vibe that is distinct from anything in Black
                 Rock.
             </p>
-            <p class="text-sm text-orange-950/80 leading-relaxed max-w-prose">
+            <p class="text-sm text-orange-900 leading-relaxed max-w-prose">
                 At every step, we strive to share the wonder and appreciation
                 for one of the most special places on the planet, much like
                 Burning Man itself.
@@ -270,7 +270,7 @@
             expression of diversity.
         </p>
         <p
-            class="col-start-2 col-span-10 md:col-start-3 md:col-span-4 text-sm mb-8 text-white/80 leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-3 md:col-span-4 text-sm mb-8 text-orange-50 leading-relaxed"
         >
             We are an African-diaspora inspired art collective named after
             'Sundowners' - a wonderful South African tradition of sharing
@@ -286,7 +286,7 @@
             />
         </div>
         <p
-            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-white/80 mt-8 mb-section leading-relaxed"
+            class="col-start-2 col-span-10 md:col-start-7 md:col-span-4 text-sm text-orange-50 mt-8 mb-section leading-relaxed"
         >
             We feel Burning Man, as the world's largest temporary city, is a
             fitting ecosystem to explore a unique ethnographic heritage that has
@@ -312,7 +312,7 @@
                     life-changing wildlife safari.
                 </p>
                 <div
-                    class="text-sm mb-8 text-orange-950/80 leading-relaxed max-w-prose space-y-[1lh]"
+                    class="text-sm mb-8 text-orange-900 leading-relaxed max-w-prose space-y-[1lh]"
                 >
                     <p>
                         On the Savannah, we would end each day with the country's
@@ -329,13 +329,13 @@
 
             <div class="md:w-96 md:shrink-0">
                 <table
-                    class="text-orange-950/80 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
+                    class="text-orange-900 text-xs border-separate border-spacing-4 bg-orange-950/5 w-full rounded"
                 >
                     <caption class="mb-4 text-orange-950">EXPEDITIONS</caption>
 
                     <tbody>
                         {#each expeditions as { year, theme, address, url, absent, cancelled } (year)}
-                            <tr class={{ "opacity-50": absent, "line-through": cancelled }}>
+                            <tr class={{ "text-orange-800": absent, "line-through": cancelled }}>
                                 <td>{year}</td>
                                 <td>
                                     <a href={url} class="underline hover:text-orange-500"
@@ -362,7 +362,7 @@
             />
         </div>
         <p
-            class="col-span-12 -mt-6 mb-8 text-center text-xs text-orange-950/50 min-[816px]:hidden"
+            class="col-span-12 -mt-6 mb-8 text-center text-xs text-orange-800 min-[816px]:hidden"
         >
             swipe for all the years →
         </p>
@@ -373,7 +373,7 @@
             <h2 class="text-xl md:text-2xl font-garamond text-orange-950 mb-1">
                 Rexan Build 2026
             </h2>
-            <p class="text-sm text-orange-950/80">Somewhere in Reno</p>
+            <p class="text-sm text-orange-900">Somewhere in Reno</p>
         </div>
 
         <div
@@ -397,7 +397,7 @@
 
 <section id="collaborate" class="col-span-12 mt-section">
     <div class="grid grid-cols-12 gap-4">
-        <div class="col-span-12 flex justify-between px-4 text-xs text-orange-950/80">
+        <div class="col-span-12 flex justify-between px-4 text-xs text-orange-900">
             <button
                 type="button"
                 onclick={() => scrollGallery(-1)}

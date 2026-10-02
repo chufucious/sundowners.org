@@ -72,7 +72,7 @@
       dancer, artist or in any creative capacity.
     </p>
     <div
-      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-950/80 space-y-[1lh]"
+      class="max-w-prose mx-auto px-8 md:px-0 text-sm text-center leading-relaxed text-orange-900 space-y-[1lh]"
     >
       <p>
         At Black Rock City and year-round, our goal is to spread the Sundowners'
