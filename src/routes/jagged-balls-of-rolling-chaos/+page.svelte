@@ -13,7 +13,7 @@
       class="col-span-full md:col-span-6 prose prose-headings:text-orange-950 mb-8"
     >
       <h1
-        class="font-light font-sans uppercase text-4xl md:text-8xl tracking-tight mb-8"
+        class="font-light font-sans uppercase text-4xl md:text-6xl lg:text-7xl leading-tight tracking-normal mb-12"
       >
         Jagged Balls of Rolling Chaos
       </h1>

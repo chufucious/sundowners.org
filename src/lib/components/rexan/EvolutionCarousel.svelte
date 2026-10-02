@@ -20,18 +20,19 @@
   import feathers from "#lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
   import redstrokes from "#lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
 
-  // Notes are condensed from the post's own account of each year. `tint` is
+  // Equipment and notes come from the post's account of each year. Counts and
+  // models are omitted where the historical account does not specify them. `tint` is
   // the fabric's key colour: washed pale behind the drawing, a 1px edge that
   // keeps the card's shape where a fabric's light strokes meet the page, and
   // the label's shadow.
   const years = [
-    { year: 2017, image: evolution2017, fabric: sunflower, tint: "#a07517", note: "Two Behringers at the back for riders" },
-    { year: 2018, image: evolution2018, fabric: fans, tint: "#8c2425", note: "Same Behringers, no DJ setup yet" },
-    { year: 2019, image: evolution2019, fabric: spirograph, tint: "#1b5965", note: "Two more Behringers, a sub, our first DJ setup" },
-    { year: 2022, image: evolution2022, fabric: mic, tint: "#d9914b", note: "First QSC rig: two K12.2s up top, one KS118" },
-    { year: 2023, image: evolution2023, fabric: eyes, tint: "#7e1132", note: "Four K12.2s up top, a second KS118" },
-    { year: 2025, image: evolution2025, fabric: feathers, tint: "#535939", note: "K10.2s up top next to two working K12.2s" },
-    { year: 2026, image: evolution2026, fabric: redstrokes, tint: "#b23b39", note: "All four K12.2s working again" },
+    { year: 2017, image: evolution2017, fabric: sunflower, tint: "#a07517", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "Rear-facing for riders" },
+    { year: 2018, image: evolution2018, fabric: fans, tint: "#8c2425", equipment: ["2 × Behringer", "Subwoofer + amp"], note: "No DJ setup" },
+    { year: 2019, image: evolution2019, fabric: spirograph, tint: "#1b5965", equipment: ["4 × Behringer", "Subwoofer"], note: "First DJ setup" },
+    { year: 2022, image: evolution2022, fabric: mic, tint: "#d9914b", equipment: ["4 × QSC K12.2", "1 × QSC KS118"], note: "2 tops · 2 DJ monitors" },
+    { year: 2023, image: evolution2023, fabric: eyes, tint: "#7e1132", equipment: ["4 × QSC K12.2", "QSC K10.2 monitors", "2 × QSC KS118"] },
+    { year: 2025, image: evolution2025, fabric: feathers, tint: "#535939", equipment: ["2 × QSC K12.2", "QSC K10.2 tops", "QSC K8.2 monitors", "Subwoofers"], note: "Temporary replacements" },
+    { year: 2026, image: evolution2026, fabric: redstrokes, tint: "#b23b39", equipment: ["4 × QSC K12.2", "2 × QSC K10.2", "2 × QSC KS118"], note: "All four tops restored" },
   ];
 
   let track;
@@ -117,7 +118,7 @@
     <!-- Each card: the drawing on a pale wash of its year's fabric, then the
          fabric itself with a cream label on it, like the label on a length
          of wax print (a gold double rule, that year's Burning Man theme). -->
-    {#each years as { year, image, fabric, tint, note }, i (year)}
+    {#each years as { year, image, fabric, tint, equipment, note }, i (year)}
       <li
         class="pattern-frame ring-1 ring-inset ring-(--tint) snap-start shrink-0 w-56 md:w-64 p-2 flex flex-col"
         style:background-image="url({fabric})"
@@ -134,7 +135,7 @@
           />
         </div>
         <!-- The label stretches to fill the fabric below the drawing, so every
-             card's label is the height of the longest note's. -->
+             card's label is the height of the longest equipment list. -->
         <div class="flex-1 flex justify-center pt-6 pb-7">
           <div class="label w-[82%] flex bg-orange-50 p-1">
             <div class="flex-1 border border-gold outline outline-gold/40 -outline-offset-4 px-3 pt-2.5 pb-3">
@@ -142,7 +143,14 @@
                 {themeOf(year)}
               </p>
               <p class="mt-1 font-garamond text-3xl text-orange-950">{year}</p>
-              <p class="mt-1 font-mono text-xs text-orange-800 leading-relaxed">{note}</p>
+              <div class="mt-1 font-serif text-sm text-orange-950 leading-relaxed">
+                {#each equipment as line (line)}
+                  <p>{line}</p>
+                {/each}
+              </div>
+              {#if note}
+                <p class="mt-2 font-serif text-xs text-orange-800 leading-relaxed">{note}</p>
+              {/if}
             </div>
           </div>
         </div>
