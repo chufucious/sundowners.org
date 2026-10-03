@@ -31,7 +31,11 @@ test("homepage header fills the viewport and both logo links stay usable", async
   await expect(full).toHaveAttribute("inert", "");
   await expect(compact).not.toHaveAttribute("inert");
   await expect(compact).toHaveCSS("opacity", "1");
-  expect((await compact.boundingBox()).y).toBeGreaterThanOrEqual(0);
+  const compactBox = await compact.boundingBox();
+  expect(compactBox.y).toBeGreaterThanOrEqual(0);
+  expect(compactBox.height).toBeGreaterThanOrEqual(44);
+  // Raise the padded artwork on phones while leaving its full link reachable.
+  expect((await compact.locator("img").boundingBox()).y).toBeCloseTo(compactBox.y - (width < 768 ? 14 : 0), 0);
   await compact.click();
   await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
   const pageWidth = await page.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth));
@@ -74,7 +78,10 @@ test("simulated safe insets keep both article headers full bleed and logos clear
       await expect(full).toHaveAttribute("inert", "");
       await expect(compact).not.toHaveAttribute("inert");
       await expect(compact).toHaveCSS("opacity", "1");
-      expect((await compact.boundingBox()).y).toBeGreaterThanOrEqual(top);
+      const compactBox = await compact.boundingBox();
+      expect(compactBox.y).toBeGreaterThanOrEqual(top);
+      expect(compactBox.height).toBeGreaterThanOrEqual(44);
+      expect((await compact.locator("img").boundingBox()).y).toBeCloseTo(compactBox.y - (width < 768 ? 14 : 0), 0);
       await compact.click();
       await expect(page).toHaveURL("/");
       const pageWidth = await page.evaluate(() => Math.max(document.documentElement.scrollWidth, document.body.scrollWidth));

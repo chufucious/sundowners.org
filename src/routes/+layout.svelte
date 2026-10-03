@@ -4,8 +4,19 @@
   import SiteHeader from "#lib/components/SiteHeader.svelte";
   import Agentation from "#lib/components/Agentation.svelte";
   import logoLion from "#lib/assets/logo/lion.svg";
+  import { BANNER_TINT, bannerEdges, edgeGradient } from "#lib/header-colors.js";
 
   let { children } = $props();
+
+  const headerTint = $derived(page.data.headerImage?.tint ?? BANNER_TINT);
+  const headerEdge = $derived(page.data.headerImage?.edge ?? {
+    mobile: bannerEdges.mobile,
+    desktop: page.data.smallHeader ? bannerEdges.smallDesktop : bannerEdges.desktop,
+  });
+  const headerStyle = $derived(`
+    html { --header-tint: ${headerTint}; --header-edge: ${edgeGradient(headerEdge.mobile)}; }
+    @media (min-width: 48rem) { html { --header-edge: ${edgeGradient(headerEdge.desktop)}; } }
+  `);
 
   const SITE_URL = "https://sundowners.org";
   const DEFAULT_TITLE = "Sundowners – Black Rock City";
@@ -27,6 +38,9 @@
 </script>
 
 <svelte:head>
+  <meta name="theme-color" content={headerTint} />
+  <!-- Render the tint on direct loads and update it with client navigation. -->
+  <svelte:element this={"style"}>{headerStyle}</svelte:element>
   <title>{meta.title}</title>
   <meta name="description" content={meta.description} />
   <!-- Open Graph -->

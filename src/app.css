@@ -7,6 +7,10 @@
   --safe-area-left: env(safe-area-inset-left, 0px);
 }
 
+html, body {
+  background-color: var(--header-tint);
+}
+
 /* Keep page content clear of landscape cutouts; the header photo bleeds out. */
 .page-shell {
   padding-left: var(--safe-area-left);

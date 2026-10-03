@@ -87,6 +87,13 @@
     aria-hidden="true"
   ></div>
 
+  <!-- Join the solid document tint to the sampled edge, then to the photo. -->
+  <div
+    class="absolute inset-x-0 top-0 h-8"
+    style="background: linear-gradient(var(--header-tint) 0 2px, transparent), var(--header-edge); mask-image: linear-gradient(black 0 2px, transparent)"
+    aria-hidden="true"
+  ></div>
+
   <div
     class="h-1 md:h-2 w-full absolute bottom-0"
     style="background-image: url('{fabricSunrise}'); background-repeat: repeat; background-size: 200px; background-position: center;"
