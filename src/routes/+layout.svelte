@@ -47,11 +47,11 @@
   <meta name="twitter:image:alt" content={meta.imageAlt} />
 </svelte:head>
 
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-[calc(1rem+var(--safe-area-top))] focus:left-[calc(1rem+var(--safe-area-left))] focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
   Skip to main content
 </a>
 
-<main class="grid grid-cols-12 gap-4 font-mono pb-32">
+<main class="page-shell grid grid-cols-12 gap-4 font-mono">
   <SiteHeader hero={page.data.headerImage} smallHeader={page.data.smallHeader} />
   <div id="main-content" class="contents">
     {@render children()}

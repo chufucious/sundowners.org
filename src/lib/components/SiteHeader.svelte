@@ -22,7 +22,9 @@
   let logoSwap = $state(0);
   function updateLogoSwap() {
     const { top, height } = headerLogo.getBoundingClientRect();
-    logoSwap = Math.min(Math.max(-top / height, 0), 1);
+    // Hand over as the logo leaves the usable area below the status bar.
+    const safeTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--safe-area-top")) || 0;
+    logoSwap = Math.min(Math.max((safeTop - top) / height, 0), 1);
   }
   $effect(updateLogoSwap);
   const headerLogoOpacity = $derived(1 - Math.min(logoSwap / 0.6, 1));
@@ -42,7 +44,7 @@
     bind:this={headerLogo}
     inert={logoSwap >= HANDOVER}
     style:opacity={headerLogoOpacity}
-    class="absolute left-1/2 -translate-x-1/2 top-8 md:top-10 z-20 block w-75 md:w-150 mix-blend-color-dodge"
+    class="header-logo absolute -translate-x-1/2 z-20 block w-75 md:w-150 mix-blend-color-dodge"
   >
     <span class="relative block">
       <!-- Wordmark only; the sun mark (left 23%) is drawn by FlameMark. -->
@@ -91,3 +93,24 @@
   ></div>
 </header>
 <CompactLogo swap={logoSwap} />
+
+<style>
+  header {
+    /* Only the photo reaches behind cutouts; the page grid stays inset. */
+    margin-left: calc(-1 * var(--safe-area-left));
+    margin-right: calc(-1 * var(--safe-area-right));
+    width: calc(100% + var(--safe-area-left) + var(--safe-area-right));
+  }
+
+  .header-logo {
+    top: calc(2rem + var(--safe-area-top));
+    left: calc((100% + var(--safe-area-left) - var(--safe-area-right)) / 2);
+    max-width: calc(100% - var(--safe-area-left) - var(--safe-area-right));
+  }
+
+  @media (width >= 48rem) {
+    .header-logo {
+      top: calc(2.5rem + var(--safe-area-top));
+    }
+  }
+</style>
