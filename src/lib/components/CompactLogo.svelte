@@ -43,8 +43,17 @@
   inert={swap < HANDOVER}
   onclick={toTop}
   style={motion}
-  class="fixed -top-3 md:top-0.5 left-1/2 z-30 w-18 aspect-551/432 block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
+  class="fixed z-30 w-18 aspect-551/432 block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-500"
 >
-  <!-- Sized to the mark's texture (551 x 432), flames included, as in the header. -->
-  <FlameMark active={progress > 0} class="absolute inset-0" />
+  <!-- Use the texture's transparent headroom to restore the phone artwork's
+       offset; keep the full link target below the safe edge. -->
+  <FlameMark active={progress > 0} class="absolute inset-0 -translate-y-3.5 md:translate-y-0" />
 </a>
+
+<style>
+  a {
+    /* Keep the entire link below the status area, including the flames. */
+    top: calc(var(--safe-area-top) + 0.125rem);
+    left: calc((100% + var(--safe-area-left) - var(--safe-area-right)) / 2);
+  }
+</style>

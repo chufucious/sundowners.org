@@ -4,8 +4,19 @@
   import SiteHeader from "#lib/components/SiteHeader.svelte";
   import Agentation from "#lib/components/Agentation.svelte";
   import logoLion from "#lib/assets/logo/lion.svg";
+  import { BANNER_TINT, bannerEdges, edgeGradient } from "#lib/header-colors.js";
 
   let { children } = $props();
+
+  const headerTint = $derived(page.data.headerImage?.tint ?? BANNER_TINT);
+  const headerEdge = $derived(page.data.headerImage?.edge ?? {
+    mobile: bannerEdges.mobile,
+    desktop: page.data.smallHeader ? bannerEdges.smallDesktop : bannerEdges.desktop,
+  });
+  const headerStyle = $derived(`
+    html { --header-tint: ${headerTint}; --header-edge: ${edgeGradient(headerEdge.mobile)}; }
+    @media (min-width: 48rem) { html { --header-edge: ${edgeGradient(headerEdge.desktop)}; } }
+  `);
 
   const SITE_URL = "https://sundowners.org";
   const DEFAULT_TITLE = "Sundowners – Black Rock City";
@@ -27,6 +38,9 @@
 </script>
 
 <svelte:head>
+  <meta name="theme-color" content={headerTint} />
+  <!-- Render the tint on direct loads and update it with client navigation. -->
+  <svelte:element this={"style"}>{headerStyle}</svelte:element>
   <title>{meta.title}</title>
   <meta name="description" content={meta.description} />
   <!-- Open Graph -->
@@ -47,11 +61,11 @@
   <meta name="twitter:image:alt" content={meta.imageAlt} />
 </svelte:head>
 
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-[calc(1rem+var(--safe-area-top))] focus:left-[calc(1rem+var(--safe-area-left))] focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
   Skip to main content
 </a>
 
-<main class="grid grid-cols-12 gap-4 font-mono pb-32">
+<main class="page-shell grid grid-cols-12 gap-4 font-mono pb-32 bg-orange-100">
   <SiteHeader hero={page.data.headerImage} smallHeader={page.data.smallHeader} />
   <div id="main-content" class="contents">
     {@render children()}
