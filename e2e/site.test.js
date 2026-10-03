@@ -66,6 +66,8 @@ test("homepage gallery pages with its hints", async ({ page }) => {
   const more = page.getByRole("button", { name: "more photos →" });
   const back = page.getByRole("button", { name: "← back", includeHidden: true });
   await more.scrollIntoViewIfNeeded();
+  // The scroll-linked logo confirms the controls have hydrated.
+  await expect(page.getByRole("link", { name: "Sundowners home", exact: true })).toBeVisible();
   await expect(back).toBeHidden();
   await more.click();
   await expect(back).toBeVisible();
@@ -76,7 +78,7 @@ test("homepage gallery opens with fire, a bottom-aligned loop, and fisheye", asy
   await page.goto("/");
   await expect(page.locator("#collage video")).toHaveCount(0);
   await expect(page.locator("#gallery > :nth-child(1) img")).toHaveAttribute("alt", "the man lit up above a wall of fire");
-  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "fisheye lens");
+  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "Three Sundowners in sunglasses posing for a fisheye portrait");
   const video = page.locator("#gallery > :nth-child(2)");
   await expect(video).toHaveAttribute("aria-label", "Sundowners sign and wax-print flag at dusk");
   await video.scrollIntoViewIfNeeded();

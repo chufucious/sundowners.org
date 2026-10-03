@@ -42,11 +42,11 @@
   // Section headings, in order; the table of contents links to these ids.
   const sections = [
     { id: "where-we-started", title: "Where we started" },
-    { id: "the-rig-today", title: "The rig today" },
+    { id: "the-rig-today", title: "The rig in 2026" },
     { id: "whats-your-sound-system", title: '"What\'s your sound system?"' },
     { id: "keeping-it-green", title: "Keeping it green" },
     { id: "bumps-in-the-road", title: "Bumps in the road (and what we learned)" },
-    { id: "whats-next", title: "What's next for year ten" },
+    { id: "whats-next", title: "The plan for 2027" },
     { id: "thanks", title: "Thanks" },
   ];
   const sectionTitle = Object.fromEntries(sections.map(({ id, title }) => [id, title]));
@@ -131,7 +131,7 @@
         panels, flame-effect lanterns, 29" custom LED disc "googly eyes" on the front, and a dashboard
         sound panel loaded with African animal calls. We take riders out on "game drives" to track
         CAR-nimals, spot ART-ilopes and collect MAN-imals for study. Rexan has been on playa in 2017,
-        2018, 2019, 2022, 2023, 2025 and 2026. Next year is our tenth anniversary.
+        2018, 2019, 2022, 2023, 2025 and 2026. 2027 is our tenth anniversary.
       </p>
       <p>And Rexan's heart is our community, and its voice is its sound system.</p>
     </ArticleText>
@@ -190,7 +190,7 @@
         K10.2s as DJ monitors. That was the system basically complete. 2025 was a scramble. Two of the
         K12.2s wouldn't work, so we moved K10.2s up top next to the two good ones, and we tried K8.2s as
         DJ monitors. The K8s kept failing on us (those heat fans are just too small for the dust at BRC).
-        By 2026 all four K12.2s were working again, and that's the rig we run today.
+        By 2026 all four K12.2s were working again, and that was our rig for the 2026 Burn.
       </p>
     </ArticleText>
 
@@ -204,7 +204,7 @@
 
     <ArticleText>
       {@render sectionHeading("the-rig-today")}
-      <p>This is how Rexan is set up now:</p>
+      <p>This is Rexan’s 2026 setup:</p>
       <ul>
         <li><strong>Subs:</strong> 2× QSC KS118, stacked on the passenger (right) side.</li>
         <li><strong>Tops:</strong> 4× QSC K12.2 mounted high on the horizontal top bar, firing out over the deck and the crowd.</li>
@@ -271,7 +271,7 @@
         </li>
         <li>
           About 600W of solar on the frame above the DJ booth, charging the batteries through the day. We
-          upgraded the array during our Reno build weeks this year.
+          upgraded the array during our Reno build weeks in 2026.
         </li>
         <li>
           The engine's alternator, which runs an inverter and charges the batteries while Rexan is
@@ -362,7 +362,7 @@
       </p>
       <p>
         <strong>Weatherproofing the DJ booth.</strong> Our trusted DJM-900NXS had a few power-cycling
-        quirks this year from the elements. To keep our setups seamless, we're adding a backup mixer,
+        quirks in 2026 from the elements. To keep our setups seamless, we're adding a backup mixer,
         treating all connections with DeoxIT, and giving our cable runs extra weatherproofing.
       </p>
       <p>

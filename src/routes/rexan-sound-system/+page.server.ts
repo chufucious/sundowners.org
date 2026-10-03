@@ -14,7 +14,7 @@ export const load = () => {
   return {
     title: 'The Rexan Sound System | Sundowners – Black Rock City',
     description:
-      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for year ten.',
+      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for 2027.',
     ogType: 'article',
     ogImage: new URL(imageUrl, 'https://sundowners.org').href,
     ogImageAlt: heroAlt,

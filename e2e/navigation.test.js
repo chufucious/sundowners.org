@@ -6,7 +6,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   const banner = "Sundowners walking in Black Rock City";
   const header = page.locator("main > header");
   const homeHeight = (await header.boundingBox()).height;
-  const homeImage = await header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src);
+  const homeImage = await header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.currentSrc);
 
   async function checkPage({ path, title, description, image, type, hero = banner, tint = "#354151" }) {
     await expect(page).toHaveURL(path);
@@ -16,7 +16,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       ['meta[name="description"]', description],
       ['meta[property="og:title"]', title],
       ['meta[property="og:description"]', description],
-      ['meta[property="og:url"]', `https://sundowners.org${path === "/" ? "" : path}`],
+      ['meta[property="og:url"]', `https://sundowners.org${path}`],
       ['meta[property="og:type"]', type],
       ['meta[property="og:image"]', image],
       ['meta[name="twitter:title"]', title],
@@ -27,6 +27,8 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       await expect(tag).toHaveCount(1);
       await expect(tag).toHaveAttribute("content", content);
     }
+    await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://sundowners.org${path}`);
     await expect(header.getByRole("img", { name: hero, exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
     // A reload would hide stale layout state; this must stay in the same document.
@@ -35,7 +37,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
 
   const home = {
     path: "/",
-    title: "Sundowners – Black Rock City",
+    title: "Sundowners Burning Man Camp | Black Rock City",
     description: /^Sundowners is a Burning Man camp/,
     image: "https://sundowners.org/og-image.jpg",
     type: "website",
@@ -63,18 +65,18 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await page.goForward();
   await checkPage(home);
   expect(await sampledEdge(page)).toBe(homeGradient);
-  await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src)).toBe(homeImage);
+  await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.currentSrc)).toBe(homeImage);
   expect((await header.boundingBox()).height).toBe(homeHeight);
 
   await page.getByRole("link", { name: /Read Now\s*:\s*Jagged Balls of Rolling Chaos/ }).click();
   await checkPage({
     path: "/jagged-balls-of-rolling-chaos",
-    title: "Jagged Balls of Rolling Chaos | Sundowners – Black Rock City",
-    description: /^Essential survival guide for Burning Man/,
-    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.png$/,
+    title: "Burning Man Camp Tips: Jagged Balls of Rolling Chaos | Sundowners",
+    description: /^Practical Burning Man camp tips/,
+    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.jpe?g$/,
     type: "article",
   });
-  await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src)).toBe(homeImage);
+  await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.currentSrc)).toBe(homeImage);
   const compactHeight = (await header.boundingBox()).height;
   if (page.viewportSize().width >= 768) expect(compactHeight).toBeLessThan(homeHeight);
   else expect(compactHeight).toBe(homeHeight);

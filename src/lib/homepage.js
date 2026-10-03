@@ -32,13 +32,13 @@ export const build2026Photos = [
 export const galleryPhotos = [
   { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
   { video: sundownersSignLoop, poster: sundownersSignPoster, alt: "Sundowners sign and wax-print flag at dusk", class: "h-80 w-auto max-w-none shrink-0 self-end" },
-  { image: devofisheye, alt: "fisheye lens", class: "max-h-96" },
-  { image: gregonrexan, alt: "on rexan", class: "max-h-96" },
-  { image: jonSmoke, alt: "j attracting influencers", class: "max-h-64" },
+  { image: devofisheye, alt: "Three Sundowners in sunglasses posing for a fisheye portrait", class: "max-h-96" },
+  { image: gregonrexan, alt: "Greg seated on Rexan’s glowing front deck at night", class: "max-h-96" },
+  { image: jonSmoke, alt: "Jon surrounded by green smoke on the playa", class: "max-h-64" },
   { image: rexanDancer, alt: "dancer on rexan", class: "max-h-96 self-end" },
   { image: runninglion, alt: "a running lion", class: "max-h-80" },
   { image: sign, alt: "sundowners sign", class: "max-h-96" },
-  { image: gregFlying, alt: "g flying", class: "max-h-80 self-end" },
+  { image: gregFlying, alt: "Greg wearing a blue cape on Rexan’s front deck", class: "max-h-80 self-end" },
   { image: rexanFire, alt: "fire on rexan", class: "max-h-80" },
   { image: rexanNightWide, alt: "night time with rexan", class: "max-h-96" },
 ];
@@ -57,8 +57,8 @@ export const articles = [
     id: "jagged-balls-promo",
     href: "/jagged-balls-of-rolling-chaos",
     image: jaggedBalls,
-    alt: "jagged balls of rolling chaos",
+    alt: "People running beneath a windblown canopy on the playa",
     title: "Jagged Balls of Rolling Chaos",
-    blurb: "A guide on how to survive the playa.",
+    blurb: "Practical Burning Man camp tips from Poca of the Sundowners.",
   },
 ];

@@ -33,7 +33,7 @@
         <enhanced:img
           src={jaggedBalls}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt="Jagged balls of rolling chaos"
+          alt="People running beneath a windblown canopy on the playa"
           class="w-full"
         />
         <figcaption class="text-sm mt-2 italic">Run, Sparkle, Run!</figcaption>
@@ -41,6 +41,12 @@
     </div>
   </header>
   <ArticleText>
+    <p>
+      Practical Burning Man camp tips from Poca of the Sundowners, collected from
+      our crew’s experience with bikes, dust, rain, and gear. These are selected
+      camp notes; prepare with the <a href="https://survival.burningman.org/">official Burning Man Survival Guide</a>
+      and current event instructions.
+    </p>
     <section id="bikes">
       <h2>Bikes</h2>
       <ul class="list-disc">
@@ -76,14 +82,30 @@
 
     <section id="emergency">
       <h2>In Case of Emergency</h2>
-      <ul class="list-disc">
-        <li>
-          The public ESD email address 911@burningman.com is a way for the
-          general public to pass emergency messages to staff and participants.
-          (Delivery can't be guaranteed due to the environment, but it's worth
-          passing along if someone wants the info).
-        </li>
-      </ul>
+      <h3>Getting help on playa</h3>
+      <p>
+        For an emergency at the event, call out for help and flag down a Black
+        Rock Ranger, law enforcement officer, or event staff member with a radio.
+        You can also send someone to a Ranger Outpost or Emergency Services
+        Department station. Cell service is unreliable, and a phone call to 911
+        may take longer to reach on-playa responders. Do not report an on-playa
+        emergency by email.
+      </p>
+      <h3>Urgent messages from home</h3>
+      <p>
+        Friends or family trying to reach someone at the event should follow the
+        <a href="https://burningman.org/black-rock-city/preparation/health-safety/emergency-contact/">official Emergency Help on Playa instructions</a>.
+        They currently list <a href="mailto:brc-urgent@burningman.org">brc-urgent@burningman.org</a>
+        for urgent messages. Include the participant’s name, playa name if known,
+        camp name, and camp location. The Rangers will try to deliver the message,
+        but delivery is not guaranteed.
+      </p>
+      <p class="text-sm">
+        Emergency information checked against Burning Man’s official resources on
+        <time datetime="2026-10-03">3 October 2026</time>. See the current
+        <a href="https://survival.burningman.org/law-enforcement/getting-help-with-emergencies/">Survival Guide emergency guidance</a>
+        for full instructions before each event.
+      </p>
     </section>
 
     <section id="strike">
@@ -225,18 +247,10 @@
           applied very gently - wait, watch - lift out).
         </li>
         <li>
-          Had a tough time in exodus traffic? Realized you have to pee and can't
-          find the portos? This isn't the worst thing to have in your backpack,
-          friends. Since we're responsible for everything that hits the playa -
-          these are a solid companion for drinkers (and art cars - I'll chuck a
-          few in my bag for Rexan).
-        </li>
-        <li>
           Burner problem: bike light batteries don't last long enough and the
           bike lights are often 💩 Hack: get a flashlight strap. This allows you
-          to use a superior flashlight that's multi use. I've battle tested this
-          one. Long lasting, bright light, and best of all : hybrid rechargeable
-          that ALSO takes ready available AA batteries. Pack accordingly, and
+          to use a superior flashlight that's multi use. Look for a long-lasting, bright, hybrid rechargeable
+          flashlight that also takes readily available AA batteries. Pack accordingly, and
           you can ride bright all night.
           <ul class="list-disc">
             <li>
@@ -256,6 +270,7 @@
         </li>
       </ul>
     </section>
+    <p>For the story behind our art car, read about <a href="/rexan-sound-system">Rexan’s sound system</a>.</p>
     <p class="">
       <a href="/" class="text-orange-950 underline hover:text-orange-500"
         >Back to home</a
