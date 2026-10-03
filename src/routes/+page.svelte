@@ -54,15 +54,18 @@
             <enhanced:img
                 src={rexanGroup2023}
                 sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
-                alt="jump!"
+                alt="The Sundowners crew waving from Rexan’s decks on the playa"
                 class="max-w-full"
                 loading="lazy"
             />
         </div>
         <div class="col-span-full md:col-span-5">
             <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
-                🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
+                Sundowners at Burning Man
             </h1>
+            <p class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
+                🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
+            </p>
             <p class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
                 We’re <strong>Sundowners</strong>, an African-diaspora inspired Burning Man camp, bringing music, art, and community to the playa.
 
@@ -109,7 +112,7 @@
                     <p class="text-sm wrap-anywhere">
                         <a
                             href="https://www.instagram.com/sundownerssafari/"
-                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
+                            class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
                             aria-label="Follow Sundowners on Instagram"
                             >@sundownerssafari</a
                         >
@@ -122,7 +125,7 @@
                     <p class="text-sm">
                         <a
                             href="mailto:sundownersbrc@gmail.com"
-                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
+                            class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
                             aria-label="Email Sundowners camp">Contact Us</a
                         >
                     </p>
@@ -154,7 +157,7 @@
                 src={tucoLauren}
                 sizes="(max-width: 767px) 92vw, (max-width: 1279px) 60vw, 768px"
                 class="w-full h-auto"
-                alt="t + l"
+                alt="Tuco and Lauren beside a ladder at camp in the evening sun"
                 loading="lazy"
             />
         </div>
@@ -178,7 +181,7 @@
                 src={joshRexan}
                 sizes="(max-width: 767px) 44vw, (max-width: 1279px) 29vw, 368px"
                 class="w-full h-auto"
-                alt="j on rexan"
+                alt="Josh at the DJ booth on Rexan’s upper deck"
                 loading="lazy"
             />
         </div>
@@ -190,7 +193,7 @@
                 src={zuraSpotter}
                 sizes="(max-width: 767px) 94vw, (max-width: 1279px) 55vw, 704px"
                 class="w-full h-auto"
-                alt="z on spotter"
+                alt="Zura riding in Rexan’s front spotter seat"
                 loading="lazy"
             />
         </div>
@@ -215,7 +218,7 @@
                 <enhanced:img
                     src={group2022}
                     sizes="(max-width: 767px) 92vw, (max-width: 1023px) 67vw, 50vw"
-                    alt="2022 group"
+                    alt="The Sundowners crew gathered at camp in 2022"
                     loading="lazy"
                 />
             </div>
@@ -231,7 +234,7 @@
                 <enhanced:img
                     src={lionAndLeyla}
                     sizes="(max-width: 767px) 92vw, 75vw"
-                    alt="lion and l"
+                    alt="Leyla laughing beside a toy lion at camp"
                     class="w-full h-auto"
                     loading="lazy"
                 />
@@ -280,7 +283,7 @@
             <enhanced:img
                 src={katiesunset}
                 sizes="(max-width: 768px) 100vw, 66vw"
-                alt="k staring into distance"
+                alt="Katie looking across the playa at sunset"
                 loading="lazy"
                 class="drop-shadow-xl"
             />
