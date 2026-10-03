@@ -335,7 +335,7 @@
 
                     <tbody>
                         {#each expeditions as { year, theme, address, url, absent, cancelled } (year)}
-                            <tr class={{ "text-orange-800": absent, "line-through": cancelled }}>
+                            <tr class={{ "text-orange-900/60": absent, "line-through": cancelled }}>
                                 <td>{year}</td>
                                 <td>
                                     <a href={url} class="underline hover:text-orange-500"
