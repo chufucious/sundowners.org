@@ -13,11 +13,11 @@
       class="col-span-full md:col-span-6 prose max-w-none prose-headings:text-orange-950 mb-8"
     >
       <h1
-        class="font-light font-sans uppercase text-4xl md:text-8xl tracking-tight mb-8"
+        class="font-light font-sans uppercase text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-[0.9] text-balance mb-8"
       >
         Jagged Balls of Rolling Chaos
       </h1>
-      <p class="font-extralight font-garamond text-orange-950 mt-0 mb-[1em] text-xl md:text-4xl">
+      <p class="font-normal font-serif text-orange-900 mt-0 mb-[1em] text-xl md:text-3xl lg:text-4xl leading-snug text-balance">
         No cheap easy ups ever - in a windstorm or dust devil they can crumple
         up and turn into <span class="italic"
           >jagged balls of rolling chaos.</span
