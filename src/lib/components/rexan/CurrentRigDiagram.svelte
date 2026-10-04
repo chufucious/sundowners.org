@@ -158,7 +158,7 @@
         </table>
       </div>
       <details class="mt-4 text-xs text-orange-800">
-        <summary class="cursor-pointer text-orange-950 underline hover:text-orange-500">How we estimated this</summary>
+        <summary class="cursor-pointer text-orange-950 underline hover:text-orange-700">How we estimated this</summary>
         <ul class="mt-2 list-disc pl-5 space-y-1">
           <li>Per-box peak SPL from QSC specs, free field, −6 dB per doubling of distance.</li>
           <li>Continuous (music) level runs about 6 dB below peak. Stacked subs add about 6 dB from coupling.</li>

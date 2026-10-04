@@ -17,6 +17,16 @@ for (const route of routes) {
     const response = await page.goto(route);
     expect(response.status()).toBe(200);
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /^https:\/\/sundowners\.org\//);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://sundowners.org${route}`);
+    // The layout declares every social image as 1200×630; check the real file.
+    const socialImage = new URL(await page.locator('meta[property="og:image"]').getAttribute("content")).pathname;
+    const socialSize = await page.evaluate(async (src) => {
+      const img = new Image();
+      img.src = src;
+      await img.decode();
+      return [img.naturalWidth, img.naturalHeight];
+    }, socialImage);
+    expect(socialSize).toEqual([1200, 630]);
 
     // Scroll through so lazy images load, then check each one decoded.
     const images = page.locator("main img");
@@ -66,6 +76,10 @@ test("homepage gallery pages with its hints", async ({ page }) => {
   const more = page.getByRole("button", { name: "more photos →" });
   const back = page.getByRole("button", { name: "← back", includeHidden: true });
   await more.scrollIntoViewIfNeeded();
+  // Click only once hydration has installed the handlers (the scroll-linked
+  // logo appears) and the lazy photos have made the strip wider than the screen.
+  await expect(page.getByRole("link", { name: "Sundowners home", exact: true })).toBeVisible();
+  await expect.poll(() => page.locator("#gallery").evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
   await expect(back).toBeHidden();
   await more.click();
   await expect(back).toBeVisible();
@@ -76,15 +90,15 @@ test("homepage gallery opens with fire, a bottom-aligned loop, and fisheye", asy
   await page.goto("/");
   await expect(page.locator("#collage video")).toHaveCount(0);
   await expect(page.locator("#gallery > :nth-child(1) img")).toHaveAttribute("alt", "the man lit up above a wall of fire");
-  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "fisheye lens");
-  const video = page.locator("#gallery > :nth-child(2)");
+  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "Three campmates in sunglasses grinning into a fisheye lens");
+  const video = page.locator("#gallery > :nth-child(2) video");
   await expect(video).toHaveAttribute("aria-label", "Sundowners sign and wax-print flag at dusk");
   await video.scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((v) => v.muted && v.loop && v.playsInline && !v.paused && v.currentTime > 0), {
     timeout: 15_000,
   }).toBe(true);
   expect(await video.evaluate((v) => v.duration)).toBeGreaterThanOrEqual(9);
-  const bottomGap = await video.evaluate((v) => v.parentElement.getBoundingClientRect().bottom - v.getBoundingClientRect().bottom);
+  const bottomGap = await video.evaluate((v) => v.closest("#gallery").getBoundingClientRect().bottom - v.getBoundingClientRect().bottom);
   expect(Math.abs(bottomGap)).toBeLessThanOrEqual(1);
 });
 
@@ -115,8 +129,8 @@ test("article cards don't click through from empty space", async ({ page }) => {
 });
 
 test("rexan loops play silently and inline", async ({ page }) => {
-  // Standing in for GIFs: they must autoplay on iPhones, which needs muted
-  // and playsinline, and they loop without controls.
+  // Standing in for GIFs: they must start on iPhones without a tap, which
+  // needs muted and playsinline, and they loop without native controls.
   await page.goto("/rexan-sound-system");
   const videos = page.locator("main video");
   await expect(videos).toHaveCount(3);
@@ -127,4 +141,77 @@ test("rexan loops play silently and inline", async ({ page }) => {
       timeout: 15_000,
     }).toBe(true);
   }
+});
+
+test("the web app manifest names the site", async ({ request }) => {
+  const manifest = await (await request.get("/site.webmanifest")).json();
+  expect(manifest.name).toBe("Sundowners");
+  expect(manifest.short_name).toBe("Sundowners");
+});
+
+test("fonts come from this site, not Google", async ({ page }) => {
+  const thirdParty = [];
+  page.on("request", (request) => /fonts\.(googleapis|gstatic)\.com/.test(request.url()) && thirdParty.push(request.url()));
+  await page.goto("/");
+  const faces = await page.evaluate(async () => {
+    await document.fonts.load('20px "EB Garamond"');
+    await document.fonts.load('italic 20px "EB Garamond"');
+    return [...document.fonts].filter((face) => face.family === "EB Garamond" && face.status === "loaded").map((face) => face.style);
+  });
+  expect(faces.sort()).toEqual(["italic", "normal"]);
+  expect(thirdParty).toEqual([]);
+});
+
+test("unknown pages get a 404 that points back to camp", async ({ page }) => {
+  const response = await page.goto("/no-such-page");
+  expect(response.status()).toBe(404);
+  await expect(page).toHaveTitle("Page not found | Sundowners");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("You’ve wandered past the trash fence.");
+  await expect(page.getByRole("link", { name: "back to camp" })).toHaveAttribute("href", "/");
+  for (const title of ["The Rexan Sound System", "Jagged Balls of Rolling Chaos"]) {
+    await expect(page.getByRole("link", { name: new RegExp(`Read Now\\s*:\\s*${title}`) })).toBeVisible();
+  }
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+});
+
+test("the homepage loop doesn't download until it's near the screen", async ({ page }) => {
+  const media = [];
+  page.on("request", (request) => request.url().endsWith(".mp4") && media.push(request.url()));
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(media).toEqual([]);
+  const video = page.locator("#gallery video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v) => !v.paused && v.currentTime > 0), { timeout: 15_000 }).toBe(true);
+});
+
+test("the pause button stops a loop until it's pressed again", async ({ page }) => {
+  await page.goto("/");
+  const video = page.locator("#gallery video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v) => !v.paused), { timeout: 15_000 }).toBe(true);
+  await page.getByRole("button", { name: "Pause video" }).click();
+  await expect.poll(() => video.evaluate((v) => v.paused)).toBe(true);
+  // Scrolling away and back doesn't restart it.
+  await page.evaluate(() => scrollTo(0, 0));
+  await video.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  expect(await video.evaluate((v) => v.paused)).toBe(true);
+  await page.getByRole("button", { name: "Play video" }).click();
+  await expect.poll(() => video.evaluate((v) => !v.paused)).toBe(true);
+});
+
+test.describe("with reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+
+  test("loops wait for the play button and the flame holds still", async ({ page }) => {
+    await page.goto("/rexan-sound-system");
+    await expect(page.locator("main > header canvas")).toBeHidden();
+    const video = page.locator("main video").first();
+    await video.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    expect(await video.evaluate((v) => v.paused && v.readyState === 0)).toBe(true);
+    await video.locator("..").getByRole("button", { name: "Play video" }).click();
+    await expect.poll(() => video.evaluate((v) => !v.paused && v.currentTime > 0), { timeout: 15_000 }).toBe(true);
+  });
 });

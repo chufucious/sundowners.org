@@ -144,7 +144,7 @@
         <!-- The label stretches to fill the fabric below the drawing, so every
              card's label is the height of the longest chapter. -->
         <div class="flex-1 flex justify-center pt-6 pb-7">
-          <div class="label w-[82%] flex bg-orange-50 p-1">
+          <div class="fabric-shadow w-[82%] flex bg-orange-50 p-1">
             <div class="flex-1 border border-gold outline outline-gold/40 -outline-offset-4 px-3 pt-2.5 pb-3">
               <p class="font-mono text-[10px] leading-snug uppercase tracking-[0.14em] text-gold-dark">
                 {themeOf(year)}
@@ -176,15 +176,5 @@
 <style>
   .wash {
     background-color: color-mix(in oklab, var(--tint) 16%, var(--color-orange-50));
-  }
-
-  /* Lying flat on the cloth: three faint layers, each twice the last, in a
-     dark shade of the fabric's own colour rather than grey. */
-  .label {
-    --shade: color-mix(in oklab, color-mix(in oklab, var(--tint) 50%, black) 14%, transparent);
-    box-shadow:
-      0 1px 1px var(--shade),
-      0 2px 2px var(--shade),
-      0 4px 4px var(--shade);
   }
 </style>

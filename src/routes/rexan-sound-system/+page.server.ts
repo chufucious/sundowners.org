@@ -1,4 +1,4 @@
-import { REXAN_TINT, rexanEdges } from '#lib/header-colors.js';
+import { rexanEdges } from '#lib/header-colors.js';
 
 // @ts-ignore - imagetools types not available in server context
 import img from '#lib/assets/rexan-sound/hero-rexan-dusk.jpg?w=1200&h=630&fit=cover&format=jpg&as=src';
@@ -12,9 +12,9 @@ const heroAlt = 'Rexan at dusk on the playa, headlight eyes glowing blue, speake
 export const load = () => {
   const imageUrl = Array.isArray(img) ? img[0] : img;
   return {
-    title: 'The Rexan Sound System | Sundowners – Black Rock City',
+    title: 'The Rexan Art Car Sound System | Sundowners',
     description:
-      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for year ten.',
+      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for year ten in 2027.',
     ogType: 'article',
     ogImage: new URL(imageUrl, 'https://sundowners.org').href,
     ogImageAlt: heroAlt,
@@ -26,7 +26,6 @@ export const load = () => {
       placeholder: Array.isArray(heroPlaceholder) ? heroPlaceholder[0] : heroPlaceholder,
       alt: heroAlt,
       position: '52% 60%',
-      tint: REXAN_TINT,
       edge: rexanEdges
     }
   };

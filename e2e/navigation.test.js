@@ -1,5 +1,12 @@
 import { test, expect } from "@playwright/test";
 
+// Each layout's tint is the average of its sampled header edge (header-colors.js).
+const tints = {
+  banner: { mobile: "#3d4856", desktop: "#434b57" },
+  guide: { mobile: "#3d4856", desktop: "#635559" },
+  rexan: { mobile: "#24334b", desktop: "#213047" },
+};
+
 test("client navigation updates the hero and one set of social tags", async ({ page }) => {
   await page.goto("/");
   const documentStarted = await page.evaluate(() => performance.timeOrigin);
@@ -8,7 +15,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   const homeHeight = (await header.boundingBox()).height;
   const homeImage = await header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src);
 
-  async function checkPage({ path, title, description, image, type, hero = banner, tint = "#354151" }) {
+  async function checkPage({ path, title, description, image, type, hero = banner, tint = tints.banner }) {
     await expect(page).toHaveURL(path);
     await expect(page).toHaveTitle(title);
     await checkTint(page, tint);
@@ -16,7 +23,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       ['meta[name="description"]', description],
       ['meta[property="og:title"]', title],
       ['meta[property="og:description"]', description],
-      ['meta[property="og:url"]', `https://sundowners.org${path === "/" ? "" : path}`],
+      ['meta[property="og:url"]', `https://sundowners.org${path}`],
       ['meta[property="og:type"]', type],
       ['meta[property="og:image"]', image],
       ['meta[name="twitter:title"]', title],
@@ -27,6 +34,9 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       await expect(tag).toHaveCount(1);
       await expect(tag).toHaveAttribute("content", content);
     }
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveCount(1);
+    await expect(canonical).toHaveAttribute("href", `https://sundowners.org${path}`);
     await expect(header.getByRole("img", { name: hero, exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
     // A reload would hide stale layout state; this must stay in the same document.
@@ -35,7 +45,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
 
   const home = {
     path: "/",
-    title: "Sundowners – Black Rock City",
+    title: "Sundowners | Burning Man Camp & Rexan Art Car",
     description: /^Sundowners is a Burning Man camp/,
     image: "https://sundowners.org/og-image.jpg",
     type: "website",
@@ -45,12 +55,12 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ }).click();
   await checkPage({
     path: "/rexan-sound-system",
-    title: "The Rexan Sound System | Sundowners – Black Rock City",
+    title: "The Rexan Art Car Sound System | Sundowners",
     description: /^How we built a solar-powered QSC rig/,
     image: /^https:\/\/sundowners\.org\/.*hero-rexan-dusk.*\.jpe?g$/,
     type: "article",
     hero: "Rexan at dusk on the playa, headlight eyes glowing blue, speakers and lanterns on the top deck",
-    tint: "#1e2e47",
+    tint: tints.rexan,
   });
   expect((await header.boundingBox()).height).toBeGreaterThan(page.viewportSize().height * 0.7);
   expect(await sampledEdge(page)).not.toBe(homeGradient);
@@ -59,7 +69,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await checkPage(home);
   await page.goBack();
   await expect(page).toHaveURL("/rexan-sound-system");
-  await checkTint(page, "#1e2e47");
+  await checkTint(page, tints.rexan);
   await page.goForward();
   await checkPage(home);
   expect(await sampledEdge(page)).toBe(homeGradient);
@@ -69,10 +79,11 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await page.getByRole("link", { name: /Read Now\s*:\s*Jagged Balls of Rolling Chaos/ }).click();
   await checkPage({
     path: "/jagged-balls-of-rolling-chaos",
-    title: "Jagged Balls of Rolling Chaos | Sundowners – Black Rock City",
-    description: /^Essential survival guide for Burning Man/,
-    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.png$/,
+    title: "Jagged Balls of Rolling Chaos: Burning Man Camp Tips | Sundowners",
+    description: /^Hard-won Burning Man camp tips/,
+    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.jpe?g$/,
     type: "article",
+    tint: tints.guide,
   });
   await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src)).toBe(homeImage);
   const compactHeight = (await header.boundingBox()).height;
@@ -88,16 +99,20 @@ test("client navigation updates the hero and one set of social tags", async ({ p
 
   await page.goBack();
   await expect(page).toHaveURL("/jagged-balls-of-rolling-chaos");
-  await checkTint(page, "#354151");
+  await checkTint(page, tints.guide);
   await page.goForward();
   await checkPage(home);
 });
 
-async function checkTint(page, tint) {
-  const tag = page.locator('meta[name="theme-color"]');
-  await expect(tag).toHaveCount(1);
-  await expect(tag).toHaveAttribute("content", tint);
-  const rgb = tint === "#1e2e47" ? "rgb(30, 46, 71)" : "rgb(53, 65, 81)";
+async function checkTint(page, { mobile, desktop }) {
+  // Browsers use the first theme-color whose media matches.
+  const tags = page.locator('meta[name="theme-color"]');
+  await expect(tags).toHaveCount(2);
+  await expect(tags.first()).toHaveAttribute("media", "(min-width: 48rem)");
+  await expect(tags.first()).toHaveAttribute("content", desktop);
+  await expect(tags.last()).toHaveAttribute("content", mobile);
+  const tint = page.viewportSize().width >= 768 ? desktop : mobile;
+  const rgb = `rgb(${[1, 3, 5].map((i) => parseInt(tint.slice(i, i + 2), 16)).join(", ")})`;
   await expect(page.locator("html")).toHaveCSS("background-color", rgb);
   await expect(page.locator("body")).toHaveCSS("background-color", rgb);
   await expect(page.locator("html")).toHaveCSS("background-image", "none");
@@ -115,9 +130,9 @@ test.describe("direct loads before hydration", () => {
   test.use({ javaScriptEnabled: false });
   test("header tint is present on each route without JavaScript", async ({ page }) => {
     for (const [route, tint] of [
-      ["/", "#354151"],
-      ["/rexan-sound-system", "#1e2e47"],
-      ["/jagged-balls-of-rolling-chaos", "#354151"],
+      ["/", tints.banner],
+      ["/rexan-sound-system", tints.rexan],
+      ["/jagged-balls-of-rolling-chaos", tints.guide],
     ]) {
       await page.goto(route);
       await checkTint(page, tint);
