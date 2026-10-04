@@ -148,3 +148,16 @@ test("the web app manifest names the site", async ({ request }) => {
   expect(manifest.name).toBe("Sundowners");
   expect(manifest.short_name).toBe("Sundowners");
 });
+
+test("fonts come from this site, not Google", async ({ page }) => {
+  const thirdParty = [];
+  page.on("request", (request) => /fonts\.(googleapis|gstatic)\.com/.test(request.url()) && thirdParty.push(request.url()));
+  await page.goto("/");
+  const faces = await page.evaluate(async () => {
+    await document.fonts.load('20px "EB Garamond"');
+    await document.fonts.load('italic 20px "EB Garamond"');
+    return [...document.fonts].filter((face) => face.family === "EB Garamond" && face.status === "loaded").map((face) => face.style);
+  });
+  expect(faces.sort()).toEqual(["italic", "normal"]);
+  expect(thirdParty).toEqual([]);
+});

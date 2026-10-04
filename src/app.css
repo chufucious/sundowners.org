@@ -25,6 +25,25 @@ html, body {
   src: url("/fonts/roboto-mono-latin.woff2") format("woff2");
 }
 
+/* EB Garamond's Latin files from Google Fonts, served here. The upright file is
+   variable; 400–600 are the weights the site used from Google, so bold text
+   still resolves to 600. */
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/eb-garamond-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "EB Garamond";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/eb-garamond-italic-latin.woff2") format("woff2");
+}
+
 @theme {
   --font-mono: "Roboto Mono", ui-monospace, monospace;
   --font-garamond: "EB Garamond", serif;
