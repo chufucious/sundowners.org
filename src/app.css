@@ -61,6 +61,16 @@ picture {
   background-size: 300px;
 }
 
+/* Lying flat on the cloth: three faint layers, each twice the last, in a dark
+   shade of the fabric's own colour rather than grey. Set --tint to that colour. */
+@utility fabric-shadow {
+  --shade: color-mix(in oklab, color-mix(in oklab, var(--tint) 50%, black) 14%, transparent);
+  box-shadow:
+    0 1px 1px var(--shade),
+    0 2px 2px var(--shade),
+    0 4px 4px var(--shade);
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
