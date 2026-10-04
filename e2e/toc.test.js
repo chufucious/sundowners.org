@@ -79,3 +79,22 @@ test("title, body, photos and carousel share the page center", async ({ page, is
     }
   }
 });
+
+test.describe("the guide's rail", () => {
+  test.use({ viewport: { width: 1600, height: 800 } });
+  test.skip(({ isMobile }) => isMobile, "desktop layout");
+
+  test("links jump to their section and mark it, pinned clear of the text", async ({ page }) => {
+    await page.goto("/jagged-balls-of-rolling-chaos");
+    const toc = page.getByRole("navigation", { name: "On this page" });
+    await toc.getByRole("link", { name: "Rain" }).click();
+    await expect(page).toHaveURL(/#rain$/);
+    await expect(page.locator("#rain")).toBeInViewport();
+    await expect(toc.locator('[aria-current="location"]')).toHaveText("Rain");
+    await page.locator("#gear-and-accessories").scrollIntoViewIfNeeded();
+    await expect(toc).toBeInViewport();
+    const nav = await toc.boundingBox();
+    const text = await page.locator("#gear-and-accessories").boundingBox();
+    expect(nav.x + nav.width).toBeLessThan(text.x);
+  });
+});
