@@ -77,8 +77,8 @@
                 loading="lazy"
             />
             <!-- The seasonal greeting, as label-maker tape stuck on the photo. -->
-            <p class="label-tape absolute -left-2 bottom-4 md:-left-3.5 md:bottom-6 -rotate-4">
-                <span class="fabric-shadow"><span class="whitespace-nowrap">🦁 Thanks for an amazing Burn —</span> <span class="whitespace-nowrap">see you in {currentYear + 1}!</span></span>
+            <p class="label-tape absolute -left-2 -bottom-1 md:-left-3.5 md:bottom-6 -rotate-4 whitespace-nowrap">
+                <span class="fabric-shadow">🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!</span>
             </p>
         </div>
         <div class="col-span-full md:col-span-5">
@@ -471,18 +471,24 @@
     .label-tape {
         /* The sunflower fabric's key colour, as on the Rexan carousel's 2017 card. */
         --tint: #a07517;
-        font: 400 clamp(11px, 1.15vw, 15px) / 2.9 var(--font-mono);
-        letter-spacing: 0.14em;
+        /* One strip on phones too: tighter tracking and a font that shrinks with
+           the photo, so it stays one line along the bottom edge, below the faces. */
+        font: 400 11px / 2.9 var(--font-mono);
+        font-size: min(11px, 2.6vw);
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--color-orange-50);
     }
 
-    /* Where the line wraps on phones, each line gets its own strip, like a
-       label maker printing one line per label. */
+    @media (min-width: 48rem) {
+        .label-tape {
+            font-size: clamp(11px, 1.15vw, 15px);
+            letter-spacing: 0.14em;
+        }
+    }
+
     .label-tape > span {
         padding: 0.55em 1em;
         background: var(--color-orange-950);
-        -webkit-box-decoration-break: clone;
-        box-decoration-break: clone;
     }
 </style>
