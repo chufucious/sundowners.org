@@ -17,15 +17,17 @@
     import coogieSign from "#lib/assets/Photos/coogie-sign.jpg?w=300;600&enhanced";
     import joshRexan from "#lib/assets/Photos/josh-on-rexan.jpg?w=300;600&enhanced";
 
-    // Patterns: tiles for repeating backgrounds (higher res for crisp tiling)
+    // Patterns: tiles for repeating backgrounds. Frames show them at 300px, so
+    // 600px stays crisp on 2x screens (the Rexan carousel uses the same tiles).
+    // The dazzle strip shows its image at natural size, so it keeps 800px.
     import patternDazzle from "#lib/assets/dazzle.jpeg?w=800&format=webp";
-    import patternChickens from "#lib/assets/wax-fabric/chickens.webp?w=800&format=webp";
-    import patternFans from "#lib/assets/wax-fabric/fans.jpg?w=800&format=webp";
-    import patternSunflower from "#lib/assets/wax-fabric/sunflower.webp?w=800&format=webp";
-    import patternSpirograph from "#lib/assets/wax-fabric/spirograph.png?w=800&format=webp";
-    import patternHandshake from "#lib/assets/wax-fabric/handshake.jpg?w=800&format=webp";
-    import patternLeaves from "#lib/assets/wax-fabric/leaves.jpeg?w=800&format=webp";
-    import patternLeopard from "#lib/assets/wax-fabric/leopard-pattern.avif?w=800&format=webp";
+    import patternChickens from "#lib/assets/wax-fabric/chickens.webp?w=600&format=webp";
+    import patternFans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
+    import patternSunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
+    import patternSpirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
+    import patternHandshake from "#lib/assets/wax-fabric/handshake.jpg?w=600&format=webp";
+    import patternLeaves from "#lib/assets/wax-fabric/leaves.jpeg?w=600&format=webp";
+    import patternLeopard from "#lib/assets/wax-fabric/leopard-pattern.avif?w=600&format=webp";
 
     import { currentYear, currentAddress, expeditions } from "#lib/expeditions.js";
 
