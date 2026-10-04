@@ -91,14 +91,14 @@ test("homepage gallery opens with fire, a bottom-aligned loop, and fisheye", asy
   await expect(page.locator("#collage video")).toHaveCount(0);
   await expect(page.locator("#gallery > :nth-child(1) img")).toHaveAttribute("alt", "the man lit up above a wall of fire");
   await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "Three campmates in sunglasses grinning into a fisheye lens");
-  const video = page.locator("#gallery > :nth-child(2)");
+  const video = page.locator("#gallery > :nth-child(2) video");
   await expect(video).toHaveAttribute("aria-label", "Sundowners sign and wax-print flag at dusk");
   await video.scrollIntoViewIfNeeded();
   await expect.poll(() => video.evaluate((v) => v.muted && v.loop && v.playsInline && !v.paused && v.currentTime > 0), {
     timeout: 15_000,
   }).toBe(true);
   expect(await video.evaluate((v) => v.duration)).toBeGreaterThanOrEqual(9);
-  const bottomGap = await video.evaluate((v) => v.parentElement.getBoundingClientRect().bottom - v.getBoundingClientRect().bottom);
+  const bottomGap = await video.evaluate((v) => v.closest("#gallery").getBoundingClientRect().bottom - v.getBoundingClientRect().bottom);
   expect(Math.abs(bottomGap)).toBeLessThanOrEqual(1);
 });
 
@@ -129,8 +129,8 @@ test("article cards don't click through from empty space", async ({ page }) => {
 });
 
 test("rexan loops play silently and inline", async ({ page }) => {
-  // Standing in for GIFs: they must autoplay on iPhones, which needs muted
-  // and playsinline, and they loop without controls.
+  // Standing in for GIFs: they must start on iPhones without a tap, which
+  // needs muted and playsinline, and they loop without native controls.
   await page.goto("/rexan-sound-system");
   const videos = page.locator("main video");
   await expect(videos).toHaveCount(3);
@@ -172,4 +172,46 @@ test("unknown pages get a 404 that points back to camp", async ({ page }) => {
     await expect(page.getByRole("link", { name: new RegExp(`Read Now\\s*:\\s*${title}`) })).toBeVisible();
   }
   await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+});
+
+test("the homepage loop doesn't download until it's near the screen", async ({ page }) => {
+  const media = [];
+  page.on("request", (request) => request.url().endsWith(".mp4") && media.push(request.url()));
+  await page.goto("/");
+  await page.waitForLoadState("networkidle");
+  expect(media).toEqual([]);
+  const video = page.locator("#gallery video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v) => !v.paused && v.currentTime > 0), { timeout: 15_000 }).toBe(true);
+});
+
+test("the pause button stops a loop until it's pressed again", async ({ page }) => {
+  await page.goto("/");
+  const video = page.locator("#gallery video");
+  await video.scrollIntoViewIfNeeded();
+  await expect.poll(() => video.evaluate((v) => !v.paused), { timeout: 15_000 }).toBe(true);
+  await page.getByRole("button", { name: "Pause video" }).click();
+  await expect.poll(() => video.evaluate((v) => v.paused)).toBe(true);
+  // Scrolling away and back doesn't restart it.
+  await page.evaluate(() => scrollTo(0, 0));
+  await video.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  expect(await video.evaluate((v) => v.paused)).toBe(true);
+  await page.getByRole("button", { name: "Play video" }).click();
+  await expect.poll(() => video.evaluate((v) => !v.paused)).toBe(true);
+});
+
+test.describe("with reduced motion", () => {
+  test.use({ reducedMotion: "reduce" });
+
+  test("loops wait for the play button and the flame holds still", async ({ page }) => {
+    await page.goto("/rexan-sound-system");
+    await expect(page.locator("main > header canvas")).toBeHidden();
+    const video = page.locator("main video").first();
+    await video.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    expect(await video.evaluate((v) => v.paused && v.readyState === 0)).toBe(true);
+    await video.locator("..").getByRole("button", { name: "Play video" }).click();
+    await expect.poll(() => video.evaluate((v) => !v.paused && v.currentTime > 0), { timeout: 15_000 }).toBe(true);
+  });
 });

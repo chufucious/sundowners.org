@@ -28,10 +28,11 @@ export const build2026Photos = [
   { image: build2026Daylight, alt: "rexan in the yard" },
 ];
 
-// Bottom gallery, left to right; class controls each photo's height and alignment.
+// Bottom gallery, left to right; class controls each photo's height and alignment
+// (for the video, class aligns it and videoClass sizes it).
 export const galleryPhotos = [
   { image: manBurnFire, alt: "the man lit up above a wall of fire", class: "max-h-96" },
-  { video: sundownersSignLoop, poster: sundownersSignPoster, alt: "Sundowners sign and wax-print flag at dusk", class: "h-80 w-auto max-w-none shrink-0 self-end" },
+  { video: sundownersSignLoop, poster: sundownersSignPoster, alt: "Sundowners sign and wax-print flag at dusk", class: "shrink-0 self-end", videoClass: "block h-80 w-auto max-w-none" },
   { image: devofisheye, alt: "Three campmates in sunglasses grinning into a fisheye lens", class: "max-h-96" },
   { image: gregonrexan, alt: "A crew member riding on Rexan’s glowing front deck at night", class: "max-h-96" },
   { image: jonSmoke, alt: "A campmate swirling a trail of green smoke across the playa", class: "max-h-64" },

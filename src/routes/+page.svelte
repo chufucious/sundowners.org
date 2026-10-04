@@ -1,5 +1,6 @@
 <script>
     import ArticleCard from "#lib/components/ArticleCard.svelte";
+    import LoopVideo from "#lib/components/LoopVideo.svelte";
     import { articles, build2026Photos, galleryPhotos } from "#lib/homepage.js";
     // Full-width images: 640/1280/1920
     import katiesunset from "#lib/assets/Photos/katiesunset.jpg?w=640;1280;1920&enhanced";
@@ -441,21 +442,17 @@
             onscroll={updateGalleryEnds}
             class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
         >
-            {#each galleryPhotos as { image, video, poster, alt, class: fit } (image ?? video)}
+            {#each galleryPhotos as { image, video, poster, alt, class: fit, videoClass } (image ?? video)}
                 {#if video}
-                    <video
+                    <LoopVideo
                         src={video}
                         {poster}
+                        label={alt}
                         width="960"
                         height="540"
-                        aria-label={alt}
-                        autoplay
-                        loop
-                        muted
-                        playsinline
-                        preload="metadata"
                         class={fit}
-                    ></video>
+                        {videoClass}
+                    />
                 {:else}
                     <enhanced:img
                         src={image}

@@ -11,6 +11,8 @@
   let canvas;
   let running = $state(false);
   let pageVisible = $state(true);
+  // With reduced motion the flame never starts, so the still mark shows.
+  let reduceMotion = $state(false);
   // Why the animation isn't running, shown under the logo in dev.
   let status = $state("starting");
 
@@ -196,6 +198,14 @@
   }
 
   $effect(() => {
+    const query = matchMedia("(prefers-reduced-motion: reduce)");
+    const update = () => (reduceMotion = query.matches);
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  });
+
+  $effect(() => {
     const gl = canvas.getContext("webgl", { premultipliedAlpha: true });
     if (!gl) {
       status = "no WebGL";
@@ -239,7 +249,8 @@
 
     // Visibility changes only start/stop the loop; keep the WebGL resources.
     $effect(() => {
-      shouldAnimate = active && pageVisible && !document.hidden;
+      shouldAnimate = active && pageVisible && !document.hidden && !reduceMotion;
+      if (reduceMotion) status = "reduced motion";
       syncAnimation();
     });
 
