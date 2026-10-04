@@ -76,6 +76,10 @@ test("homepage gallery pages with its hints", async ({ page }) => {
   const more = page.getByRole("button", { name: "more photos →" });
   const back = page.getByRole("button", { name: "← back", includeHidden: true });
   await more.scrollIntoViewIfNeeded();
+  // Click only once hydration has installed the handlers (the scroll-linked
+  // logo appears) and the lazy photos have made the strip wider than the screen.
+  await expect(page.getByRole("link", { name: "Sundowners home", exact: true })).toBeVisible();
+  await expect.poll(() => page.locator("#gallery").evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
   await expect(back).toBeHidden();
   await more.click();
   await expect(back).toBeVisible();
