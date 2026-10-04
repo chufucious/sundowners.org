@@ -33,7 +33,7 @@ The terminal prints the local URL. Changes update in the browser automatically.
 | Hero banner and scrolling logo handoff | `src/lib/components/SiteHeader.svelte` |
 | Shared fonts, colors, spacing | `src/app.css` |
 
-When rolling over to a new camp year, preserve the previous expedition as a literal year/address entry before changing `currentYear` and `currentAddress`. Add the new theme and link at the top of `expeditions`. Also review the homepage's seasonal headline: it currently thanks visitors and displays `currentYear + 1`.
+When rolling over to a new camp year, preserve the previous expedition as a literal year/address entry before changing `currentYear` and `currentAddress`. Add the new theme and link at the top of `expeditions`. Also review the homepage's seasonal greeting, the label-maker tape on the intro photo: it currently thanks visitors and displays `currentYear + 1`.
 
 ## Update photos
 

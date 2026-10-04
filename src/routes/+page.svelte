@@ -63,7 +63,7 @@
 <section id="intro" class="col-span-12 relative">
     <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
         <div
-            class="pattern-frame col-span-full p-2 -rotate-1 mt-8 md:-mt-88 lg:-mt-102 mb-12"
+            class="pattern-frame relative col-span-full p-2 -rotate-1 mt-8 md:-mt-88 lg:-mt-102 mb-12"
             style:background-image="url({patternSunflower})"
         >
             <enhanced:img
@@ -73,27 +73,26 @@
                 class="max-w-full"
                 loading="lazy"
             />
+            <!-- The seasonal greeting, as label-maker tape stuck on the photo. -->
+            <p class="label-tape absolute -left-2 bottom-4 md:-left-3.5 md:bottom-6 -rotate-4">
+                <span class="fabric-shadow"><span class="whitespace-nowrap">🦁 Thanks for an amazing Burn —</span> <span class="whitespace-nowrap">see you in {currentYear + 1}!</span></span>
+            </p>
         </div>
         <div class="col-span-full md:col-span-5">
-            <!-- The seasonal greeting leads visually, but the heading is who we
-                 are, so it doesn't change with the season. -->
-            <p class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
-                🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
-            </p>
             <h1 class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
                 We’re <strong>Sundowners</strong>, an African-diaspora inspired Burning Man camp, bringing music, art, and community to the playa.
             </h1>
             <div
                 class="text-sm text-orange-900 leading-relaxed max-w-prose space-y-[1lh]"
             >
-                <p>Sundowners is centered on creating liminal spaces to celebrate
+                <p>We create liminal spaces to celebrate
                 the multicultural art, music, dance, and hospitality that
                 African traditions and speakeasies bring to the world.</p>
                 <p>
                     We strive for a holistic offering through our shebeen
                     speakeasy and
                     <a href="/rexan-sound-system" class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
-                        >safari-theme art car</a
+                        >Rexan, our safari-themed art car</a
                     >. The deep artistry,
                     meaning, and humanity of African-based music is our creative
                     North Star.
@@ -468,3 +467,23 @@
         </div>
     </div>
 </section>
+
+<style>
+    .label-tape {
+        /* The sunflower fabric's key colour, as on the Rexan carousel's 2017 card. */
+        --tint: #a07517;
+        font: 400 clamp(11px, 1.15vw, 15px) / 2.9 var(--font-mono);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-orange-50);
+    }
+
+    /* Where the line wraps on phones, each line gets its own strip, like a
+       label maker printing one line per label. */
+    .label-tape > span {
+        padding: 0.55em 1em;
+        background: var(--color-orange-950);
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+</style>
