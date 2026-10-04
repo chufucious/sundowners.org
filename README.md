@@ -53,7 +53,7 @@ Shared media components live in `src/lib/components/`:
 ## Add an article
 
 1. Create `src/routes/<slug>/+page.svelte`. Use the existing articles as examples; the Rexan article demonstrates shared media components and a table of contents.
-2. Add `+page.server.ts` beside it. Follow an existing route's `load()` for `title`, `description`, `ogType`, `ogImage`, and `ogImageAlt`. Keep `ogImage` an absolute URL. The shared layout renders the social tags once.
+2. Add `+page.server.ts` beside it. Follow an existing route's `load()` for `title`, `description`, `ogType`, `ogImage`, and `ogImageAlt`. Keep `ogImage` an absolute URL cropped to 1200×630 (`?w=1200&h=630&fit=cover`): the layout declares that size and the tests check it. The shared layout renders the social tags and canonical URL once.
 3. Choose `smallHeader: true` for a compact banner, or follow the Rexan route's `headerImage` shape (`src`, `placeholder`, `alt`, `position`) for a photo-led header.
 4. Add a card to `articles` in `src/lib/homepage.js`: unique `id`, `href`, `image`, `alt`, `title`, `blurb`, and optional crop class in `position`.
 5. Add the public URL to `static/sitemap.xml`. The page-rendering tests read this file, so the new route joins their coverage.

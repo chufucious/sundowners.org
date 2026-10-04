@@ -24,7 +24,8 @@
         >
       </p>
       <p class="font-light font-sans text-orange-950 text-sm mt-[1.5em] mb-[0.5em]">
-        Saintly words from <strong>Poca</strong> of the Sundowners.
+        Saintly words from <strong>Poca</strong> of the Sundowners.<br />
+        Updated <time datetime="2026-10">October 2026</time>
       </p>
     </div>
 
@@ -33,7 +34,7 @@
         <enhanced:img
           src={jaggedBalls}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          alt="Jagged balls of rolling chaos"
+          alt="A shredded canopy tumbling through a dust storm as people run from it"
           class="w-full"
         />
         <figcaption class="text-sm mt-2 italic">Run, Sparkle, Run!</figcaption>
@@ -41,6 +42,11 @@
     </div>
   </header>
   <ArticleText>
+    <p>
+      Hard-won tips from the Sundowners crew, not official advice. Read Burning
+      Man's <a href="https://survival.burningman.org/">Survival Guide</a> before
+      you go.
+    </p>
     <section id="bikes">
       <h2>Bikes</h2>
       <ul class="list-disc">
@@ -78,10 +84,23 @@
       <h2>In Case of Emergency</h2>
       <ul class="list-disc">
         <li>
-          The public ESD email address 911@burningman.com is a way for the
-          general public to pass emergency messages to staff and participants.
-          (Delivery can't be guaranteed due to the environment, but it's worth
-          passing along if someone wants the info).
+          <strong>On playa, don't email.</strong> Yell for help and flag down a
+          Black Rock Ranger or anyone with a radio, or send someone to a Ranger
+          Outpost or ESD (Emergency Services) station.
+        </li>
+        <li>
+          <strong>From home:</strong> friends and family can email urgent
+          messages to
+          <a href="mailto:brc-urgent@burningman.org">brc-urgent@burningman.org</a>.
+          Include the person's legal name, playa name, camp and location, and
+          what's happened. Rangers try to deliver messages and they're posted at
+          Playa Info, but delivery can't be guaranteed.
+        </li>
+        <li>
+          These details have changed before, so check Burning Man's
+          <a href="https://burningman.org/black-rock-city/preparation/health-safety/emergency-contact/"
+            >Emergency Help page</a
+          > before each Burn.
         </li>
       </ul>
     </section>
@@ -229,7 +248,7 @@
           find the portos? This isn't the worst thing to have in your backpack,
           friends. Since we're responsible for everything that hits the playa -
           these are a solid companion for drinkers (and art cars - I'll chuck a
-          few in my bag for Rexan).
+          few in my bag for <a href="/rexan-sound-system">Rexan</a>).
         </li>
         <li>
           Burner problem: bike light batteries don't last long enough and the
@@ -257,7 +276,7 @@
       </ul>
     </section>
     <p class="">
-      <a href="/" class="text-orange-950 underline hover:text-orange-500"
+      <a href="/" class="text-orange-950 underline hover:text-orange-700"
         >Back to home</a
       >
     </p>

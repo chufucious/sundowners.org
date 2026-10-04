@@ -12,9 +12,9 @@ const heroAlt = 'Rexan at dusk on the playa, headlight eyes glowing blue, speake
 export const load = () => {
   const imageUrl = Array.isArray(img) ? img[0] : img;
   return {
-    title: 'The Rexan Sound System | Sundowners – Black Rock City',
+    title: 'The Rexan Art Car Sound System | Sundowners',
     description:
-      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for year ten.',
+      'How we built a solar-powered QSC rig on Rexan, our psychedelic safari art car at Burning Man: the gear, the batteries, the bumps in the road on playa, and the plan for year ten in 2027.',
     ogType: 'article',
     ogImage: new URL(imageUrl, 'https://sundowners.org').href,
     ogImageAlt: heroAlt,

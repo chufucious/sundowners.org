@@ -63,6 +63,6 @@ test("homepage Rexan evolution link opens its article", async ({ page }) => {
   await openOverview(page);
   await page.getByRole("link", { name: "Read about Rexan's Evolution", exact: true }).click();
   await expect(page).toHaveURL("/rexan-sound-system");
-  await expect(page).toHaveTitle("The Rexan Sound System | Sundowners – Black Rock City");
+  await expect(page).toHaveTitle("The Rexan Art Car Sound System | Sundowners");
   await expect(page.getByRole("region", { name: "Rexan, year by year", exact: true })).toHaveAttribute("aria-roledescription", "carousel");
 });

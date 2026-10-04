@@ -16,7 +16,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       ['meta[name="description"]', description],
       ['meta[property="og:title"]', title],
       ['meta[property="og:description"]', description],
-      ['meta[property="og:url"]', `https://sundowners.org${path === "/" ? "" : path}`],
+      ['meta[property="og:url"]', `https://sundowners.org${path}`],
       ['meta[property="og:type"]', type],
       ['meta[property="og:image"]', image],
       ['meta[name="twitter:title"]', title],
@@ -27,6 +27,9 @@ test("client navigation updates the hero and one set of social tags", async ({ p
       await expect(tag).toHaveCount(1);
       await expect(tag).toHaveAttribute("content", content);
     }
+    const canonical = page.locator('link[rel="canonical"]');
+    await expect(canonical).toHaveCount(1);
+    await expect(canonical).toHaveAttribute("href", `https://sundowners.org${path}`);
     await expect(header.getByRole("img", { name: hero, exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
     // A reload would hide stale layout state; this must stay in the same document.
@@ -35,7 +38,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
 
   const home = {
     path: "/",
-    title: "Sundowners – Black Rock City",
+    title: "Sundowners | Burning Man Camp & Rexan Art Car",
     description: /^Sundowners is a Burning Man camp/,
     image: "https://sundowners.org/og-image.jpg",
     type: "website",
@@ -45,7 +48,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ }).click();
   await checkPage({
     path: "/rexan-sound-system",
-    title: "The Rexan Sound System | Sundowners – Black Rock City",
+    title: "The Rexan Art Car Sound System | Sundowners",
     description: /^How we built a solar-powered QSC rig/,
     image: /^https:\/\/sundowners\.org\/.*hero-rexan-dusk.*\.jpe?g$/,
     type: "article",
@@ -69,9 +72,9 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await page.getByRole("link", { name: /Read Now\s*:\s*Jagged Balls of Rolling Chaos/ }).click();
   await checkPage({
     path: "/jagged-balls-of-rolling-chaos",
-    title: "Jagged Balls of Rolling Chaos | Sundowners – Black Rock City",
-    description: /^Essential survival guide for Burning Man/,
-    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.png$/,
+    title: "Jagged Balls of Rolling Chaos: Burning Man Camp Tips | Sundowners",
+    description: /^Hard-won Burning Man camp tips/,
+    image: /^https:\/\/sundowners\.org\/.*jagged-balls-of-rolling-chaos.*\.jpe?g$/,
     type: "article",
   });
   await expect.poll(() => header.getByRole("img", { name: banner, exact: true }).evaluate((image) => image.src)).toBe(homeImage);

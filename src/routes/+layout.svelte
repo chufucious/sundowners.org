@@ -19,7 +19,7 @@
   `);
 
   const SITE_URL = "https://sundowners.org";
-  const DEFAULT_TITLE = "Sundowners – Black Rock City";
+  const DEFAULT_TITLE = "Sundowners | Burning Man Camp & Rexan Art Car";
   const DEFAULT_DESCRIPTION =
     "Sundowners is a Burning Man camp centered on creating liminal spaces to celebrate the multicultural art, music, dance, and hospitality that African traditions and speakeasies bring to the world.";
   const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
@@ -33,7 +33,8 @@
     image: page.data.ogImage ?? DEFAULT_IMAGE,
     imageAlt: page.data.ogImageAlt ?? DEFAULT_IMAGE_ALT,
     type: page.data.ogType ?? "website",
-    url: SITE_URL + (page.url.pathname === "/" ? "" : page.url.pathname),
+    // Also the canonical URL: prerendered paths have no query or trailing slash.
+    url: SITE_URL + page.url.pathname,
   });
 </script>
 
@@ -43,6 +44,7 @@
   <svelte:element this={"style"}>{headerStyle}</svelte:element>
   <title>{meta.title}</title>
   <meta name="description" content={meta.description} />
+  <link rel="canonical" href={meta.url} />
   <!-- Open Graph -->
   <meta property="og:title" content={meta.title} />
   <meta property="og:description" content={meta.description} />
@@ -61,7 +63,7 @@
   <meta name="twitter:image:alt" content={meta.imageAlt} />
 </svelte:head>
 
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-[calc(1rem+var(--safe-area-top))] focus:left-[calc(1rem+var(--safe-area-left))] focus:z-50 focus:bg-orange-500 focus:text-white focus:px-4 focus:py-2">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-[calc(1rem+var(--safe-area-top))] focus:left-[calc(1rem+var(--safe-area-left))] focus:z-50 focus:bg-orange-700 focus:text-white focus:px-4 focus:py-2">
   Skip to main content
 </a>
 
@@ -97,7 +99,7 @@
       <p class="flex flex-wrap items-center justify-center gap-4">
         <a
           href="mailto:sundownersbrc@gmail.com"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-700 hover:bg-orange-800 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Email Sundowners camp"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -108,7 +110,7 @@
         </a>
         <a
           href="https://www.instagram.com/sundownerssafari/"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-700 hover:bg-orange-800 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Follow Sundowners on Instagram"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -120,7 +122,7 @@
         </a>
         <a
           href="https://www.facebook.com/sundownersbrc"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-700 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-700 hover:bg-orange-800 text-white px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Follow Sundowners on Facebook"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">

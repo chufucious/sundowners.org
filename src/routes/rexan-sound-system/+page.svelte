@@ -42,7 +42,7 @@
   // Section headings, in order; the table of contents links to these ids.
   const sections = [
     { id: "where-we-started", title: "Where we started" },
-    { id: "the-rig-today", title: "The rig today" },
+    { id: "the-rig-today", title: "The rig in 2026" },
     { id: "whats-your-sound-system", title: '"What\'s your sound system?"' },
     { id: "keeping-it-green", title: "Keeping it green" },
     { id: "bumps-in-the-road", title: "Bumps in the road (and what we learned)" },
@@ -69,7 +69,8 @@
     </p>
     <p class="mt-6 md:mt-8 font-mono text-sm text-orange-900">
       By <strong class="font-semibold text-orange-950">Joshuah Vincent</strong> &amp;
-      <strong class="font-semibold text-orange-950">Greg Liburd</strong>
+      <strong class="font-semibold text-orange-950">Greg Liburd</strong><br />
+      <time datetime="2026-10">October 2026</time>
     </p>
   </header>
 
@@ -131,7 +132,7 @@
         panels, flame-effect lanterns, 29" custom LED disc "googly eyes" on the front, and a dashboard
         sound panel loaded with African animal calls. We take riders out on "game drives" to track
         CAR-nimals, spot ART-ilopes and collect MAN-imals for study. Rexan has been on playa in 2017,
-        2018, 2019, 2022, 2023, 2025 and 2026. Next year is our tenth anniversary.
+        2018, 2019, 2022, 2023, 2025 and 2026. 2027 is our tenth anniversary.
       </p>
       <p>And Rexan's heart is our community, and its voice is its sound system.</p>
     </ArticleText>
@@ -204,7 +205,7 @@
 
     <ArticleText>
       {@render sectionHeading("the-rig-today")}
-      <p>This is how Rexan is set up now:</p>
+      <p>This is Rexan's 2026 setup:</p>
       <ul>
         <li><strong>Subs:</strong> 2× QSC KS118, stacked on the passenger (right) side.</li>
         <li><strong>Tops:</strong> 4× QSC K12.2 mounted high on the horizontal top bar, firing out over the deck and the crowd.</li>
@@ -262,7 +263,7 @@
         wasn't who we wanted to be. We've been working toward Burning Man's sustainability roadmap for
         years, and in 2022 we moved the whole light and sound system onto batteries.
       </p>
-      <p>Today's power system has four parts:</p>
+      <p>The 2026 power system has four parts:</p>
       <ul>
         <!-- TODO: 13.6 kWh here vs "14 kWh" in the draft's Instagram caption — confirm which. -->
         <li>
@@ -271,7 +272,7 @@
         </li>
         <li>
           About 600W of solar on the frame above the DJ booth, charging the batteries through the day. We
-          upgraded the array during our Reno build weeks this year.
+          upgraded the array during our Reno build weeks in 2026.
         </li>
         <li>
           The engine's alternator, which runs an inverter and charges the batteries while Rexan is
@@ -362,7 +363,7 @@
       </p>
       <p>
         <strong>Weatherproofing the DJ booth.</strong> Our trusted DJM-900NXS had a few power-cycling
-        quirks this year from the elements. To keep our setups seamless, we're adding a backup mixer,
+        quirks in 2026 from the elements. To keep our setups seamless, we're adding a backup mixer,
         treating all connections with DeoxIT, and giving our cable runs extra weatherproofing.
       </p>
       <p>
@@ -411,7 +412,7 @@
         — Joshuah Vincent &amp; Greg Liburd
       </p>
       <p>
-        <a href="/" class="font-mono text-sm text-orange-950 underline hover:text-orange-500">Back to home</a>
+        <a href="/" class="font-mono text-sm text-orange-950 underline hover:text-orange-700">Back to home</a>
       </p>
     </ArticleText>
   </div>

@@ -38,12 +38,27 @@
         gallery.scrollBy({ left: direction * gallery.clientWidth * 0.8, behavior: "smooth" });
     }
 
+    // Lets search engines tie the camp's name to this site and its profiles.
+    const organization = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Sundowners",
+        url: "https://sundowners.org/",
+        logo: "https://sundowners.org/android-chrome-512x512.png",
+        description: "An African-diaspora inspired Burning Man camp and art collective, home of the Rexan art car.",
+        sameAs: ["https://www.instagram.com/sundownerssafari/", "https://www.facebook.com/sundownersbrc"],
+    });
+
     function updateGalleryEnds() {
         galleryAtStart = gallery.scrollLeft <= 1;
         galleryAtEnd = gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth - 1;
     }
 
 </script>
+
+<svelte:head>
+    {@html `<script type="application/ld+json">${organization}</script>`}
+</svelte:head>
 
 <section id="intro" class="col-span-12 relative">
     <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
@@ -54,19 +69,20 @@
             <enhanced:img
                 src={rexanGroup2023}
                 sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
-                alt="jump!"
+                alt="The Sundowners crew cheering and waving from Rexan’s decks"
                 class="max-w-full"
                 loading="lazy"
             />
         </div>
         <div class="col-span-full md:col-span-5">
-            <h1 class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
+            <!-- The seasonal greeting leads visually, but the heading is who we
+                 are, so it doesn't change with the season. -->
+            <p class="text-2xl md:text-3xl text-orange-950 mb-8 font-garamond">
                 🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!
-            </h1>
-            <p class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
-                We’re <strong>Sundowners</strong>, an African-diaspora inspired Burning Man camp, bringing music, art, and community to the playa.
-
             </p>
+            <h1 class="text-xl md:text-2xl text-orange-950 mb-8 font-garamond">
+                We’re <strong>Sundowners</strong>, an African-diaspora inspired Burning Man camp, bringing music, art, and community to the playa.
+            </h1>
             <div
                 class="text-sm text-orange-900 leading-relaxed max-w-prose space-y-[1lh]"
             >
@@ -109,7 +125,7 @@
                     <p class="text-sm wrap-anywhere">
                         <a
                             href="https://www.instagram.com/sundownerssafari/"
-                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
+                            class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
                             aria-label="Follow Sundowners on Instagram"
                             >@sundownerssafari</a
                         >
@@ -122,7 +138,7 @@
                     <p class="text-sm">
                         <a
                             href="mailto:sundownersbrc@gmail.com"
-                            class="text-orange-500 underline underline-offset-2 hover:text-orange-700"
+                            class="text-orange-700 underline underline-offset-2 hover:text-orange-800"
                             aria-label="Email Sundowners camp">Contact Us</a
                         >
                     </p>
@@ -154,7 +170,7 @@
                 src={tucoLauren}
                 sizes="(max-width: 767px) 92vw, (max-width: 1279px) 60vw, 768px"
                 class="w-full h-auto"
-                alt="t + l"
+                alt="Two campmates in the low sun at camp, one perched on a blue stepladder"
                 loading="lazy"
             />
         </div>
@@ -166,7 +182,7 @@
                 src={coogieSign}
                 sizes="(max-width: 767px) 48vw, (max-width: 1279px) 29vw, 368px"
                 class="w-full h-auto"
-                alt="sundowners with sign"
+                alt="Campmates in African-print outfits posing under the sequined Sundowners sign"
                 loading="lazy"
             />
         </div>
@@ -178,7 +194,7 @@
                 src={joshRexan}
                 sizes="(max-width: 767px) 44vw, (max-width: 1279px) 29vw, 368px"
                 class="w-full h-auto"
-                alt="j on rexan"
+                alt="A DJ playing on Rexan’s top deck, with riders below and the zebra-striped hood in front"
                 loading="lazy"
             />
         </div>
@@ -190,7 +206,7 @@
                 src={zuraSpotter}
                 sizes="(max-width: 767px) 94vw, (max-width: 1279px) 55vw, 704px"
                 class="w-full h-auto"
-                alt="z on spotter"
+                alt="A campmate in a leopard onesie in Rexan’s raised spotter seat at dusk"
                 loading="lazy"
             />
         </div>
@@ -215,7 +231,7 @@
                 <enhanced:img
                     src={group2022}
                     sizes="(max-width: 767px) 92vw, (max-width: 1023px) 67vw, 50vw"
-                    alt="2022 group"
+                    alt="The 2022 Sundowners crew posing in front of camp, a white lion costume at the front"
                     loading="lazy"
                 />
             </div>
@@ -231,7 +247,7 @@
                 <enhanced:img
                     src={lionAndLeyla}
                     sizes="(max-width: 767px) 92vw, 75vw"
-                    alt="lion and l"
+                    alt="A campmate laughing beside a stuffed lion in yellow sunglasses at the camp bar"
                     class="w-full h-auto"
                     loading="lazy"
                 />
@@ -280,7 +296,7 @@
             <enhanced:img
                 src={katiesunset}
                 sizes="(max-width: 768px) 100vw, 66vw"
-                alt="k staring into distance"
+                alt="A campmate watching the sunset over a crowd gathered on the playa"
                 loading="lazy"
                 class="drop-shadow-xl"
             />
@@ -338,7 +354,7 @@
                             <tr class={{ "text-orange-900/60": absent, "line-through": cancelled }}>
                                 <td>{year}</td>
                                 <td>
-                                    <a href={url} class="underline hover:text-orange-500"
+                                    <a href={url} class="underline hover:text-orange-700"
                                         >{theme}</a
                                     >
                                 </td>

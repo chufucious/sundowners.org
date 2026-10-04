@@ -17,6 +17,16 @@ for (const route of routes) {
     const response = await page.goto(route);
     expect(response.status()).toBe(200);
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /^https:\/\/sundowners\.org\//);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://sundowners.org${route}`);
+    // The layout declares every social image as 1200×630; check the real file.
+    const socialImage = new URL(await page.locator('meta[property="og:image"]').getAttribute("content")).pathname;
+    const socialSize = await page.evaluate(async (src) => {
+      const img = new Image();
+      img.src = src;
+      await img.decode();
+      return [img.naturalWidth, img.naturalHeight];
+    }, socialImage);
+    expect(socialSize).toEqual([1200, 630]);
 
     // Scroll through so lazy images load, then check each one decoded.
     const images = page.locator("main img");
@@ -76,7 +86,7 @@ test("homepage gallery opens with fire, a bottom-aligned loop, and fisheye", asy
   await page.goto("/");
   await expect(page.locator("#collage video")).toHaveCount(0);
   await expect(page.locator("#gallery > :nth-child(1) img")).toHaveAttribute("alt", "the man lit up above a wall of fire");
-  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "fisheye lens");
+  await expect(page.locator("#gallery > :nth-child(3) img")).toHaveAttribute("alt", "Three campmates in sunglasses grinning into a fisheye lens");
   const video = page.locator("#gallery > :nth-child(2)");
   await expect(video).toHaveAttribute("aria-label", "Sundowners sign and wax-print flag at dusk");
   await video.scrollIntoViewIfNeeded();
