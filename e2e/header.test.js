@@ -20,6 +20,29 @@ const scrollLogoOff = (page, fraction) =>
 const scrollPastHeader = (page, extra = 200) =>
   page.locator("main > header").evaluate((header, extra) => scrollTo(0, header.getBoundingClientRect().bottom + scrollY + extra), extra);
 
+test("the still mark stands in while the flame's WebGL context is lost", async ({ page }) => {
+  // iOS drops WebGL contexts under memory pressure and in long-backgrounded
+  // tabs; the logo must never go blank.
+  await page.goto("/");
+  const canvas = full(page).locator("canvas");
+  const still = full(page).locator('img[alt=""]');
+  await expect(canvas).toBeVisible();
+  await canvas.evaluate((c) => (window.loseFlame = c.getContext("webgl").getExtension("WEBGL_lose_context")).loseContext());
+  await expect(still).toBeVisible();
+  await expect(canvas).toBeHidden();
+  await page.evaluate(() => window.loseFlame.restoreContext());
+  await expect(canvas).toBeVisible();
+  await expect(still).toBeHidden();
+});
+
+test("flames draw at the screen's pixel density, up to 3x", async ({ page }) => {
+  await page.goto("/");
+  const canvas = full(page).locator("canvas");
+  await expect(canvas).toBeVisible();
+  const { width, cssWidth, dpr } = await canvas.evaluate((c) => ({ width: c.width, cssWidth: c.clientWidth, dpr: devicePixelRatio }));
+  expect(width).toBe(Math.round(cssWidth * Math.min(dpr, 3)));
+});
+
 test("flames cap drawing at 30 fps and pause/resume with logo and page visibility", async ({ page }) => {
   await page.addInitScript(() => {
     window.flameDraws = new WeakMap();

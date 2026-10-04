@@ -1,3 +1,23 @@
+<script module>
+  // One clock for every flame on the page, so the header and compact logos
+  // stay in step through their hand-off. It moves only while a flame draws,
+  // and at most a tenth of a second per frame, so a flame that paused (off
+  // screen, a hidden tab) carries on from the frame it showed instead of
+  // jumping ahead.
+  let clock = 0;
+  let lastTick = null;
+  function tick(now) {
+    if (lastTick !== null && now > lastTick) clock += Math.min(now - lastTick, 100) / 1000;
+    lastTick = now;
+    return clock;
+  }
+
+  // The first flame to start eases in from the still mark over this many
+  // seconds; any that start later join in step, already at full strength.
+  const INTRO = 0.8;
+  let introStart = null;
+</script>
+
 <script>
   // The sun mark with a never-repeating heat-shimmer warp: a WebGL shader
   // samples the mark through 3D simplex noise that drifts upward over time,
@@ -34,6 +54,8 @@
 
     uniform sampler2D mark;
     uniform float time;
+    // 0 to 1 as the flame starts: at 0 it draws exactly the still mark.
+    uniform float intro;
     varying vec2 uv;
 
     // 3D simplex noise — Ashima Arts / Stefan Gustavson (MIT).
@@ -146,7 +168,39 @@
       return vec4(min(rgb, vec3(alpha)), alpha);
     }
 
+    // Dusk, from the last gold down to deep blue: gold, tangerine, hot pink,
+    // violet, indigo, deep blue. It sweeps there and back, so it never jumps
+    // from blue straight to gold.
+    vec3 dusk(float t) {
+      float s = min((1.0 - abs(fract(t * 0.5) * 2.0 - 1.0)) * 5.0, 4.999);
+      vec3 gold = vec3(1.0, 0.8, 0.35);
+      vec3 tangerine = vec3(1.0, 0.5, 0.25);
+      vec3 pink = vec3(1.0, 0.33, 0.72);
+      vec3 violet = vec3(0.6, 0.38, 1.0);
+      vec3 indigo = vec3(0.32, 0.28, 0.9);
+      vec3 deepBlue = vec3(0.14, 0.24, 0.72);
+      float f = smoothstep(0.0, 1.0, fract(s));
+      if (s < 1.0) return mix(gold, tangerine, f);
+      if (s < 2.0) return mix(tangerine, pink, f);
+      if (s < 3.0) return mix(pink, violet, f);
+      if (s < 4.0) return mix(violet, indigo, f);
+      return mix(indigo, deepBlue, f);
+    }
+
+    // Repaint the saturated paint (the flame and the sun's wedges) in a dusk
+    // colour, keeping a little of its own shading. The white teeth and grey
+    // outlines aren't saturated, so they keep theirs. \`c\` is premultiplied.
+    vec4 paintOver(vec4 c, vec3 paint, float amount) {
+      float saturation = (max(c.r, max(c.g, c.b)) - min(c.r, min(c.g, c.b))) / max(c.a, 0.001);
+      float shade = dot(c.rgb, vec3(0.3, 0.5, 0.2)) / max(c.a, 0.001);
+      vec3 painted = min(paint * c.a * mix(0.85, 1.1, shade), vec3(c.a));
+      return vec4(mix(c.rgb, painted, smoothstep(0.15, 0.35, saturation) * amount), c.a);
+    }
+
     void main() {
+      // Everything eases in from the still mark (smoothstep of intro).
+      float ease = intro * intro * (3.0 - 2.0 * intro);
+
       // 0 at the mark's base (texture y ≈ 0.02), 1 at its tips (y ≈ 0.75).
       float reach = smoothstep(0.2, 0.7, uv.y);
 
@@ -167,8 +221,24 @@
       float lick = lickN * lickN * lickN;
       offset.y -= (0.25 + lick) * 0.03 * reach + breath * 0.02 * reach * reach;
 
-      vec2 suv = uv + offset;
-      vec4 color = texture2D(mark, suv);
+      vec2 suv = uv + offset * ease;
+
+      // Bands of dusk colour rise slowly up the flame, so the tips and the
+      // base sit at different points of the sweep.
+      vec3 paint = dusk(suv.y * 0.9 - time * 0.12 + 0.18 * snoise(vec3(suv * vec2(3.0, 2.0), time * 0.15)));
+
+      // Prism: each colour channel comes from a slightly bent sample, so the
+      // edges split into red and blue fringes. The bend swirls as it drifts,
+      // swells now and then, and flares with each lick; the sun stays
+      // crisper than the tips.
+      float surge = smoothstep(0.3, 1.0, 0.5 + 0.5 * snoise(vec3(time * 0.3, 21.0, 0.0)));
+      float angle = time * 0.7 + 2.5 * snoise(vec3(uv * vec2(3.0, 4.0), time * 0.45));
+      float bend = (0.008 + 0.014 * surge + 0.01 * lick) * (0.35 + reach) * ease;
+      vec2 split = vec2(cos(angle), sin(angle)) * bend;
+      vec4 cr = paintOver(texture2D(mark, suv + split), paint, ease);
+      vec4 cg = paintOver(texture2D(mark, suv), paint, ease);
+      vec4 cb = paintOver(texture2D(mark, suv - split), paint, ease);
+      vec4 color = vec4(cr.r, cg.g, cb.b, max(cg.a, max(cr.a, cb.a)));
 
       // Flickering tips: a quicker noise field thins the tongues, but only
       // where there's open sky just above (so solid color stays solid), and
@@ -176,13 +246,13 @@
       float tips = smoothstep(0.45, 0.78, uv.y);
       float exposed = 1.0 - texture2D(mark, suv + vec2(0.0, 0.035)).a;
       float erode = 0.5 + 0.5 * snoise(vec3(uv.x * 10.0, uv.y * 6.0 - time * 0.8, time * 0.3));
-      float cut = tips * (0.35 + 0.2 * lick) * exposed;
+      float cut = tips * (0.35 + 0.2 * lick) * exposed * ease;
       float mask = smoothstep(cut - 0.15, cut, erode);
 
       // Embers go over the flame, premultiplied "over" (the texture is uploaded
       // premultiplied, so the mask scales all four channels). Sparks and their
       // halos never reach below y ≈ 0.62, so skip them there.
-      vec4 spark = uv.y > 0.6 ? embers() : vec4(0.0);
+      vec4 spark = uv.y > 0.6 ? embers() * ease : vec4(0.0);
       gl_FragColor = spark + color * mask * (1.0 - spark.a);
     }
   `;
@@ -217,17 +287,22 @@
     let ready = false;
     let shouldAnimate = false;
     let lastDraw = null;
+    let timeUniform;
+    let introUniform;
     const frameInterval = 1000 / 30;
 
     const draw = (now) => {
       frame = null;
-      if (!shouldAnimate || cancelled) return;
+      if (!shouldAnimate || !ready || cancelled) return;
       const elapsed = lastDraw === null ? frameInterval : now - lastDraw;
-      // Keep time continuous while drawing at most 30 frames per second.
-      // The small tolerance avoids skipping a frame due to timestamp rounding.
+      // Draw at most 30 frames per second. The small tolerance avoids
+      // skipping a frame due to timestamp rounding.
       if (elapsed >= frameInterval - 0.1) {
         lastDraw = now;
-        gl.uniform1f(timeUniform, now / 1000);
+        const time = tick(now);
+        introStart ??= time;
+        gl.uniform1f(timeUniform, time);
+        gl.uniform1f(introUniform, Math.min((time - introStart) / INTRO, 1));
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
@@ -241,7 +316,7 @@
       if (ready && shouldAnimate && frame === null) {
         lastDraw = null;
         frame = requestAnimationFrame(draw);
-      } else if (!shouldAnimate && frame !== null) {
+      } else if ((!shouldAnimate || !ready) && frame !== null) {
         cancelAnimationFrame(frame);
         frame = null;
       }
@@ -254,36 +329,10 @@
       syncAnimation();
     });
 
-    const program = gl.createProgram();
-    try {
-      gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, vertexShader));
-      gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, fragmentShader));
-      gl.linkProgram(program);
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        status = "link failed: " + gl.getProgramInfoLog(program);
-        return;
-      }
-    } catch (error) {
-      status = "compile failed: " + error.message;
-      return;
-    }
-    gl.useProgram(program);
-
-    // One quad covering the canvas.
-    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-    gl.bufferData(
-      gl.ARRAY_BUFFER,
-      new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
-      gl.STATIC_DRAW,
-    );
-    const position = gl.getAttribLocation(program, "position");
-    gl.enableVertexAttribArray(position);
-    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-    const timeUniform = gl.getUniformLocation(program, "time");
-
-    // Keep the drawing buffer matched to the element's size on screen.
+    // Keep the drawing buffer matched to the element's size on screen, at
+    // the screen's full pixel density (up to 3x), as sharp as the still mark.
     const resize = () => {
-      const dpr = Math.min(devicePixelRatio, 2);
+      const dpr = Math.min(devicePixelRatio, 3);
       canvas.width = Math.round(canvas.clientWidth * dpr);
       canvas.height = Math.round(canvas.clientHeight * dpr);
       gl.viewport(0, 0, canvas.width, canvas.height);
@@ -292,40 +341,83 @@
     observer.observe(canvas);
     resize();
 
+    // Everything the flame draws with. Runs again when the browser restores a
+    // context it dropped (memory pressure, a long-backgrounded tab on iOS).
+    const setup = () => {
+      const program = gl.createProgram();
+      try {
+        gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, vertexShader));
+        gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, fragmentShader));
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          status = "link failed: " + gl.getProgramInfoLog(program);
+          return;
+        }
+      } catch (error) {
+        status = "compile failed: " + error.message;
+        return;
+      }
+      gl.useProgram(program);
+
+      // One quad covering the canvas.
+      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+        gl.STATIC_DRAW,
+      );
+      const position = gl.getAttribLocation(program, "position");
+      gl.enableVertexAttribArray(position);
+      gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+      timeUniform = gl.getUniformLocation(program, "time");
+      introUniform = gl.getUniformLocation(program, "intro");
+
+      gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
+      gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+      // Premultiply on upload so linear filtering doesn't blend the colors
+      // with the black stored in transparent pixels (a dark, crawling rim).
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      // Non-power-of-two texture: no mipmaps, clamp at the edges.
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      resize();
+
+      ready = true;
+      syncAnimation();
+    };
+
+    // A lost context draws nothing, so show the still mark until it's back.
+    // preventDefault() tells the browser we'll rebuild when it's restored.
+    const onLost = (event) => {
+      event.preventDefault();
+      ready = false;
+      syncAnimation();
+      running = false;
+      status = "context lost";
+    };
+    canvas.addEventListener("webglcontextlost", onLost);
+    canvas.addEventListener("webglcontextrestored", setup);
+
     // Wait for `load`, not decode(): with several marks on the page, Safari
     // can resolve decode() before the pixels are ready for texImage2D.
     const image = new Image();
-    const loaded = new Promise((resolve, reject) => {
-      image.onload = resolve;
-      image.onerror = () => reject(new Error("image failed to load"));
-    });
+    image.onload = () => {
+      if (!cancelled && !gl.isContextLost()) setup();
+    };
+    image.onerror = () => {
+      status = "texture failed: image failed to load";
+    };
     image.src = mark;
-    loaded
-      .then(() => {
-        if (cancelled) return;
-        gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
-        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-        // Premultiply on upload so linear filtering doesn't blend the colors
-        // with the black stored in transparent pixels (a dark, crawling rim).
-        gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-        // Non-power-of-two texture: no mipmaps, clamp at the edges.
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
-        ready = true;
-        syncAnimation();
-      })
-      .catch((error) => {
-        status = "texture failed: " + error.message;
-      });
 
     return () => {
       cancelled = true;
       cancelAnimationFrame(frame);
       observer.disconnect();
+      canvas.removeEventListener("webglcontextlost", onLost);
+      canvas.removeEventListener("webglcontextrestored", setup);
       running = false;
     };
   });
