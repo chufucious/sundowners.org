@@ -4,18 +4,22 @@
   import SiteHeader from "#lib/components/SiteHeader.svelte";
   import Agentation from "#lib/components/Agentation.svelte";
   import logoLion from "#lib/assets/logo/lion.svg";
-  import { BANNER_TINT, bannerEdges, edgeGradient } from "#lib/header-colors.js";
+  import { averageColor, bannerEdges, edgeGradient } from "#lib/header-colors.js";
 
   let { children } = $props();
 
-  const headerTint = $derived(page.data.headerImage?.tint ?? BANNER_TINT);
   const headerEdge = $derived(page.data.headerImage?.edge ?? {
     mobile: bannerEdges.mobile,
     desktop: page.data.smallHeader ? bannerEdges.smallDesktop : bannerEdges.desktop,
   });
+  // Phone and desktop crop the photo differently, so each gets its own tint.
+  const headerTint = $derived({
+    mobile: averageColor(headerEdge.mobile),
+    desktop: averageColor(headerEdge.desktop),
+  });
   const headerStyle = $derived(`
-    html { --header-tint: ${headerTint}; --header-edge: ${edgeGradient(headerEdge.mobile)}; }
-    @media (min-width: 48rem) { html { --header-edge: ${edgeGradient(headerEdge.desktop)}; } }
+    html { --header-tint: ${headerTint.mobile}; --header-edge: ${edgeGradient(headerEdge.mobile)}; }
+    @media (min-width: 48rem) { html { --header-tint: ${headerTint.desktop}; --header-edge: ${edgeGradient(headerEdge.desktop)}; } }
   `);
 
   const SITE_URL = "https://sundowners.org";
@@ -39,7 +43,10 @@
 </script>
 
 <svelte:head>
-  <meta name="theme-color" content={headerTint} />
+  <!-- Browsers use the first theme-color whose media matches. Safari 26
+       ignores theme-color and tints from the page background instead. -->
+  <meta name="theme-color" media="(min-width: 48rem)" content={headerTint.desktop} />
+  <meta name="theme-color" content={headerTint.mobile} />
   <!-- Render the tint on direct loads and update it with client navigation. -->
   <svelte:element this={"style"}>{headerStyle}</svelte:element>
   <title>{meta.title}</title>

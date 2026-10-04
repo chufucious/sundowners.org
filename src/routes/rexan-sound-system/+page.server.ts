@@ -1,4 +1,4 @@
-import { REXAN_TINT, rexanEdges } from '#lib/header-colors.js';
+import { rexanEdges } from '#lib/header-colors.js';
 
 // @ts-ignore - imagetools types not available in server context
 import img from '#lib/assets/rexan-sound/hero-rexan-dusk.jpg?w=1200&h=630&fit=cover&format=jpg&as=src';
@@ -26,7 +26,6 @@ export const load = () => {
       placeholder: Array.isArray(heroPlaceholder) ? heroPlaceholder[0] : heroPlaceholder,
       alt: heroAlt,
       position: '52% 60%',
-      tint: REXAN_TINT,
       edge: rexanEdges
     }
   };
