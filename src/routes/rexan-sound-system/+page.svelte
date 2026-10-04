@@ -265,7 +265,6 @@
       </p>
       <p>The 2026 power system has four parts:</p>
       <ul>
-        <!-- TODO: 13.6 kWh here vs "14 kWh" in the draft's Instagram caption — confirm which. -->
         <li>
           A 13.6 kWh lithium iron phosphate battery bank (multiple 23S LiFePO4 batteries in parallel) in a
           box at the back of the car, carrying the sound system and our roughly 4,000 LEDs.
