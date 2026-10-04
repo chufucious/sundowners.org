@@ -53,6 +53,9 @@
     #endif
 
     uniform sampler2D mark;
+    // The mark fills this corner of a power-of-two texture (so WebGL can
+    // build mipmaps); the rest is transparent, like the mark's own edges.
+    uniform vec2 markScale;
     uniform float time;
     // 0 to 1 as the flame starts: at 0 it draws exactly the still mark.
     uniform float intro;
@@ -168,6 +171,10 @@
       return vec4(min(rgb, vec3(alpha)), alpha);
     }
 
+    vec4 markAt(vec2 p) {
+      return texture2D(mark, clamp(p, 0.0, 1.0) * markScale);
+    }
+
     // Dusk, from the last gold down to deep blue: gold, tangerine, hot pink,
     // violet, indigo, deep blue. It sweeps there and back, so it never jumps
     // from blue straight to gold.
@@ -235,16 +242,24 @@
       float angle = time * 0.7 + 2.5 * snoise(vec3(uv * vec2(3.0, 4.0), time * 0.45));
       float bend = (0.008 + 0.014 * surge + 0.01 * lick) * (0.35 + reach) * ease;
       vec2 split = vec2(cos(angle), sin(angle)) * bend;
-      vec4 cr = paintOver(texture2D(mark, suv + split), paint, ease);
-      vec4 cg = paintOver(texture2D(mark, suv), paint, ease);
-      vec4 cb = paintOver(texture2D(mark, suv - split), paint, ease);
+      vec4 cr = paintOver(markAt(suv + split), paint, ease);
+      vec4 cg = paintOver(markAt(suv), paint, ease);
+      vec4 cb = paintOver(markAt(suv - split), paint, ease);
       vec4 color = vec4(cr.r, cg.g, cb.b, max(cg.a, max(cr.a, cb.a)));
+
+      // Where only a shifted copy covers a pixel, the split leaves a pure red
+      // or blue edge: a glow over the header's dark sky, but a hard, dark rim
+      // on the light page. Lift those fringe pixels toward the flame's own
+      // colour and let them fade, so they read as a soft halo on either.
+      float fringe = color.a - cg.a;
+      color = mix(color, vec4(paint * color.a, color.a), 0.6 * fringe / max(color.a, 0.001));
+      color *= 1.0 - 0.5 * fringe;
 
       // Flickering tips: a quicker noise field thins the tongues, but only
       // where there's open sky just above (so solid color stays solid), and
       // hardest at the peak of a lick — stretch, then pinch off.
       float tips = smoothstep(0.45, 0.78, uv.y);
-      float exposed = 1.0 - texture2D(mark, suv + vec2(0.0, 0.035)).a;
+      float exposed = 1.0 - markAt(suv + vec2(0.0, 0.035)).a;
       float erode = 0.5 + 0.5 * snoise(vec3(uv.x * 10.0, uv.y * 6.0 - time * 0.8, time * 0.3));
       float cut = tips * (0.35 + 0.2 * lick) * exposed * ease;
       float mask = smoothstep(cut - 0.15, cut, erode);
@@ -333,9 +348,12 @@
     // the screen's full pixel density (up to 3x), as sharp as the still mark.
     const resize = () => {
       const dpr = Math.min(devicePixelRatio, 3);
-      canvas.width = Math.round(canvas.clientWidth * dpr);
-      canvas.height = Math.round(canvas.clientHeight * dpr);
-      gl.viewport(0, 0, canvas.width, canvas.height);
+      const width = Math.round(canvas.clientWidth * dpr);
+      const height = Math.round(canvas.clientHeight * dpr);
+      if (width === canvas.width && height === canvas.height) return;
+      canvas.width = width;
+      canvas.height = height;
+      gl.viewport(0, 0, width, height);
     };
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
@@ -371,19 +389,30 @@
       gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
       timeUniform = gl.getUniformLocation(program, "time");
       introUniform = gl.getUniformLocation(program, "intro");
+      const markScaleUniform = gl.getUniformLocation(program, "markScale");
 
       gl.bindTexture(gl.TEXTURE_2D, gl.createTexture());
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
       // Premultiply on upload so linear filtering doesn't blend the colors
       // with the black stored in transparent pixels (a dark, crawling rim).
       gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-      // Non-power-of-two texture: no mipmaps, clamp at the edges.
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      // Place the mark in the corner of a power-of-two texture so WebGL 1 can
+      // build mipmaps: the small logo shows the mark at under a third of its
+      // size, and sampling the full image there aliases its edges into
+      // jaggies. The GPU's mipmaps keep full precision in the faint edge
+      // pixels, which the header's colour-dodge would otherwise turn to grain.
+      const powerOfTwo = (n) => 2 ** Math.ceil(Math.log2(n));
+      const width = powerOfTwo(image.naturalWidth);
+      const height = powerOfTwo(image.naturalHeight);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      gl.generateMipmap(gl.TEXTURE_2D);
+      gl.uniform2f(markScaleUniform, image.naturalWidth / width, image.naturalHeight / height);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-      resize();
+      gl.viewport(0, 0, canvas.width, canvas.height);
 
       ready = true;
       syncAnimation();
