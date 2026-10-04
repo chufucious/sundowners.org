@@ -35,7 +35,7 @@
             </p>
             <a
                 {href}
-                class="inline-block bg-orange-700 group-has-[a:hover]:bg-orange-800 text-white px-4 py-2 text-sm after:absolute after:inset-0"
+                class="inline-block bg-orange-500 group-has-[a:hover]:bg-orange-400 text-orange-950 px-4 py-2 text-sm after:absolute after:inset-0"
                 >Read Now<span class="sr-only">: {title}</span></a
             >
         </div>
