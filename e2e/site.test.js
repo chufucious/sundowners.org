@@ -142,3 +142,9 @@ test("rexan loops play silently and inline", async ({ page }) => {
     }).toBe(true);
   }
 });
+
+test("the web app manifest names the site", async ({ request }) => {
+  const manifest = await (await request.get("/site.webmanifest")).json();
+  expect(manifest.name).toBe("Sundowners");
+  expect(manifest.short_name).toBe("Sundowners");
+});
