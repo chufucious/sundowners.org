@@ -85,23 +85,10 @@
       <h2>In Case of Emergency</h2>
       <ul class="list-disc">
         <li>
-          <strong>On playa, don't email.</strong> Yell for help and flag down a
-          Black Rock Ranger or anyone with a radio, or send someone to a Ranger
-          Outpost or ESD (Emergency Services) station.
-        </li>
-        <li>
-          <strong>From home:</strong> friends and family can email urgent
-          messages to
-          <a href="mailto:brc-urgent@burningman.org">brc-urgent@burningman.org</a>.
-          Include the person's legal name, playa name, camp and location, and
-          what's happened. Rangers try to deliver messages and they're posted at
-          Playa Info, but delivery can't be guaranteed.
-        </li>
-        <li>
-          These details have changed before, so check Burning Man's
-          <a href="https://burningman.org/black-rock-city/preparation/health-safety/emergency-contact/"
-            >Emergency Help page</a
-          > before each Burn.
+          The public ESD email address brc-urgent@burningman.org is a way for the
+          general public to pass emergency messages to staff and participants.
+          (Delivery can't be guaranteed due to the environment, but it's worth
+          passing along if someone wants the info).
         </li>
       </ul>
     </section>
