@@ -161,3 +161,15 @@ test("fonts come from this site, not Google", async ({ page }) => {
   expect(faces.sort()).toEqual(["italic", "normal"]);
   expect(thirdParty).toEqual([]);
 });
+
+test("unknown pages get a 404 that points back to camp", async ({ page }) => {
+  const response = await page.goto("/no-such-page");
+  expect(response.status()).toBe(404);
+  await expect(page).toHaveTitle("Page not found | Sundowners");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("You’ve wandered past the trash fence.");
+  await expect(page.getByRole("link", { name: "back to camp" })).toHaveAttribute("href", "/");
+  for (const title of ["The Rexan Sound System", "Jagged Balls of Rolling Chaos"]) {
+    await expect(page.getByRole("link", { name: new RegExp(`Read Now\\s*:\\s*${title}`) })).toBeVisible();
+  }
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+});

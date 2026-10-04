@@ -32,7 +32,9 @@
   // Pages override any of these via their load(); the layout owns the single
   // canonical set of tags so a page's values can't end up as ignored duplicates.
   const meta = $derived({
-    title: page.data.title ?? DEFAULT_TITLE,
+    title: page.error
+      ? `${page.status === 404 ? "Page not found" : "Something went wrong"} | Sundowners`
+      : (page.data.title ?? DEFAULT_TITLE),
     description: page.data.description ?? DEFAULT_DESCRIPTION,
     image: page.data.ogImage ?? DEFAULT_IMAGE,
     imageAlt: page.data.ogImageAlt ?? DEFAULT_IMAGE_ALT,
@@ -51,7 +53,9 @@
   <svelte:element this={"style"}>{headerStyle}</svelte:element>
   <title>{meta.title}</title>
   <meta name="description" content={meta.description} />
-  <link rel="canonical" href={meta.url} />
+  {#if !page.error}
+    <link rel="canonical" href={meta.url} />
+  {/if}
   <!-- Open Graph -->
   <meta property="og:title" content={meta.title} />
   <meta property="og:description" content={meta.description} />
