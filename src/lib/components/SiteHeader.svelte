@@ -72,14 +72,17 @@
       aria-hidden="true"
     ></div>
   {/if}
-  <enhanced:img
-    src={headerPhoto}
-    sizes="100vw"
-    alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
-    class="absolute inset-0 w-full h-full object-cover"
-    style:object-position={hero?.position}
-    fetchpriority="high"
-  />
+  <!-- A fresh image keeps the previous photo from covering the placeholder. -->
+  {#key headerPhoto.img.src}
+    <enhanced:img
+      src={headerPhoto}
+      sizes="100vw"
+      alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
+      class="absolute inset-0 w-full h-full object-cover"
+      style:object-position={hero?.position}
+      fetchpriority="high"
+    />
+  {/key}
   <!-- Darkens the sky behind the logo so its color-dodge blend keeps the
        mark's colors instead of blowing out to white on bright skies. -->
   <div

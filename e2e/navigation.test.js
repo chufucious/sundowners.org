@@ -104,6 +104,61 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await checkPage(home);
 });
 
+test("an uncached Rexan hero paints its placeholder during client navigation", async ({ page }, testInfo) => {
+  await page.goto("/");
+  const header = page.locator("main > header");
+  const photo = header.locator('img[fetchpriority="high"]');
+  await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+
+  let releaseHero;
+  const heroHeld = new Promise((resolve) => { releaseHero = resolve; });
+  let requests = 0;
+  // A fresh browser context and routing keep this navigation uncached. Hold
+  // every format/size, including the one selected by <picture> on Retina screens.
+  await page.route(/\/hero-rexan-dusk\.[^/]+\.(avif|webp|jpe?g)$/, async (route) => {
+    requests++;
+    await heroHeld;
+    await route.continue();
+  });
+
+  try {
+    await page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ }).click();
+    await expect(page).toHaveURL("/rexan-sound-system");
+    await expect(photo).toHaveAttribute("alt", /^Rexan at dusk/);
+    await expect.poll(() => requests).toBeGreaterThan(0);
+    await expect.poll(() => photo.evaluate((image) => image.complete)).toBe(false);
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+
+    // Compare actual paint: an img with updated attributes can still display
+    // its previous bitmap. Crop below the animated logo and above the border.
+    const box = await header.boundingBox();
+    const clip = { x: box.x, y: box.y + box.height / 2, width: box.width, height: box.height / 2 - 12 };
+    const pending = await page.screenshot({ clip, scale: "css" });
+    const opacity = await photo.evaluate((image) => {
+      const previous = image.style.opacity;
+      image.style.opacity = "0";
+      return previous;
+    });
+    let placeholder;
+    try {
+      placeholder = await page.screenshot({ clip, scale: "css" });
+    } finally {
+      await photo.evaluate((image, previous) => { image.style.opacity = previous; }, opacity);
+    }
+    await testInfo.attach("pending-header", { body: pending, contentType: "image/png" });
+    await testInfo.attach("placeholder-reference", { body: placeholder, contentType: "image/png" });
+    expect(pending.equals(placeholder), "The unloaded hero should paint its placeholder, without the previous page's photo").toBe(true);
+
+    releaseHero();
+    await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0 && image.currentSrc.includes("hero-rexan-dusk"))).toBe(true);
+  } finally {
+    releaseHero();
+    await page.unrouteAll({ behavior: "wait" });
+  }
+});
+
 async function checkTint(page, { mobile, desktop }) {
   // Browsers use the first theme-color whose media matches.
   const tags = page.locator('meta[name="theme-color"]');
