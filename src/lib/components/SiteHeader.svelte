@@ -3,14 +3,21 @@
   import FlameMark from "#lib/components/FlameMark.svelte";
   import CompactLogo, { HANDOVER } from "#lib/components/CompactLogo.svelte";
   import sundownerswalking from "#lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
+  import bannerPlaceholder from "#lib/assets/Photos/sundownerswalking.jpg?w=32&format=webp&quality=60&inline&as=src";
   import fabricSunrise from "#lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoAndType2025 from "#lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
   let { hero, smallHeader = false } = $props();
 
   // The layout passes the route's headerImage as hero; other pages use the banner.
+  const banner = {
+    src: sundownerswalking,
+    placeholder: bannerPlaceholder,
+    alt: "Sundowners walking in Black Rock City",
+  };
+  const shown = $derived(hero ?? banner);
   // enhanced:img needs the dynamic image object assigned to a variable.
-  const headerPhoto = $derived(hero?.src ?? sundownerswalking);
+  const headerPhoto = $derived(shown.src);
 
   // The header logo scrolls up with the header. As it slides off the top of
   // the screen it hands over to the compact flame lion, in step with the
@@ -64,22 +71,26 @@
   >
   <!-- Stand-in for a page's header photo while it loads: the tiny inlined
        copy, blurred, so the header never paints empty. -->
-  {#if hero?.placeholder}
+  {#if shown.placeholder}
     <div
       class="absolute inset-0 bg-cover blur-2xl scale-110"
-      style:background-image="url({hero.placeholder})"
-      style:background-position={hero.position}
+      style:background-image="url({shown.placeholder})"
+      style:background-position={shown.position}
       aria-hidden="true"
+      data-testid="header-placeholder"
     ></div>
   {/if}
-  <enhanced:img
-    src={headerPhoto}
-    sizes="100vw"
-    alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
-    class="absolute inset-0 w-full h-full object-cover"
-    style:object-position={hero?.position}
-    fetchpriority="high"
-  />
+  <!-- A fresh image keeps the previous photo from covering the placeholder. -->
+  {#key headerPhoto.img.src}
+    <enhanced:img
+      src={headerPhoto}
+      sizes="100vw"
+      alt={shown.alt}
+      class="absolute inset-0 w-full h-full object-cover"
+      style:object-position={shown.position}
+      fetchpriority="high"
+    />
+  {/key}
   <!-- Darkens the sky behind the logo so its color-dodge blend keeps the
        mark's colors instead of blowing out to white on bright skies. -->
   <div

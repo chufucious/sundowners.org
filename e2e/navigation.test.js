@@ -104,6 +104,112 @@ test("client navigation updates the hero and one set of social tags", async ({ p
   await checkPage(home);
 });
 
+test("an uncached Rexan hero paints its placeholder during client navigation", async ({ page }, testInfo) => {
+  await page.goto("/");
+  const header = page.locator("main > header");
+  const photo = header.locator('img[fetchpriority="high"]');
+  await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+
+  let releaseHero;
+  const heroHeld = new Promise((resolve) => { releaseHero = resolve; });
+  let requests = 0;
+  // A fresh browser context and routing keep this navigation uncached. Hold
+  // every format/size, including the one selected by <picture> on Retina screens.
+  await page.route(/\/hero-rexan-dusk\.[^/]+\.(avif|webp|jpe?g)$/, async (route) => {
+    requests++;
+    await heroHeld;
+    await route.continue();
+  });
+
+  try {
+    await page.getByRole("link", { name: /Read Now\s*:\s*The Rexan Sound System/ }).click();
+    await expect(page).toHaveURL("/rexan-sound-system");
+    await expect(photo).toHaveAttribute("alt", /^Rexan at dusk/);
+    await expect.poll(() => requests).toBeGreaterThan(0);
+    await expect.poll(() => photo.evaluate((image) => image.complete)).toBe(false);
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+
+    await expectPlaceholderPainted(page, header, photo, testInfo);
+
+    releaseHero();
+    await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0 && image.currentSrc.includes("hero-rexan-dusk"))).toBe(true);
+  } finally {
+    releaseHero();
+    await page.unrouteAll({ behavior: "wait" });
+  }
+});
+
+test("the banner paints a placeholder when client navigation returns home", async ({ page }, testInfo) => {
+  await page.goto("/rexan-sound-system");
+  const header = page.locator("main > header");
+  const photo = header.locator('img[fetchpriority="high"]');
+  await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
+  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+
+  let releaseBanner;
+  const bannerHeld = new Promise((resolve) => { releaseBanner = resolve; });
+  let requests = 0;
+  await page.route(/\/sundownerswalking\.[^/]+\.(avif|webp|jpe?g)$/, async (route) => {
+    requests++;
+    await bannerHeld;
+    await route.continue();
+  });
+
+  try {
+    await page.getByRole("link", { name: "Back to home" }).click();
+    await expect(page).toHaveURL("/");
+    await expect(photo).toHaveAttribute("alt", "Sundowners walking in Black Rock City");
+    await expect.poll(() => requests).toBeGreaterThan(0);
+    await expect.poll(() => photo.evaluate((image) => image.complete)).toBe(false);
+    await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
+    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+
+    await expectPlaceholderPainted(page, header, photo, testInfo);
+
+    releaseBanner();
+    await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0 && image.currentSrc.includes("sundownerswalking"))).toBe(true);
+  } finally {
+    releaseBanner();
+    await page.unrouteAll({ behavior: "wait" });
+  }
+});
+
+// Compare actual paint: an img with updated attributes can still display its
+// previous bitmap, and an empty header would match a hidden photo too. So the
+// pending header must look like the placeholder alone, and not like nothing.
+// Crop below the animated logo and above the border.
+async function expectPlaceholderPainted(page, header, photo, testInfo) {
+  const box = await header.boundingBox();
+  const clip = { x: box.x, y: box.y + box.height / 2, width: box.width, height: box.height / 2 - 12 };
+  const layers = [photo, header.getByTestId("header-placeholder")];
+  await expect(layers[1]).toHaveCount(1);
+  const pending = await page.screenshot({ clip, scale: "css" });
+  const shots = [];
+  const previous = [];
+  try {
+    for (const layer of layers) {
+      previous.push(await layer.evaluate((element) => {
+        const opacity = element.style.opacity;
+        element.style.opacity = "0";
+        return opacity;
+      }));
+      shots.push(await page.screenshot({ clip, scale: "css" }));
+    }
+  } finally {
+    for (const [i, opacity] of previous.entries()) {
+      await layers[i].evaluate((element, opacity) => { element.style.opacity = opacity; }, opacity);
+    }
+  }
+  const [placeholder, bare] = shots;
+  await testInfo.attach("pending-header", { body: pending, contentType: "image/png" });
+  await testInfo.attach("placeholder-reference", { body: placeholder, contentType: "image/png" });
+  await testInfo.attach("bare-header", { body: bare, contentType: "image/png" });
+  expect(pending.equals(placeholder), "The unloaded photo should paint its placeholder, without the previous page's photo").toBe(true);
+  expect(pending.equals(bare), "The header should not paint empty while its photo loads").toBe(false);
+}
+
 async function checkTint(page, { mobile, desktop }) {
   // Browsers use the first theme-color whose media matches.
   const tags = page.locator('meta[name="theme-color"]');
