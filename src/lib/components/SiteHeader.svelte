@@ -10,9 +10,14 @@
   let { hero, smallHeader = false } = $props();
 
   // The layout passes the route's headerImage as hero; other pages use the banner.
+  const banner = {
+    src: sundownerswalking,
+    placeholder: bannerPlaceholder,
+    alt: "Sundowners walking in Black Rock City",
+  };
+  const shown = $derived(hero ?? banner);
   // enhanced:img needs the dynamic image object assigned to a variable.
-  const headerPhoto = $derived(hero?.src ?? sundownerswalking);
-  const headerPlaceholder = $derived(hero ? hero.placeholder : bannerPlaceholder);
+  const headerPhoto = $derived(shown.src);
 
   // The header logo scrolls up with the header. As it slides off the top of
   // the screen it hands over to the compact flame lion, in step with the
@@ -66,12 +71,13 @@
   >
   <!-- Stand-in for a page's header photo while it loads: the tiny inlined
        copy, blurred, so the header never paints empty. -->
-  {#if headerPlaceholder}
+  {#if shown.placeholder}
     <div
       class="absolute inset-0 bg-cover blur-2xl scale-110"
-      style:background-image="url({headerPlaceholder})"
-      style:background-position={hero?.position}
+      style:background-image="url({shown.placeholder})"
+      style:background-position={shown.position}
       aria-hidden="true"
+      data-testid="header-placeholder"
     ></div>
   {/if}
   <!-- A fresh image keeps the previous photo from covering the placeholder. -->
@@ -79,9 +85,9 @@
     <enhanced:img
       src={headerPhoto}
       sizes="100vw"
-      alt={hero?.alt ?? "Sundowners walking in Black Rock City"}
+      alt={shown.alt}
       class="absolute inset-0 w-full h-full object-cover"
-      style:object-position={hero?.position}
+      style:object-position={shown.position}
       fetchpriority="high"
     />
   {/key}

@@ -183,7 +183,7 @@ test("the banner paints a placeholder when client navigation returns home", asyn
 async function expectPlaceholderPainted(page, header, photo, testInfo) {
   const box = await header.boundingBox();
   const clip = { x: box.x, y: box.y + box.height / 2, width: box.width, height: box.height / 2 - 12 };
-  const layers = [photo, header.locator("div.blur-2xl")];
+  const layers = [photo, header.getByTestId("header-placeholder")];
   await expect(layers[1]).toHaveCount(1);
   const pending = await page.screenshot({ clip, scale: "css" });
   const shots = [];
