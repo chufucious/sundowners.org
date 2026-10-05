@@ -3,6 +3,7 @@
   import FlameMark from "#lib/components/FlameMark.svelte";
   import CompactLogo, { HANDOVER } from "#lib/components/CompactLogo.svelte";
   import sundownerswalking from "#lib/assets/Photos/sundownerswalking.jpg?w=640;1280;1920&enhanced";
+  import bannerPlaceholder from "#lib/assets/Photos/sundownerswalking.jpg?w=32&format=webp&quality=60&inline&as=src";
   import fabricSunrise from "#lib/assets/wax-fabric/sunrise.jpeg?w=200&format=webp";
   import logoAndType2025 from "#lib/assets/logo/sundowners-logo-type-2025-solid.png?w=300;600;1200&enhanced";
 
@@ -11,6 +12,7 @@
   // The layout passes the route's headerImage as hero; other pages use the banner.
   // enhanced:img needs the dynamic image object assigned to a variable.
   const headerPhoto = $derived(hero?.src ?? sundownerswalking);
+  const headerPlaceholder = $derived(hero ? hero.placeholder : bannerPlaceholder);
 
   // The header logo scrolls up with the header. As it slides off the top of
   // the screen it hands over to the compact flame lion, in step with the
@@ -64,11 +66,11 @@
   >
   <!-- Stand-in for a page's header photo while it loads: the tiny inlined
        copy, blurred, so the header never paints empty. -->
-  {#if hero?.placeholder}
+  {#if headerPlaceholder}
     <div
       class="absolute inset-0 bg-cover blur-2xl scale-110"
-      style:background-image="url({hero.placeholder})"
-      style:background-position={hero.position}
+      style:background-image="url({headerPlaceholder})"
+      style:background-position={hero?.position}
       aria-hidden="true"
     ></div>
   {/if}
