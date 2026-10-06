@@ -21,14 +21,14 @@
     // Patterns: tiles for repeating backgrounds. Frames show them at 300px, so
     // 600px stays crisp on 2x screens (the Rexan carousel uses the same tiles).
     // The dazzle strip shows its image at natural size, so it keeps 800px.
-    import patternDazzle from "#lib/assets/dazzle.jpeg?w=800&format=webp";
-    import patternChickens from "#lib/assets/wax-fabric/chickens.webp?w=600&format=webp";
-    import patternFans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
-    import patternSunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
-    import patternSpirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
-    import patternHandshake from "#lib/assets/wax-fabric/handshake.jpg?w=600&format=webp";
-    import patternLeaves from "#lib/assets/wax-fabric/leaves.jpeg?w=600&format=webp";
-    import patternLeopard from "#lib/assets/wax-fabric/leopard-pattern.avif?w=600&format=webp";
+    import patternDazzle from "#lib/assets/dazzle.jpeg?w=800&format=avif&quality=50";
+    import patternChickens from "#lib/assets/wax-fabric/chickens.webp?w=600&format=avif&quality=50";
+    import patternFans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=avif&quality=50";
+    import patternSunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=avif&quality=50";
+    import patternSpirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=avif&quality=50";
+    import patternHandshake from "#lib/assets/wax-fabric/handshake.jpg?w=600&format=avif&quality=50";
+    import patternLeaves from "#lib/assets/wax-fabric/leaves.jpeg?w=600&format=avif&quality=50";
+    import patternLeopard from "#lib/assets/wax-fabric/leopard-pattern.avif?w=600&format=avif&quality=50";
 
     import { currentYear, currentAddress, expeditions } from "#lib/expeditions.js";
 

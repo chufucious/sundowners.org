@@ -12,13 +12,13 @@
   import { themeOf } from "#lib/expeditions.js";
 
   // A wax-fabric frame per year, like the homepage's framed photos.
-  import sunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=webp";
-  import fans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=webp";
-  import spirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=webp";
-  import mic from "#lib/assets/wax-fabric/mic.jpg?w=600&format=webp";
-  import eyes from "#lib/assets/wax-fabric/eyes.webp?w=600&format=webp";
-  import feathers from "#lib/assets/wax-fabric/feathers.webp?w=600&format=webp";
-  import redstrokes from "#lib/assets/wax-fabric/redstrokes.jpg?w=600&format=webp";
+  import sunflower from "#lib/assets/wax-fabric/sunflower.webp?w=600&format=avif&quality=50";
+  import fans from "#lib/assets/wax-fabric/fans.jpg?w=600&format=avif&quality=50";
+  import spirograph from "#lib/assets/wax-fabric/spirograph.png?w=600&format=avif&quality=50";
+  import mic from "#lib/assets/wax-fabric/mic.jpg?w=600&format=avif&quality=50";
+  import eyes from "#lib/assets/wax-fabric/eyes.webp?w=600&format=avif&quality=50";
+  import feathers from "#lib/assets/wax-fabric/feathers.webp?w=600&format=avif&quality=50";
+  import redstrokes from "#lib/assets/wax-fabric/redstrokes.jpg?w=600&format=avif&quality=50";
 
   let { mode = "carousel" } = $props();
   const isCarousel = $derived(mode === "carousel");
