@@ -22,7 +22,10 @@ test.use({ reducedMotion: "reduce" });
 // catches actual fabric-first painting, not merely event order or CSS state.
 async function expectLayerPaint(page, testInfo, layer, painted, label) {
   const composition = frame(page);
-  const actual = await composition.screenshot({ path: testInfo.outputPath(`${label}.png`), scale: "css" });
+  // Isolate the border comparison from independent photo/text rasterization.
+  // Photo checks below still capture the whole, unmasked composition.
+  const screenshot = { scale: "css", mask: layer === "fabric" ? [photo(page), composition.locator("p")] : [] };
+  const actual = await composition.screenshot({ path: testInfo.outputPath(`${label}.png`), ...screenshot });
   const element = layer === "fabric" ? composition : photo(page);
   const property = layer === "fabric" ? "backgroundImage" : "opacity";
   const previous = await element.evaluate((el, property) => {
@@ -32,12 +35,14 @@ async function expectLayerPaint(page, testInfo, layer, painted, label) {
   }, property);
   let withoutLayer;
   try {
-    withoutLayer = await composition.screenshot({ scale: "css" });
+    withoutLayer = await composition.screenshot({ path: testInfo.outputPath(`${label}-without-${layer}.png`), ...screenshot });
   } finally {
     await element.evaluate((el, { property, previous }) => { el.style[property] = previous; }, { property, previous });
   }
   await testInfo.attach(label, { body: actual, contentType: "image/png" });
-  expect(await samePaint(page, actual, withoutLayer), `${layer} should ${painted ? "" : "not "}paint`).toBe(!painted);
+  const matches = await samePaint(page, actual, withoutLayer);
+  if (matches === painted) await testInfo.attach(`${label}-without-${layer}`, { body: withoutLayer, contentType: "image/png" });
+  expect(matches, `${layer} should ${painted ? "" : "not "}paint`).toBe(!painted);
   await expect(composition).toHaveCSS("opacity", "1");
   await expect(photo(page)).toHaveCSS("opacity", "1");
 }
@@ -55,6 +60,9 @@ async function expectLoadedPaint(page, testInfo, label = "loaded") {
 }
 
 async function settleSurroundings(page) {
+  // A cold hosted stylesheet can arrive after the header photo. Wait for it
+  // before loading its fonts or measuring the prerendered layout.
+  await expect(frame(page)).toHaveCSS("padding-top", "8px");
   await decoded(page.locator('header img[fetchpriority="high"]'));
   await page.evaluate(() => Promise.all([
     document.fonts.load('14px "Roboto Mono"'),
