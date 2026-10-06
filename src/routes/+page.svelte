@@ -74,7 +74,7 @@
                 sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
                 alt="The Sundowners crew cheering and waving from Rexan’s decks"
                 class="max-w-full"
-                loading="lazy"
+                fetchpriority="high"
             />
             <!-- The seasonal greeting, as label-maker tape stuck on the photo. -->
             <p class="label-tape absolute -left-2 -bottom-1 md:-left-3.5 md:bottom-6 -rotate-4 whitespace-nowrap">
