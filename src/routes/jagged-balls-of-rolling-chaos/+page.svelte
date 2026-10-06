@@ -70,7 +70,7 @@
 
   <div class="min-w-0 lg:col-start-2 lg:row-start-2">
     <ArticleText>
-      <p>
+      <p class="font-mono text-sm mt-12">
         Hard-won tips from the Sundowners crew, not official advice. Read Burning
         Man's <a href="https://survival.burningman.org/">Survival Guide</a> before
         you go.
