@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { samePaint } from "./paint.js";
 
 // Each layout's tint is the average of its sampled header edge (header-colors.js).
 const tints = {
@@ -9,7 +10,7 @@ const tints = {
 
 test("client navigation updates the hero and one set of social tags", async ({ page }) => {
   await page.goto("/");
-  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+  const originalDocument = await page.evaluateHandle(() => document);
   const banner = "Sundowners walking in Black Rock City";
   const header = page.locator("main > header");
   const homeHeight = (await header.boundingBox()).height;
@@ -40,7 +41,7 @@ test("client navigation updates the hero and one set of social tags", async ({ p
     await expect(header.getByRole("img", { name: hero, exact: true })).toBeVisible();
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
     // A reload would hide stale layout state; this must stay in the same document.
-    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+    expect(await originalDocument.evaluate((initial) => initial === document)).toBe(true);
   }
 
   const home = {
@@ -109,7 +110,7 @@ test("an uncached Rexan hero paints its placeholder during client navigation", a
   const header = page.locator("main > header");
   const photo = header.locator('img[fetchpriority="high"]');
   await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
-  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+  const originalDocument = await page.evaluateHandle(() => document);
 
   let releaseHero;
   const heroHeld = new Promise((resolve) => { releaseHero = resolve; });
@@ -129,7 +130,7 @@ test("an uncached Rexan hero paints its placeholder during client navigation", a
     await expect.poll(() => requests).toBeGreaterThan(0);
     await expect.poll(() => photo.evaluate((image) => image.complete)).toBe(false);
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
-    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+    expect(await originalDocument.evaluate((initial) => initial === document)).toBe(true);
 
     await expectPlaceholderPainted(page, header, photo, testInfo);
 
@@ -146,7 +147,7 @@ test("the banner paints a placeholder when client navigation returns home", asyn
   const header = page.locator("main > header");
   const photo = header.locator('img[fetchpriority="high"]');
   await expect.poll(() => photo.evaluate((image) => image.complete && image.naturalWidth > 0)).toBe(true);
-  const documentStarted = await page.evaluate(() => performance.timeOrigin);
+  const originalDocument = await page.evaluateHandle(() => document);
 
   let releaseBanner;
   const bannerHeld = new Promise((resolve) => { releaseBanner = resolve; });
@@ -164,7 +165,7 @@ test("the banner paints a placeholder when client navigation returns home", asyn
     await expect.poll(() => requests).toBeGreaterThan(0);
     await expect.poll(() => photo.evaluate((image) => image.complete)).toBe(false);
     await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
-    expect(await page.evaluate(() => performance.timeOrigin)).toBe(documentStarted);
+    expect(await originalDocument.evaluate((initial) => initial === document)).toBe(true);
 
     await expectPlaceholderPainted(page, header, photo, testInfo);
 
@@ -181,6 +182,13 @@ test("the banner paints a placeholder when client navigation returns home", asyn
 // pending header must look like the placeholder alone, and not like nothing.
 // Crop below the animated logo and above the border.
 async function expectPlaceholderPainted(page, header, photo, testInfo) {
+  // The intro overlaps this crop on home. Keep that foreground stable while
+  // comparing the header layers, including on a slower deployed preview.
+  const intro = page.locator("#intro .pattern-frame").first();
+  if (await intro.count()) {
+    await intro.locator("img").evaluate((image) => image.decode());
+    await expect(intro).toHaveCSS("opacity", "1");
+  }
   const box = await header.boundingBox();
   const clip = { x: box.x, y: box.y + box.height / 2, width: box.width, height: box.height / 2 - 12 };
   const layers = [photo, header.getByTestId("header-placeholder")];
@@ -206,8 +214,8 @@ async function expectPlaceholderPainted(page, header, photo, testInfo) {
   await testInfo.attach("pending-header", { body: pending, contentType: "image/png" });
   await testInfo.attach("placeholder-reference", { body: placeholder, contentType: "image/png" });
   await testInfo.attach("bare-header", { body: bare, contentType: "image/png" });
-  expect(pending.equals(placeholder), "The unloaded photo should paint its placeholder, without the previous page's photo").toBe(true);
-  expect(pending.equals(bare), "The header should not paint empty while its photo loads").toBe(false);
+  expect(await samePaint(page, pending, placeholder), "The unloaded photo should paint its placeholder, without the previous page's photo").toBe(true);
+  expect(await samePaint(page, pending, bare), "The header should not paint empty while its photo loads").toBe(false);
 }
 
 async function checkTint(page, { mobile, desktop }) {

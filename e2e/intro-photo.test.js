@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { samePaint } from "./paint.js";
 
 // We load the two fonts explicitly below. Playwright's default fonts.ready
 // wait deadlocks in WebKit while the hydration entry point is held.
@@ -34,7 +35,7 @@ async function expectPendingPaint(page, testInfo, label) {
     await composition.evaluate((el, opacity) => { el.style.opacity = opacity; }, previous);
   }
   await testInfo.attach(label, { body: pending, contentType: "image/png" });
-  expect(pending.equals(blank), "Neither the photo nor its fabric should paint alone").toBe(true);
+  expect(await samePaint(page, pending, blank), "Neither the photo nor its fabric should paint alone").toBe(true);
   return pending;
 }
 
@@ -53,8 +54,8 @@ async function expectLoadedPaint(page, testInfo, label = "photo-and-fabric") {
   const withoutPhoto = await frame(page).screenshot({ scale: "css" });
   await photo(page).evaluate((el) => { el.style.opacity = ""; });
   await testInfo.attach("photo-and-fabric", { body: together, contentType: "image/png" });
-  expect(together.equals(withoutFabric), "The loaded fabric should paint around the photo").toBe(false);
-  expect(together.equals(withoutPhoto), "The loaded photo should paint inside the fabric").toBe(false);
+  expect(await samePaint(page, together, withoutFabric), "The loaded fabric should paint around the photo").toBe(false);
+  expect(await samePaint(page, together, withoutPhoto), "The loaded photo should paint inside the fabric").toBe(false);
   return together;
 }
 
@@ -102,7 +103,7 @@ for (const [name, url, other] of [["photo", photoURL, fabricURL], ["fabric", fab
       const pending = await expectPendingPaint(page, testInfo, "slow-asset");
       releaseAsset();
       const loaded = await expectLoadedPaint(page, testInfo);
-      expect(pending.equals(loaded)).toBe(false);
+      expect(await samePaint(page, pending, loaded)).toBe(false);
       await page.evaluate(() => scrollTo(0, 0));
       expect(await frame(page).boundingBox()).toEqual(before);
       expect(await page.locator("#intro h1").boundingBox()).toEqual(headingBefore);
@@ -149,6 +150,7 @@ test("resizing while the responsive photo loads keeps the composition hidden", a
     await expect(page.getByRole("link", { name: "Sundowners home", exact: true })).toBeVisible();
     await page.setViewportSize({ width: 1440, height: 1000 });
     await expect.poll(() => requests).toBeGreaterThan(1);
+    await settleSurroundings(page); // The header can select a new source too.
     await page.evaluate(() => scrollTo(0, 0));
     await expectPendingPaint(page, testInfo, "resized-pending");
     release();
@@ -169,13 +171,13 @@ test("cached intro reveals again on reload and client navigation", async ({ page
   await page.reload();
   await settleSurroundings(page);
   await expectLoadedPaint(page, testInfo, "reloaded");
-  const started = await page.evaluate(() => performance.timeOrigin);
+  const originalDocument = await page.evaluateHandle(() => document);
   await page.locator('#intro a[href="/rexan-sound-system"]').click();
   await page.getByRole("link", { name: "Back to home", exact: true }).click();
   await expect(page).toHaveURL("/");
   await settleSurroundings(page);
   await expectLoadedPaint(page, testInfo, "returned");
-  expect(await page.evaluate(() => performance.timeOrigin)).toBe(started);
+  expect(await originalDocument.evaluate((initial) => initial === document)).toBe(true);
 });
 
 test.describe("without JavaScript", () => {
