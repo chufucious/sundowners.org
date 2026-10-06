@@ -27,6 +27,7 @@ export default defineConfig({
     { name: "iphone", use: { ...devices["iPhone 13"] } },
     // Device-specific safe-area and intro-image regressions.
     { name: "android", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["Pixel 5"] } },
+    { name: "tablet-chromium", testMatch: "**/intro-photo.test.js", use: { browserName: "chromium", viewport: { width: 834, height: 1194 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true } },
     { name: "tablet-portrait", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["iPad Pro 11"] } },
     { name: "tablet-landscape", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["iPad Pro 11 landscape"] } },
   ],

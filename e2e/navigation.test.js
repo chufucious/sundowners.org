@@ -187,7 +187,12 @@ async function expectPlaceholderPainted(page, header, photo, testInfo) {
   const intro = page.locator("#intro .pattern-frame").first();
   if (await intro.count()) {
     await intro.locator("img").evaluate((image) => image.decode());
-    await expect(intro).toHaveCSS("opacity", "1");
+    await expect(intro).toHaveCSS("background-image", /sunflower/);
+    await intro.evaluate(async (el) => {
+      const fabric = new Image();
+      fabric.src = getComputedStyle(el).backgroundImage.slice(5, -2);
+      await fabric.decode();
+    });
   }
   const box = await header.boundingBox();
   const clip = { x: box.x, y: box.y + box.height / 2, width: box.width, height: box.height / 2 - 12 };
