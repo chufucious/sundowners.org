@@ -32,6 +32,26 @@
 
     import { currentYear, currentAddress, expeditions } from "#lib/expeditions.js";
 
+    let introReady = $state(false);
+    function revealIntro(photo) {
+        const fabric = new Image();
+        fabric.src = patternSunflower;
+        async function reveal() {
+            // Failed images settle too, so the remaining content stays usable.
+            await Promise.allSettled([photo.decode(), fabric.decode()]);
+            // Resizing can cancel a decode to select a new responsive source.
+            // Its load/error event will retry; don't reveal while still loading.
+            if (photo.complete) introReady = true;
+        }
+        photo.addEventListener("load", reveal);
+        photo.addEventListener("error", reveal);
+        if (photo.complete) reveal(); // Already loaded (or failed) before hydration.
+        return () => {
+            photo.removeEventListener("load", reveal);
+            photo.removeEventListener("error", reveal);
+        };
+    }
+
     let gallery;
     let galleryAtStart = $state(true);
     let galleryAtEnd = $state(false);
@@ -66,16 +86,20 @@
 <section id="intro" class="col-span-12 relative">
     <div class="mx-auto w-5/6 md:w-2/3 max-w-7xl grid grid-cols-8 gap-4">
         <div
-            class="pattern-frame relative col-span-full p-2 -rotate-1 mt-8 md:-mt-88 lg:-mt-102 mb-12"
+            class={["pattern-frame relative col-span-full p-2 -rotate-1 mt-8 md:-mt-88 lg:-mt-102 mb-12", !introReady && "intro-pending"]}
             style:background-image="url({patternSunflower})"
         >
-            <enhanced:img
-                src={rexanGroup2023}
-                sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
-                alt="The Sundowners crew cheering and waving from Rexan’s decks"
-                class="max-w-full"
-                loading="lazy"
-            />
+            <!-- Reserve the photo's shape even when WebKit paints a broken image. -->
+            <div style:aspect-ratio="{rexanGroup2023.img.w} / {rexanGroup2023.img.h}" class="relative">
+                <enhanced:img
+                    src={rexanGroup2023}
+                    {@attach revealIntro}
+                    sizes="(min-width: 1920px) 1280px, (min-width: 768px) 66vw, 83vw"
+                    alt="The Sundowners crew cheering and waving from Rexan’s decks"
+                    class="absolute inset-0 w-full h-full object-cover"
+                    loading="eager"
+                />
+            </div>
             <!-- The seasonal greeting, as label-maker tape stuck on the photo. -->
             <p class="label-tape absolute -left-2 -bottom-1 md:-left-3.5 md:bottom-6 -rotate-4 whitespace-nowrap">
                 <span class="fabric-shadow">🦁 Thanks for an amazing Burn — see you in {currentYear + 1}!</span>
@@ -468,6 +492,14 @@
 </section>
 
 <style>
+    /* Reserve the photo's existing space from the first SSR paint. Without
+       JavaScript, keep the ordinary image and fabric visible. */
+    @media (scripting: enabled) {
+        .intro-pending {
+            opacity: 0;
+        }
+    }
+
     .label-tape {
         /* The sunflower fabric's key colour, as on the Rexan carousel's 2017 card. */
         --tint: #a07517;

@@ -25,9 +25,9 @@ export default defineConfig({
     { name: "desktop-chromium", use: { ...devices["Desktop Chrome"] } },
     { name: "desktop-safari", use: { ...devices["Desktop Safari"] } },
     { name: "iphone", use: { ...devices["iPhone 13"] } },
-    // Device-specific safe-area regressions; broader site tests stay above.
-    { name: "android", testMatch: "**/safe-area.test.js", use: { ...devices["Pixel 5"] } },
-    { name: "tablet-portrait", testMatch: "**/safe-area.test.js", use: { ...devices["iPad Pro 11"] } },
-    { name: "tablet-landscape", testMatch: "**/safe-area.test.js", use: { ...devices["iPad Pro 11 landscape"] } },
+    // Device-specific safe-area and intro-image regressions.
+    { name: "android", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["Pixel 5"] } },
+    { name: "tablet-portrait", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["iPad Pro 11"] } },
+    { name: "tablet-landscape", testMatch: /\/(safe-area|intro-photo)\.test\.js$/, use: { ...devices["iPad Pro 11 landscape"] } },
   ],
 });
