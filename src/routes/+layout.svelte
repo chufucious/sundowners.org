@@ -78,7 +78,7 @@
   Skip to main content
 </a>
 
-<main class="page-shell grid grid-cols-12 gap-4 font-mono pb-32 bg-orange-100">
+<main class="page-shell grid grid-cols-12 gap-4 font-mono text-pretty pb-32 bg-orange-100">
   <SiteHeader hero={page.data.headerImage} smallHeader={page.data.smallHeader} />
   <div id="main-content" class="contents">
     {@render children()}
