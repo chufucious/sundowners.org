@@ -53,7 +53,8 @@
   // The trailing spacer lets the last card reach the same reading edge.
   function scrollToCard(i) {
     const end = track.scrollWidth - track.clientWidth;
-    track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: "smooth" });
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    track.scrollTo({ left: Math.min(snapLeft(i), end), behavior: reduce ? "instant" : "smooth" });
   }
 
   // The card lined up with the text edge.
@@ -87,7 +88,7 @@
     onclick={() => scrollByCard(direction)}
     {disabled}
     aria-label={direction < 0 ? "Previous years" : "Next years"}
-    class="size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
+    class="hit-area relative size-9 rounded-full bg-orange-950/10 hover:bg-orange-950/20 enabled:active:bg-orange-950/30 disabled:opacity-40 disabled:hover:bg-orange-950/10 text-orange-950 grid place-items-center cursor-pointer disabled:cursor-default"
   >
     <svg viewBox="0 0 16 16" class="size-4" aria-hidden="true">
       <path

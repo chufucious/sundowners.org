@@ -90,6 +90,19 @@ picture {
     0 4px 4px var(--shade);
 }
 
+/* Hover styles that Tailwind's hover: can't guard (group-has-[a:hover]), kept
+   off touch screens, where a tap would leave them stuck. */
+@custom-variant can-hover (@media (hover: hover) and (pointer: fine));
+
+/* A 44px tap target around a smaller control. The control must be positioned. */
+@utility hit-area {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: min(0px, (100% - 44px) / 2);
+  }
+}
+
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;

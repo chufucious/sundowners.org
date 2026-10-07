@@ -110,7 +110,7 @@
       <p class="flex flex-wrap items-center justify-center gap-4">
         <a
           href="mailto:sundownersbrc@gmail.com"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Email Sundowners camp"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -121,7 +121,7 @@
         </a>
         <a
           href="https://www.instagram.com/sundownerssafari/"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Follow Sundowners on Instagram"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -133,7 +133,7 @@
         </a>
         <a
           href="https://www.facebook.com/sundownersbrc"
-          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+          class="inline-flex h-11 items-center justify-center gap-2 border border-transparent bg-orange-500 hover:bg-orange-400 active:bg-orange-600 text-orange-950 px-4 py-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
           aria-label="Follow Sundowners on Facebook"
         >
           <svg viewBox="0 0 24 24" class="size-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">

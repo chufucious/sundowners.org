@@ -20,14 +20,14 @@
                 sizes="(min-width: 1920px) 624px, (min-width: 768px) 33vw, 83vw"
                 {alt}
                 loading="lazy"
-                class="w-full aspect-video object-cover {position} transition-transform duration-500 group-has-[a:hover]:scale-[1.03]"
+                class="w-full aspect-video object-cover {position} motion-safe:transition-transform duration-300 can-hover:group-has-[a:hover]:scale-[1.03]"
             />
         </a>
 
         <div
             class="relative"
         >
-            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 group-has-[a:hover]:text-orange-700 transition-colors mb-4">
+            <h2 class="text-xl md:text-2xl font-garamond text-orange-950 can-hover:group-has-[a:hover]:text-orange-700 transition-colors mb-4">
                 {title}
             </h2>
             <p class="text-sm mb-8 text-orange-900 leading-relaxed max-w-prose">
@@ -35,7 +35,7 @@
             </p>
             <a
                 {href}
-                class="inline-block bg-orange-500 group-has-[a:hover]:bg-orange-400 text-orange-950 px-4 py-2 text-sm after:absolute after:inset-0"
+                class="inline-block bg-orange-500 can-hover:group-has-[a:hover]:bg-orange-400 group-has-[a:active]:bg-orange-600 text-orange-950 px-4 py-2 text-sm after:absolute after:inset-0"
                 >Read Now<span class="sr-only">: {title}</span></a
             >
         </div>

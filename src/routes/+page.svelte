@@ -38,7 +38,8 @@
 
     // Mouse users can't swipe a scrollbar-less strip, so the hints page it.
     function scrollGallery(direction) {
-        gallery.scrollBy({ left: direction * gallery.clientWidth * 0.8, behavior: "smooth" });
+        const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        gallery.scrollBy({ left: direction * gallery.clientWidth * 0.8, behavior: reduce ? "instant" : "smooth" });
     }
 
     // Lets search engines tie the camp's name to this site and its profiles.
@@ -424,23 +425,28 @@
             <button
                 type="button"
                 onclick={() => scrollGallery(-1)}
-                class={["underline hover:text-orange-700 cursor-pointer", galleryAtStart && "invisible"]}
+                class={["hit-area relative underline hover:text-orange-700 active:text-orange-950 cursor-pointer", galleryAtStart && "invisible"]}
             >
                 ← back
             </button>
             <button
                 type="button"
                 onclick={() => scrollGallery(1)}
-                class={["underline hover:text-orange-700 cursor-pointer", galleryAtEnd && "invisible"]}
+                class={["hit-area relative underline hover:text-orange-700 active:text-orange-950 cursor-pointer", galleryAtEnd && "invisible"]}
             >
                 more photos →
             </button>
         </div>
+        <!-- Keyboard users need to focus the horizontal scroll region. -->
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <div
             id="gallery"
+            role="region"
+            aria-label="Photos from camp"
+            tabindex="0"
             bind:this={gallery}
             onscroll={updateGalleryEnds}
-            class="col-span-12 inline-flex overflow-x-auto no-scrollbar"
+            class="col-span-12 inline-flex overflow-x-auto overscroll-x-contain snap-x no-scrollbar focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-orange-700"
         >
             {#each galleryPhotos as { image, video, poster, alt, class: fit, videoClass } (image ?? video)}
                 {#if video}
@@ -450,7 +456,7 @@
                         label={alt}
                         width="960"
                         height="540"
-                        class={fit}
+                        class={["snap-start", fit]}
                         {videoClass}
                     />
                 {:else}
@@ -459,7 +465,7 @@
                         sizes="(max-width: 768px) 100vw, 400px"
                         {alt}
                         loading="lazy"
-                        class={["w-full object-cover", fit]}
+                        class={["w-full object-cover snap-start", fit]}
                     />
                 {/if}
             {/each}

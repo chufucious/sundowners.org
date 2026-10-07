@@ -71,7 +71,7 @@
     type="button"
     onclick={toggle}
     aria-label={paused ? "Play video" : "Pause video"}
-    class="absolute right-2 bottom-2 grid size-9 place-items-center rounded-full bg-orange-950/60 text-orange-50 transition-colors hover:bg-orange-950/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
+    class="hit-area absolute right-2 bottom-2 grid size-9 place-items-center rounded-full bg-orange-950/60 text-orange-50 transition-colors hover:bg-orange-950/80 active:bg-orange-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
   >
     <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true" focusable="false">
       {#if paused}
